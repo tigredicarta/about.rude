@@ -3,1590 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#0A0A0B" />
+  <meta name="theme-color" content="#101010" />
   <title>RUDE — Garage Punk / Post-Punk Milano | Official &amp; EPK</title>
   <meta name="description" content="RUDE: Garage Punk / Post-Punk da Milano. Nuovo split 12'' Bestie Flambé (2026) in italiano con i Polpo Kid e album d'esordio About Youth (2025). Scheda tecnica, foto HD e booking diretto." />
 
-  <!-- Blocco categorico crawler e scraping Googlebot e motori di ricerca -->
+  <!-- Blocco categorico crawler e scraping motori di ricerca -->
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
   <meta name="googlebot-news" content="noindex, nofollow" />
   <meta name="google-extended" content="noindex, nofollow" />
-  
+
   <!-- Open Graph / Social Preview -->
   <meta property="og:title" content="RUDE — Garage Punk / Post-Punk da Milano" />
   <meta property="og:description" content="Ascolta il nuovo split 12'' Bestie Flambé (2026) e About Youth. Scarica Press Kit, Foto HD e Scheda Tecnica per club e festival." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="FOTO/RUDE_WC.jpg" />
 
-  <!-- Fonts: Anton per headline stradali, Space Mono & JetBrains Mono per layout fanzine/rider -->
+  <!-- Fonts Ufficiali Press Kit: Anton (Display) + Courier Prime (Testi, Tracklist, Credits) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-  <style>
-    /* ==========================================================================
-       1. DESIGN TOKENS & IDENTITÀ VISIVA BRUTALIST FANZINE RUDE
-       ========================================================================== */
-    :root {
-      --pink-rude: #FF2D78;
-      --pink-rude-light: #FF5A96;
-      --pink-rude-soft: #FFE5EE;
-      --pink-glow: rgba(255, 45, 120, 0.38);
-      
-      --ink-black: #0A0A0B;
-      --ink-surface: #141418;
-      --ink-elevated: #1F1F26;
-      --chalk-white: #F4F4F0;
-      --paper-warm: #EAEAE2;
-      --pure-white: #FFFFFF;
-      --muted-gray: #63636B;
-      --border-gray: #2B2B33;
-
-      --green-beast: #00A859;
-      --lavender-split: #E8D0E6;
-      --amber-alert: #FFB800;
-
-      /* Tipografia */
-      --font-headline: 'Anton', Impact, 'Arial Black', sans-serif;
-      --font-mono: 'Space Mono', 'JetBrains Mono', Courier, monospace;
-      --font-tech: 'JetBrains Mono', monospace;
-
-      /* Spaziature, Bordi e Ombre Brutaliste (4/8pt Grid) */
-      --container-max: 1240px;
-      --shadow-hard-pink: 6px 6px 0px var(--pink-rude);
-      --shadow-hard-black: 6px 6px 0px var(--ink-black);
-      --shadow-hard-white: 5px 5px 0px var(--chalk-white);
-      --border-thick: 3px solid var(--ink-black);
-      --border-medium: 2px solid var(--ink-black);
-
-      --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
-      --transition-snap: 280ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 72px;
-      background-color: var(--ink-black);
-      color: var(--chalk-white);
-      font-family: var(--font-mono);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-size-adjust: 100%;
-    }
-
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    ::selection {
-      background: var(--pink-rude);
-      color: var(--pure-white);
-    }
-
-    /* Grana analogica fotocopia / serigrafia punk */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9998;
-      opacity: 0.045;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      user-select: none;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    button {
-      font: inherit;
-      color: inherit;
-      background: none;
-      border: none;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    :focus-visible {
-      outline: 3px solid var(--pink-rude);
-      outline-offset: 3px;
-    }
-
-    /* Skip Link per Accessibilità Tastiera */
-    .skip-link {
-      position: fixed;
-      top: -100px;
-      left: 1rem;
-      z-index: 10000;
-      background: var(--pink-rude);
-      color: var(--pure-white);
-      font-family: var(--font-tech);
-      font-weight: 800;
-      font-size: 0.85rem;
-      padding: 0.75rem 1.25rem;
-      border: 2px solid var(--pure-white);
-      box-shadow: 4px 4px 0px var(--ink-black);
-      transition: top var(--transition-fast);
-    }
-    .skip-link:focus {
-      top: 1rem;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--container-max);
-      margin-inline: auto;
-      padding-inline: clamp(1rem, 4vw, 2.5rem);
-    }
-
-    /* ==========================================================================
-       ANIMAZIONI SCROLL-REVEAL & MICRO-INTERAZIONI FANZINE
-       ========================================================================== */
-    .reveal-up {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 460ms cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 460ms cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .reveal-up.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 75ms; }
-    .reveal-delay-2 { transition-delay: 150ms; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal-up {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-      }
-      html { scroll-behavior: auto; }
-      .ticker-track { animation: none !important; }
-    }
-
-    /* ==========================================================================
-       2. HEADER STICKY (APPARE ALLO SCROLL CON PROGRESS BAR)
-       ========================================================================== */
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 2000;
-      background: rgba(10, 10, 11, 0.96);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 2px solid var(--pink-rude);
-      transform: translateY(-105%);
-      transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .site-header.is-scrolled {
-      transform: translateY(0);
-    }
-
-    .scroll-progress-bar {
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      height: 3px;
-      background: var(--chalk-white);
-      width: 0%;
-      z-index: 2001;
-      transition: width 80ms linear;
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 64px;
-      gap: 0.5rem;
-    }
-
-    .brand-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-
-    .brand-logo-img {
-      height: 36px;
-      width: auto;
-      filter: drop-shadow(0 0 8px rgba(255, 45, 120, 0.45));
-      transition: transform var(--transition-fast);
-    }
-    .brand-link:hover .brand-logo-img {
-      transform: scale(1.07) rotate(-3deg);
-    }
-
-    .brand-genre-tag {
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--chalk-white);
-      line-height: 1.2;
-      display: none;
-    }
-    @media (min-width: 760px) {
-      .brand-genre-tag { display: block; }
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: clamp(0.25rem, 1.6vw, 1.15rem);
-    }
-
-    .nav-link {
-      font-size: clamp(0.7rem, 1.4vw, 0.8rem);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 0.5rem 0.4rem;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      position: relative;
-      transition: color var(--transition-fast);
-    }
-    .nav-link:hover,
-    .nav-link.is-active {
-      color: var(--pink-rude);
-    }
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      bottom: 8px;
-      left: 0.4rem;
-      right: 0.4rem;
-      height: 2px;
-      background: var(--pink-rude);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform var(--transition-fast);
-    }
-    .nav-link:hover::after,
-    .nav-link.is-active::after {
-      transform: scaleX(1);
-    }
-
-    .btn-epk-nav {
-      background: var(--pink-rude);
-      color: var(--pure-white);
-      font-family: var(--font-tech);
-      font-size: clamp(0.68rem, 1.4vw, 0.78rem);
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.45rem 0.8rem;
-      min-height: 40px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      border: 2px solid var(--chalk-white);
-      box-shadow: 3px 3px 0px var(--chalk-white);
-      white-space: nowrap;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
-    }
-    .btn-epk-nav:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 5px 5px 0px var(--chalk-white);
-    }
-    .btn-epk-nav:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px var(--chalk-white);
-    }
-
-    /* ==========================================================================
-       3. PRIMA VIEW: SOLO FOTO A TUTTO SCHERMO (100SVH - ZERO TESTO SUI VOLTI)
-       ========================================================================== */
-    .hero-cover-screen {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      height: 100svh;
-      min-height: 540px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background-color: var(--ink-black);
-      overflow: hidden;
-      border-bottom: var(--border-thick);
-    }
-
-    .hero-cover-top {
-      position: relative;
-      z-index: 10;
-      background: linear-gradient(
-        180deg,
-        rgba(10, 10, 11, 0.92) 0%,
-        rgba(10, 10, 11, 0.58) 62%,
-        rgba(10, 10, 11, 0) 100%
-      );
-      padding-top: max(clamp(0.85rem, 2.2vh, 1.65rem), env(safe-area-inset-top));
-      padding-bottom: 2.2rem;
-    }
-
-    .hero-top-nav-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .hero-main-logo-wrap {
-      max-width: clamp(130px, 22vw, 265px);
-      transition: transform var(--transition-snap);
-      display: block;
-    }
-    .hero-main-logo-wrap:hover {
-      transform: scale(1.04) rotate(-2deg);
-    }
-    .hero-main-logo-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.95));
-    }
-
-    .hero-top-right {
-      display: flex;
-      align-items: center;
-      gap: clamp(0.5rem, 1.5vw, 1.25rem);
-    }
-
-    .hero-genre-subhead {
-      text-align: right;
-      font-family: var(--font-tech);
-      font-size: clamp(0.68rem, 1.05vw, 0.8rem);
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      line-height: 1.3;
-      text-transform: uppercase;
-      color: var(--chalk-white);
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
-      border-right: 2px solid var(--pink-rude);
-      padding-right: 0.85rem;
-    }
-    @media (max-width: 860px) {
-      .hero-genre-subhead { display: none; }
-    }
-
-    .hero-inline-nav {
-      display: flex;
-      align-items: center;
-      gap: clamp(0.35rem, 1.4vw, 0.95rem);
-    }
-
-    .hero-inline-link {
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--chalk-white);
-      padding: 0.4rem 0.35rem;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
-      transition: color var(--transition-fast), transform var(--transition-fast);
-    }
-    .hero-inline-link:hover {
-      color: var(--pink-rude);
-      transform: translateY(-1px);
-    }
-    @media (max-width: 580px) {
-      .hero-inline-nav .hero-inline-link {
-        display: none;
-      }
-    }
-
-    .btn-hero-epk-pill {
-      background: var(--pink-rude);
-      color: var(--pure-white);
-      font-family: var(--font-tech);
-      font-size: clamp(0.7rem, 1.4vw, 0.8rem);
-      font-weight: 800;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      padding: 0.5rem 0.95rem;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      border: 2px solid var(--chalk-white);
-      box-shadow: 4px 4px 0px rgba(10, 10, 11, 0.95);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-    .btn-hero-epk-pill:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px rgba(10, 10, 11, 0.95);
-    }
-    .btn-hero-epk-pill:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px rgba(10, 10, 11, 0.95);
-    }
-
-    /* Foto a tutto schermo nella prima view (pulita, nessun testo sopra i volti) */
-    .hero-cover-photo-wrap {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-
-    .hero-cover-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 28%;
-      display: block;
-      filter: contrast(1.07) saturate(1.05);
-      transform: scale(1.01);
-      animation: heroZoomOut 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    @media (max-width: 768px) {
-      .hero-cover-img {
-        object-position: 20% 30%;
-      }
-    }
-    @keyframes heroZoomOut {
-      from { transform: scale(1.06); }
-      to { transform: scale(1); }
-    }
-
-    /* Ticker Bar ancorata in fondo alla prima view con pillola fissa */
-    .ticker-bar {
-      background: var(--pink-rude);
-      color: var(--pure-white);
-      overflow: hidden;
-      white-space: nowrap;
-      border-top: 2px solid var(--chalk-white);
-      font-family: var(--font-tech);
-      font-size: clamp(0.72rem, 1.15vw, 0.82rem);
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      position: relative;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-    }
-
-    .ticker-fixed-label {
-      background: var(--ink-black);
-      color: var(--chalk-white);
-      padding: 0.58rem 0.9rem;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      border-right: 2px solid var(--chalk-white);
-      z-index: 2;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      flex-shrink: 0;
-    }
-    @media (max-width: 480px) {
-      .ticker-fixed-label {
-        padding: 0.55rem 0.65rem;
-        font-size: 0.66rem;
-      }
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--pink-rude);
-      display: inline-block;
-      animation: pulseDot 1.4s infinite ease-in-out;
-    }
-    @keyframes pulseDot {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.35); opacity: 0.55; }
-    }
-
-    .ticker-viewport {
-      overflow: hidden;
-      flex: 1;
-      padding-block: 0.55rem;
-    }
-
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: tickerLoop 30s linear infinite;
-    }
-    .ticker-bar:hover .ticker-track {
-      animation-play-state: paused;
-    }
-    .ticker-item {
-      padding-right: 2.75rem;
-    }
-    @keyframes tickerLoop {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(-50%, 0, 0); }
-    }
-
-    /* ==========================================================================
-       4. SEZIONE DESCRIZIONE, MANIFESTO & BIO (SUBITO SOTTO LA FOTO)
-       ========================================================================== */
-    .bio-section {
-      background: var(--chalk-white);
-      color: var(--ink-black);
-      padding-block: clamp(3rem, 7vw, 5.25rem);
-      border-bottom: var(--border-thick);
-      position: relative;
-    }
-
-    .bio-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      align-items: start;
-    }
-    @media (min-width: 880px) {
-      .bio-grid {
-        grid-template-columns: 1fr 1.35fr;
-        gap: 4rem;
-      }
-    }
-
-    .bio-badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.95rem;
-    }
-
-    .badge-dark-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: var(--ink-black);
-      color: var(--chalk-white);
-      font-family: var(--font-tech);
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.11em;
-      padding: 0.3rem 0.7rem;
-      text-transform: uppercase;
-      border: 1.5px solid var(--ink-black);
-    }
-
-    .badge-sticker-tilt {
-      background: var(--pink-rude);
-      color: var(--pure-white);
-      transform: rotate(-1.5deg);
-      box-shadow: 2px 2px 0px var(--ink-black);
-    }
-
-    .bio-headline {
-      font-family: var(--font-headline);
-      font-size: clamp(2.65rem, 6.2vw, 4.85rem);
-      line-height: 0.9;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      color: var(--ink-black);
-    }
-    .bio-headline span {
-      color: var(--pink-rude);
-      text-shadow: 3px 3px 0px var(--ink-black);
-    }
-
-    /* Card Line-up in stile scheda segnaletica fanzine */
-    .bio-lineup-card {
-      background: var(--pure-white);
-      border: var(--border-thick);
-      box-shadow: var(--shadow-hard-pink);
-      padding: 1.35rem 1.45rem;
-      margin-top: 1.5rem;
-      position: relative;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-    .bio-lineup-card:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 9px 9px 0px var(--pink-rude);
-    }
-
-    .bio-lineup-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.75rem;
-      border-bottom: 2px solid var(--ink-black);
-      padding-bottom: 0.45rem;
-    }
-
-    .bio-lineup-title {
-      font-family: var(--font-tech);
-      font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--pink-rude);
-    }
-
-    .bio-lineup-stamp {
-      font-family: var(--font-tech);
-      font-size: 0.68rem;
-      font-weight: 800;
-      background: var(--ink-black);
-      color: var(--chalk-white);
-      padding: 0.12rem 0.45rem;
-    }
-
-    .bio-lineup-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 0.75rem;
-      font-size: 0.86rem;
-      padding-block: 0.42rem;
-      border-bottom: 1px dashed rgba(10, 10, 11, 0.25);
-    }
-    .bio-lineup-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-    .bio-lineup-row strong {
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-    .bio-lineup-row span {
-      font-family: var(--font-tech);
-      font-size: 0.8rem;
-      color: #444;
-      text-align: right;
-    }
-
-    .bio-body-text {
-      font-size: clamp(0.96rem, 1.35vw, 1.1rem);
-      line-height: 1.68;
-      margin-bottom: 1.85rem;
-    }
-    .bio-body-text p + p {
-      margin-top: 1rem;
-    }
-
-    /* Effetto Evidenziatore Rosa Punk */
-    .highlight-pink {
-      background-color: var(--pink-rude);
-      color: var(--pure-white);
-      padding: 0.08em 0.38em;
-      font-weight: 700;
-      display: inline;
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-
-    /* Effetto Sottolineatura Brutalista */
-    .underline-punk {
-      border-bottom: 3px solid var(--pink-rude);
-      font-weight: 700;
-    }
-
-    .bio-actions-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.85rem;
-      align-items: stretch;
-      margin-bottom: 1.75rem;
-    }
-
-    .btn-bio-primary,
-    .btn-bio-secondary,
-    .btn-bio-booking {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      font-family: var(--font-tech);
-      font-size: clamp(0.76rem, 1.25vw, 0.84rem);
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.7rem 1.2rem;
-      border: var(--border-medium);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
-    }
-
-    .btn-bio-primary {
-      background: var(--pink-rude);
-      color: var(--pure-white);
-      box-shadow: 4px 4px 0px var(--ink-black);
-    }
-    .btn-bio-primary:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px var(--ink-black);
-    }
-    .btn-bio-primary:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px var(--ink-black);
-    }
-
-    .btn-bio-secondary {
-      background: var(--pure-white);
-      color: var(--ink-black);
-      box-shadow: 4px 4px 0px var(--pink-rude);
-    }
-    .btn-bio-secondary:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px var(--pink-rude);
-    }
-    .btn-bio-secondary:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px var(--pink-rude);
-    }
-
-    .btn-bio-booking {
-      background: var(--ink-black);
-      color: var(--chalk-white);
-      box-shadow: 4px 4px 0px var(--green-beast);
-    }
-    .btn-bio-booking:hover {
-      background: var(--green-beast);
-      color: var(--pure-white);
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px var(--ink-black);
-    }
-
-    @media (max-width: 560px) {
-      .bio-actions-row {
-        flex-direction: column;
-      }
-      .btn-bio-primary,
-      .btn-bio-secondary,
-      .btn-bio-booking {
-        width: 100%;
-      }
-    }
-
-    .bio-quick-links-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.55rem;
-      font-size: 0.76rem;
-      font-weight: 700;
-      border-top: 2px solid rgba(10, 10, 11, 0.16);
-      padding-top: 1.15rem;
-    }
-
-    .bio-pill-link {
-      background: var(--pure-white);
-      color: var(--ink-black);
-      font-family: var(--font-tech);
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.45rem 0.75rem;
-      min-height: 42px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      border: 1.5px solid var(--ink-black);
-      box-shadow: 2px 2px 0px var(--ink-black);
-      transition: transform var(--transition-fast), background var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
-    }
-    .bio-pill-link:hover {
-      background: var(--pink-rude);
-      color: var(--pure-white);
-      transform: translate(-2px, -2px);
-      box-shadow: 4px 4px 0px var(--ink-black);
-    }
-
-    /* ==========================================================================
-       5. DISCOGRAFIA: CORNICI VINILE 1:1 & TRACKLIST COMPLETA
-       ========================================================================== */
-    .discography-section {
-      background: var(--ink-black);
-    }
-
-    /* Split 12" Bestie Flambé: Sfondo Rosa Shocking originale */
-    .bestie-flambe-block {
-      background: var(--pink-rude);
-      color: var(--ink-black);
-      padding-block: clamp(3.25rem, 7vw, 5.5rem);
-      border-bottom: var(--border-thick);
-      position: relative;
-    }
-
-    .split-layout {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      align-items: center;
-    }
-    @media (min-width: 880px) {
-      .split-layout {
-        grid-template-columns: minmax(300px, 440px) 1fr;
-        gap: 4.25rem;
-      }
-    }
-
-    /* Cornice Vinile 1:1 + Effetto Disco in Vinile sul retro */
-    .vinyl-sleeve-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 440px;
-      margin-inline: auto;
-    }
-
-    .vinyl-sleeve-card {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      border: 3px solid var(--ink-black);
-      background: var(--lavender-split);
-      box-shadow: 10px 10px 0px var(--ink-black);
-      overflow: hidden;
-      cursor: zoom-in;
-      z-index: 2;
-      transition: transform var(--transition-snap), box-shadow var(--transition-snap);
-    }
-    .vinyl-sleeve-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(10, 10, 11, 0.14);
-      pointer-events: none;
-    }
-    .vinyl-sleeve-card:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: 14px 14px 0px var(--ink-black);
-    }
-
-    .vinyl-zoom-pill {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: rgba(10, 10, 11, 0.88);
-      color: var(--chalk-white);
-      font-family: var(--font-tech);
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      padding: 0.25rem 0.55rem;
-      border: 1.5px solid var(--chalk-white);
-      pointer-events: none;
-      text-transform: uppercase;
-    }
-
-    .vinyl-sleeve-card--youth {
-      background: var(--green-beast);
-      box-shadow: 10px 10px 0px var(--pink-rude);
-    }
-    .vinyl-sleeve-card--youth:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: 14px 14px 0px var(--pink-rude);
-    }
-
-    .cover-card-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .vinyl-sleeve-card:hover .cover-card-img {
-      transform: scale(1.03);
-    }
-
-    .split-meta-header {
-      margin-bottom: 1.25rem;
-    }
-
-    .release-title-giant {
-      font-family: var(--font-headline);
-      font-size: clamp(3.1rem, 7vw, 5.6rem);
-      line-height: 0.88;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      margin-top: 0.55rem;
-      margin-bottom: 0.65rem;
-    }
-
-    .split-subtitle {
-      font-size: clamp(0.95rem, 1.75vw, 1.15rem);
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.85rem;
-      border-bottom: 2px solid var(--ink-black);
-    }
-
-    .release-editorial-blurb {
-      font-size: 0.94rem;
-      line-height: 1.6;
-      margin-bottom: 1.35rem;
-      font-weight: 700;
-      background: rgba(255, 255, 255, 0.22);
-      border-left: 4px solid var(--ink-black);
-      padding: 0.65rem 0.9rem;
-    }
-
-    /* Tracklist 2 colonne */
-    .tracklist-columns {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-      margin-bottom: 1.75rem;
-      padding-bottom: 1.4rem;
-      border-bottom: 2px solid var(--ink-black);
-    }
-    @media (min-width: 560px) {
-      .tracklist-columns {
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-      }
-    }
-
-    .track-column-title {
-      font-family: var(--font-tech);
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.55rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .track-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      font-size: 0.9rem;
-    }
-    .track-list li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.48rem 0.75rem;
-      min-height: 42px;
-      border: 1.5px solid var(--ink-black);
-      background: rgba(255, 255, 255, 0.24);
-      transition: transform var(--transition-fast), background var(--transition-fast);
-    }
-    .track-list li:hover {
-      transform: translateX(3px);
-      background: rgba(255, 255, 255, 0.42);
-    }
-    .track-left {
-      display: flex;
-      align-items: baseline;
-      gap: 0.6rem;
-    }
-    .track-num {
-      font-family: var(--font-tech);
-      font-weight: 800;
-      font-size: 0.76rem;
-      background: var(--ink-black);
-      color: var(--chalk-white);
-      padding: 0.08rem 0.35rem;
-    }
-    .track-lang-tag {
-      font-family: var(--font-tech);
-      font-size: 0.65rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      padding: 0.1rem 0.35rem;
-      border: 1px solid var(--ink-black);
-      background: var(--chalk-white);
-    }
-
-    /* Tracklist compatta 9 tracce per About Youth */
-    .youth-tracks-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-      gap: 0.4rem;
-      margin-bottom: 1.65rem;
-      padding-bottom: 1.35rem;
-      border-bottom: 2px solid var(--ink-black);
-      list-style: none;
-    }
-    .youth-tracks-grid li {
-      font-family: var(--font-tech);
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 0.38rem 0.6rem;
-      background: var(--pure-white);
-      border: 1.5px solid var(--ink-black);
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-    .youth-tracks-grid li span {
-      color: var(--pink-rude);
-      font-weight: 800;
-    }
-
-    .split-action-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.85rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .btn-rude-black {
-      background: var(--ink-black);
-      color: var(--chalk-white);
-      font-family: var(--font-tech);
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.7rem 1.25rem;
-      min-height: 46px;
-      border: 2px solid var(--ink-black);
-      box-shadow: 4px 4px 0px rgba(10, 10, 11, 0.35);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
-    }
-    .btn-rude-black:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px rgba(10, 10, 11, 0.55);
-      background: #1C1C22;
-    }
-    .btn-rude-black:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px rgba(10, 10, 11, 0.3);
-    }
-
-    .credits-text {
-      font-size: 0.84rem;
-      line-height: 1.55;
-    }
-
-    /* About Youth (Album d'esordio) - Sezione Carta Chiara */
-    .about-youth-block {
-      background: var(--chalk-white);
-      color: var(--ink-black);
-      padding-block: clamp(3.25rem, 7vw, 5.5rem);
-      border-bottom: var(--border-thick);
-    }
-
-    /* ==========================================================================
-       6. DOVE ABBIAMO SUONATO (LIVE BANNER + STRIP 3 FOTO + LISTA LOCALI)
-       ========================================================================== */
-    .live-section {
-      background: var(--chalk-white);
-      color: var(--ink-black);
-      border-bottom: var(--border-thick);
-    }
-
-    .live-hero-banner {
-      position: relative;
-      background: #450000;
-      border-bottom: var(--border-thick);
-      overflow: hidden;
-      cursor: zoom-in;
-    }
-    .live-hero-img {
-      width: 100%;
-      height: clamp(260px, 50vw, 510px);
-      object-fit: cover;
-      object-position: center 30%;
-      filter: contrast(1.12) brightness(0.86);
-      display: block;
-      transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .live-hero-banner:hover .live-hero-img {
-      transform: scale(1.03);
-    }
-    .live-hero-overlay-title {
-      position: absolute;
-      bottom: clamp(1rem, 4vw, 2.5rem);
-      left: clamp(1rem, 4vw, 3rem);
-      right: 1rem;
-      font-family: var(--font-headline);
-      font-size: clamp(2.4rem, 7.6vw, 5.8rem);
-      line-height: 0.9;
-      color: var(--pure-white);
-      text-transform: uppercase;
-      text-shadow: 4px 4px 0px var(--ink-black), -1px -1px 0px var(--ink-black);
-      pointer-events: none;
-    }
-
-    /* Striscia 3 foto live (Live 1 BN, Live 2 Blu, Studio Rec) - Zero Duplicati */
-    .live-photo-strip {
-      display: grid;
-      grid-template-columns: 1fr;
-      border-bottom: var(--border-thick);
-      background: var(--ink-black);
-    }
-    @media (min-width: 680px) {
-      .live-photo-strip {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    .strip-photo-item {
-      position: relative;
-      height: clamp(220px, 28vw, 295px);
-      overflow: hidden;
-      border-bottom: 2px solid var(--ink-black);
-      cursor: zoom-in;
-    }
-    @media (min-width: 680px) {
-      .strip-photo-item {
-        border-bottom: none;
-        border-right: 3px solid var(--ink-black);
-      }
-      .strip-photo-item:last-child {
-        border-right: none;
-      }
-    }
-    .strip-photo-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .strip-photo-item:hover img {
-      transform: scale(1.06);
-    }
-    .strip-photo-badge {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: rgba(10, 10, 11, 0.9);
-      color: var(--chalk-white);
-      font-family: var(--font-tech);
-      font-size: 0.7rem;
-      font-weight: 800;
-      padding: 0.22rem 0.55rem;
-      border: 1.5px solid var(--pink-rude);
-      pointer-events: none;
-    }
-
-    /* Griglia Locali e Club */
-    .venues-grid-layout {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      padding-block: clamp(2.5rem, 6vw, 4.5rem);
-    }
-    @media (min-width: 820px) {
-      .venues-grid-layout {
-        grid-template-columns: 260px 1fr;
-        gap: 3.5rem;
-      }
-    }
-
-    .venues-sidebar-title {
-      font-family: var(--font-tech);
-      font-size: 0.86rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      line-height: 1.5;
-      border-left: 4px solid var(--pink-rude);
-      padding-left: 0.85rem;
-    }
-
-    .venues-sidebar-note {
-      margin-top: 1rem;
-      font-size: 0.8rem;
-      color: #444;
-      line-height: 1.55;
-    }
-
-    .venues-table {
-      width: 100%;
-      border-collapse: collapse;
-      border-top: 3px solid var(--ink-black);
-    }
-    .venues-table tr {
-      border-bottom: 1.5px solid rgba(10, 10, 11, 0.22);
-      transition: background var(--transition-fast);
-    }
-    .venues-table tr:hover {
-      background: rgba(255, 45, 120, 0.1);
-    }
-    .venue-name-cell {
-      padding-block: 0.8rem;
-      padding-right: 0.75rem;
-      font-family: var(--font-headline);
-      font-size: clamp(1.4rem, 2.8vw, 2.1rem);
-      line-height: 1.05;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-    .venue-city-cell {
-      padding-block: 0.8rem;
-      text-align: right;
-      font-family: var(--font-tech);
-      font-size: clamp(0.75rem, 1.35vw, 0.85rem);
-      font-weight: 700;
-    }
-    @media (max-width: 520px) {
-      .venues-table tr {
-        display: flex;
-        flex-direction: column;
-        padding-block: 0.65rem;
-      }
-      .venue-name-cell { padding-block: 0; }
-      .venue-city-cell {
-        padding-block: 0.15rem 0;
-        text-align: left;
-        color: var(--muted-gray);
-      }
-    }
-
-    .venues-other-list {
-      margin-top: 1.4rem;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      font-weight: 700;
-      border-top: 2px solid var(--ink-black);
-      padding-top: 1rem;
-    }
-
-    /* ==========================================================================
-       7. SCHEDA TECNICA & EPK HUB (SINTESI OPERATIVA + LINK DIRETTO)
-       ========================================================================== */
-    .epk-section {
-      background: var(--chalk-white);
-      color: var(--ink-black);
-      padding-block: clamp(3rem, 7vw, 5.5rem);
-      border-bottom: var(--border-thick);
-    }
-
-    .tech-header-card {
-      background: var(--ink-black);
-      color: var(--chalk-white);
-      padding: clamp(1.35rem, 3.2vw, 2.15rem);
-      margin-bottom: 2.25rem;
-      border: var(--border-thick);
-      box-shadow: 8px 8px 0px var(--pink-rude);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .tech-header-left {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-    }
-    .tech-logo-badge {
-      background: var(--pink-rude);
-      color: var(--pure-white);
-      font-family: var(--font-headline);
-      font-size: clamp(1.85rem, 4vw, 2.45rem);
-      line-height: 1;
-      padding: 0.45rem 0.85rem;
-      border: 2px solid var(--chalk-white);
-      flex-shrink: 0;
-    }
-    .tech-header-specs {
-      font-size: clamp(0.78rem, 1.4vw, 0.86rem);
-      line-height: 1.48;
-      font-weight: 700;
-    }
-
-    .tech-download-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      width: 100%;
-    }
-    @media (min-width: 820px) {
-      .tech-download-actions { width: auto; }
-    }
-
-    .btn-download-pdf {
-      background: var(--pink-rude);
-      color: var(--pure-white);
-      font-family: var(--font-tech);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.65rem 1rem;
-      min-height: 46px;
-      border: 2px solid var(--chalk-white);
-      box-shadow: 3px 3px 0px var(--chalk-white);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-      flex: 1 1 auto;
-    }
-    .btn-download-pdf:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 5px 5px 0px var(--chalk-white);
-    }
-    .btn-download-pdf:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px var(--chalk-white);
-    }
-
-    .epk-summary-box {
-      background: var(--pure-white);
-      border: var(--border-thick);
-      box-shadow: var(--shadow-hard-black);
-      padding: clamp(1.5rem, 3.5vw, 2.5rem);
-    }
-    .epk-summary-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-    @media (min-width: 860px) {
-      .epk-summary-grid {
-        grid-template-columns: 1.35fr 1fr;
-        gap: 3rem;
-      }
-    }
-    .epk-badge-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .amp-flexibility-callout {
-      margin-top: 1rem;
-      padding: 0.85rem 1rem;
-      background: #FFF0F5;
-      border-left: 4px solid var(--pink-rude);
-      font-size: 0.86rem;
-      line-height: 1.55;
-      font-weight: 700;
-    }
-
-    /* ==========================================================================
-       8. FOOTER & BOOKING CONTATTI DIRETTI
-       ========================================================================== */
-    .site-footer {
-      background: var(--ink-black);
-      color: var(--chalk-white);
-      padding-block: clamp(3rem, 6vw, 4.5rem);
-      padding-bottom: max(clamp(3rem, 6vw, 4.5rem), env(safe-area-inset-bottom));
-      border-top: 4px solid var(--pink-rude);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
-    }
-    @media (min-width: 780px) {
-      .footer-grid {
-        grid-template-columns: 1.4fr 1fr 1fr;
-      }
-    }
-
-    .footer-brand-logo {
-      max-width: 175px;
-      margin-bottom: 1rem;
-    }
-
-    .footer-cta-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 0.75rem;
-    }
-
-    .btn-booking-giant {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.55rem;
-      background: var(--pink-rude);
-      color: var(--pure-white);
-      font-family: var(--font-tech);
-      font-size: clamp(0.82rem, 1.4vw, 0.92rem);
-      font-weight: 800;
-      padding: 0.8rem 1.25rem;
-      min-height: 48px;
-      border: 2px solid var(--chalk-white);
-      box-shadow: 4px 4px 0px var(--chalk-white);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-    .btn-booking-giant:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px var(--chalk-white);
-    }
-
-    .btn-whatsapp-direct {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      background: var(--green-beast);
-      color: var(--pure-white);
-      font-family: var(--font-tech);
-      font-size: 0.82rem;
-      font-weight: 800;
-      padding: 0.8rem 1.15rem;
-      min-height: 48px;
-      border: 2px solid var(--chalk-white);
-      box-shadow: 4px 4px 0px var(--chalk-white);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-    .btn-whatsapp-direct:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px var(--chalk-white);
-    }
-
-    .info-list-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-      font-size: 0.9rem;
-    }
-    .info-list-links a,
-    .info-list-links button {
-      display: inline-flex;
-      align-items: center;
-      min-height: 38px;
-      border-bottom: 1px dashed rgba(244, 244, 240, 0.3);
-      transition: color var(--transition-fast), border-color var(--transition-fast);
-    }
-    .info-list-links a:hover,
-    .info-list-links button:hover {
-      color: var(--pink-rude);
-      border-color: var(--pink-rude);
-    }
-
-    .footer-bottom-bar {
-      border-top: 1px solid var(--border-gray);
-      padding-top: 1.5rem;
-      font-size: 0.78rem;
-      color: var(--muted-gray);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    /* ==========================================================================
-       9. LIGHTBOX MODAL & TOAST DI FEEDBACK ACCESSIBILE
-       ========================================================================== */
-    .lightbox-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      background: rgba(10, 10, 11, 0.96);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      align-items: center;
-      justify-content: center;
-      padding: 1.25rem;
-    }
-    .lightbox-modal.active {
-      display: flex;
-    }
-    .lightbox-content-box {
-      position: relative;
-      max-width: 92vw;
-      max-height: 88vh;
-      border: 3px solid var(--pink-rude);
-      box-shadow: 0 0 35px var(--pink-glow);
-      background: var(--ink-black);
-    }
-    .lightbox-img {
-      max-width: 100%;
-      max-height: 78vh;
-      display: block;
-      object-fit: contain;
-      margin-inline: auto;
-    }
-    .lightbox-bar {
-      padding: 0.7rem 1rem;
-      background: var(--ink-surface);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      font-size: 0.82rem;
-      border-top: 1px solid var(--border-gray);
-    }
-    .lightbox-close-btn {
-      position: absolute;
-      top: -16px;
-      right: -16px;
-      width: 44px;
-      height: 44px;
-      background: var(--pink-rude);
-      color: var(--pure-white);
-      border: 2px solid var(--chalk-white);
-      font-weight: 800;
-      font-size: 1.2rem;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 3px 3px 0px var(--ink-black);
-    }
-
-    /* Toast Notification Brutalista */
-    .rude-toast {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      z-index: 99990;
-      background: var(--ink-black);
-      color: var(--pure-white);
-      border: 2px solid var(--green-beast);
-      box-shadow: 5px 5px 0px var(--green-beast);
-      font-family: var(--font-tech);
-      font-size: 0.8rem;
-      font-weight: 800;
-      padding: 0.85rem 1.2rem;
-      transform: translateY(150%);
-      transition: transform var(--transition-snap);
-      pointer-events: none;
-    }
-    .rude-toast.is-active {
-      transform: translateY(0);
-    }
-  </style>
-  <link rel="stylesheet" href="site-refinements.css">
+  <!-- Fogli di stile unificati e coerenti con il Press Kit A4 -->
   <link rel="stylesheet" href="brand.css">
+  <link rel="stylesheet" href="site-refinements.css">
   <script src="site-refinements.js" defer></script>
 </head>
 <body>
@@ -1594,13 +34,13 @@
   <a href="#bio" class="skip-link">Salta al contenuto principale ↓</a>
 
   <!-- ==========================================================================
-       HEADER & NAVIGAZIONE FISSA (APPARE ALLO SCROLL)
+       1. HEADER STICKY (APPARE ALLO SCROLL CON BARRA DI AVANZAMENTO)
        ========================================================================== -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-      <a href="#" class="brand-link" aria-label="RUDE Band Homepage">
-        <img src="assets/rude-logo-rosa.png" alt="RUDE" class="brand-logo-img" />
-        <span class="brand-genre-tag">GARAGE / POST-PUNK<br><strong>MILANO</strong></span>
+      <a href="#" class="brand-link" aria-label="RUDE Band — Torna all'inizio">
+        <img src="assets/rude-logo-rosa.png" alt="RUDE" class="brand-logo-img" width="112" height="36" />
+        <span class="brand-genre-tag">Garage / Post-Punk<br><strong>Milano</strong></span>
       </a>
 
       <nav class="nav-links" aria-label="Navigazione principale">
@@ -1615,18 +55,18 @@
   </header>
 
   <!-- ==========================================================================
-       PRIMA VIEW: SOLO FOTO A TUTTO SCHERMO (100SVH - NESSUN TESTO SUI VOLTI)
+       2. PRIMA VIEW: TOP BAR + FOTO UFFICIALE A TUTTO CAMPO (ZERO TESTO SUI VOLTI)
        ========================================================================== -->
   <section class="hero-cover-screen" aria-label="Copertina RUDE">
-    <!-- Top Bar Unica con Logo Originale & Navigazione Incorporata -->
     <div class="hero-cover-top">
       <div class="container hero-top-nav-bar">
         <a href="#" class="hero-main-logo-wrap" aria-label="RUDE Milano">
-          <img src="assets/rude-logo-rosa.png" alt="RUDE" class="hero-main-logo-img" />
+          <img src="assets/rude-logo-rosa.png" alt="RUDE" class="hero-main-logo-img" width="220" height="70" />
         </a>
+
         <div class="hero-top-right">
           <div class="hero-genre-subhead">
-            GARAGE / POST-PUNK<br><strong>MILANO UNDERGROUND</strong>
+            Garage / Post-Punk<br><strong>Milano</strong>
           </div>
           <nav class="hero-inline-nav" aria-label="Menu rapido">
             <a href="#bio" class="hero-inline-link">Bio</a>
@@ -1639,68 +79,73 @@
       </div>
     </div>
 
-    <!-- Foto Ufficiale Band a tutto schermo (Completamente pulita, nessun testo sopra) -->
     <div class="hero-cover-photo-wrap">
-      <img src="FOTO/RUDE_WC.jpg" alt="RUDE band ritratto ufficiale" class="hero-cover-img" fetchpriority="high" />
+      <img
+        src="FOTO/RUDE_WC.jpg"
+        alt="RUDE — Ritratto ufficiale della band"
+        class="hero-cover-img"
+        fetchpriority="high"
+        decoding="async"
+      />
     </div>
-
   </section>
 
   <main>
     <!-- ==========================================================================
-         SEZIONE DESCRIZIONE & BIO (SUBITO SOTTO LA FOTO)
+         3. SEZIONE MANIFESTO, BIO & FORMAZIONE (CARTA #F4F4F2)
          ========================================================================== -->
     <section id="bio" class="bio-section">
       <div class="container">
         <div class="bio-grid">
-          <!-- Colonna Sinistra: Headline e Formazione -->
+          <!-- Colonna Sinistra: Titolo Display & Formazione -->
           <div class="reveal-up">
-
             <h1 class="bio-headline">
-              GARAGE /<br>POST-PUNK<span>.</span><br>DA MILANO.
+              Garage /<br>Post-Punk<span>.</span><br>Da Milano.
             </h1>
 
-            <div class="bio-lineup-card">
+            <div class="bio-lineup-card" aria-label="Formazione della band">
               <div class="bio-lineup-header">
-                <div class="bio-lineup-title">FORMAZIONE</div>
-                <span class="bio-lineup-stamp">4 ELEMENTI</span>
+                <h2 class="bio-lineup-title">Formazione</h2>
               </div>
-              <div class="bio-lineup-row">
-                <strong>Lorenzo</strong>
-                <span>voce, chitarra</span>
-              </div>
-              <div class="bio-lineup-row">
-                <strong>Francesco P</strong>
-                <span>voce, basso</span>
-              </div>
-              <div class="bio-lineup-row">
-                <strong>Francesco C</strong>
-                <span>chitarra</span>
-              </div>
-              <div class="bio-lineup-row">
-                <strong>Adriano</strong>
-                <span>batteria</span>
-              </div>
+              <dl class="bio-lineup-list">
+                <div class="bio-lineup-row">
+                  <dt>Lorenzo</dt>
+                  <dd>voce, chitarra</dd>
+                </div>
+                <div class="bio-lineup-row">
+                  <dt>Francesco P</dt>
+                  <dd>voce, basso</dd>
+                </div>
+                <div class="bio-lineup-row">
+                  <dt>Francesco C</dt>
+                  <dd>chitarra</dd>
+                </div>
+                <div class="bio-lineup-row">
+                  <dt>Adriano</dt>
+                  <dd>batteria</dd>
+                </div>
+              </dl>
             </div>
           </div>
 
-          <!-- Colonna Destra: Manifesto ufficiale dal Press Kit -->
+          <!-- Colonna Destra: Manifesto Ufficiale -->
           <div class="reveal-up reveal-delay-1">
             <div class="bio-body-text">
               <p>
                 Suoni che nascono dall’eco del punk e del post-hardcore di fine anni ’80, ma prendono una forma personale, ruvida e viscerale: <span class="underline-punk">chitarre affilate, ritmi sincopati, linee vocali feroci e malinconiche</span>.
               </p>
               <p>
-                Dentro ci stanno rabbia e melodia, disillusione e resistenza; <span class="highlight-pink">Fugazi e The Libertines, Paolo Sollier e Kae Tempest.</span>
+                Dentro ci stanno rabbia e melodia, disillusione e resistenza; <span class="highlight-pink">Fugazi&nbsp;e&nbsp;The&nbsp;Libertines, Paolo&nbsp;Sollier e&nbsp;Kae&nbsp;Tempest.</span>
               </p>
               <p>
-                Nel 2025 esce l’album d’esordio, <strong><em>About Youth</em></strong>; nel 2026 lo split 12″ con i Polpo Kid, <strong><em>Bestie Flambé</em></strong>, il <span class="underline-punk">primo cantato in italiano</span>.
+                Nel 2025 esce l’album d’esordio, <em>About&nbsp;Youth</em>; nel 2026 lo split&nbsp;12″ con i Polpo&nbsp;Kid, <em>Bestie&nbsp;Flambé</em>, il <span class="underline-punk">primo cantato in&nbsp;italiano</span>.
               </p>
             </div>
 
             <div class="bio-actions-row">
               <a href="#releases" class="btn-bio-primary">Ascolta i dischi ↓</a>
-              <a href="#contatti" class="simple-text-link">Booking &amp; press ↗</a>
+              <a href="RUDE_PressKit_2026.pdf" download="RUDE_PressKit_2026.pdf" class="btn-bio-secondary">Press Kit PDF ↓</a>
+              <a href="#contatti" class="simple-text-link">Booking &amp; contatti ↗</a>
             </div>
           </div>
         </div>
@@ -1708,281 +153,343 @@
     </section>
 
     <!-- ==========================================================================
-         DISCOGRAFIA: BESTIE FLAMBÉ (PINK SECTION) & ABOUT YOUTH
+         4. DISCOGRAFIA: BESTIE FLAMBÉ (ROSA RISO) & ABOUT YOUTH (CARTA)
          ========================================================================== -->
-    <section id="releases" class="discography-section">
-      <!-- 1. BESTIE FLAMBÉ (Sfondo Rosa Shocking originale Press Kit Pagina 2) -->
-      <div class="bestie-flambe-block">
+    <section id="releases" class="discography-section" aria-label="Discografia">
+
+      <!-- 4.1 BESTIE FLAMBÉ (Split 12" 2026 - Sfondo Rosa Risograph #FF3D8B) -->
+      <article class="bestie-flambe-block">
         <div class="container">
           <div class="split-layout">
             <div class="reveal-up">
               <div class="vinyl-sleeve-wrapper">
-                <div class="vinyl-sleeve-card" tabindex="0" role="button" aria-label="Ingrandisci copertina Bestie Flambé" onclick="openLightbox('assets/cover_bestie_flambe.png', 'Bestie Flambé — Split 12″ RUDE / Polpo Kid (Settembre 2026)')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('assets/cover_bestie_flambe.png', 'Bestie Flambé — Split 12″ RUDE / Polpo Kid (Settembre 2026)');}">
-                  <img src="assets/cover_bestie_flambe.png" alt="Copertina Bestie Flambé Split 12 pollici RUDE e Polpo Kid" class="cover-card-img" draggable="false" oncontextmenu="return false;" />
-                  <span class="vinyl-zoom-pill">Zoom cover</span>
-                </div>
+                <button
+                  type="button"
+                  class="vinyl-sleeve-card"
+                  data-lightbox-src="assets/cover_bestie_flambe.png"
+                  data-lightbox-caption="Bestie Flambé — Split 12″ RUDE / Polpo Kid (Settembre 2026)"
+                  aria-label="Ingrandisci copertina Bestie Flambé"
+                >
+                  <img
+                    src="assets/cover_bestie_flambe.png"
+                    alt="Copertina Bestie Flambé Split 12 pollici RUDE e Polpo Kid"
+                    class="cover-card-img"
+                    draggable="false"
+                  />
+                  <span class="vinyl-zoom-pill" aria-hidden="true">Ingrandisci +</span>
+                </button>
               </div>
             </div>
 
             <div class="reveal-up reveal-delay-1">
-              <div class="split-meta-header">
-                <div class="bio-badge-row" style="margin-bottom: 0.4rem;">
-                  <span class="badge-dark-tag">IL NUOVO DISCO</span>
-                  <span class="badge-dark-tag" style="background: var(--chalk-white); color: var(--ink-black);">SETTEMBRE 2026</span>
+              <header class="split-meta-header">
+                <div class="kick-row">
+                  <span class="kick-tag">Il nuovo disco</span>
                 </div>
-                <h2 class="release-title-giant">BESTIE<br>FLAMBÉ</h2>
-                <div class="split-subtitle">
-                  Split 12″ <strong>RUDE</strong> / <span style="text-decoration: underline;">Polpo Kid</span> · settembre 2026
-                </div>
-              </div>
+                <h2 class="release-title-giant">Bestie<br>Flambé</h2>
+                <p class="split-subtitle">
+                  Split 12″ <strong>RUDE</strong> / <a href="https://polpokid.bandcamp.com" target="_blank" rel="noopener" class="inline-band-link">Polpo Kid</a> · settembre 2026
+                </p>
+              </header>
 
               <div class="tracklist-columns">
-                <div>
-                  <div class="track-column-title">● LATO A — RUDE</div>
-                  <ul class="track-list">
+                <div class="track-side-group">
+                  <h3 class="track-column-title">RUDE</h3>
+                  <ol class="track-list">
                     <li>
-                      <div class="track-left">
-                        <span class="track-num">01</span>
-                        <strong>Veg Burger</strong>
-                      </div>
-                      <span class="track-lang-tag">RUDE</span>
+                      <span class="track-num">01</span>
+                      <span class="track-name">Veg Burger</span>
                     </li>
                     <li>
-                      <div class="track-left">
-                        <span class="track-num">02</span>
-                        <strong>Bestie Forever</strong>
-                      </div>
-                      <span class="track-lang-tag">RUDE</span>
+                      <span class="track-num">02</span>
+                      <span class="track-name">Bestie Forever</span>
                     </li>
-                  </ul>
+                  </ol>
                 </div>
 
-                <div>
-                  <div class="track-column-title">● LATO B — POLPO KID</div>
-                  <ul class="track-list">
+                <div class="track-side-group track-side-group--guest">
+                  <h3 class="track-column-title">Polpo Kid</h3>
+                  <ol class="track-list" start="3">
                     <li>
-                      <div class="track-left">
-                        <span class="track-num">03</span>
-                        <strong>Soffritto</strong>
-                      </div>
-                      <span class="track-lang-tag">POLPO KID</span>
+                      <span class="track-num">03</span>
+                      <span class="track-name">Soffritto</span>
                     </li>
                     <li>
-                      <div class="track-left">
-                        <span class="track-num">04</span>
-                        <strong>Love Shines</strong>
-                      </div>
-                      <span class="track-lang-tag">POLPO KID</span>
+                      <span class="track-num">04</span>
+                      <span class="track-name">Love Shines</span>
                     </li>
-                  </ul>
+                  </ol>
                 </div>
               </div>
 
               <div class="split-action-row">
                 <a href="https://open.spotify.com/playlist/1zTvjSZeXcg4DSBGwBEvwx" target="_blank" rel="noopener" class="btn-rude-black">
-                  SPOTIFY ↗
+                  Spotify ↗
                 </a>
                 <a href="https://rude-theband.bandcamp.com/album/bestie-flamb" target="_blank" rel="noopener" class="btn-rude-black">
-                  BANDCAMP ↗
+                  Bandcamp ↗
                 </a>
               </div>
 
-              <div class="credits-text">
-                Rec e mix: <strong>Alberto Casagrande</strong> (Famaghost, Milano)<br>
-                Master: <strong>Filippo Passamonti</strong> (VDSS Studio)
-              </div>
+              <p class="credits-text">
+                <span class="credits-label">Rec e mix:</span> <strong>Alberto&nbsp;Casagrande</strong> (Famaghost, Milano)<br>
+                <span class="credits-label">Master:</span> <strong>Filippo&nbsp;Passamonti</strong> (VDSS&nbsp;Studio)
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <!-- 2. ABOUT YOUTH (Album d'esordio 2025) -->
-      <div class="about-youth-block">
+      <!-- 4.2 ABOUT YOUTH (Album d'esordio 2025 - Sfondo Carta #F4F4F2) -->
+      <article class="about-youth-block">
         <div class="container">
           <div class="split-layout">
             <div class="reveal-up">
               <div class="vinyl-sleeve-wrapper">
-                <div class="vinyl-sleeve-card vinyl-sleeve-card--youth" tabindex="0" role="button" aria-label="Ingrandisci copertina About Youth" onclick="openLightbox('assets/cover_about_youth.png', 'About Youth — Album d’esordio RUDE (2025)')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('assets/cover_about_youth.png', 'About Youth — Album d’esordio RUDE (2025)');}">
-                  <img src="assets/cover_about_youth.png" alt="Copertina About Youth Album d'esordio RUDE" class="cover-card-img" draggable="false" oncontextmenu="return false;" />
-                  <span class="vinyl-zoom-pill">Zoom cover</span>
-                </div>
+                <button
+                  type="button"
+                  class="vinyl-sleeve-card vinyl-sleeve-card--youth"
+                  data-lightbox-src="assets/cover_about_youth.png"
+                  data-lightbox-caption="About Youth — Album d’esordio RUDE (2025)"
+                  aria-label="Ingrandisci copertina About Youth"
+                >
+                  <img
+                    src="assets/cover_about_youth.png"
+                    alt="Copertina About Youth Album d'esordio RUDE"
+                    class="cover-card-img"
+                    draggable="false"
+                  />
+                  <span class="vinyl-zoom-pill" aria-hidden="true">Ingrandisci +</span>
+                </button>
               </div>
             </div>
 
             <div class="reveal-up reveal-delay-1">
-              <div class="split-meta-header">
-                <div class="bio-badge-row" style="margin-bottom: 0.4rem;">
-                  <span class="badge-dark-tag" style="background: var(--pink-rude); color: #fff;">L’ESORDIO</span>
-                  <span class="badge-dark-tag" style="background: var(--green-beast); color: #fff;">2025</span>
+              <header class="split-meta-header">
+                <div class="kick-row">
+                  <span class="kick-tag">L’esordio</span>
                 </div>
-                <h2 class="release-title-giant">ABOUT<br>YOUTH</h2>
-                <div class="split-subtitle">
+                <h2 class="release-title-giant">About<br>Youth</h2>
+                <p class="split-subtitle">
                   Album d’esordio · 2025
-                </div>
-              </div>
+                </p>
+              </header>
 
-              <div class="split-action-row" style="margin-top: 1.5rem;">
+              <p class="credits-text credits-text--youth">
+                <span class="credits-label">Rec e mix:</span> <strong>Andrea&nbsp;Maglia</strong> (Bleach&nbsp;Studio)<br>
+                <span class="credits-label">Master:</span> <strong>Matt&nbsp;Bordin</strong> (Outside&nbsp;Inside&nbsp;Studio)
+              </p>
+
+              <div class="split-action-row">
                 <a href="https://open.spotify.com/album/7BxeUfYIVpw3poPJLHJJJp" target="_blank" rel="noopener" class="btn-rude-black">
-                  SPOTIFY ↗
+                  Spotify ↗
                 </a>
                 <a href="https://rude-theband.bandcamp.com/album/about-youth" target="_blank" rel="noopener" class="btn-rude-black">
-                  BANDCAMP ↗
+                  Bandcamp ↗
                 </a>
-              </div>
-
-              <div class="credits-text" style="margin-top: 1.5rem;">
-                Rec e mix: <strong>Andrea Maglia</strong> (Bleach Studio)<br>
-                Master: <strong>Matt Bordin</strong> (Outside Inside Studio)
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </article>
+
     </section>
 
     <!-- ==========================================================================
-         DOVE ABBIAMO SUONATO (FEDELE AL PRESS KIT PAGINA 3 - ZERO FOTO DUPLICATE)
+         5. DOVE ABBIAMO SUONATO (FEDELE AL PRESS KIT PAGINA 3)
          ========================================================================== -->
-    <section id="live" class="live-section">
-      <!-- Hero Live Banner con titolo gigante sovraimpresso -->
-      <div class="live-hero-banner" tabindex="0" role="button" aria-label="Ingrandisci foto live RUDE sul palco" onclick="openLightbox('FOTO/live-palco-rosso.jpg', 'RUDE — Live on Stage')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('FOTO/live-palco-rosso.jpg', 'RUDE — Live on Stage');}">
-        <img src="FOTO/live-palco-rosso.jpg" alt="RUDE live stage rosso" class="live-hero-img" loading="lazy" />
-        <h2 class="live-hero-overlay-title">
-          DOVE ABBIAMO SUONATO
-        </h2>
-      </div>
+    <section id="live" class="live-section" aria-label="Attività Live">
+      <!-- Hero Live Banner -->
+      <button
+        type="button"
+        class="live-hero-banner"
+        data-lightbox-src="FOTO/live-palco-rosso.jpg"
+        data-lightbox-caption="RUDE — Live on Stage"
+        aria-label="Ingrandisci foto live RUDE sul palco"
+      >
+        <img src="FOTO/live-palco-rosso.jpg" alt="RUDE sul palco con luci rosse" class="live-hero-img" loading="lazy" />
+        <span class="live-hero-gradient" aria-hidden="true"></span>
+        <div class="container live-hero-title-wrap">
+          <h2 class="live-hero-overlay-title">Dove abbiamo suonato</h2>
+        </div>
+      </button>
 
-      <!-- Striscia 3 Foto Live Uniche -->
+      <!-- Trittico Fotografico Live (Proporzione Press Kit 1.2fr 1fr 1fr con filetti 3px) -->
       <div class="live-photo-strip">
-        <div class="strip-photo-item" tabindex="0" role="button" aria-label="Ingrandisci foto live bianco e nero" onclick="openLightbox('FOTO/Rude_Live1.jpg', 'RUDE — Live Stage B&W')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('FOTO/Rude_Live1.jpg', 'RUDE — Live Stage B&W');}">
-          <img src="FOTO/Rude_Live1.jpg" alt="RUDE live bianco e nero" loading="lazy" />
-          <span class="strip-photo-badge">LIVE B&amp;W ↗</span>
-        </div>
-        <div class="strip-photo-item" tabindex="0" role="button" aria-label="Ingrandisci foto live club" onclick="openLightbox('FOTO/live-palco-blu.jpg', 'RUDE — Live Stage Club')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('FOTO/live-palco-blu.jpg', 'RUDE — Live Stage Club');}">
-          <img src="FOTO/live-palco-blu.jpg" alt="RUDE live luci blu" loading="lazy" />
-          <span class="strip-photo-badge">LIVE CLUB ↗</span>
-        </div>
-        <div class="strip-photo-item" tabindex="0" role="button" aria-label="Ingrandisci foto sessione in studio" onclick="openLightbox('FOTO/live-batteria.jpg', 'RUDE - Batteria live')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('FOTO/live-batteria.jpg', 'RUDE - Batteria live');}">
-          <img src="FOTO/live-batteria.jpg" alt="RUDE - batteria dal vivo" loading="lazy" />
-          <span class="strip-photo-badge">LIVE ↗</span>
-        </div>
+        <button
+          type="button"
+          class="strip-photo-item"
+          data-lightbox-src="FOTO/Rude_Live1.jpg"
+          data-lightbox-caption="RUDE — Live Stage B&amp;W"
+          aria-label="Ingrandisci foto live bianco e nero"
+        >
+          <img src="FOTO/Rude_Live1.jpg" alt="RUDE dal vivo in bianco e nero" class="strip-pos-1" loading="lazy" />
+        </button>
+
+        <button
+          type="button"
+          class="strip-photo-item"
+          data-lightbox-src="FOTO/live-palco-blu.jpg"
+          data-lightbox-caption="RUDE — Live Stage Club"
+          aria-label="Ingrandisci foto live club luci blu"
+        >
+          <img src="FOTO/live-palco-blu.jpg" alt="RUDE dal vivo con luci blu" class="strip-pos-2" loading="lazy" />
+        </button>
+
+        <button
+          type="button"
+          class="strip-photo-item"
+          data-lightbox-src="FOTO/live-batteria.jpg"
+          data-lightbox-caption="RUDE — Batteria dal vivo"
+          aria-label="Ingrandisci foto batteria dal vivo"
+        >
+          <img src="FOTO/live-batteria.jpg" alt="RUDE batteria dal vivo" class="strip-pos-3" loading="lazy" />
+        </button>
       </div>
 
-      <!-- Tabella Venue / Club calpestati -->
+      <!-- Selezione Locali e Club -->
       <div class="container">
         <div class="venues-grid-layout reveal-up">
-          <div>
-            <div class="venues-sidebar-title">
-              UNA SELEZIONE<br>DEI LOCALI.
-            </div>
+          <div class="venues-sidebar">
+            <h3 class="venues-sidebar-title">
+              Una selezione<br>dei locali.
+            </h3>
           </div>
 
-          <div>
-            <table class="venues-table">
-              <tbody>
-                <tr>
-                  <td class="venue-name-cell">MAGAZZINO SUL PO</td>
-                  <td class="venue-city-cell">Torino · per Polvere Magazine</td>
-                </tr>
-                <tr>
-                  <td class="venue-name-cell">ARCI GAGARIN</td>
-                  <td class="venue-city-cell">Busto Arsizio (VA)</td>
-                </tr>
-                <tr>
-                  <td class="venue-name-cell">DETUNE</td>
-                  <td class="venue-city-cell">Milano</td>
-                </tr>
-                <tr>
-                  <td class="venue-name-cell">CINEMINO NOISE</td>
-                  <td class="venue-city-cell">Milano</td>
-                </tr>
-                <tr>
-                  <td class="venue-name-cell">LABRUTEPOQUE</td>
-                  <td class="venue-city-cell">Milano</td>
-                </tr>
-                <tr>
-                  <td class="venue-name-cell">GALLERY16</td>
-                  <td class="venue-city-cell">Bologna · per Brandelli</td>
-                </tr>
-                <tr>
-                  <td class="venue-name-cell">RI-CIRCOLO</td>
-                  <td class="venue-city-cell">Morbegno (SO) · per Teddy Beer + Perestrojka</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="venues-content">
+            <ul class="venues-list" aria-label="Elenco locali principali">
+              <li class="venue-row">
+                <span class="venue-name-cell">Magazzino sul Po</span>
+                <span class="venue-city-cell">Torino · per Polvere Magazine</span>
+              </li>
+              <li class="venue-row">
+                <span class="venue-name-cell">Arci Gagarin</span>
+                <span class="venue-city-cell">Busto Arsizio (VA)</span>
+              </li>
+              <li class="venue-row">
+                <span class="venue-name-cell">Detune</span>
+                <span class="venue-city-cell">Milano</span>
+              </li>
+              <li class="venue-row">
+                <span class="venue-name-cell">Cinemino Noise</span>
+                <span class="venue-city-cell">Milano</span>
+              </li>
+              <li class="venue-row">
+                <span class="venue-name-cell">Labrutepoque</span>
+                <span class="venue-city-cell">Milano</span>
+              </li>
+              <li class="venue-row">
+                <span class="venue-name-cell">Gallery16</span>
+                <span class="venue-city-cell">Bologna · per Brandelli</span>
+              </li>
+              <li class="venue-row">
+                <span class="venue-name-cell">Ri-Circolo</span>
+                <span class="venue-city-cell">Morbegno (SO) · per Teddy Beer + Perestrojka</span>
+              </li>
+            </ul>
 
-            <div class="venues-other-list">
-              <strong>Anche suonato a:</strong> Barrio’s, C.I.Q. (Centro Internazionale di Quartiere), Bachelite Clab (Milano), Il Cantiere 40/3 (Arese).
+            <p class="venues-other-list">
+              Anche: <strong>Barrio’s</strong>, <strong>C.I.Q.</strong> (Centro Internazionale di Quartiere), <strong>Bachelite Clab</strong> (Milano), <strong>Il Cantiere 40/3</strong> (Arese).
+            </p>
+
+            <div class="venues-footer-links">
+              <a class="simple-text-link" href="https://www.instagram.com/reel/DWQ9wWHjMBm/" target="_blank" rel="noopener">Instagram — clip live ↗</a>
+              <a class="simple-text-link" href="https://instagram.com/about.rude" target="_blank" rel="noopener">Profilo @about.rude ↗</a>
             </div>
-
-            <a class="simple-text-link" href="https://instagram.com/about.rude" target="_blank" rel="noopener">Altri live su Instagram ↗</a>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- ==========================================================================
-       FOOTER & BOOKING CONTATTI DIRETTI
+       6. FOOTER & BOOKING (ISPIRATO ALLA BANDA NERA DEL PRESS KIT A4)
        ========================================================================== -->
   <footer class="site-footer" id="contatti">
     <div class="container">
       <div class="footer-grid">
-        <div>
-          <img src="assets/rude-logo-rosa.png" alt="RUDE" class="footer-brand-logo" />
-          <p style="font-size: 0.88rem; line-height: 1.6; max-width: 40ch; margin-bottom: 1rem;">
-            <strong>RUDE</strong> — Garage Punk / Post-Punk da Milano.
-          </p>
-        </div>
-
-        <div>
-          <div class="footer-section-label">
-            <span>Booking</span>
-          </div>
+        <!-- Colonna 1: Booking Diretto -->
+        <div class="footer-col">
+          <h2 class="footer-section-label"><span>Booking</span></h2>
           <ul class="info-list-links">
-            <li><strong>Booking / Live:</strong>&nbsp;<a href="tel:+393497254732">349 725 4732 (Lorenzo)</a></li>
-            <li><strong>Email:</strong>&nbsp;<a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a></li>
-            <li><strong>Instagram:</strong>&nbsp;<a href="https://instagram.com/about.rude" target="_blank" rel="noopener">@about.rude ↗</a></li>
-            <li><strong>Linktree:</strong>&nbsp;<a href="https://linktr.ee/rudeband" target="_blank" rel="noopener">linktr.ee/rudeband ↗</a></li>
+            <li>
+              <a href="tel:+393497254732">349 725 4732 (Lorenzo)</a>
+            </li>
+            <li class="email-copy-row">
+              <a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a>
+              <button type="button" class="btn-copy-inline" id="btnCopyEmailFooter" aria-label="Copia indirizzo email negli appunti">
+                Copia
+              </button>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/about.rude/" target="_blank" rel="noopener">Instagram @about.rude ↗</a>
+            </li>
+            <li>
+              <a href="https://drive.google.com/drive/folders/1zqtWuZhpxeb7gdpfX2_qQgWxhYfGLNE7" target="_blank" rel="noopener">Foto HD — Drive ↗</a>
+            </li>
           </ul>
         </div>
 
-        <div>
-          <div class="footer-section-label">
-            Press kit &amp; live
-          </div>
+        <!-- Colonna 2: Ascolta -->
+        <div class="footer-col">
+          <h2 class="footer-section-label">Ascolta</h2>
           <ul class="info-list-links">
-            <li><a href="scheda-tecnica.html">Scheda Tecnica &amp; Stage Plot Online ↗</a></li>
-            <li><a href="RUDE-scheda-tecnica.pdf" download="RUDE-scheda-tecnica.pdf">Technical Rider 2026 (PDF) ↗</a></li>
-            <li><a href="https://drive.google.com/drive/folders/1zqtWuZhpxeb7gdpfX2_qQgWxhYfGLNE7" target="_blank" rel="noopener">Cartella Foto Stampa HD (Drive) ↗</a></li>
-            <li><a href="https://rude-theband.bandcamp.com" target="_blank" rel="noopener">Bandcamp Ufficiale ↗</a></li>
+            <li>
+              <a href="https://open.spotify.com/artist/3KdGtn4bo1ippG8VvX0AIx" target="_blank" rel="noopener">Spotify — RUDE ↗</a>
+            </li>
+            <li>
+              <a href="https://rude-theband.bandcamp.com" target="_blank" rel="noopener">Bandcamp — rude-theband ↗</a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/reel/DWQ9wWHjMBm/" target="_blank" rel="noopener">Instagram — clip live ↗</a>
+            </li>
+            <li>
+              <a href="https://linktr.ee/rudeband" target="_blank" rel="noopener">linktr.ee/rudeband ↗</a>
+            </li>
           </ul>
-          <a class="presskit-download" href="RUDE_PressKit_2026.pdf" download="RUDE_PressKit_2026.pdf">Scarica il press kit ↓</a>
+        </div>
+
+        <!-- Colonna 3: Press Kit & Scheda Tecnica -->
+        <div class="footer-col">
+          <h2 class="footer-section-label">Press kit &amp; rider</h2>
+          <ul class="info-list-links">
+            <li>
+              <a href="scheda-tecnica.html">Scheda Tecnica &amp; Stage Plot Online ↗</a>
+            </li>
+            <li>
+              <a href="RUDE-scheda-tecnica.pdf" download="RUDE-scheda-tecnica.pdf">Scheda Tecnica 2026 (PDF) ↓</a>
+            </li>
+          </ul>
+          <a class="presskit-download" href="RUDE_PressKit_2026.pdf" download="RUDE_PressKit_2026.pdf">
+            Scarica il Press Kit (PDF) ↓
+          </a>
         </div>
       </div>
 
       <div class="footer-bottom-bar">
-        <div>
-          © 2026 RUDE — Garage / Post-Punk Milano. DIY Spirit.
+        <div class="footer-brand-Inline">
+          <img src="assets/rude-logo-rosa.png" alt="RUDE" class="footer-mini-logo" width="84" height="27" />
+          <span>© 2026 RUDE — Garage / Post-Punk Milano.</span>
         </div>
         <div>
-          <a href="#" style="text-decoration: underline; font-weight: 700;">Torna in Cima ↑</a>
+          <a href="#" class="back-to-top-link">Torna in cima ↑</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Lightbox Modal Accessibile per Ispezione Copertine e Foto Live -->
-  <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-labelledby="lightboxCaption">
-    <div class="lightbox-content-box" onclick="event.stopPropagation()">
-      <button type="button" class="lightbox-close-btn" id="lightboxCloseBtn" onclick="closeLightboxDirect()" aria-label="Chiudi immagine ingrandita">✕</button>
-      <div style="position: relative; display: inline-flex; justify-content: center; align-items: center; max-width: 100%;">
-        <img id="lightboxImg" alt="Dettaglio Immagine RUDE" class="lightbox-img" />
-        <div id="lightboxShield" class="lightbox-shield" style="display: none;"></div>
+  <!-- ==========================================================================
+       7. LIGHTBOX MODAL ACCESSIBILE (CON SCUDO PROTEZIONE COPERTINE)
+       ========================================================================== -->
+  <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lightboxCaption" hidden>
+    <div class="lightbox-content-box" id="lightboxBox">
+      <button type="button" class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Chiudi immagine ingrandita">✕</button>
+      <div class="lightbox-media-wrap">
+        <img id="lightboxImg" alt="" class="lightbox-img" />
+        <div id="lightboxShield" class="lightbox-shield" hidden></div>
       </div>
       <div class="lightbox-bar">
-        <span id="lightboxCaption" style="font-weight: 700;"></span>
+        <span id="lightboxCaption" class="lightbox-caption-text"></span>
       </div>
     </div>
   </div>
@@ -1990,162 +497,163 @@
   <!-- Toast Accessibile per Conferme di Copia -->
   <div id="rudeToast" class="rude-toast" role="status" aria-live="polite"></div>
 
-  <!-- JavaScript Interattivo (Vanilla, Zero Dipendenze) -->
+  <!-- ==========================================================================
+       8. VANILLA JS (ZERO DIPENDENZE, EVENT DELEGATION PULITA)
+       ========================================================================== -->
   <script>
-    // 1. Scroll Reveal tramite IntersectionObserver
-    const revealElements = document.querySelectorAll('.reveal-up');
-    if ('IntersectionObserver' in window) {
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
+    (function () {
+      'use strict';
+
+      // 1. Blocco contestuale e drag sulle copertine protette
+      document.querySelectorAll('.cover-card-img').forEach((img) => {
+        img.addEventListener('contextmenu', (e) => e.preventDefault());
+        img.addEventListener('dragstart', (e) => e.preventDefault());
+      });
+
+      // 2. Scroll Reveal tramite IntersectionObserver
+      const revealElements = document.querySelectorAll('.reveal-up');
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+
+        revealElements.forEach((el) => revealObserver.observe(el));
+      } else {
+        revealElements.forEach((el) => el.classList.add('is-visible'));
+      }
+
+      // 3. Header Sticky + Progress Bar + Active Section Highlight
+      const siteHeader = document.getElementById('siteHeader');
+      const progressBar = document.getElementById('scrollProgressBar');
+      const navLinks = document.querySelectorAll('.nav-link[data-section]');
+      const sections = ['bio', 'releases', 'live', 'contatti'].map((id) => document.getElementById(id));
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        if (siteHeader) {
+          siteHeader.classList.toggle('is-scrolled', scrollTop > 200);
+        }
+
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight > 0 && progressBar) {
+          const pct = Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
+          progressBar.style.width = pct + '%';
+        }
+
+        let currentSection = '';
+        sections.forEach((sec) => {
+          if (sec && scrollTop >= sec.offsetTop - 240) {
+            currentSection = sec.id;
           }
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        navLinks.forEach((link) => {
+          link.classList.toggle('is-active', link.getAttribute('data-section') === currentSection);
+        });
+      }, { passive: true });
 
-      revealElements.forEach(el => revealObserver.observe(el));
-    } else {
-      revealElements.forEach(el => el.classList.add('is-visible'));
-    }
-
-    // 2. Scroll Reveal Header + Scroll Progress Bar + Active Section Highlight
-    const siteHeader = document.getElementById('siteHeader');
-    const progressBar = document.getElementById('scrollProgressBar');
-    const navLinks = document.querySelectorAll('.nav-link[data-section]');
-    const sections = ['bio', 'releases', 'live', 'contatti'].map(id => document.getElementById(id));
-
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 180) {
-        siteHeader.classList.add('is-scrolled');
-      } else {
-        siteHeader.classList.remove('is-scrolled');
+      // 4. Toast Notification Helper
+      const toastEl = document.getElementById('rudeToast');
+      let toastTimer = null;
+      function showToast(message) {
+        if (!toastEl) return;
+        toastEl.textContent = message;
+        toastEl.classList.add('is-active');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastEl.classList.remove('is-active');
+        }, 3000);
       }
 
-      // Calcolo progresso lettura
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (docHeight > 0 && progressBar) {
-        const pct = Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
-        progressBar.style.width = pct + '%';
+      // 5. Lightbox Accessibile con Focus Trap & Protezione Copertine
+      const modal = document.getElementById('lightboxModal');
+      const modalBox = document.getElementById('lightboxBox');
+      const modalImg = document.getElementById('lightboxImg');
+      const modalCaption = document.getElementById('lightboxCaption');
+      const modalShield = document.getElementById('lightboxShield');
+      const closeBtn = document.getElementById('lightboxCloseBtn');
+      let lastFocusedElement = null;
+
+      function openLightbox(src, caption) {
+        if (!modal || !modalImg) return;
+        lastFocusedElement = document.activeElement;
+        modalImg.src = src;
+        modalImg.alt = caption || 'Immagine RUDE';
+        if (modalCaption) modalCaption.textContent = caption || '';
+
+        const isCover = src.toLowerCase().includes('cover');
+        if (isCover) {
+          modalImg.setAttribute('draggable', 'false');
+          modalImg.oncontextmenu = (e) => e.preventDefault();
+          modalImg.classList.add('protected-art');
+          if (modalShield) modalShield.hidden = false;
+        } else {
+          modalImg.removeAttribute('draggable');
+          modalImg.oncontextmenu = null;
+          modalImg.classList.remove('protected-art');
+          if (modalShield) modalShield.hidden = true;
+        }
+
+        modal.hidden = false;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (closeBtn) closeBtn.focus();
       }
 
-      // Highlight voce attiva
-      let currentSection = '';
-      sections.forEach(sec => {
-        if (sec && scrollTop >= sec.offsetTop - 220) {
-          currentSection = sec.id;
+      function closeLightbox() {
+        if (!modal) return;
+        modal.classList.remove('active');
+        modal.hidden = true;
+        document.body.style.overflow = '';
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+          lastFocusedElement.focus();
+        }
+      }
+
+      document.querySelectorAll('[data-lightbox-src]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          openLightbox(
+            trigger.getAttribute('data-lightbox-src'),
+            trigger.getAttribute('data-lightbox-caption')
+          );
+        });
+      });
+
+      if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeLightbox();
+        });
+      }
+      if (modalBox) {
+        modalBox.addEventListener('click', (e) => e.stopPropagation());
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+          closeLightbox();
         }
       });
-      navLinks.forEach(link => {
-        link.classList.toggle('is-active', link.getAttribute('data-section') === currentSection);
-      });
-    }, { passive: true });
 
-    // 3. Toast Helper
-    const toastEl = document.getElementById('rudeToast');
-    let toastTimer = null;
-    function showToast(message) {
-      if (!toastEl) return;
-      toastEl.textContent = message;
-      toastEl.classList.add('is-active');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => {
-        toastEl.classList.remove('is-active');
-      }, 3200);
-    }
+      // 6. Copia Email Rapida nel Footer
+      const btnCopyEmail = document.getElementById('btnCopyEmailFooter');
+      if (btnCopyEmail) {
+        btnCopyEmail.addEventListener('click', () => {
+          const email = 'theband.rude@gmail.com';
+          const copyFn = window.rudeCopyText
+            ? window.rudeCopyText(email)
+            : navigator.clipboard.writeText(email);
 
-    // 4. Lightbox Funzionale con Ripristino Focus & Protezione Copertine
-    const modal = document.getElementById('lightboxModal');
-    const modalImg = document.getElementById('lightboxImg');
-    const modalCaption = document.getElementById('lightboxCaption');
-    const modalShield = document.getElementById('lightboxShield');
-    const closeBtn = document.getElementById('lightboxCloseBtn');
-    let lastFocusedElement = null;
-
-    function openLightbox(src, caption) {
-      lastFocusedElement = document.activeElement;
-      modalImg.src = src;
-      modalImg.alt = caption || 'Foto RUDE';
-      modalCaption.textContent = caption || 'RUDE Official Photo';
-
-      const isCover = src.toLowerCase().includes('cover');
-      if (isCover) {
-        modalImg.setAttribute('draggable', 'false');
-        modalImg.oncontextmenu = (e) => e.preventDefault();
-        modalImg.classList.add('protected-art');
-        if (modalShield) modalShield.style.display = 'block';
-      } else {
-        modalImg.removeAttribute('draggable');
-        modalImg.oncontextmenu = null;
-        modalImg.classList.remove('protected-art');
-        if (modalShield) modalShield.style.display = 'none';
+          Promise.resolve(copyFn)
+            .then(() => showToast('Email copiata: ' + email))
+            .catch(() => showToast('Email: ' + email));
+        });
       }
-
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      if (closeBtn) closeBtn.focus();
-    }
-
-    function closeLightbox(e) {
-      if (e.target === modal) {
-        closeLightboxDirect();
-      }
-    }
-
-    function closeLightboxDirect() {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-      if (lastFocusedElement) lastFocusedElement.focus();
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) {
-        closeLightboxDirect();
-      }
-    });
-
-    // 5. Copia Email Rapida in Bio
-    const btnCopyEmailBio = document.getElementById('btnCopyEmailBio');
-    if (btnCopyEmailBio) {
-      btnCopyEmailBio.addEventListener('click', () => {
-        window.rudeCopyText('theband.rude@gmail.com').then(() => {
-          showToast('Email copiata: theband.rude@gmail.com');
-        }).catch(() => showToast('Copia non disponibile: theband.rude@gmail.com'));
-      });
-    }
-
-    // 6. Copia Rapida Scheda Tecnica dalla Home
-    const RIDER_SUMMARY_TEXT = `=== RUDE — SCHEDA TECNICA & INPUT LIST (12 CANALI) ===
-Band: RUDE (Garage Punk / Post-Punk da Milano - 4 elementi)
-Contatto diretto: Lorenzo 349 725 4732 · theband.rude@gmail.com
-
-INPUT LIST (12 CANALI):
-CH 1: Voce principale (Lorenzo) | Shure SM58 (Centro, asta a giraffa)
-CH 2: Chitarra 1 (Fender Hot Rod Deluxe) | Shure SM57
-CH 3: Chitarra 2 (Vox AC30) | Shure SM57
-CH 4: Seconda voce (Francesco P) | Shure SM58 (Destra, asta a giraffa)
-CH 5: Voce cori (Francesco C, Chitarra 2) | Shure SM58 (Sinistra, asta a giraffa)
-CH 6: Basso (Hartke HA3500) | D.I. Box (preferita) o D112 / Beta 52
-CH 7: Cassa | D112 / Beta 52 (del service)
-CH 8: Rullante | Shure SM57 (nostro)
-CH 9: Tom | Clip dinamico (del locale/service)
-CH 10: Timpano | Clip dinamico (del locale/service)
-CH 11: Overhead L | Condensatore (del service)
-CH 12: Overhead R | Condensatore (del service)
-
-MONITOR: 4 monitor indipendenti (1 Chitarra 2 + cori SX, 2 Voce+Chit1 Centro, 3 Basso+Voce2 DX, 4 Batteria).
-AMPLI & BACKLINE: Noi abbiamo i nostri ampli (Hot Rod Deluxe, Vox AC30, Hartke HA3500 + 4x10), rullante, piatti e pedale cassa. Possiamo portare i nostri (e condividerli) OPPURE adattarci tranquillamente agli ampli del locale o delle altre band (roba simile per chitarre e basso).
-Serve dal locale: fusti batteria (cassa, 1 tom, 1 timpano), 4 aste piatti + reggirullante, aste mic e microfoni.`;
-
-    const btnHomeCopyRider = document.getElementById('btnHomeCopyRider');
-    if (btnHomeCopyRider) {
-      btnHomeCopyRider.addEventListener('click', () => {
-        window.rudeCopyText(RIDER_SUMMARY_TEXT).then(() => {
-          showToast('Scheda tecnica copiata negli appunti');
-        }).catch(() => showToast('Copia non disponibile. Apri la scheda tecnica per leggere o scaricare il rider.'));
-      });
-    }
+    })();
   </script>
 </body>
 </html>
