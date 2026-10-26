@@ -1,1168 +1,50 @@
-/* ==========================================================================
-   RUDE — BRAND DESIGN SYSTEM (ALLINEATO A _sources/presskit.html)
-   Palette ufficiale: Carta #F4F4F2 · Inchiostro #101010 · Rosa Riso #FF3D8B
-   Tipografia: Anton (Display) · Courier Prime (Testi, Tracklist, Credits)
-   ========================================================================== */
-
+/* Identità condivisa con il press kit aggiornato. */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
 :root {
-  /* Palette Ufficiale Press Kit */
-  --paper: #F4F4F2;
-  --paper-pure: #FFFFFF;
-  --ink: #101010;
-  --ink-elevated: #1A1A1A;
-  --riso: #FF3D8B;
-
-  /* Alias retrocompatibili per scheda-tecnica.html */
-  --pink-rude: #FF3D8B;
-  --chalk-white: #F4F4F2;
+  --pink-rude: #ff3d8b;
+  --chalk-white: #f4f4f2;
   --ink-black: #101010;
-  --ink-surface: #1A1A1A;
-  --pure-white: #FFFFFF;
-
-  /* Toni neutri e filetti con contrasto WCAG AA/AAA */
-  --ink-muted: #4A4A48;
-  --paper-muted: #B8B8B2;
-  --rule-subtle: rgba(16, 16, 16, 0.22);
-  --rule-inverse: rgba(244, 244, 242, 0.28);
-
-  /* Tipografia */
-  --font-headline: 'Anton', Impact, 'Arial Black', sans-serif;
-  --font-mono: 'Courier Prime', 'Courier New', Courier, monospace;
-  --font-tech: 'Courier Prime', 'Courier New', Courier, monospace;
-
-  /* Griglia 4/8pt, Bordi e Ombre Tipografiche */
-  --container-max: 1200px;
-  --border-heavy: 3px solid var(--ink);
-  --border-medium: 2px solid var(--ink);
-  --shadow-ink: 6px 6px 0px var(--ink);
-  --shadow-riso: 6px 6px 0px var(--riso);
-
-  /* Transizioni calibrate */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-fast: 160ms var(--ease-out-expo);
-  --transition-snap: 280ms var(--ease-out-expo);
+  --font-mono: 'Courier Prime', Courier, monospace;
+  --font-tech: 'Courier Prime', Courier, monospace;
 }
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 84px;
-  background-color: var(--ink);
-  color: var(--paper);
-  font-family: var(--font-mono);
-  font-weight: 400;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-size-adjust: 100%;
-}
-
-body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  position: relative;
-  overflow-wrap: break-word;
-}
-
-p, li, dd, .credits-text, .venues-other-list {
-  text-wrap: pretty;
-}
-
-::selection {
-  background: var(--riso);
-  color: var(--ink);
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  user-select: none;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
-
-button {
-  font: inherit;
-  color: inherit;
-  background: none;
-  border: none;
-  cursor: pointer;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
-
-a:focus-visible,
-button:focus-visible,
-[tabindex]:focus-visible {
-  outline: 3px solid var(--riso);
-  outline-offset: 4px;
-}
-
-.skip-link {
-  position: fixed;
-  top: -120px;
-  left: 1rem;
-  z-index: 10000;
-  background: var(--riso);
-  color: var(--ink);
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.75rem 1.15rem;
-  border: 2px solid var(--ink);
-  transition: top var(--transition-fast);
-}
-.skip-link:focus {
-  top: 1rem;
-}
-
-.container {
-  width: 100%;
-  max-width: var(--container-max);
-  margin-inline: auto;
-  padding-inline: clamp(1.25rem, 4vw, 2.75rem);
-}
-
-/* ==========================================================================
-   1. HEADER STICKY
-   ========================================================================== */
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2000;
-  background: rgba(16, 16, 16, 0.96);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 2px solid var(--riso);
-  transform: translateY(-105%);
-  transition: transform var(--transition-snap);
-}
-.site-header.is-scrolled,
-.site-header:focus-within {
-  transform: translateY(0);
-}
-
-.scroll-progress-bar {
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  height: 2px;
-  background: var(--paper);
-  width: 0%;
-  z-index: 2001;
-  transition: width 80ms linear;
-}
-
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 64px;
-  gap: 1rem;
-}
-
-.brand-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-shrink: 0;
-}
-
-.brand-logo-img {
-  height: 34px;
-  width: auto;
-  transition: transform var(--transition-fast);
-}
-.brand-link:hover .brand-logo-img {
-  transform: translateY(-1px);
-}
-
-.brand-genre-tag {
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--paper);
-  line-height: 1.25;
-  display: none;
-}
-@media (min-width: 780px) {
-  .brand-genre-tag { display: block; }
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: clamp(0.35rem, 1.8vw, 1.25rem);
-}
-
-.nav-link {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.5rem 0.35rem;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-  transition: color var(--transition-fast);
-}
-.nav-link:hover,
-.nav-link.is-active {
-  color: var(--riso);
-}
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: 8px;
-  left: 0.35rem;
-  right: 0.35rem;
-  height: 2px;
-  background: var(--riso);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--transition-fast);
-}
-.nav-link:hover::after,
-.nav-link.is-active::after {
-  transform: scaleX(1);
-}
-
-.btn-epk-nav,
-.btn-hero-epk-pill {
-  background: var(--riso);
-  color: var(--ink);
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.45rem 0.85rem;
-  min-height: 40px;
-  display: inline-flex;
-  align-items: center;
-  border: 1.5px solid var(--riso);
-  white-space: nowrap;
-  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-}
-.btn-epk-nav:hover,
-.btn-hero-epk-pill:hover {
-  background: var(--paper);
-  color: var(--ink);
-  border-color: var(--paper);
-  transform: translateY(-1px);
-}
-
-/* ==========================================================================
-   2. PRIMA VIEW: TOP BAR + FOTO RUDE_WC.jpg
-   ========================================================================== */
-.hero-cover-screen {
-  background: var(--ink);
-  border-bottom: var(--border-heavy);
-  display: flex;
-  flex-direction: column;
-}
-
-.hero-cover-top {
-  background: var(--ink);
-  border-bottom: 3px solid var(--ink);
-  padding-top: max(1rem, env(safe-area-inset-top));
-  padding-bottom: 1rem;
-}
-
-.hero-top-nav-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1rem;
-}
-
-.hero-main-logo-wrap {
-  max-width: clamp(145px, 20vw, 220px);
-  display: block;
-  transition: transform var(--transition-fast);
-}
-.hero-main-logo-wrap:hover {
-  transform: translateY(-2px);
-}
-.hero-main-logo-img {
-  width: 100%;
-  height: auto;
-}
-
-.hero-top-right {
-  display: flex;
-  align-items: center;
-  gap: clamp(0.75rem, 2vw, 1.75rem);
-}
-
-.hero-genre-subhead {
-  text-align: right;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  line-height: 1.4;
-  text-transform: uppercase;
-  color: var(--paper);
-  border-right: 2px solid var(--riso);
-  padding-right: 0.9rem;
-}
-@media (max-width: 880px) {
-  .hero-genre-subhead { display: none; }
-}
-
-.hero-inline-nav {
-  display: flex;
-  align-items: center;
-  gap: clamp(0.4rem, 1.5vw, 1.1rem);
-}
-
-.hero-inline-link {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--paper);
-  padding: 0.45rem 0.35rem;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  transition: color var(--transition-fast);
-}
-.hero-inline-link:hover {
-  color: var(--riso);
-}
-
-.hero-cover-photo-wrap {
-  width: 100%;
-  max-height: calc(100svh - 86px);
-  overflow: hidden;
-  background: var(--ink);
-}
-
-.hero-cover-img {
-  width: 100%;
-  height: clamp(270px, 62vw, 760px);
-  max-height: calc(100svh - 86px);
-  object-fit: cover;
-  object-position: center 22%;
-  display: block;
-}
-
-/* ==========================================================================
-   3. SEZIONE MANIFESTO, BIO & FORMAZIONE
-   ========================================================================== */
-.bio-section {
-  background: var(--paper);
-  color: var(--ink);
-  padding-block: clamp(3.25rem, 7vw, 5.5rem);
-  border-bottom: var(--border-heavy);
-}
-
-.bio-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  align-items: start;
-}
-@media (min-width: 860px) {
-  .bio-grid {
-    grid-template-columns: 1fr 1.38fr;
-    gap: 4.25rem;
-  }
-}
-
-.bio-headline {
-  font-family: var(--font-headline);
-  font-weight: 400;
-  font-size: clamp(2.75rem, 5.5vw, 4.5rem);
-  line-height: 0.98;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  color: var(--ink);
-  margin-bottom: 1.75rem;
-}
-.bio-headline span {
-  color: var(--riso);
-}
-
-.bio-lineup-card {
-  border-top: var(--border-heavy);
-  padding-top: 1rem;
-  margin-top: 1.5rem;
-}
-
-.bio-lineup-header {
-  margin-bottom: 0.65rem;
-}
-
-.bio-lineup-title {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink);
-  background: var(--riso);
-  display: inline-block;
-  padding: 0.12rem 0.45rem;
-}
-
-.bio-lineup-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.bio-lineup-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  font-size: 0.92rem;
-  padding-block: 0.42rem;
-  border-bottom: 1px solid var(--rule-subtle);
-}
-.bio-lineup-row:last-child {
-  border-bottom: none;
-}
-.bio-lineup-row dt {
-  font-weight: 700;
-}
-.bio-lineup-row dd {
-  color: var(--ink-muted);
-  text-align: right;
-}
-
-.bio-body-text {
-  font-size: clamp(1rem, 1.25vw, 1.12rem);
-  line-height: 1.72;
-  max-width: 62ch;
-}
-.bio-body-text p + p {
-  margin-top: 1.15rem;
-}
-
-/* Evidenziatore Rosa Risograph autentico (_sources/presskit.html .bio .k) */
+.bio-headline, .release-title-giant, .venue-name-cell,
+.live-hero-overlay-title, .bio-lineup-title, .rider-title-giant,
+.tech-card-title, .metric-value { font-weight: 400; letter-spacing: .01em; }
+.bio-body-text { font-weight: 400; }
 .bio-body-text .highlight-pink {
-  background-color: var(--riso);
-  color: var(--ink);
-  padding: 0.04em 0.28em;
-  font-weight: 400;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-/* Sottolineatura tipografica discreta */
-.bio-body-text .underline-punk {
-  border-bottom: 1.5px solid var(--ink);
-  padding-bottom: 1px;
-}
-
-.bio-actions-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.85rem 1.15rem;
-  margin-top: 2.25rem;
-}
-
-.btn-bio-primary,
-.btn-bio-secondary {
-  min-height: 46px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.7rem 1.2rem;
-  transition: transform var(--transition-fast), background var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.btn-bio-primary {
-  background: var(--ink);
-  color: var(--paper);
-  border: 2px solid var(--ink);
-  box-shadow: 4px 4px 0px var(--riso);
-}
-.btn-bio-primary:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px var(--riso);
-}
-.btn-bio-primary:active {
-  transform: translate(1px, 1px);
-  box-shadow: 2px 2px 0px var(--riso);
-}
-
-.btn-bio-secondary {
-  background: transparent;
-  color: var(--ink);
-  border: 2px solid var(--ink);
-}
-.btn-bio-secondary:hover {
-  background: var(--riso);
-  color: var(--ink);
-  transform: translateY(-2px);
-}
-
-.simple-text-link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  text-decoration: underline;
-  text-underline-offset: 5px;
-  transition: color var(--transition-fast);
-}
-.simple-text-link:hover {
-  color: var(--riso);
-}
-
-/* ==========================================================================
-   4. DISCOGRAFIA: BESTIE FLAMBÉ & ABOUT YOUTH
-   ========================================================================== */
-.discography-section {
-  background: var(--ink);
-}
-
-.bestie-flambe-block {
-  background: var(--riso);
-  color: var(--ink);
-  padding-block: clamp(3.5rem, 7vw, 5.75rem);
-  border-bottom: var(--border-heavy);
-}
-
-.about-youth-block {
-  background: var(--paper);
-  color: var(--ink);
-  padding-block: clamp(3.5rem, 7vw, 5.75rem);
-  border-bottom: var(--border-heavy);
-}
-
-.split-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  align-items: center;
-}
-@media (min-width: 860px) {
-  .split-layout {
-    grid-template-columns: minmax(290px, 420px) 1fr;
-    gap: 4.25rem;
-  }
-}
-
-.vinyl-sleeve-wrapper {
-  width: 100%;
-  max-width: 420px;
-  margin-inline: auto;
-}
-
-.vinyl-sleeve-card {
-  position: relative;
-  display: block;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border: var(--border-heavy);
-  background: var(--ink);
-  box-shadow: var(--shadow-ink);
-  overflow: hidden;
-  cursor: zoom-in;
-  transition: transform var(--transition-snap), box-shadow var(--transition-snap);
-}
-.vinyl-sleeve-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 9px 9px 0px var(--ink);
-}
-
-.vinyl-sleeve-card--youth {
-  box-shadow: var(--shadow-riso);
-}
-.vinyl-sleeve-card--youth:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 9px 9px 0px var(--riso);
-}
-
-.cover-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  transition: transform 500ms var(--ease-out-expo);
-}
-.vinyl-sleeve-card:hover .cover-card-img {
-  transform: scale(1.025);
-}
-
-.vinyl-zoom-pill {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.5rem;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
-  pointer-events: none;
-}
-.vinyl-sleeve-card:hover .vinyl-zoom-pill,
-.vinyl-sleeve-card:focus-visible .vinyl-zoom-pill {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.kick-row {
-  margin-bottom: 0.6rem;
-}
-
-.kick-tag {
-  display: inline-block;
-  background: var(--ink);
-  color: var(--riso);
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  padding: 0.18rem 0.55rem;
-}
-
-.release-title-giant {
-  font-family: var(--font-headline);
-  font-weight: 400;
-  font-size: clamp(3.4rem, 7.2vw, 5.8rem);
-  line-height: 0.88;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  margin-bottom: 0.65rem;
-}
-
-.split-subtitle {
-  font-size: clamp(0.95rem, 1.4vw, 1.08rem);
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
-}
-
-.inline-band-link {
-  border-bottom: 1.5px solid var(--ink);
-  font-weight: 700;
-  transition: opacity var(--transition-fast);
-}
-.inline-band-link:hover {
-  opacity: 0.7;
-}
-
-/* Tracklist Stile Press Kit Pagina 2 */
-.tracklist-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  border-top: 2px solid var(--ink);
-  padding-top: 0.9rem;
-  margin-bottom: 1.6rem;
-}
-@media (max-width: 520px) {
-  .tracklist-columns {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}
-
-.track-side-group--guest {
-  opacity: 0.78;
-}
-
-.track-column-title {
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 0.35rem;
-}
-
-.track-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  font-size: 0.96rem;
-  line-height: 1.65;
-}
-
-.track-list li {
-  display: flex;
-  align-items: baseline;
-  gap: 0.65rem;
-}
-
-.track-num {
-  font-size: 0.84rem;
-  opacity: 0.65;
-  min-width: 1.6rem;
-  display: inline-block;
-}
-
-.track-name {
-  font-weight: 700;
-}
-
-.split-action-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-bottom: 1.35rem;
-}
-
-.btn-rude-black {
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.65rem 1.15rem;
-  min-height: 44px;
-  min-width: 132px;
-  border: 2px solid var(--ink);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
-}
-.btn-rude-black:hover {
-  background: var(--paper);
-  color: var(--ink);
-  transform: translateY(-2px);
-}
-.about-youth-block .btn-rude-black:hover {
-  background: var(--riso);
-  color: var(--ink);
-  border-color: var(--ink);
-}
-
-.credits-text {
-  font-size: 0.86rem;
-  line-height: 1.7;
-}
-.credits-text--youth {
-  margin-block: 1.15rem 1.5rem;
-}
-.credits-label {
-  opacity: 0.75;
-}
-
-/* ==========================================================================
-   5. DOVE ABBIAMO SUONATO (LIVE SECTION)
-   ========================================================================== */
-.live-section {
-  background: var(--paper);
-  color: var(--ink);
-  border-bottom: var(--border-heavy);
-}
-
-.live-hero-banner {
-  position: relative;
-  display: block;
-  width: 100%;
-  background: var(--ink);
-  border-bottom: var(--border-heavy);
-  overflow: hidden;
-  cursor: zoom-in;
-  text-align: left;
-}
-
-.live-hero-img {
-  width: 100%;
-  height: clamp(240px, 44vw, 480px);
-  object-fit: cover;
-  object-position: center 40%;
-  display: block;
-  transition: transform 600ms var(--ease-out-expo);
-}
-.live-hero-banner:hover .live-hero-img {
-  transform: scale(1.025);
-}
-
-
-.live-hero-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(16, 16, 16, 0.88) 0%,
-    rgba(16, 16, 16, 0.32) 40%,
-    transparent 100%
-  );
-  pointer-events: none;
-}
-.live-hero-title-wrap {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding-bottom: clamp(1rem, 3vw, 2rem);
-  z-index: 2;
-}
-.live-hero-overlay-title {
-  font-family: var(--font-headline);
-  font-size: clamp(2.2rem, 5.5vw, 4.5rem);
-  line-height: 0.95;
-  color: var(--paper);
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
-}
-
-/* Trittico Fotografico Live (Proporzione Press Kit 1.2fr 1fr 1fr con filetti 3px) */
-.live-photo-strip {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  background: var(--ink);
-  border-bottom: var(--border-heavy);
-}
-.strip-photo-item {
-  position: relative;
-  height: clamp(140px, 22vw, 280px);
-  overflow: hidden;
-  cursor: zoom-in;
-  display: block;
-  width: 100%;
-  border-right: 3px solid var(--ink);
-  background: var(--ink);
-}
-.strip-photo-item:last-child {
-  border-right: none;
-}
-.strip-photo-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 500ms var(--ease-out-expo);
-}
-.strip-pos-1 { object-position: 62% 40%; }
-.strip-pos-2 { object-position: 50% 45%; }
-.strip-pos-3 { object-position: 100% 22%; }
-.strip-photo-item:hover img {
-  transform: scale(1.04);
-}
-
-/* Locali e Club Live */
-.venues-grid-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  padding-block: clamp(3rem, 6vw, 4.5rem);
-}
-@media (min-width: 780px) {
-  .venues-grid-layout {
-    grid-template-columns: 240px 1fr;
-    gap: 3.5rem;
-  }
-}
-.venues-sidebar-title {
-  font-family: var(--font-headline);
-  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
-  line-height: 1.05;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  color: var(--ink);
-}
-.venues-list {
-  list-style: none;
-  border-top: var(--border-heavy);
-  margin-bottom: 1.5rem;
-}
-.venue-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding-block: 0.75rem;
-  border-bottom: 1px solid var(--rule-subtle);
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-.venue-name-cell {
-  font-family: var(--font-headline);
-  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
-  line-height: 1.1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--ink);
-}
-.venue-city-cell {
-  font-size: 0.88rem;
-  color: var(--ink-muted);
-  font-style: italic;
-}
-.venues-other-list {
-  font-size: 0.92rem;
-  line-height: 1.65;
-  padding-top: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-.venues-footer-links {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-/* ==========================================================================
-   6. FOOTER & BOOKING
-   ========================================================================== */
-.site-footer {
-  background: var(--ink);
-  color: var(--paper);
-  padding-top: clamp(3.5rem, 7vw, 5rem);
-  padding-bottom: 2rem;
-  border-top: var(--border-heavy);
-}
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  border-bottom: 1px solid var(--rule-inverse);
-  padding-bottom: 3rem;
-  margin-bottom: 2rem;
-}
-@media (min-width: 820px) {
-  .footer-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-  }
-}
-.footer-col {
-  display: flex;
-  flex-direction: column;
-}
-.footer-section-label {
-  font-family: var(--font-headline);
-  font-size: 1.35rem;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: var(--paper);
-  margin-bottom: 1.15rem;
-}
-.footer-section-label span {
-  background: var(--riso);
-  color: var(--ink);
-  padding: 0.1rem 0.4rem;
-}
-.info-list-links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  font-size: 0.88rem;
-}
-.info-list-links a {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  transition: color var(--transition-fast);
-}
-.info-list-links a:hover {
-  color: var(--riso);
-}
-.email-copy-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-.btn-copy-inline {
-  background: var(--ink-elevated);
-  color: var(--riso);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.2rem 0.5rem;
-  border: 1px solid var(--riso);
-  transition: background var(--transition-fast), color var(--transition-fast);
-}
-.btn-copy-inline:hover {
-  background: var(--riso);
-  color: var(--ink);
-}
-.presskit-download {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  margin-top: 1.25rem;
-  padding: 0.65rem 1rem;
-  background: var(--riso);
-  color: var(--ink);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  border: 2px solid var(--riso);
-  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
-}
-.presskit-download:hover {
-  background: var(--paper);
-  color: var(--ink);
-  border-color: var(--paper);
-}
-.footer-bottom-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.78rem;
-  color: var(--paper-muted);
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.footer-brand-Inline {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-.footer-mini-logo {
-  height: 24px;
-  width: auto;
-}
-.back-to-top-link {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  font-weight: 700;
-}
-.back-to-top-link:hover {
-  color: var(--riso);
-}
-
-/* ==========================================================================
-   7. LIGHTBOX MODAL ACCESSIBILE
-   ========================================================================== */
-.lightbox-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 5000;
-  background: rgba(16, 16, 16, 0.94);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(1rem, 3vw, 2.5rem);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-.lightbox-modal[hidden] {
-  display: none !important;
-}
-.lightbox-content-box {
-  position: relative;
-  max-width: 900px;
-  width: 100%;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.lightbox-close-btn {
-  position: absolute;
-  top: -46px;
-  right: 0;
-  background: var(--ink);
-  color: var(--paper);
-  font-size: 1.4rem;
-  line-height: 1;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid var(--paper);
-  transition: background var(--transition-fast), color var(--transition-fast);
-}
-.lightbox-close-btn:hover {
-  background: var(--riso);
-  color: var(--ink);
-}
-.lightbox-media-wrap {
-  position: relative;
-  max-width: 100%;
-  max-height: 78vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.lightbox-img {
-  max-width: 100%;
-  max-height: 78vh;
-  object-fit: contain;
-  border: 2px solid var(--paper);
-}
-.lightbox-shield {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  background: transparent;
-}
-.lightbox-shield[hidden] {
-  display: none !important;
-}
-.lightbox-bar {
-  margin-top: 0.85rem;
-  font-size: 0.85rem;
-  color: var(--paper);
-  text-align: center;
-}
-
-/* Toast */
-.rude-toast {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 9000;
-  background: var(--riso);
-  color: var(--ink);
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 700;
-  padding: 0.75rem 1.25rem;
-  border: 2px solid var(--ink);
-  box-shadow: 4px 4px 0px var(--ink);
-  transform: translateY(140%);
-  opacity: 0;
-  transition: transform var(--transition-snap), opacity var(--transition-snap);
-  pointer-events: none;
-}
-.rude-toast.is-active {
-  transform: translateY(0);
-  opacity: 1;
-}
+  color: var(--ink-black); background: var(--pink-rude);
+  font-weight: 400; padding: .05em .2em;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+.bestie-flambe-block .bio-badge-row,
+.about-youth-block .bio-badge-row { display: flex; margin-bottom: .8rem; }
+.split-meta-header .badge-dark-tag:first-child {
+  background: var(--ink-black) !important; color: var(--pink-rude) !important;
+  padding: .12rem .45rem; font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+}
+.split-meta-header .badge-dark-tag:not(:first-child) { display: none; }
+.release-title-giant { line-height: .98; }
+.vinyl-sleeve-card { border: 2px solid var(--ink-black); box-shadow: 6px 6px 0 var(--ink-black); }
+.vinyl-sleeve-card--youth { box-shadow: 6px 6px 0 var(--pink-rude); }
+.vinyl-sleeve-card:hover { box-shadow: 6px 8px 0 var(--ink-black); }
+.vinyl-sleeve-card--youth:hover { box-shadow: 6px 8px 0 var(--pink-rude); }
+.tracklist-columns { border-top: 2px solid var(--ink-black); padding-top: .85rem; }
+.track-list li { border: 0; }
+.track-num { font-weight: 400; }
+.track-column-title { font-weight: 700; letter-spacing: .1em; }
+.tracklist-columns > div:last-child { opacity: .7; }
+.split-action-row .btn-rude-black {
+  background: var(--ink-black); color: var(--chalk-white);
+  border: 1px solid var(--ink-black); padding: .6rem 1rem; min-width: 115px;
+  font-size: .8rem; font-weight: 700; letter-spacing: .08em;
+}
+.split-action-row .btn-rude-black:hover { background: var(--chalk-white); color: var(--ink-black); }
+.bio-actions-row .btn-bio-primary { background: var(--ink-black); color: var(--chalk-white); border: 1px solid var(--ink-black); }
+.site-footer .footer-section-label { font-family: var(--font-headline); font-size: 1.5rem; font-weight: 400; text-transform: uppercase; margin-bottom: 1rem; }
+.site-footer .footer-section-label span { background: var(--pink-rude); color: var(--ink-black); padding: .05rem .3rem; }
+.presskit-download { display: inline-flex; align-items: center; min-height: 44px; margin-top: 1rem; padding: .6rem .9rem; background: var(--pink-rude); color: var(--ink-black); font-weight: 700; }
+.presskit-download:hover { background: var(--chalk-white); }
+.rude-toast:empty { display: none; }
 
 /* Protezione download copertine */
 .cover-card-img, .vinyl-sleeve-card, .protected-art, .lightbox-shield {
@@ -1173,36 +55,96 @@ button:focus-visible,
 .cover-card-img {
   pointer-events: none;
 }
+.lightbox-shield {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background: transparent;
+  pointer-events: auto;
+}
+@media (max-width: 620px) {
+  .vinyl-sleeve-card, .vinyl-sleeve-card--youth { box-shadow: 4px 4px 0 var(--ink-black); }
+  .vinyl-sleeve-card--youth { box-shadow: 4px 4px 0 var(--pink-rude); }
+}
 
-/* Responsive & Mobile */
-@media (max-width: 768px) {
-  .hero-top-nav-bar {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .hero-main-logo-wrap {
-    width: 150px;
-  }
-  .hero-inline-nav {
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.2rem 0.5rem;
+/* ==========================================================================
+   Hero a tutto schermo immersivo (100vh / 100svh) & Trattamento Immagini Originale
+   ========================================================================== */
+.hero-cover-screen {
+  position: relative !important;
+  width: 100% !important;
+  height: 100vh !important;
+  height: 100svh !important;
+  min-height: 540px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  background-color: var(--ink-black) !important;
+  overflow: hidden !important;
+  border-bottom: 3px solid var(--ink-black) !important;
+}
+
+.hero-cover-top {
+  position: relative !important;
+  z-index: 10 !important;
+  padding: 1.25rem 0 !important;
+  background: linear-gradient(180deg, rgba(16, 16, 16, 0.95) 0%, rgba(16, 16, 16, 0.7) 65%, transparent 100%) !important;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.95)) !important;
+}
+
+.hero-cover-photo-wrap {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important;
+}
+
+.hero-cover-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 28% !important;
+  display: block !important;
+  filter: contrast(1.07) saturate(1.05) !important;
+  transform: scale(1.01) !important;
+  animation: heroZoomOut 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+@keyframes heroZoomOut {
+  0% { transform: scale(1.06); }
+  100% { transform: scale(1.01); }
+}
+
+@media (max-width: 620px) {
+  .hero-cover-screen {
+    min-height: 520px !important;
   }
   .hero-cover-img {
-    object-position: 20% 30%;
-  }
-  .live-photo-strip {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .strip-photo-item {
-    height: clamp(100px, 26vw, 160px);
+    object-position: 20% 30% !important;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
+
+/* Trattamento immagini originale (contrasto, saturazione e vivacità) */
+.live-hero-img {
+  filter: contrast(1.12) brightness(0.86) !important;
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.live-hero-banner:hover .live-hero-img {
+  transform: scale(1.03) !important;
+}
+
+.strip-photo-item img {
+  filter: contrast(1.05) !important;
+  transition: transform 380ms ease, filter 380ms ease !important;
+}
+.strip-photo-item:hover img {
+  transform: scale(1.04) !important;
+  filter: contrast(1.15) brightness(1.05) !important;
+}
+
+.cover-card-img {
+  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
