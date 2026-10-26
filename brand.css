@@ -45,6 +45,25 @@
 .presskit-download { display: inline-flex; align-items: center; min-height: 44px; margin-top: 1rem; padding: .6rem .9rem; background: var(--pink-rude); color: var(--ink-black); font-weight: 700; }
 .presskit-download:hover { background: var(--chalk-white); }
 .rude-toast:empty { display: none; }
+
+/* Protezione download copertine */
+.cover-card-img, .vinyl-sleeve-card, .protected-art, .lightbox-shield {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+.cover-card-img {
+  pointer-events: none;
+}
+.lightbox-shield {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background: transparent;
+  pointer-events: auto;
+}
 @media (max-width: 620px) {
   .vinyl-sleeve-card, .vinyl-sleeve-card--youth { box-shadow: 4px 4px 0 var(--ink-black); }
   .vinyl-sleeve-card--youth { box-shadow: 4px 4px 0 var(--pink-rude); }

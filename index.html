@@ -1718,7 +1718,7 @@
             <div class="reveal-up">
               <div class="vinyl-sleeve-wrapper">
                 <div class="vinyl-sleeve-card" tabindex="0" role="button" aria-label="Ingrandisci copertina Bestie Flambé" onclick="openLightbox('assets/cover_bestie_flambe.png', 'Bestie Flambé — Split 12″ RUDE / Polpo Kid (Settembre 2026)')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('assets/cover_bestie_flambe.png', 'Bestie Flambé — Split 12″ RUDE / Polpo Kid (Settembre 2026)');}">
-                  <img src="assets/cover_bestie_flambe.png" alt="Copertina Bestie Flambé Split 12 pollici RUDE e Polpo Kid" class="cover-card-img" />
+                  <img src="assets/cover_bestie_flambe.png" alt="Copertina Bestie Flambé Split 12 pollici RUDE e Polpo Kid" class="cover-card-img" draggable="false" oncontextmenu="return false;" />
                   <span class="vinyl-zoom-pill">Zoom cover</span>
                 </div>
               </div>
@@ -1803,7 +1803,7 @@
             <div class="reveal-up">
               <div class="vinyl-sleeve-wrapper">
                 <div class="vinyl-sleeve-card vinyl-sleeve-card--youth" tabindex="0" role="button" aria-label="Ingrandisci copertina About Youth" onclick="openLightbox('assets/cover_about_youth.png', 'About Youth — Album d’esordio RUDE (2025)')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('assets/cover_about_youth.png', 'About Youth — Album d’esordio RUDE (2025)');}">
-                  <img src="assets/cover_about_youth.png" alt="Copertina About Youth Album d'esordio RUDE" class="cover-card-img" />
+                  <img src="assets/cover_about_youth.png" alt="Copertina About Youth Album d'esordio RUDE" class="cover-card-img" draggable="false" oncontextmenu="return false;" />
                   <span class="vinyl-zoom-pill">Zoom cover</span>
                 </div>
               </div>
@@ -1978,10 +1978,12 @@
   <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-labelledby="lightboxCaption">
     <div class="lightbox-content-box" onclick="event.stopPropagation()">
       <button type="button" class="lightbox-close-btn" id="lightboxCloseBtn" onclick="closeLightboxDirect()" aria-label="Chiudi immagine ingrandita">✕</button>
-      <img id="lightboxImg" alt="Dettaglio Immagine RUDE" class="lightbox-img" />
+      <div style="position: relative; display: inline-flex; justify-content: center; align-items: center; max-width: 100%;">
+        <img id="lightboxImg" alt="Dettaglio Immagine RUDE" class="lightbox-img" />
+        <div id="lightboxShield" class="lightbox-shield" style="display: none;"></div>
+      </div>
       <div class="lightbox-bar">
         <span id="lightboxCaption" style="font-weight: 700;"></span>
-        <a id="lightboxDownloadLink" href="#" download="" style="text-decoration: underline; color: var(--pink-rude); font-weight: 800;">Scarica Originale ↗</a>
       </div>
     </div>
   </div>
@@ -2054,11 +2056,11 @@
       }, 3200);
     }
 
-    // 4. Lightbox Funzionale con Ripristino Focus
+    // 4. Lightbox Funzionale con Ripristino Focus & Protezione Copertine
     const modal = document.getElementById('lightboxModal');
     const modalImg = document.getElementById('lightboxImg');
     const modalCaption = document.getElementById('lightboxCaption');
-    const modalDl = document.getElementById('lightboxDownloadLink');
+    const modalShield = document.getElementById('lightboxShield');
     const closeBtn = document.getElementById('lightboxCloseBtn');
     let lastFocusedElement = null;
 
@@ -2067,8 +2069,20 @@
       modalImg.src = src;
       modalImg.alt = caption || 'Foto RUDE';
       modalCaption.textContent = caption || 'RUDE Official Photo';
-      modalDl.href = src;
-      modalDl.setAttribute('download', src.split('/').pop());
+
+      const isCover = src.toLowerCase().includes('cover');
+      if (isCover) {
+        modalImg.setAttribute('draggable', 'false');
+        modalImg.oncontextmenu = (e) => e.preventDefault();
+        modalImg.classList.add('protected-art');
+        if (modalShield) modalShield.style.display = 'block';
+      } else {
+        modalImg.removeAttribute('draggable');
+        modalImg.oncontextmenu = null;
+        modalImg.classList.remove('protected-art');
+        if (modalShield) modalShield.style.display = 'none';
+      }
+
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
       if (closeBtn) closeBtn.focus();
