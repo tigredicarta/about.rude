@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="it" data-riso-mode="active" data-riso-palette="reference">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RUDE — Risograph Visual Proof &amp; Calibration Lab</title>
+  <meta name="description" content="RUDE: Garage / Post-Punk da Milano. Prova estetica Risograph retro text effect con inchiostri spot e controller di calibrazione." />
+
+  <!-- Google Fonts: Anton (Heavy Riso Display), Space Grotesk (Editorial Body), IBM Plex Mono (Technical EPK) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="riso-system.css">
+
+  <style>
+    /* Reset & Base Layout per la pagina Standalone Proof */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--paper-bg);
+      color: var(--ink-black);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      position: relative;
+      min-height: 100vh;
+      background-color: var(--paper-bg);
+      background-image:
+        radial-gradient(var(--paper-fiber) 1px, transparent 0),
+        radial-gradient(rgba(255, 62, 129, 0.03) 1px, transparent 0);
+      background-size: 24px 24px, 37px 37px;
+      background-position: 0 0, 13px 17px;
+      overflow-x: hidden;
+      padding: 1.5rem 1rem;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--ink-black);
+      outline-offset: 3px;
+      background-color: var(--ink-yellow);
+      color: var(--ink-black);
+    }
+
+    .press-sheet {
+      max-width: 1120px;
+      margin: 0 auto;
+      border: 2px solid var(--ink-black);
+      background-color: var(--paper-bg);
+      position: relative;
+      box-shadow: 10px 10px 0px rgba(26, 25, 23, 0.08);
+    }
+
+    /* Crocini di registro stampa */
+    .reg-mark {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .reg-mark::before,
+    .reg-mark::after {
+      content: "";
+      position: absolute;
+      background-color: var(--ink-black);
+    }
+    .reg-mark::before { top: 8px; left: 0; width: 18px; height: 1.5px; }
+    .reg-mark::after  { top: 0; left: 8px; width: 1.5px; height: 18px; }
+    .reg-mark.tl { top: 8px; left: 8px; }
+    .reg-mark.tr { top: 8px; right: 8px; }
+    .reg-mark.bl { bottom: 8px; left: 8px; }
+    .reg-mark.br { bottom: 8px; right: 8px; }
+
+    /* Top Colophon / Utility Bar */
+    .top-colophon {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.5rem;
+      border-bottom: 2px solid var(--ink-black);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background-color: var(--paper-surface);
+    }
+
+    .colophon-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .ink-swatch-bar {
+      display: inline-flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .ink-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid var(--ink-black);
+      mix-blend-mode: multiply;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 8px;
+      background-color: var(--ink-yellow);
+      border: 1px solid var(--ink-black);
+      font-weight: 600;
+      color: var(--ink-black);
+    }
+
+    .status-pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--ink-pink);
+    }
+
+    /* Hero Poster */
+    .hero-poster {
+      position: relative;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      border-bottom: 2px solid var(--ink-black);
+      overflow: hidden;
+    }
+
+    .stamp-decor {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .stamp-starburst {
+      top: 24px;
+      left: 5%;
+      width: 130px;
+      height: 130px;
+    }
+
+    .stamp-circle-triangle {
+      top: 36px;
+      right: 6%;
+      width: 120px;
+      height: 120px;
+    }
+
+    .stamp-hourglass {
+      bottom: 30px;
+      left: 5%;
+      width: 115px;
+      height: 135px;
+    }
+
+    .stamp-star4 {
+      bottom: 24px;
+      right: 5%;
+      width: 125px;
+      height: 125px;
+    }
+
+    .stamp-wave {
+      top: 48%;
+      left: 2%;
+      width: 110px;
+      height: 36px;
+    }
+
+    @media (max-width: 900px) {
+      .stamp-decor {
+        opacity: 0.35;
+        transform: scale(0.7);
+      }
+      .stamp-wave { display: none; }
+    }
+
+    .hero-brand-stack {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .rude-logo-original {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      transition: transform 0.25s var(--ease-snap);
+    }
+
+    .rude-logo-original img {
+      width: 170px;
+      max-width: 45vw;
+      height: auto;
+      display: block;
+      filter: contrast(115%) drop-shadow(3px 3px 0px var(--ink-teal));
+      mix-blend-mode: multiply;
+    }
+
+    .hero-display-title {
+      font-size: clamp(5rem, 16vw, 12rem);
+      margin: 0.25rem 0;
+      letter-spacing: 0.02em;
+    }
+
+    .epk-quick-nav {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      max-width: 960px;
+      margin: 1rem auto 0;
+    }
+
+    /* Band Photo Section */
+    .photo-showcase {
+      padding: 2rem 1.5rem;
+      border-bottom: 2px solid var(--ink-black);
+      background-color: var(--paper-surface);
+    }
+
+    .photo-container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .photo-caption-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      padding-top: 0.5rem;
+      border-top: 1px dashed var(--ink-black);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+
+    .photo-caption-bar strong {
+      color: var(--ink-black);
+    }
+
+    /* Manifesto & Formazione */
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-bottom: 2px solid var(--ink-black);
+    }
+
+    @media (min-width: 860px) {
+      .section-grid {
+        grid-template-columns: 7fr 5fr;
+      }
+    }
+
+    .manifesto-col {
+      padding: 2rem 1.5rem;
+      border-bottom: 2px solid var(--ink-black);
+    }
+
+    @media (min-width: 860px) {
+      .manifesto-col {
+        border-bottom: none;
+        border-right: 2px solid var(--ink-black);
+      }
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background-color: var(--ink-teal);
+      color: var(--paper-elevated);
+      padding: 4px 10px;
+      border: 1.5px solid var(--ink-black);
+      margin-bottom: 1rem;
+      box-shadow: 3px 3px 0px var(--ink-black);
+    }
+
+    .section-heading {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .manifesto-quote {
+      position: relative;
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      font-weight: 700;
+      line-height: 1.38;
+      color: var(--ink-black);
+      padding-left: 1rem;
+      border-left: 6px solid var(--ink-pink);
+      margin-bottom: 1rem;
+    }
+
+    .manifesto-body {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--ink-black);
+      margin-bottom: 1rem;
+    }
+
+    .lineup-col {
+      padding: 2rem 1.5rem;
+      background-color: var(--paper-elevated);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .lineup-list {
+      list-style: none;
+      margin: 0.75rem 0 1.5rem;
+      border-top: 2px solid var(--ink-black);
+    }
+
+    .lineup-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--ink-black);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+
+    .lineup-name {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+    }
+
+    .lineup-role {
+      color: var(--ink-muted);
+      text-align: right;
+    }
+
+    .presskit-callout {
+      padding: 1rem;
+      background-color: var(--paper-bg);
+      border: 2px solid var(--ink-black);
+      box-shadow: 5px 5px 0px var(--ink-yellow);
+    }
+
+    .presskit-callout p {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    /* EPK Cards Grid */
+    .epk-cards-section {
+      padding: 2rem 1.5rem;
+    }
+
+    .epk-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .epk-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.25rem;
+      background-color: var(--paper-elevated);
+      border: 2px solid var(--ink-black);
+      text-decoration: none;
+      color: var(--ink-black);
+      box-shadow: 5px 5px 0px var(--ink-black);
+      transition: transform 0.2s var(--ease-snap), box-shadow 0.2s var(--ease-snap);
+    }
+
+    .epk-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow:
+        7px 7px 0px var(--ink-pink),
+        -3px -3px 0px var(--ink-teal);
+    }
+
+    .epk-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px dashed var(--ink-black);
+    }
+
+    .epk-card-title {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .epk-card-desc {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--ink-muted);
+      margin-bottom: 1rem;
+    }
+
+    .epk-card-action {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      background-color: var(--ink-yellow);
+      border: 1.5px solid var(--ink-black);
+      align-self: flex-start;
+    }
+
+    /* Footer Colophon */
+    .sheet-footer {
+      padding: 1rem 1.5rem;
+      border-top: 2px solid var(--ink-black);
+      background-color: var(--ink-black);
+      color: var(--paper-bg);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+    }
+
+    .sheet-footer a {
+      color: var(--ink-yellow);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- OVERLAY GRANA CARTA FISSO A 60FPS -->
+  <div class="paper-grain-overlay" aria-hidden="true"></div>
+
+  <!-- DEFINIZIONE FILTRI SVG RISOGRAPH -->
+  <svg width="0" height="0" style="position: absolute; pointer-events: none;" aria-hidden="true">
+    <defs>
+      <!-- Filtro Ink-Bleed per i bordi slabbrati dei caratteri -->
+      <filter id="riso-ink-bleed" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="2" result="roughNoise" />
+        <feDisplacementMap in="SourceGraphic" in2="roughNoise" scale="2.2" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+
+      <!-- Filtro Stamp Grain per i timbri geometrici -->
+      <filter id="riso-stamp-grain" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="grain" />
+        <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.25 0.78" in="grain" result="grainMask" />
+        <feComposite operator="in" in="SourceGraphic" in2="grainMask" result="texturedStamp" />
+        <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" result="edgeNoise" />
+        <feDisplacementMap in="texturedStamp" in2="edgeNoise" scale="2.8" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- FOGLIO DI STAMPA PRINCIPALE -->
+  <main class="press-sheet">
+    <!-- Crocini di registro -->
+    <span class="reg-mark tl" aria-hidden="true"></span>
+    <span class="reg-mark tr" aria-hidden="true"></span>
+    <span class="reg-mark bl" aria-hidden="true"></span>
+    <span class="reg-mark br" aria-hidden="true"></span>
+
+    <!-- Top Colophon -->
+    <header class="top-colophon">
+      <div class="colophon-group">
+        <span><strong>RUDE KIT</strong> // PROVA RISOGRAPH LAB</span>
+        <span class="ink-swatch-bar" title="Inchiostri Spot Attivi">
+          <i class="ink-dot" style="background: var(--ink-pink)"></i>
+          <i class="ink-dot" style="background: var(--ink-yellow)"></i>
+          <i class="ink-dot" style="background: var(--ink-teal)"></i>
+          <i class="ink-dot" style="background: var(--ink-black)"></i>
+        </span>
+      </div>
+      <div class="colophon-group">
+        <span>MILANO, IT</span>
+        <a href="index.html" class="status-pill" style="text-decoration: none;">← TORNA ALLA HOME NORMALE</a>
+      </div>
+    </header>
+
+    <!-- HERO POSTER CON TIMBRI GEOMETRICI (REFERENCE VEILA "RISO TYPE") -->
+    <section class="hero-poster" aria-labelledby="hero-title">
+
+      <!-- Timbro 1 (Alto SX): Stella a 12 punte Teal + Yellow -->
+      <div class="stamp-decor stamp-starburst riso-stamp" aria-hidden="true">
+        <svg viewBox="0 0 120 120" width="100%" height="100%">
+          <polygon points="60,2 71,35 101,19 85,49 118,60 85,71 101,101 71,85 60,118 49,85 19,101 35,71 2,60 35,49 19,19 49,35"
+            fill="var(--ink-teal)" style="mix-blend-mode: multiply;" />
+          <polygon points="60,2 71,35 101,19 85,49 118,60 85,71 101,101 71,85 60,118 49,85 19,101 35,71 2,60 35,49 19,19 49,35"
+            fill="var(--ink-yellow)" transform="translate(5, 4)" style="mix-blend-mode: multiply;" />
+        </svg>
+      </div>
+
+      <!-- Timbro 2 (Alto DX): Cerchio Giallo + Triangolo Teal -->
+      <div class="stamp-decor stamp-circle-triangle riso-stamp" aria-hidden="true">
+        <svg viewBox="0 0 120 120" width="100%" height="100%">
+          <circle cx="68" cy="54" r="42" fill="var(--ink-yellow)" style="mix-blend-mode: multiply;" />
+          <polygon points="16,18 16,102 106,102" fill="var(--ink-teal)" style="mix-blend-mode: multiply;" />
+        </svg>
+      </div>
+
+      <!-- Timbro 3 (Centro SX): Onda Zigzag Pink + Teal -->
+      <div class="stamp-decor stamp-wave riso-stamp" aria-hidden="true">
+        <svg viewBox="0 0 140 40" width="100%" height="100%">
+          <path d="M4,24 Q18,6 32,24 T60,24 T88,24 T116,24 T136,20" fill="none" stroke="var(--ink-pink)" stroke-width="10" stroke-linecap="round" />
+          <path d="M8,28 Q22,10 36,28 T64,28 T92,28 T120,28 T138,24" fill="none" stroke="var(--ink-teal)" stroke-width="10" stroke-linecap="round" style="mix-blend-mode: multiply;" />
+        </svg>
+      </div>
+
+      <!-- Timbro 4 (Basso SX): Doppio Triangolo incrociato Teal + Pink -->
+      <div class="stamp-decor stamp-hourglass riso-stamp" aria-hidden="true">
+        <svg viewBox="0 0 120 140" width="100%" height="100%">
+          <polygon points="12,14 108,14 60,104" fill="var(--ink-teal)" style="mix-blend-mode: multiply;" />
+          <polygon points="60,26 14,126 106,126" fill="var(--ink-pink)" style="mix-blend-mode: multiply;" />
+        </svg>
+      </div>
+
+      <!-- Timbro 5 (Basso DX): Stella a 4 punte Pink + Teal -->
+      <div class="stamp-decor stamp-star4 riso-stamp" aria-hidden="true">
+        <svg viewBox="0 0 120 120" width="100%" height="100%">
+          <path d="M60,4 C64,44 76,56 116,60 C76,64 64,76 60,116 C56,76 44,64 4,60 C44,56 56,44 60,4 Z"
+            fill="var(--ink-teal)" transform="translate(6, 3)" style="mix-blend-mode: multiply;" />
+          <path d="M60,4 C64,44 76,56 116,60 C76,64 64,76 60,116 C56,76 44,64 4,60 C44,56 56,44 60,4 Z"
+            fill="var(--ink-pink)" style="mix-blend-mode: multiply;" />
+        </svg>
+      </div>
+
+      <!-- Brand & Headline -->
+      <div class="hero-brand-stack">
+        <a href="index.html" class="rude-logo-original" title="RUDE Milano">
+          <img src="assets/rude-logo-rosa.png" alt="Logo RUDE" onerror="this.style.display='none'" />
+        </a>
+
+        <!-- Headline Monumentale con .riso-type -->
+        <h1 id="hero-title" class="riso-type hero-display-title" data-text="RUDE">RUDE</h1>
+
+        <div>
+          <kbd class="genre-kbd">GARAGE / POST PUNK DA MILANO.</kbd>
+        </div>
+
+        <!-- Barra di Navigazione Rapida EPK -->
+        <nav class="epk-quick-nav" aria-label="Materiali Ufficiali e Download EPK">
+          <a href="index.html" class="riso-btn riso-btn--primary">
+            <span>SITO UFFICIALE &amp; EPK</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a href="RUDE_PressKit_2026.pdf" class="riso-btn riso-btn--secondary" download>
+            <span>PRESS KIT (PDF)</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+          <a href="RUDE-scheda-tecnica.pdf" class="riso-btn" download>
+            <span>SCHEDA TECNICA (PDF)</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+          <a href="https://rude-theband.bandcamp.com" class="riso-btn" target="_blank" rel="noopener">
+            <span>BANDCAMP</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- FOTO BAND CON TRATTAMENTO DUOTONE + HALFTONE -->
+    <section class="photo-showcase" aria-label="Fotografia Ufficiale Band">
+      <div class="photo-container">
+        <figure class="riso-photo-frame">
+          <img
+            src="FOTO/RUDE_WC.jpg"
+            alt="RUDE — Lorenzo, Francesco P, Francesco C, Adriano"
+            onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22960%22 height=%22600%22 viewBox=%220 0 960 600%22%3E%3Crect width=%22960%22 height=%22600%22 fill=%22%23E0DBD1%22/%3E%3Ctext x=%2250%25%22 y=%2248%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-size=%2222%22 fill=%22%231A1917%22%3E[FOTO/RUDE_WC.jpg]%3C/text%3E%3C/svg%3E'"
+          />
+        </figure>
+        <figcaption class="photo-caption-bar">
+          <span><strong>FIG. 01 // FORMAZIONE:</strong> LORENZO, FRANCESCO P, FRANCESCO C, ADRIANO</span>
+          <span>STAMPA DUOTONE RETINO 85 LPI (PASSA IL MOUSE PER FOTO ORIGINALE)</span>
+        </figcaption>
+      </div>
+    </section>
+
+    <!-- SEZIONE 01 // MANIFESTO & FORMAZIONE -->
+    <section class="section-grid" aria-labelledby="manifesto-heading">
+      <div class="manifesto-col">
+        <span class="section-tag">01 // MANIFESTO &amp; FORMAZIONE</span>
+        <h2 id="manifesto-heading" class="riso-type section-heading" data-text="SUONI RUVIDI E VISCERALI">
+          SUONI RUVIDI E VISCERALI
+        </h2>
+
+        <blockquote class="manifesto-quote">
+          «Suoni che nascono dall’eco del punk e del post-hardcore di fine anni ’80, ma prendono una forma personale, ruvida e viscerale: chitarre affilate, ritmi sincopati, linee vocali feroci e malinconiche.»
+        </blockquote>
+
+        <p class="manifesto-body">
+          Nati a Milano, i <strong>RUDE</strong> portano sul palco un impatto diretto e senza sovrastrutture plastiche. L'urgenza espressiva dei testi in italiano si scontra con dinamiche tese, stratificazioni di chitarre taglienti e una sezione ritmica chirurgica.
+        </p>
+
+        <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+          <a href="RUDE_PressKit_2026.pdf" class="riso-btn riso-btn--primary" download>
+            <span>SCARICA PRESS KIT (2026)</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+          <a href="https://rude-theband.bandcamp.com" class="riso-btn" target="_blank" rel="noopener">
+            <span>ASCOLTA SU BANDCAMP</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <aside class="lineup-col" aria-label="Componenti della band">
+        <div>
+          <span class="section-tag" style="background-color: var(--ink-pink); color: var(--ink-black);">LINE-UP // MILANO</span>
+          <ul class="lineup-list">
+            <li class="lineup-item">
+              <span class="lineup-name">Lorenzo</span>
+              <span class="lineup-role">Chitarra / Voce</span>
+            </li>
+            <li class="lineup-item">
+              <span class="lineup-name">Francesco P.</span>
+              <span class="lineup-role">Chitarra / Voce</span>
+            </li>
+            <li class="lineup-item">
+              <span class="lineup-name">Francesco C.</span>
+              <span class="lineup-role">Basso</span>
+            </li>
+            <li class="lineup-item">
+              <span class="lineup-name">Adriano</span>
+              <span class="lineup-role">Batteria</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="presskit-callout">
+          <p><strong>PER PROMOTER, CLUB &amp; FONICI:</strong><br/>Tutta la documentazione tecnica, channel list e stage plot è aggiornata nel PDF del rider.</p>
+          <a href="RUDE-scheda-tecnica.pdf" class="riso-btn" style="width: 100%; justify-content: space-between;" download>
+            <span>SCHEDA TECNICA &amp; STAGE PLOT</span>
+            <span aria-hidden="true">PDF ↓</span>
+          </a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- SEZIONE 02 // ARCHIVIO DOCUMENTI EPK -->
+    <section class="epk-cards-section" aria-labelledby="archive-heading">
+      <span class="section-tag">02 // PRESS KIT &amp; PRODUZIONE</span>
+      <h2 id="archive-heading" class="riso-type section-heading" data-text="MATERIALI UFFICIALI">
+        MATERIALI UFFICIALI
+      </h2>
+
+      <div class="epk-cards-grid">
+        <a href="RUDE_PressKit_2026.pdf" class="epk-card" download>
+          <div>
+            <div class="epk-card-header">
+              <span>DOC // 01</span>
+              <span>FORMATO PDF</span>
+            </div>
+            <h3 class="epk-card-title">PRESS KIT 2026</h3>
+            <p class="epk-card-desc">Biografia estesa, rassegna stampa, crediti fotografici e contatti per interviste e recensioni.</p>
+          </div>
+          <span class="epk-card-action">SCARICA ORA ↓</span>
+        </a>
+
+        <a href="RUDE-scheda-tecnica.pdf" class="epk-card" download>
+          <div>
+            <div class="epk-card-header">
+              <span>DOC // 02</span>
+              <span>RIDER &amp; PALCO</span>
+            </div>
+            <h3 class="epk-card-title">SCHEDA TECNICA</h3>
+            <p class="epk-card-desc">Stage plot dettagliato, channel list, strumentazione backline e richieste di monitoraggio.</p>
+          </div>
+          <span class="epk-card-action">SCARICA PDF ↓</span>
+        </a>
+
+        <a href="https://rude-theband.bandcamp.com" class="epk-card" target="_blank" rel="noopener">
+          <div>
+            <div class="epk-card-header">
+              <span>AUDIO // 03</span>
+              <span>STREAMING &amp; MERCH</span>
+            </div>
+            <h3 class="epk-card-title">BANDCAMP</h3>
+            <p class="epk-card-desc">Ascolto integrale in alta qualità (FLAC/WAV), testi ufficiali e supporto diretto alla band.</p>
+          </div>
+          <span class="epk-card-action">APRI BANDCAMP ↗</span>
+        </a>
+
+        <a href="index.html" class="epk-card">
+          <div>
+            <div class="epk-card-header">
+              <span>WEB // 04</span>
+              <span>SITO COMPLETO</span>
+            </div>
+            <h3 class="epk-card-title">HOME CLASSICA</h3>
+            <p class="epk-card-desc">Apri la homepage standard con tracklist interattive, date concerti e player audio.</p>
+          </div>
+          <span class="epk-card-action">VAI ALLA HOME ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="sheet-footer">
+      <div>
+        <strong>RUDE</strong> — GARAGE / POST PUNK DA MILANO. TUTTI I DIRITTI RISERVATI.
+      </div>
+      <div>
+        PROVA STAMPA RISOGRAPH // <a href="index.html">TORNA AD ABOUT.RUDE</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- CONTROLLER INTERATTIVO DI CALIBRAZIONE RISO -->
+  <aside class="riso-calibrator" aria-label="Pannello Calibrazione Effetto Risograph">
+    <div class="calibrator-header" id="cal-toggle">
+      <span>⚙ CALIBRAZIONE RISO (LAB)</span>
+      <span id="cal-chevron">▼</span>
+    </div>
+    <div class="calibrator-body" id="cal-body">
+      <!-- Toggle On/Off per confronto immediato -->
+      <div class="cal-row">
+        <div class="cal-label">
+          <span>STATO EFFETTO</span>
+          <strong id="mode-status">RISO ATTIVO</strong>
+        </div>
+        <div class="cal-btn-group cal-btn-group--two">
+          <button type="button" class="cal-chip active" data-set-mode="active">RISO PRINT</button>
+          <button type="button" class="cal-chip" data-set-mode="clean">CLEAN (CONFRONTO)</button>
+        </div>
+      </div>
+
+      <!-- Selezione Tamburi Colore -->
+      <div class="cal-row">
+        <div class="cal-label">
+          <span>TAMBURI INCHIOSTRO</span>
+        </div>
+        <div class="cal-btn-group">
+          <button type="button" class="cal-chip active" data-set-palette="reference" title="Arancio + Rosa Fluo + Giallo + Teal (Veila 'RISO TYPE')">REF RISO</button>
+          <button type="button" class="cal-chip" data-set-palette="rude-punk" title="Nero Soia + Rosa RUDE + Teal">RUDE PUNK</button>
+          <button type="button" class="cal-chip" data-set-palette="diy-fanzine" title="Rosa Fluo + Nero + Giallo">FANZINE</button>
+        </div>
+      </div>
+
+      <!-- Slider Fuori Registro -->
+      <div class="cal-row">
+        <div class="cal-label">
+          <label for="offset-slider">FUORI REGISTRO</label>
+          <strong id="offset-val">4px</strong>
+        </div>
+        <input type="range" id="offset-slider" class="cal-range" min="0" max="10" step="0.5" value="4" />
+      </div>
+
+      <a href="index.html" class="cal-specimen-link">VEDI PROVA SULLA HOMEPAGE COMPLETA ↗</a>
+    </div>
+  </aside>
+
+  <!-- Script per il Controller di Calibrazione -->
+  <script>
+    (function() {
+      const root = document.documentElement;
+      const calToggle = document.getElementById('cal-toggle');
+      const calBody = document.getElementById('cal-body');
+      const calChevron = document.getElementById('cal-chevron');
+      const modeBtns = document.querySelectorAll('[data-set-mode]');
+      const paletteBtns = document.querySelectorAll('[data-set-palette]');
+      const offsetSlider = document.getElementById('offset-slider');
+      const offsetVal = document.getElementById('offset-val');
+      const modeStatus = document.getElementById('mode-status');
+
+      calToggle.addEventListener('click', () => {
+        const collapsed = calBody.classList.toggle('is-collapsed');
+        calChevron.textContent = collapsed ? '▲' : '▼';
+      });
+
+      modeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          modeBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const mode = btn.getAttribute('data-set-mode');
+          root.setAttribute('data-riso-mode', mode);
+          modeStatus.textContent = mode === 'active' ? 'RISO ATTIVO' : 'CLEAN OFF';
+        });
+      });
+
+      paletteBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          paletteBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          root.setAttribute('data-riso-palette', btn.getAttribute('data-set-palette'));
+        });
+      });
+
+      offsetSlider.addEventListener('input', (e) => {
+        const px = parseFloat(e.target.value);
+        const py = +(px * 0.75).toFixed(1);
+        offsetVal.textContent = px + 'px';
+        root.style.setProperty('--riso-offset-x', px + 'px');
+        root.style.setProperty('--riso-offset-y', py + 'px');
+        root.style.setProperty('--riso-offset-neg-x', (-px) + 'px');
+        root.style.setProperty('--riso-offset-neg-y', (-py) + 'px');
+      });
+    })();
+  </script>
+</body>
+</html>

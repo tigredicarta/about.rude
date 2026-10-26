@@ -1,3 +1,5 @@
 .DS_Store
 Thumbs.db
 *.tmp
+_prompt_*.txt
+_argon_*.md

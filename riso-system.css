@@ -1,0 +1,460 @@
+/* ==========================================================================
+   RISO SYSTEM — RUDE KIT
+   Design Tokens & Risograph Retro Text Effect (Inchiostri Spot & Calibrazione)
+   Direzione Artistica: Argon (Gemini 4 Argon Bridge)
+   Reference: Veila Risograph Retro Text Effect ("RISO TYPE")
+   ========================================================================== */
+
+:root {
+  /* Supporti Cartacei (Unbleached & Recycled Pulp) */
+  --paper-bg: #EAE6DF;
+  --paper-surface: #E0DBD1;
+  --paper-elevated: #F4F1EA;
+  --paper-fiber: rgba(26, 25, 23, 0.055);
+
+  /* Inchiostri Strutturali */
+  --ink-black: #1A1917;
+  --ink-muted: #4A4742;
+  --ink-border: #1A1917;
+
+  /* Inchiostri Spot Riso Kagaku (Reference Palette) */
+  --ink-pink: #FF3E81;      /* Fluorescent Pink */
+  --ink-yellow: #FFE800;    /* Sunflower Yellow */
+  --ink-orange: #F14E23;    /* Vivid Orange / Red overprint */
+  --ink-teal: #009DA5;      /* Riso Teal / Cyan */
+  --ink-purple: #4D2C7A;    /* Overprint Violet (Pink x Teal) */
+  --ink-green: #59981A;     /* Overprint Acid Green (Yellow x Teal) */
+
+  /* Assegnazione Tamburi Attiva (Default: Reference Veila "RISO TYPE") */
+  --drum-primary: var(--ink-orange);
+  --drum-layer-1: var(--ink-pink);
+  --drum-layer-2: var(--ink-yellow);
+  --drum-accent: var(--ink-teal);
+
+  /* Vettori di Fuori Registro (Misregistration) */
+  --riso-offset-x: 4px;
+  --riso-offset-y: 3px;
+  --riso-offset-neg-x: -4px;
+  --riso-offset-neg-y: -3px;
+  --paper-grain-opacity: 0.38;
+
+  /* Timing Meccanico Riso */
+  --ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Palette Preset 1: Reference "RISO TYPE" (Arancio/Rosso + Rosa Fluo + Giallo) */
+[data-riso-palette="reference"] {
+  --drum-primary: var(--ink-orange);
+  --drum-layer-1: var(--ink-pink);
+  --drum-layer-2: var(--ink-yellow);
+  --drum-accent: var(--ink-teal);
+}
+
+/* Palette Preset 2: RUDE Punk (Nero Soia dominante + Rosa Fluo + Teal) */
+[data-riso-palette="rude-punk"] {
+  --drum-primary: var(--ink-black);
+  --drum-layer-1: var(--ink-pink);
+  --drum-layer-2: var(--ink-teal);
+  --drum-accent: var(--ink-yellow);
+}
+
+/* Palette Preset 3: High-Voltage DIY (Rosa Fluo + Nero + Giallo) */
+[data-riso-palette="diy-fanzine"] {
+  --drum-primary: var(--ink-pink);
+  --drum-layer-1: var(--ink-black);
+  --drum-layer-2: var(--ink-yellow);
+  --drum-accent: var(--ink-teal);
+}
+
+/* Modalità Clean (Confronto A/B immediato con 1 click) */
+[data-riso-mode="clean"] {
+  --riso-offset-x: 0px !important;
+  --riso-offset-y: 0px !important;
+  --riso-offset-neg-x: 0px !important;
+  --riso-offset-neg-y: 0px !important;
+  --paper-grain-opacity: 0 !important;
+}
+
+[data-riso-mode="clean"] .riso-type {
+  filter: none !important;
+  color: inherit !important;
+}
+
+[data-riso-mode="clean"] .riso-type::before,
+[data-riso-mode="clean"] .riso-type::after {
+  display: none !important;
+}
+
+[data-riso-mode="clean"] .paper-grain-overlay {
+  display: none !important;
+}
+
+[data-riso-mode="clean"] .riso-stamp {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 0.15 !important;
+}
+
+/* ==========================================================================
+   PAPER GRAIN & OVERPRINT ENGINE (60FPS ISOLATED LAYER)
+   ========================================================================== */
+.paper-grain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9990;
+  opacity: var(--paper-grain-opacity);
+  mix-blend-mode: multiply;
+  will-change: transform;
+  transform: translateZ(0);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   TIPOGRAFIA RISOGRAPH: .riso-type
+   Multi-drum overprint con attr(data-text) e filtri di ink-bleed isolati
+   ========================================================================== */
+.riso-type {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-headline, 'Anton', Impact, 'Arial Black', sans-serif);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  color: var(--drum-primary);
+  isolation: isolate;
+  filter: url(#riso-ink-bleed);
+  user-select: text;
+  white-space: pre-line;
+}
+
+.riso-type::before,
+.riso-type::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: multiply;
+  transition: transform 0.25s var(--ease-snap);
+  white-space: pre-line;
+}
+
+/* Tamburo 1: Spostato in alto-sinistra */
+.riso-type::before {
+  color: var(--drum-layer-1);
+  transform: translate3d(var(--riso-offset-neg-x), var(--riso-offset-neg-y), 0);
+  z-index: -1;
+  opacity: 0.92;
+}
+
+/* Tamburo 2: Spostato in basso-destra */
+.riso-type::after {
+  color: var(--drum-layer-2);
+  transform: translate3d(var(--riso-offset-x), var(--riso-offset-y), 0);
+  z-index: -2;
+  opacity: 0.95;
+}
+
+/* Hover: Micro-slittamento dei rulli di stampa */
+.riso-type:hover::before {
+  transform: translate3d(calc(var(--riso-offset-neg-x) * 1.55), calc(var(--riso-offset-neg-y) * 1.55), 0) rotate(-0.35deg);
+}
+.riso-type:hover::after {
+  transform: translate3d(calc(var(--riso-offset-x) * 1.55), calc(var(--riso-offset-y) * 1.55), 0) rotate(0.35deg);
+}
+
+/* Variante Duo (Solo 2 colori: Black + Pink) */
+.riso-type--duo {
+  color: var(--ink-black);
+}
+.riso-type--duo::after {
+  display: none;
+}
+.riso-type--duo::before {
+  color: var(--ink-pink);
+  transform: translate3d(var(--riso-offset-x), var(--riso-offset-y), 0);
+}
+
+/* ==========================================================================
+   TIMBRI GEOMETRICI RISOGRAPH: .riso-stamp
+   ========================================================================== */
+.riso-stamp {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: multiply;
+  filter: url(#riso-stamp-grain);
+  transition: transform 0.3s var(--ease-snap);
+  user-select: none;
+}
+
+.riso-stamp:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* ==========================================================================
+   BADGE & ETICHETTE PUNZONATE
+   ========================================================================== */
+.genre-kbd {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background-color: var(--ink-black);
+  color: var(--paper-elevated);
+  padding: 0.4rem 0.9rem;
+  border: 2px solid var(--ink-black);
+  box-shadow:
+    var(--riso-offset-x) var(--riso-offset-y) 0px var(--ink-pink),
+    var(--riso-offset-neg-x) var(--riso-offset-neg-y) 0px var(--ink-yellow);
+  transform: rotate(-0.8deg);
+  margin: 0.4rem 0;
+}
+
+/* ==========================================================================
+   PULSANTI RISO & MICRO-INTERAZIONI TATTILI
+   ========================================================================== */
+.riso-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: var(--ink-black);
+  background-color: var(--paper-elevated);
+  padding: 11px 18px;
+  border: 2px solid var(--ink-black);
+  box-shadow: 4px 4px 0px var(--ink-black);
+  transition: transform 0.15s var(--ease-snap), box-shadow 0.15s var(--ease-snap), background-color 0.15s ease;
+  cursor: pointer;
+}
+
+.riso-btn--primary {
+  background-color: var(--ink-pink);
+  color: var(--ink-black);
+  box-shadow: 4px 4px 0px var(--ink-teal);
+}
+
+.riso-btn--secondary {
+  background-color: var(--ink-yellow);
+  box-shadow: 4px 4px 0px var(--ink-pink);
+}
+
+.riso-btn:hover {
+  transform: translate(-2px, -2px);
+  background-color: var(--ink-yellow);
+  box-shadow:
+    6px 6px 0px var(--ink-pink),
+    -3px -3px 0px var(--ink-teal);
+}
+
+.riso-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--ink-black);
+}
+
+/* ==========================================================================
+   FOTO BAND DUOTONE RISO: .riso-photo-frame
+   ========================================================================== */
+.riso-photo-frame {
+  position: relative;
+  border: 2px solid var(--ink-black);
+  background-color: var(--ink-pink);
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow:
+    calc(var(--riso-offset-x) * 2) calc(var(--riso-offset-y) * 2) 0px var(--ink-teal),
+    calc(var(--riso-offset-neg-x) * 1.5) calc(var(--riso-offset-neg-y) * 1.5) 0px var(--ink-yellow);
+  transition: box-shadow 0.3s var(--ease-snap), transform 0.3s var(--ease-snap);
+}
+
+.riso-photo-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(145%) brightness(105%);
+  mix-blend-mode: multiply;
+  transition: filter 0.35s var(--ease-snap), transform 0.5s var(--ease-snap);
+}
+
+.riso-photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background-image: radial-gradient(var(--ink-black) 1.15px, transparent 1.15px);
+  background-size: 4px 4px;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+}
+
+.riso-photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  border: 2px solid var(--ink-pink);
+  transform: translate3d(var(--riso-offset-x), var(--riso-offset-y), 0);
+  mix-blend-mode: multiply;
+}
+
+.riso-photo-frame:hover img {
+  filter: grayscale(0%) contrast(105%) brightness(100%);
+  mix-blend-mode: normal;
+}
+
+/* ==========================================================================
+   CONTROLLER INTERATTIVO DI CALIBRAZIONE RISO (WIDGET FLOTTANTE TEST)
+   ========================================================================== */
+.riso-calibrator {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 9995;
+  width: 320px;
+  max-width: calc(100vw - 2rem);
+  background-color: var(--paper-elevated, #F4F1EA);
+  border: 2px solid var(--ink-black, #1A1917);
+  box-shadow: 6px 6px 0px var(--ink-black, #1A1917);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--ink-black, #1A1917);
+}
+
+.calibrator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: var(--ink-black, #1A1917);
+  color: var(--paper-elevated, #F4F1EA);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  user-select: none;
+}
+
+.calibrator-header:hover {
+  background-color: var(--ink-pink, #FF3E81);
+  color: var(--ink-black, #1A1917);
+}
+
+.calibrator-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calibrator-body.is-collapsed {
+  display: none;
+}
+
+.cal-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cal-label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--ink-muted, #4A4742);
+}
+
+.cal-label strong {
+  color: var(--ink-black, #1A1917);
+}
+
+.cal-btn-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.cal-btn-group--two {
+  grid-template-columns: 1fr 1fr;
+}
+
+.cal-chip {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  padding: 6px 4px;
+  border: 1.5px solid var(--ink-black, #1A1917);
+  background-color: var(--paper-bg, #EAE6DF);
+  color: var(--ink-black, #1A1917);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.cal-chip:hover {
+  background-color: var(--ink-yellow, #FFE800);
+}
+
+.cal-chip.active {
+  background-color: var(--ink-pink, #FF3E81);
+  color: var(--ink-black, #1A1917);
+  border-color: var(--ink-black, #1A1917);
+}
+
+.cal-range {
+  width: 100%;
+  accent-color: var(--ink-pink, #FF3E81);
+  cursor: pointer;
+}
+
+.cal-specimen-link {
+  display: block;
+  text-align: center;
+  margin-top: 4px;
+  padding: 5px;
+  background: var(--ink-yellow, #FFE800);
+  border: 1px solid var(--ink-black, #1A1917);
+  color: var(--ink-black, #1A1917);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.7rem;
+}
+.cal-specimen-link:hover {
+  background: var(--ink-pink, #FF3E81);
+  color: #fff;
+}
+
+/* ==========================================================================
+   PREFERS-REDUCED-MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --riso-offset-x: 1px;
+    --riso-offset-y: 1px;
+    --riso-offset-neg-x: -1px;
+    --riso-offset-neg-y: -1px;
+  }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
