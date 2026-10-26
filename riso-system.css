@@ -1,103 +1,143 @@
 /* ==========================================================================
-   RISO SYSTEM — RUDE KIT
-   Design Tokens & Risograph Retro Text Effect (Inchiostri Spot & Calibrazione)
-   Direzione Artistica: Argon (Gemini 4 Argon Bridge)
-   Reference: Veila Risograph Retro Text Effect ("RISO TYPE")
+   RUDE // RISOGRAPH SYSTEM v2.0 (ZINE / DISCHORD EDITION)
+   Direzione Artistica: Argon (Gemini Argon Bridge)
+   Dominanza Nero Soia (85%) + Fuori-Registro Meccanico Rosa Riso (15%)
+   Nessuna saturazione candy/pop a 3 colori.
    ========================================================================== */
 
 :root {
-  /* Supporti Cartacei (Unbleached & Recycled Pulp) */
-  --paper-bg: #EAE6DF;
-  --paper-surface: #E0DBD1;
-  --paper-elevated: #F4F1EA;
-  --paper-fiber: rgba(26, 25, 23, 0.055);
+  /* Supporti Cartacei Riso */
+  --ink-black: #141413;
+  --ink-graphite: #4A4946;
+  --paper-raw: #F2EFE9;
+  --paper-card: #FAF8F5;
+  --paper-muted: #E5E0D8;
+  --paper-bg: #F2EFE9;
+  --paper-surface: #FAF8F5;
+  --paper-elevated: #FAF8F5;
 
-  /* Inchiostri Strutturali */
-  --ink-black: #1A1917;
-  --ink-muted: #4A4742;
-  --ink-border: #1A1917;
+  /* Inchiostri Spot Riso */
+  --riso-pink: #E01A4F;
+  --riso-pink-tint: #FCE8EE;
+  --signal-amber: #D95D14;
+  --signal-amber-tint: #FDF0E6;
 
-  /* Inchiostri Spot Riso Kagaku (Reference Palette) */
-  --ink-pink: #FF3E81;      /* Fluorescent Pink */
-  --ink-yellow: #FFE800;    /* Sunflower Yellow */
-  --ink-orange: #F14E23;    /* Vivid Orange / Red overprint */
-  --ink-teal: #009DA5;      /* Riso Teal / Cyan */
-  --ink-purple: #4D2C7A;    /* Overprint Violet (Pink x Teal) */
-  --ink-green: #59981A;     /* Overprint Acid Green (Yellow x Teal) */
+  /* Font Families di supporto */
+  --font-display: 'Anton', 'Archivo Black', Impact, sans-serif;
+  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Space Mono', monospace;
 
-  /* Assegnazione Tamburi Attiva (Default: Reference Veila "RISO TYPE") */
-  --drum-primary: var(--ink-orange);
-  --drum-layer-1: var(--ink-pink);
-  --drum-layer-2: var(--ink-yellow);
-  --drum-accent: var(--ink-teal);
-
-  /* Vettori di Fuori Registro Calibrati (3.5px / 2.5px per massima nitidezza e impatto Riso) */
-  --riso-offset-x: 3.5px;
-  --riso-offset-y: 2.5px;
-  --riso-offset-neg-x: -3.5px;
-  --riso-offset-neg-y: -2.5px;
-  --paper-grain-opacity: 0.32;
-
-  /* Timing Meccanico Riso */
-  --ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Palette Preset 1: Reference "RISO TYPE" (Arancio/Rosso + Rosa Fluo + Giallo) */
-[data-riso-palette="reference"] {
-  --drum-primary: var(--ink-orange);
-  --drum-layer-1: var(--ink-pink);
-  --drum-layer-2: var(--ink-yellow);
-  --drum-accent: var(--ink-teal);
-}
-
-/* Palette Preset 2: RUDE Punk (Nero Soia dominante + Rosa Fluo + Teal) */
-[data-riso-palette="rude-punk"] {
-  --drum-primary: var(--ink-black);
-  --drum-layer-1: var(--ink-pink);
-  --drum-layer-2: var(--ink-teal);
-  --drum-accent: var(--ink-yellow);
-}
-
-/* Palette Preset 3: High-Voltage DIY (Rosa Fluo + Nero + Giallo) */
-[data-riso-palette="diy-fanzine"] {
-  --drum-primary: var(--ink-pink);
-  --drum-layer-1: var(--ink-black);
-  --drum-layer-2: var(--ink-yellow);
-  --drum-accent: var(--ink-teal);
-}
-
-/* Modalità Clean (Confronto A/B immediato con 1 click) */
-[data-riso-mode="clean"] {
-  --riso-offset-x: 0px !important;
-  --riso-offset-y: 0px !important;
-  --riso-offset-neg-x: 0px !important;
-  --riso-offset-neg-y: 0px !important;
-  --paper-grain-opacity: 0 !important;
-}
-
-[data-riso-mode="clean"] .riso-type {
-  filter: none !important;
-  color: inherit !important;
-}
-
-[data-riso-mode="clean"] .riso-type::before,
-[data-riso-mode="clean"] .riso-type::after {
-  display: none !important;
-}
-
-[data-riso-mode="clean"] .paper-grain-overlay {
-  display: none !important;
-}
-
-[data-riso-mode="clean"] .riso-stamp {
-  filter: none !important;
-  mix-blend-mode: normal !important;
-  opacity: 0.15 !important;
+  /* Bordi e Ombre Serigrafiche */
+  --border-heavy: 2px solid var(--ink-black);
+  --border-thin: 1px solid var(--ink-black);
+  --shadow-hard: 4px 4px 0px var(--ink-black);
+  --shadow-riso: 3px 3px 0px var(--riso-pink);
+  --transition-fast: 140ms cubic-bezier(0.2, 0, 0, 1);
 }
 
 /* ==========================================================================
-   PAPER GRAIN & OVERPRINT ENGINE (60FPS ISOLATED LAYER)
+   TIPOGRAFIA RISOGRAPH v2.0
+   Duotone autentico Soy Black + Riso Pink offset a 2 tamburi.
+   Zero sfocature, zero calcoli pesanti di repaint GPU.
    ========================================================================== */
+
+.riso-heading-wrap {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+/* Titolo Riso su fondo chiaro */
+.riso-title,
+.riso-type,
+.bio-headline,
+.bio-headline span,
+.bio-headline .title-line-inner,
+.release-title-giant,
+.release-title-giant span,
+.release-title-giant .title-line-inner {
+  font-family: var(--font-display, 'Anton', sans-serif);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.94;
+  color: var(--ink-black) !important;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  /* Taglio netto fuori registro a 2 tamburi: 1.5px stacco carta + 3px lastra rosa */
+  text-shadow: 
+    1.5px 1px 0px var(--paper-raw, #F2EFE9),
+    3px 2px 0px var(--riso-pink, #E01A4F) !important;
+}
+
+/* Variante su sfondo scuro / theme dark */
+.theme-dark .riso-title,
+.theme-dark .riso-type,
+.theme-dark .bio-headline,
+.theme-dark .bio-headline span,
+.theme-dark .bio-headline .title-line-inner {
+  color: var(--paper-raw) !important;
+  text-shadow: 
+    -1.5px -1px 0px var(--ink-black),
+    2.5px 2px 0px var(--riso-pink) !important;
+}
+
+/* Variante per sezione Bestie Flambé (su fondo Rosa Shocking) */
+.bestie-flambe-block .riso-type,
+.bestie-flambe-block .release-title-giant,
+.bestie-flambe-block .release-title-giant span,
+.bestie-flambe-block .release-title-giant .title-line-inner {
+  color: var(--ink-black) !important;
+  text-shadow: 
+    1.5px 1px 0px #FFFFFF,
+    3.5px 2.5px 0px var(--ink-black) !important;
+}
+
+/* Disattivazione pseudo-elementi duplicati per evitare overlap con titoli spezzati */
+.riso-type::before,
+.riso-type::after {
+  display: none !important;
+}
+
+/* ==========================================================================
+   TIMBRI GEOMETRICI & KICKER
+   ========================================================================== */
+
+.riso-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--paper-raw);
+  background-color: var(--ink-black);
+  padding: 4px 10px;
+  border: 1.5px solid var(--ink-black);
+  box-shadow: 3px 3px 0px var(--riso-pink);
+  transform: rotate(-0.4deg);
+  user-select: none;
+}
+
+.riso-stamp:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+/* Barra Halftone Meccanica (Retino Riso) */
+.riso-halftone-strip {
+  background-image: radial-gradient(var(--ink-black) 1.25px, transparent 1.25px);
+  background-size: 5px 5px;
+  background-color: var(--riso-pink);
+  height: 10px;
+  width: 100%;
+  border-top: 2px solid var(--ink-black);
+  border-bottom: 2px solid var(--ink-black);
+}
+
+/* Micro-grana carta opzionale */
 .paper-grain-overlay {
   position: fixed;
   inset: 0;
@@ -105,137 +145,138 @@
   height: 100%;
   pointer-events: none;
   z-index: 9990;
-  opacity: var(--paper-grain-opacity);
+  opacity: 0.18;
   mix-blend-mode: multiply;
-  will-change: transform;
-  transform: translateZ(0);
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* ==========================================================================
-   TIPOGRAFIA RISOGRAPH: .riso-type
-   Multi-drum overprint con attr(data-text) e filtri di ink-bleed isolati
+   ICONE TECNICHE VETTORIALI & BADGE PER SCHEDA TECNICA
+   Disegnate su griglia tecnica 24x24, spessore costante 1.85px
    ========================================================================== */
-.riso-type {
-  position: relative;
-  display: inline-block;
-  font-family: var(--font-headline, 'Anton', Impact, 'Arial Black', sans-serif);
-  font-weight: 400;
-  text-transform: uppercase;
-  line-height: 0.92;
-  letter-spacing: 0.01em;
-  color: var(--drum-primary);
-  isolation: isolate;
-  filter: url(#riso-ink-bleed);
-  user-select: text;
-  white-space: pre-line;
+
+.svg-icon {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 1.85;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  fill: none;
+  flex-shrink: 0;
+  vertical-align: middle;
 }
 
-.riso-type::before,
-.riso-type::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  user-select: none;
-  mix-blend-mode: multiply;
-  transition: transform 0.25s var(--ease-snap);
-  white-space: pre-line;
+.svg-icon--lg {
+  width: 22px;
+  height: 22px;
 }
 
-/* Tamburo 1: Spostato in alto-sinistra */
-.riso-type::before {
-  color: var(--drum-layer-1);
-  transform: translate3d(var(--riso-offset-neg-x), var(--riso-offset-neg-y), 0);
-  z-index: -1;
-  opacity: 0.92;
+/* Badge Icona Canale nella Input List */
+.instrument-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
 }
 
-/* Tamburo 2: Spostato in basso-destra */
-.riso-type::after {
-  color: var(--drum-layer-2);
-  transform: translate3d(var(--riso-offset-x), var(--riso-offset-y), 0);
-  z-index: -2;
-  opacity: 0.95;
-}
-
-/* Hover: Micro-slittamento dei rulli di stampa */
-.riso-type:hover::before {
-  transform: translate3d(calc(var(--riso-offset-neg-x) * 1.55), calc(var(--riso-offset-neg-y) * 1.55), 0) rotate(-0.35deg);
-}
-.riso-type:hover::after {
-  transform: translate3d(calc(var(--riso-offset-x) * 1.55), calc(var(--riso-offset-y) * 1.55), 0) rotate(0.35deg);
-}
-
-/* Variante Duo (Solo 2 colori: Black + Pink) */
-.riso-type--duo {
+.ch-icon-badge {
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid var(--ink-black);
+  background-color: #FFFFFF;
   color: var(--ink-black);
-}
-.riso-type--duo::after {
-  display: none;
-}
-.riso-type--duo::before {
-  color: var(--ink-pink);
-  transform: translate3d(var(--riso-offset-x), var(--riso-offset-y), 0);
-}
-
-/* Ottimizzazione Alto Contrasto su fondo Rosa (es. Sezione Bestie Flambé) */
-.bestie-flambe-block .riso-type {
-  color: var(--ink-black) !important;
-}
-.bestie-flambe-block .riso-type::before {
-  color: var(--ink-yellow) !important;
-  transform: translate3d(var(--riso-offset-neg-x), var(--riso-offset-neg-y), 0);
-  opacity: 0.95;
-}
-.bestie-flambe-block .riso-type::after {
-  color: var(--ink-teal) !important;
-  transform: translate3d(var(--riso-offset-x), var(--riso-offset-y), 0);
-  opacity: 0.85;
-}
-
-/* ==========================================================================
-   TIMBRI GEOMETRICI RISOGRAPH: .riso-stamp
-   ========================================================================== */
-.riso-stamp {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  mix-blend-mode: multiply;
-  filter: url(#riso-stamp-grain);
-  transition: transform 0.3s var(--ease-snap);
-  user-select: none;
+  flex-shrink: 0;
 }
 
-.riso-stamp:hover {
-  transform: scale(1.05) rotate(2deg);
+.ch-icon-badge.is-vocal {
+  background-color: var(--riso-pink);
+  color: #FFFFFF;
+  border-color: var(--ink-black);
 }
 
-/* ==========================================================================
-   BADGE & ETICHETTE PUNZONATE
-   ========================================================================== */
-.genre-kbd {
+.ch-icon-badge.is-di {
+  background-color: var(--signal-amber-tint);
+  color: var(--signal-amber);
+  border-color: var(--ink-black);
+}
+
+/* Scatola Icona Metriche Rapide */
+.metric-icon-box {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--ink-black);
+  background-color: var(--paper-card);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-black);
+  box-shadow: 2px 2px 0px var(--riso-pink);
+  flex-shrink: 0;
+}
+
+/* Badge Allerta Alimentazione Phantom +48V */
+.phantom-tag {
   display: inline-block;
-  font-family: var(--font-mono, monospace);
-  font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  background-color: var(--signal-amber);
+  padding: 1px 5px;
+  margin-left: 6px;
+  border: 1px solid var(--ink-black);
+  vertical-align: middle;
+}
+
+/* Badge Microfono Specifico */
+.mic-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  background-color: var(--ink-black);
-  color: var(--paper-elevated);
-  padding: 0.4rem 0.9rem;
-  border: 2px solid var(--ink-black);
-  box-shadow:
-    var(--riso-offset-x) var(--riso-offset-y) 0px var(--ink-pink),
-    var(--riso-offset-neg-x) var(--riso-offset-neg-y) 0px var(--ink-yellow);
-  transform: rotate(-0.8deg);
-  margin: 0.4rem 0;
+  padding: 2px 8px;
+  border: 1px solid var(--ink-black);
+  background-color: #FFFFFF;
+}
+
+/* Cella Connessione Tecnico */
+.conn-cell {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-graphite);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Pillola Legenda Icone */
+.legend-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background-color: var(--paper-raw);
+  border: 1px solid var(--ink-black);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* Micro-interazione hover sulle righe della tabella */
+.input-list-table tbody tr:hover td {
+  background-color: var(--riso-pink-tint) !important;
 }
 
 /* ==========================================================================
-   PULSANTI RISO & MICRO-INTERAZIONI TATTILI
+   PULSANTI RISO BRUTALISTI
    ========================================================================== */
+
 .riso-btn {
   position: relative;
   display: inline-flex;
@@ -248,31 +289,24 @@
   letter-spacing: 0.05em;
   text-decoration: none;
   color: var(--ink-black);
-  background-color: var(--paper-elevated);
-  padding: 11px 18px;
+  background-color: var(--paper-raw);
+  padding: 10px 16px;
   border: 2px solid var(--ink-black);
   box-shadow: 4px 4px 0px var(--ink-black);
-  transition: transform 0.15s var(--ease-snap), box-shadow 0.15s var(--ease-snap), background-color 0.15s ease;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
   cursor: pointer;
 }
 
 .riso-btn--primary {
-  background-color: var(--ink-pink);
-  color: var(--ink-black);
-  box-shadow: 4px 4px 0px var(--ink-teal);
-}
-
-.riso-btn--secondary {
-  background-color: var(--ink-yellow);
-  box-shadow: 4px 4px 0px var(--ink-pink);
+  background-color: var(--riso-pink);
+  color: #FFFFFF;
+  border-color: var(--ink-black);
+  box-shadow: 4px 4px 0px var(--ink-black);
 }
 
 .riso-btn:hover {
   transform: translate(-2px, -2px);
-  background-color: var(--ink-yellow);
-  box-shadow:
-    6px 6px 0px var(--ink-pink),
-    -3px -3px 0px var(--ink-teal);
+  box-shadow: 6px 6px 0px var(--riso-pink);
 }
 
 .riso-btn:active {
@@ -281,192 +315,12 @@
 }
 
 /* ==========================================================================
-   FOTO BAND DUOTONE RISO: .riso-photo-frame
-   ========================================================================== */
-.riso-photo-frame {
-  position: relative;
-  border: 2px solid var(--ink-black);
-  background-color: var(--ink-pink);
-  overflow: hidden;
-  isolation: isolate;
-  box-shadow:
-    calc(var(--riso-offset-x) * 2) calc(var(--riso-offset-y) * 2) 0px var(--ink-teal),
-    calc(var(--riso-offset-neg-x) * 1.5) calc(var(--riso-offset-neg-y) * 1.5) 0px var(--ink-yellow);
-  transition: box-shadow 0.3s var(--ease-snap), transform 0.3s var(--ease-snap);
-}
-
-.riso-photo-frame img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  filter: grayscale(100%) contrast(145%) brightness(105%);
-  mix-blend-mode: multiply;
-  transition: filter 0.35s var(--ease-snap), transform 0.5s var(--ease-snap);
-}
-
-.riso-photo-frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-  background-image: radial-gradient(var(--ink-black) 1.15px, transparent 1.15px);
-  background-size: 4px 4px;
-  opacity: 0.22;
-  mix-blend-mode: multiply;
-}
-
-.riso-photo-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 3;
-  border: 2px solid var(--ink-pink);
-  transform: translate3d(var(--riso-offset-x), var(--riso-offset-y), 0);
-  mix-blend-mode: multiply;
-}
-
-.riso-photo-frame:hover img {
-  filter: grayscale(0%) contrast(105%) brightness(100%);
-  mix-blend-mode: normal;
-}
-
-/* ==========================================================================
-   CONTROLLER INTERATTIVO DI CALIBRAZIONE RISO (WIDGET FLOTTANTE TEST)
-   ========================================================================== */
-.riso-calibrator {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: 9995;
-  width: 320px;
-  max-width: calc(100vw - 2rem);
-  background-color: var(--paper-elevated, #F4F1EA);
-  border: 2px solid var(--ink-black, #1A1917);
-  box-shadow: 6px 6px 0px var(--ink-black, #1A1917);
-  font-family: var(--font-mono, monospace);
-  font-size: 0.75rem;
-  line-height: 1.4;
-  color: var(--ink-black, #1A1917);
-}
-
-.calibrator-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
-  background-color: var(--ink-black, #1A1917);
-  color: var(--paper-elevated, #F4F1EA);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-  user-select: none;
-}
-
-.calibrator-header:hover {
-  background-color: var(--ink-pink, #FF3E81);
-  color: var(--ink-black, #1A1917);
-}
-
-.calibrator-body {
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.calibrator-body.is-collapsed {
-  display: none;
-}
-
-.cal-row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.cal-label {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  color: var(--ink-muted, #4A4742);
-}
-
-.cal-label strong {
-  color: var(--ink-black, #1A1917);
-}
-
-.cal-btn-group {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-}
-
-.cal-btn-group--two {
-  grid-template-columns: 1fr 1fr;
-}
-
-.cal-chip {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.68rem;
-  padding: 6px 4px;
-  border: 1.5px solid var(--ink-black, #1A1917);
-  background-color: var(--paper-bg, #EAE6DF);
-  color: var(--ink-black, #1A1917);
-  cursor: pointer;
-  text-transform: uppercase;
-  font-weight: 700;
-  text-align: center;
-  transition: all 0.15s ease;
-}
-
-.cal-chip:hover {
-  background-color: var(--ink-yellow, #FFE800);
-}
-
-.cal-chip.active {
-  background-color: var(--ink-pink, #FF3E81);
-  color: var(--ink-black, #1A1917);
-  border-color: var(--ink-black, #1A1917);
-}
-
-.cal-range {
-  width: 100%;
-  accent-color: var(--ink-pink, #FF3E81);
-  cursor: pointer;
-}
-
-.cal-specimen-link {
-  display: block;
-  text-align: center;
-  margin-top: 4px;
-  padding: 5px;
-  background: var(--ink-yellow, #FFE800);
-  border: 1px solid var(--ink-black, #1A1917);
-  color: var(--ink-black, #1A1917);
-  font-weight: 700;
-  text-decoration: none;
-  font-size: 0.7rem;
-}
-.cal-specimen-link:hover {
-  background: var(--ink-pink, #FF3E81);
-  color: #fff;
-}
-
-/* ==========================================================================
    PREFERS-REDUCED-MOTION
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
-  :root {
-    --riso-offset-x: 1px;
-    --riso-offset-y: 1px;
-    --riso-offset-neg-x: -1px;
-    --riso-offset-neg-y: -1px;
+  .riso-title,
+  .riso-type {
+    text-shadow: 2px 2px 0px var(--riso-pink);
   }
   *, *::before, *::after {
     transition-duration: 0.01ms !important;

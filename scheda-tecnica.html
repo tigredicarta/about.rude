@@ -892,6 +892,78 @@
   <script src="site-refinements.js" defer></script>
 </head>
 <body data-riso-mode="active" data-riso-palette="reference">
+  <!-- ========================================================================
+       SPRITE SVG INLINE TECNICO — RUDE CUSTOM ICONS (ViewBox 24x24)
+       Disegnate su griglia tecnica da Argon. Spessore costante 1.85px.
+       ======================================================================== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" aria-hidden="true">
+    <!-- 1. ICONA MICROFONO DINAMICO (Shure SM58 / SM57) -->
+    <symbol id="icon-mic" viewBox="0 0 24 24">
+      <rect x="8" y="2" width="8" height="11" rx="4" />
+      <line x1="8" y1="6.5" x2="16" y2="6.5" />
+      <path d="M5 10v1a7 7 0 0 0 14 0v-1" />
+      <line x1="12" y1="18" x2="12" y2="22" />
+      <line x1="8" y1="22" x2="16" y2="22" />
+    </symbol>
+
+    <!-- 2. ICONA AMPLIFICATORE CHITARRA (Combo Fender / Vox) -->
+    <symbol id="icon-amp-gtr" viewBox="0 0 24 24">
+      <rect x="2" y="4" width="20" height="17" />
+      <path d="M9 4V2h6v2" />
+      <line x1="2" y1="9" x2="22" y2="9" />
+      <circle cx="6" cy="6.5" r="0.8" fill="currentColor" />
+      <circle cx="10" cy="6.5" r="0.8" fill="currentColor" />
+      <circle cx="14" cy="6.5" r="0.8" fill="currentColor" />
+      <circle cx="18" cy="6.5" r="0.8" fill="currentColor" />
+      <circle cx="8" cy="15" r="3.2" />
+      <circle cx="16" cy="15" r="3.2" />
+    </symbol>
+
+    <!-- 3. ICONA BASSO / D.I. BOX (Testata Hartke HA3500 + Direct Out) -->
+    <symbol id="icon-bass-di" viewBox="0 0 24 24">
+      <rect x="2" y="5" width="20" height="14" />
+      <line x1="2" y1="10" x2="22" y2="10" />
+      <line x1="6" y1="6.5" x2="6" y2="8.5" />
+      <line x1="9" y1="6.5" x2="9" y2="8.5" />
+      <line x1="12" y1="6.5" x2="12" y2="8.5" />
+      <circle cx="16.5" cy="14.5" r="2.8" />
+      <circle cx="15.7" cy="14" r="0.4" fill="currentColor" />
+      <circle cx="17.3" cy="14" r="0.4" fill="currentColor" />
+      <circle cx="16.5" cy="15.4" r="0.4" fill="currentColor" />
+      <path d="M5 13h5v3H5z" />
+    </symbol>
+
+    <!-- 4. ICONA BATTERIA / FUSTI & PIATTI (Drum Kit) -->
+    <symbol id="icon-drums" viewBox="0 0 24 24">
+      <circle cx="12" cy="15.5" r="5.5" />
+      <circle cx="12" cy="15.5" r="2" />
+      <line x1="7.5" y1="19" x2="5" y2="22" />
+      <line x1="16.5" y1="19" x2="19" y2="22" />
+      <rect x="3" y="9" width="6" height="4" />
+      <line x1="14" y1="5" x2="22" y2="5" />
+      <line x1="18" y1="5" x2="18" y2="13" />
+    </symbol>
+
+    <!-- 5. ICONA CASSA MONITOR SPIA PALCO (Floor Wedge Monitor) -->
+    <symbol id="icon-wedge" viewBox="0 0 24 24">
+      <polygon points="2,19 22,19 19,7 7,7" />
+      <line x1="7" y1="7" x2="11" y2="19" />
+      <circle cx="14.5" cy="13" r="2.5" />
+      <path d="M9 4l1.5-2" />
+      <path d="M14 4l1.5-2" />
+    </symbol>
+
+    <!-- 6. ICONA CONNESSIONE XLR / JACK BILANCIATO -->
+    <symbol id="icon-xlr" viewBox="0 0 24 24">
+      <circle cx="9" cy="12" r="6" />
+      <circle cx="7.5" cy="10.5" r="0.8" fill="currentColor" />
+      <circle cx="10.5" cy="10.5" r="0.8" fill="currentColor" />
+      <circle cx="9" cy="13.5" r="0.8" fill="currentColor" />
+      <path d="M15 9h5v6h-5" />
+      <line x1="20" y1="12" x2="23" y2="12" />
+    </symbol>
+  </svg>
+
   <!-- SVG Filters Engine Risograph & Paper Grain -->
   <svg width="0" height="0" style="position: absolute; pointer-events: none;" aria-hidden="true">
     <defs>
@@ -921,10 +993,17 @@
         <span aria-hidden="true">←</span>
         <img src="assets/rude-logo-rosa.png" alt="RUDE" class="nav-logo-img" />
       </a>
-      <span class="rider-nav-context">Scheda tecnica</span>
-      <a href="RUDE-scheda-tecnica.pdf" download="RUDE-scheda-tecnica.pdf" class="rider-pdf-link">Scarica PDF ↓</a>
+      <div class="nav-actions-cluster">
+        <span class="rider-nav-context">Scheda tecnica</span>
+        <button type="button" class="btn-nav-print" onclick="window.print()">
+          <svg class="svg-icon" aria-hidden="true"><use href="#icon-xlr"></use></svg>
+          STAMPA / PDF
+        </button>
+        <a href="RUDE-scheda-tecnica.pdf" download="RUDE-scheda-tecnica.pdf" class="rider-pdf-link">Scarica PDF ↓</a>
+      </div>
     </div>
   </header>
+  <div class="riso-halftone-strip" aria-hidden="true"></div>
 
   <main id="rider-main" tabindex="-1">
     <!-- ==========================================================================
@@ -932,15 +1011,17 @@
          ========================================================================== -->
     <section class="rider-header-section">
       <div class="container">
-        <span class="doc-badge">RUDE / Live · ottobre 2026</span>
-        <h1 class="rider-title-giant" style="line-height: 0.95;">
-          <span class="riso-type" data-text="SCHEDA TECNICA">SCHEDA TECNICA</span><br>
-          <span class="riso-type" data-text="& INPUT LIST" style="color: var(--pink-rude);">&amp; INPUT LIST</span>
+        <div class="riso-stamp" style="margin-bottom: 12px;">
+          <span>RUDE // LIVE · OTTOBRE 2026</span>
+        </div>
+        <h1 class="rider-title-giant riso-title" style="line-height: 0.95;">
+          SCHEDA TECNICA<br>
+          <span style="color: var(--pink-rude);">&amp; INPUT LIST</span>
         </h1>
 
         <div class="rider-meta-row">
           <p class="rider-sub-text">
-            <strong>RUDE</strong> · 4 elementi, 12 canali, 3 voci e 4 monitor.
+            <strong>RUDE</strong> · Garage / Post-Punk da Milano. 4 elementi, 12 canali, 3 voci e 4 monitor.
           </p>
 
           <div class="rider-download-group">
@@ -953,25 +1034,45 @@
           </div>
         </div>
 
-        <!-- 4 Metric Cards ad Occhio Rapido per il Fonico -->
+        <!-- 4 Metric Cards ad Occhio Rapido per il Fonico (< 5s scan) -->
         <div class="metric-strip-grid" aria-label="Riepilogo rapido">
           <div class="metric-card">
-            <span class="metric-tag">Formazione</span>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <span class="metric-tag">Formazione</span>
+              <span class="metric-icon-box" aria-hidden="true">
+                <svg class="svg-icon svg-icon--lg"><use href="#icon-amp-gtr"></use></svg>
+              </span>
+            </div>
             <div class="metric-value">4 Elementi</div>
             <div class="metric-desc">2 Chitarre · Basso · Batteria · 3 Voci</div>
           </div>
           <div class="metric-card">
-            <span class="metric-tag">Mixer FOH</span>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <span class="metric-tag">Mixer FOH</span>
+              <span class="metric-icon-box" aria-hidden="true">
+                <svg class="svg-icon svg-icon--lg"><use href="#icon-xlr"></use></svg>
+              </span>
+            </div>
             <div class="metric-value">12 Canali</div>
             <div class="metric-desc">Patch standard 3 Voci · 2 Gtr · Basso · 6 Drum</div>
           </div>
           <div class="metric-card">
-            <span class="metric-tag">Ascolti Palco</span>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <span class="metric-tag">Ascolti Palco</span>
+              <span class="metric-icon-box" aria-hidden="true">
+                <svg class="svg-icon svg-icon--lg"><use href="#icon-wedge"></use></svg>
+              </span>
+            </div>
             <div class="metric-value">4 Monitor</div>
             <div class="metric-desc">4 mandate Aux indipendenti (3 Front + 1 Batteria)</div>
           </div>
           <div class="metric-card highlight">
-            <span class="metric-tag" style="color: var(--pink-rude);">Flessibilità Ampli</span>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <span class="metric-tag" style="color: var(--pink-rude);">Flessibilità Ampli</span>
+              <span class="metric-icon-box" aria-hidden="true">
+                <svg class="svg-icon svg-icon--lg" style="color: var(--pink-rude);"><use href="#icon-amp-gtr"></use></svg>
+              </span>
+            </div>
             <div class="metric-value" style="color: var(--pink-rude);">Adattabili</div>
             <div class="metric-desc">Portiamo i nostri o usiamo quelli del locale/altre band</div>
           </div>
@@ -997,7 +1098,12 @@
 
           <div class="lineup-grid-4">
             <div class="lineup-member-box">
-              <div class="member-role-title">Lorenzo</div>
+              <div class="member-role-title" style="display: flex; align-items: center; gap: 8px;">
+                <span class="ch-icon-badge" aria-hidden="true" style="width: 24px; height: 24px; background: var(--pink-rude); color: #fff;">
+                  <svg class="svg-icon" style="width: 14px; height: 14px;"><use href="#icon-amp-gtr"></use></svg>
+                </span>
+                <span>Lorenzo</span>
+              </div>
               <div class="member-gear-desc">
                 <strong>Voce principale + Chitarra 1</strong><br>
                 Fender Hot Rod Deluxe — microfonato
@@ -1005,7 +1111,12 @@
             </div>
 
             <div class="lineup-member-box">
-              <div class="member-role-title">Francesco C</div>
+              <div class="member-role-title" style="display: flex; align-items: center; gap: 8px;">
+                <span class="ch-icon-badge" aria-hidden="true" style="width: 24px; height: 24px; background: var(--pink-rude); color: #fff;">
+                  <svg class="svg-icon" style="width: 14px; height: 14px;"><use href="#icon-amp-gtr"></use></svg>
+                </span>
+                <span>Francesco C</span>
+              </div>
               <div class="member-gear-desc">
                 <strong>Chitarra 2 + cori</strong><br>
                 Vox AC30 — microfonato
@@ -1013,7 +1124,12 @@
             </div>
 
             <div class="lineup-member-box">
-              <div class="member-role-title">Francesco P</div>
+              <div class="member-role-title" style="display: flex; align-items: center; gap: 8px;">
+                <span class="ch-icon-badge" aria-hidden="true" style="width: 24px; height: 24px; background: var(--pink-rude); color: #fff;">
+                  <svg class="svg-icon" style="width: 14px; height: 14px;"><use href="#icon-bass-di"></use></svg>
+                </span>
+                <span>Francesco P</span>
+              </div>
               <div class="member-gear-desc">
                 <strong>Basso + Seconda voce</strong><br>
                 Hartke HA3500 + Transporter — D.I. o mic
@@ -1021,7 +1137,12 @@
             </div>
 
             <div class="lineup-member-box">
-              <div class="member-role-title">Adriano</div>
+              <div class="member-role-title" style="display: flex; align-items: center; gap: 8px;">
+                <span class="ch-icon-badge" aria-hidden="true" style="width: 24px; height: 24px; background: var(--pink-rude); color: #fff;">
+                  <svg class="svg-icon" style="width: 14px; height: 14px;"><use href="#icon-drums"></use></svg>
+                </span>
+                <span>Adriano</span>
+              </div>
               <div class="member-gear-desc">
                 <strong>Batteria</strong><br>
                 Rullante, piatti e pedale propri
@@ -1047,19 +1168,31 @@
               <div class="col-header-banner col-header-banner--pink">PORTIAMO NOI</div>
 
               <div class="gear-item-row">
-                <span class="gear-item-title">Ampli chitarra 1</span>
+                <span class="gear-item-title" style="display: flex; align-items: center; gap: 6px;">
+                  <svg class="svg-icon" style="color: var(--pink-rude);"><use href="#icon-amp-gtr"></use></svg>
+                  Ampli chitarra 1
+                </span>
                 <span class="gear-item-sub">Fender Hot Rod Deluxe</span>
               </div>
               <div class="gear-item-row">
-                <span class="gear-item-title">Ampli chitarra 2</span>
+                <span class="gear-item-title" style="display: flex; align-items: center; gap: 6px;">
+                  <svg class="svg-icon" style="color: var(--pink-rude);"><use href="#icon-amp-gtr"></use></svg>
+                  Ampli chitarra 2
+                </span>
                 <span class="gear-item-sub">Vox AC30</span>
               </div>
               <div class="gear-item-row">
-                <span class="gear-item-title">Ampli basso</span>
+                <span class="gear-item-title" style="display: flex; align-items: center; gap: 6px;">
+                  <svg class="svg-icon" style="color: var(--pink-rude);"><use href="#icon-bass-di"></use></svg>
+                  Ampli basso
+                </span>
                 <span class="gear-item-sub">Hartke HA3500 (350W @4Ω) + Hartke Transporter (300W, 4 coni)</span>
               </div>
               <div class="gear-item-row">
-                <span class="gear-item-title">Batteria</span>
+                <span class="gear-item-title" style="display: flex; align-items: center; gap: 6px;">
+                  <svg class="svg-icon" style="color: var(--pink-rude);"><use href="#icon-drums"></use></svg>
+                  Batteria
+                </span>
                 <span class="gear-item-sub">Rullante, piatti e pedale cassa propri</span>
               </div>
               <div style="margin-top: 1.25rem; padding: 0.85rem; background: var(--bg-subtle); border-left: 4px solid var(--pink-rude); font-size: 0.82rem; line-height: 1.5;">
@@ -1072,23 +1205,38 @@
               <div class="col-header-banner col-header-banner--dark">SERVE DAL LOCALE</div>
 
               <div class="gear-item-row">
-                <span class="gear-item-title">Batteria</span>
+                <span class="gear-item-title" style="display: flex; align-items: center; gap: 6px;">
+                  <svg class="svg-icon"><use href="#icon-drums"></use></svg>
+                  Batteria
+                </span>
                 <span class="gear-item-sub">Cassa, 1 tom, 1 timpano (senza rullante e senza piatti)</span>
               </div>
               <div class="gear-item-row">
-                <span class="gear-item-title">Aste piatti</span>
+                <span class="gear-item-title" style="display: flex; align-items: center; gap: 6px;">
+                  <svg class="svg-icon"><use href="#icon-drums"></use></svg>
+                  Aste piatti
+                </span>
                 <span class="gear-item-sub">2 crash, 1 ride, 1 hi-hat + asta rullante</span>
               </div>
               <div class="gear-item-row">
-                <span class="gear-item-title">Aste microfono</span>
+                <span class="gear-item-title" style="display: flex; align-items: center; gap: 6px;">
+                  <svg class="svg-icon"><use href="#icon-mic"></use></svg>
+                  Aste microfono
+                </span>
                 <span class="gear-item-sub">3 a giraffa per le voci + 2 per microfonare gli ampli chitarra</span>
               </div>
               <div class="gear-item-row">
-                <span class="gear-item-title">Microfoni</span>
+                <span class="gear-item-title" style="display: flex; align-items: center; gap: 6px;">
+                  <svg class="svg-icon"><use href="#icon-mic"></use></svg>
+                  Microfoni
+                </span>
                 <span class="gear-item-sub">3 × SM58, 2 × SM57, kit batteria</span>
               </div>
               <div class="gear-item-row">
-                <span class="gear-item-title">Monitor</span>
+                <span class="gear-item-title" style="display: flex; align-items: center; gap: 6px;">
+                  <svg class="svg-icon"><use href="#icon-wedge"></use></svg>
+                  Monitor
+                </span>
                 <span class="gear-item-sub">Uno per ogni musicista, batteria inclusa (4 monitor)</span>
               </div>
             </div>
@@ -1105,98 +1253,165 @@
             <span style="font-family: var(--font-tech); font-size: 0.75rem; color: #BBB;">PATCH UFFICIALE FOH</span>
           </div>
 
-          <div class="table-actions-bar">
-            <span class="scroll-hint-mobile">⇄ Scorri la tabella (Colonna CH fissa)</span>
+          <div class="table-actions-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <div class="icon-legend" aria-label="Legenda icone strumentazione">
+              <span class="legend-pill"><svg class="svg-icon"><use href="#icon-mic"></use></svg> Voci (CH 01, 04, 05)</span>
+              <span class="legend-pill"><svg class="svg-icon"><use href="#icon-amp-gtr"></use></svg> Chitarre (CH 02, 03)</span>
+              <span class="legend-pill"><svg class="svg-icon"><use href="#icon-bass-di"></use></svg> Basso D.I. (CH 06)</span>
+              <span class="legend-pill"><svg class="svg-icon"><use href="#icon-drums"></use></svg> Batteria (CH 07–12)</span>
+            </div>
             <button type="button" id="btnCopyRider" class="btn-copy-rider-action">
               Copia Input List per WhatsApp / Mail
             </button>
           </div>
 
-          <div class="table-responsive-box" tabindex="0" role="region" aria-label="Input list: scorri orizzontalmente per leggere tutti gli dodici canali">
+          <div class="table-responsive-box" tabindex="0" role="region" aria-label="Input list: scorri orizzontalmente per leggere tutti i dodici canali">
             <table class="input-list-table">
               <thead>
                 <tr>
                   <th class="col-ch-sticky">CH</th>
-                  <th>SORGENTE</th>
-                  <th>MICROFONO</th>
-                  <th>NOTE</th>
+                  <th>SORGENTE / STRUMENTO</th>
+                  <th>MICROFONO / D.I.</th>
+                  <th>CONNESSIONE &amp; NOTE FONICO</th>
                 </tr>
               </thead>
               <tbody>
                 <tr class="cat-divider-row"><td colspan="4">VOCI E CHITARRE</td></tr>
                 <tr>
                   <td class="col-ch-sticky"><span class="ch-badge-box">01</span></td>
-                  <td><strong>Voce principale</strong></td>
-                  <td>SM58</td>
-                  <td>Centro · asta a giraffa</td>
+                  <td>
+                    <div class="instrument-cell">
+                      <span class="ch-icon-badge is-vocal" aria-hidden="true"><svg class="svg-icon"><use href="#icon-mic"></use></svg></span>
+                      <strong>Voce principale</strong>
+                    </div>
+                  </td>
+                  <td><span class="mic-badge">Shure SM58</span></td>
+                  <td><span class="conn-cell"><svg class="svg-icon"><use href="#icon-xlr"></use></svg> XLR</span> Centro · asta a giraffa</td>
                 </tr>
                 <tr>
                   <td class="col-ch-sticky"><span class="ch-badge-box">02</span></td>
-                  <td><strong>Chitarra 1 — Hot Rod Deluxe</strong></td>
-                  <td>SM57</td>
-                  <td>Asta a giraffa</td>
+                  <td>
+                    <div class="instrument-cell">
+                      <span class="ch-icon-badge" aria-hidden="true"><svg class="svg-icon"><use href="#icon-amp-gtr"></use></svg></span>
+                      <strong>Chitarra 1 — Hot Rod Deluxe</strong>
+                    </div>
+                  </td>
+                  <td><span class="mic-badge">Shure SM57</span></td>
+                  <td><span class="conn-cell"><svg class="svg-icon"><use href="#icon-xlr"></use></svg> XLR</span> Asta a giraffa / clamp</td>
                 </tr>
                 <tr>
                   <td class="col-ch-sticky"><span class="ch-badge-box">03</span></td>
-                  <td><strong>Chitarra 2 — Vox AC30</strong></td>
-                  <td>SM57</td>
-                  <td>Asta a giraffa</td>
+                  <td>
+                    <div class="instrument-cell">
+                      <span class="ch-icon-badge" aria-hidden="true"><svg class="svg-icon"><use href="#icon-amp-gtr"></use></svg></span>
+                      <strong>Chitarra 2 — Vox AC30</strong>
+                    </div>
+                  </td>
+                  <td><span class="mic-badge">Shure SM57</span></td>
+                  <td><span class="conn-cell"><svg class="svg-icon"><use href="#icon-xlr"></use></svg> XLR</span> Asta a giraffa / clamp</td>
                 </tr>
                 <tr>
                   <td class="col-ch-sticky"><span class="ch-badge-box">04</span></td>
-                  <td><strong>Voce seconda</strong></td>
-                  <td>SM58</td>
-                  <td>Destra · asta a giraffa</td>
+                  <td>
+                    <div class="instrument-cell">
+                      <span class="ch-icon-badge is-vocal" aria-hidden="true"><svg class="svg-icon"><use href="#icon-mic"></use></svg></span>
+                      <strong>Voce seconda</strong>
+                    </div>
+                  </td>
+                  <td><span class="mic-badge">Shure SM58</span></td>
+                  <td><span class="conn-cell"><svg class="svg-icon"><use href="#icon-xlr"></use></svg> XLR</span> Destra (lato basso) · asta a giraffa</td>
                 </tr>
                 <tr>
                   <td class="col-ch-sticky"><span class="ch-badge-box">05</span></td>
-                  <td><strong>Voce cori - Francesco C</strong></td>
-                  <td>SM58</td>
-                  <td>Sinistra · chitarra 2 · asta a giraffa</td>
+                  <td>
+                    <div class="instrument-cell">
+                      <span class="ch-icon-badge is-vocal" aria-hidden="true"><svg class="svg-icon"><use href="#icon-mic"></use></svg></span>
+                      <strong>Voce cori — Francesco C</strong>
+                    </div>
+                  </td>
+                  <td><span class="mic-badge">Shure SM58</span></td>
+                  <td><span class="conn-cell"><svg class="svg-icon"><use href="#icon-xlr"></use></svg> XLR</span> Sinistra (chitarra 2) · asta a giraffa</td>
                 </tr>
                 <tr>
                   <td class="col-ch-sticky"><span class="ch-badge-box">06</span></td>
-                  <td><strong>Basso — Hartke</strong></td>
-                  <td>D.I. o D112 / Beta 52</td>
-                  <td>D.I. preferita</td>
+                  <td>
+                    <div class="instrument-cell">
+                      <span class="ch-icon-badge is-di" aria-hidden="true"><svg class="svg-icon"><use href="#icon-bass-di"></use></svg></span>
+                      <strong>Basso — Hartke HA3500</strong>
+                    </div>
+                  </td>
+                  <td><span class="mic-badge">D.I. Box / D112 / Beta 52</span></td>
+                  <td><span class="conn-cell"><svg class="svg-icon"><use href="#icon-xlr"></use></svg> XLR Line</span> D.I. preferita da testata</td>
                 </tr>
 
                 <tr class="cat-divider-row"><td colspan="4">BATTERIA</td></tr>
                 <tr>
                   <td class="col-ch-sticky"><span class="ch-badge-box">07</span></td>
-                  <td><strong>Cassa</strong></td>
-                  <td>D112 / Beta 52</td>
-                  <td>Del locale</td>
+                  <td>
+                    <div class="instrument-cell">
+                      <span class="ch-icon-badge" aria-hidden="true"><svg class="svg-icon"><use href="#icon-drums"></use></svg></span>
+                      <strong>Cassa (Kick)</strong>
+                    </div>
+                  </td>
+                  <td><span class="mic-badge">D112 / Beta 52</span></td>
+                  <td><span class="conn-cell"><svg class="svg-icon"><use href="#icon-xlr"></use></svg> XLR</span> Del locale · asta nana</td>
                 </tr>
                 <tr>
                   <td class="col-ch-sticky"><span class="ch-badge-box">08</span></td>
-                  <td><strong>Rullante</strong></td>
-                  <td>SM57</td>
-                  <td>Nostro</td>
+                  <td>
+                    <div class="instrument-cell">
+                      <span class="ch-icon-badge" aria-hidden="true"><svg class="svg-icon"><use href="#icon-drums"></use></svg></span>
+                      <strong>Rullante (Snare)</strong>
+                    </div>
+                  </td>
+                  <td><span class="mic-badge">Shure SM57</span></td>
+                  <td><span class="conn-cell"><svg class="svg-icon"><use href="#icon-xlr"></use></svg> XLR</span> Nostro · clamp o asta media</td>
                 </tr>
                 <tr>
                   <td class="col-ch-sticky"><span class="ch-badge-box">09</span></td>
-                  <td><strong>Tom</strong></td>
-                  <td>Clip</td>
-                  <td>Del locale</td>
+                  <td>
+                    <div class="instrument-cell">
+                      <span class="ch-icon-badge" aria-hidden="true"><svg class="svg-icon"><use href="#icon-drums"></use></svg></span>
+                      <strong>Tom (Rack Tom)</strong>
+                    </div>
+                  </td>
+                  <td><span class="mic-badge">Clip dinamico</span></td>
+                  <td><span class="conn-cell"><svg class="svg-icon"><use href="#icon-xlr"></use></svg> XLR</span> Del locale · clip sul cerchio</td>
                 </tr>
                 <tr>
                   <td class="col-ch-sticky"><span class="ch-badge-box">10</span></td>
-                  <td><strong>Timpano</strong></td>
-                  <td>Clip</td>
-                  <td>Del locale</td>
+                  <td>
+                    <div class="instrument-cell">
+                      <span class="ch-icon-badge" aria-hidden="true"><svg class="svg-icon"><use href="#icon-drums"></use></svg></span>
+                      <strong>Timpano (Floor Tom)</strong>
+                    </div>
+                  </td>
+                  <td><span class="mic-badge">Clip dinamico</span></td>
+                  <td><span class="conn-cell"><svg class="svg-icon"><use href="#icon-xlr"></use></svg> XLR</span> Del locale · clip o asta bassa</td>
                 </tr>
                 <tr>
                   <td class="col-ch-sticky"><span class="ch-badge-box">11</span></td>
-                  <td><strong>Overhead L</strong></td>
-                  <td>Condensatore</td>
-                  <td>Del locale</td>
+                  <td>
+                    <div class="instrument-cell">
+                      <span class="ch-icon-badge" aria-hidden="true"><svg class="svg-icon"><use href="#icon-drums"></use></svg></span>
+                      <strong>Overhead L</strong>
+                      <span class="phantom-tag">+48V</span>
+                    </div>
+                  </td>
+                  <td><span class="mic-badge">Condensatore</span></td>
+                  <td><span class="conn-cell"><svg class="svg-icon"><use href="#icon-xlr"></use></svg> XLR</span> Del locale · asta giraffa alta</td>
                 </tr>
                 <tr>
                   <td class="col-ch-sticky"><span class="ch-badge-box">12</span></td>
-                  <td><strong>Overhead R</strong></td>
-                  <td>Condensatore</td>
-                  <td>Del locale</td>
+                  <td>
+                    <div class="instrument-cell">
+                      <span class="ch-icon-badge" aria-hidden="true"><svg class="svg-icon"><use href="#icon-drums"></use></svg></span>
+                      <strong>Overhead R</strong>
+                      <span class="phantom-tag">+48V</span>
+                    </div>
+                  </td>
+                  <td><span class="mic-badge">Condensatore</span></td>
+                  <td><span class="conn-cell"><svg class="svg-icon"><use href="#icon-xlr"></use></svg> XLR</span> Del locale · asta giraffa alta</td>
                 </tr>
               </tbody>
             </table>
@@ -1226,7 +1441,7 @@
               <div class="stage-drums-center-box">
                 <span class="drums-title">BATTERIA</span>
                 <span class="drums-info">Cassa, tom, timpano del locale · rullante e piatti nostri</span>
-                <span class="stage-wedge-pill">MONITOR</span>
+                <span class="stage-wedge-pill"><svg class="svg-icon" style="width: 13px; height: 13px; margin-right: 4px; vertical-align: -2px;"><use href="#icon-wedge"></use></svg>MONITOR 4 (DRUM)</span>
               </div>
 
               <!-- Frontline: 3 Musicisti -->
@@ -1238,7 +1453,7 @@
                     <div class="stage-performer-amp">Vox AC30</div>
                   </div>
                   <div>
-                    <span class="stage-wedge-pill">MONITOR</span>
+                    <span class="stage-wedge-pill"><svg class="svg-icon" style="width: 13px; height: 13px; margin-right: 4px; vertical-align: -2px;"><use href="#icon-wedge"></use></svg>MONITOR 2</span>
                   </div>
                 </div>
 
@@ -1249,7 +1464,7 @@
                     <div class="stage-performer-amp">Fender Hot Rod Deluxe</div>
                   </div>
                   <div>
-                    <span class="stage-wedge-pill" style="background: var(--pink-rude);">MONITOR</span>
+                    <span class="stage-wedge-pill" style="background: var(--pink-rude);"><svg class="svg-icon" style="width: 13px; height: 13px; margin-right: 4px; vertical-align: -2px;"><use href="#icon-wedge"></use></svg>MONITOR 1 (LEAD)</span>
                   </div>
                 </div>
 
@@ -1260,7 +1475,7 @@
                     <div class="stage-performer-amp">Hartke HA3500</div>
                   </div>
                   <div>
-                    <span class="stage-wedge-pill">MONITOR</span>
+                    <span class="stage-wedge-pill"><svg class="svg-icon" style="width: 13px; height: 13px; margin-right: 4px; vertical-align: -2px;"><use href="#icon-wedge"></use></svg>MONITOR 3</span>
                   </div>
                 </div>
               </div>
