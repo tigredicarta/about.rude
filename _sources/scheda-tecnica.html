@@ -3,166 +3,830 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RUDE - Scheda tecnica 2026</title>
+<title>RUDE - Scheda tecnica &amp; Stage Plot 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root { --pink:#ff3d8b; --paper:#f4f4f2; --ink:#101010; }
-  @page { size:A4; margin:0; }
-  * { box-sizing:border-box; }
-  body { margin:0; background:#ddd; color:var(--ink); font:9.3pt/1.4 'Courier Prime',Courier,monospace; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-  .sheet { width:210mm; height:297mm; padding:8mm 12mm 0; background:var(--paper); position:relative; break-after:page; }
-  .sheet:last-child { break-after:auto; }
-  header { display:flex; justify-content:space-between; align-items:center; gap:8mm; padding-bottom:2mm; border-bottom:3px solid var(--ink); }
-  .logo { width:56mm; height:auto; display:block; margin-left:-3mm; }
-  .heading { text-align:right; }
-  h1,h2,h3 { font-family:Anton,Impact,sans-serif; font-weight:400; text-transform:uppercase; margin:0; }
-  h1 { font-size:25pt; line-height:1.05; margin-bottom:2mm; }
-  .kicker { font-size:8pt; letter-spacing:.1em; text-transform:uppercase; }
-  .metrics { display:flex; justify-content:space-between; gap:4mm; padding:2mm 0; font-size:8pt; border-bottom:1px solid #b8b8b2; }
-  .metrics b { background:var(--pink); padding:.3mm 1mm; }
-  .columns { display:grid; grid-template-columns:1fr 1.2fr; gap:7mm; margin-top:4mm; }
-  h2 { font-size:17pt; line-height:1.1; margin:0 0 2mm; }
-  h2 .n { font:700 8pt/1 'Courier Prime',monospace; color:var(--paper); background:var(--ink); padding:1mm 1.5mm; vertical-align:1mm; margin-right:2mm; }
-  .lineup { margin-bottom:3mm; }
-  .member { padding:.7mm 0; border-bottom:1px solid #ccc; }
-  .member:last-child { border:0; }
-  .member b { display:block; }
-  .member span { font-size:8.8pt; }
-  .backline-block { margin-bottom:2mm; }
-  h3 { display:inline-block; font-size:12pt; line-height:1.2; padding:.7mm 1.5mm; margin-bottom:2mm; }
-  .ours h3 { background:var(--pink); }
-  .theirs h3 { background:var(--ink); color:var(--paper); }
-  ul { padding:0; margin:0; list-style:none; }
-  .gear li { margin:0 0 .7mm; padding-left:3mm; position:relative; }
-  .gear li::before { content:'-'; position:absolute; left:0; }
-  .gear li b { font-weight:700; }
-  .note { margin-top:3mm; font-size:8.8pt; line-height:1.45; }
-  .note strong { background:var(--pink); padding:0 .6mm; }
-  table { width:100%; border-collapse:collapse; font-size:9pt; line-height:1.35; }
-  th { font-size:7pt; text-transform:uppercase; letter-spacing:.03em; text-align:left; padding:1.5mm 1mm; background:var(--ink); color:var(--paper); }
-  td { padding:1.8mm 1mm; border-bottom:1px solid #c6c6c0; vertical-align:top; }
-  td:first-child { width:7mm; }
-  .ch { display:inline-block; background:var(--pink); padding:.2mm .8mm; font-weight:700; }
-  .group td { background:#e6e6e1; font-size:7pt; text-transform:uppercase; letter-spacing:.07em; font-weight:700; padding:1.3mm 1mm; }
-  .table-note { font-size:8pt; margin:3mm 0 0; line-height:1.45; }
-  .stage-section { margin-top:3mm; }
-  .stage { border:2px solid var(--ink); padding:2mm; }
-  .orientation { display:flex; justify-content:space-between; font-size:7pt; text-transform:uppercase; letter-spacing:.04em; margin-bottom:2mm; }
-  .drums { width:54%; margin:0 auto 2mm; text-align:center; background:var(--pink); padding:1.5mm; }
-  .performers { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm; }
-  .performer { border:1px solid var(--ink); padding:2mm; text-align:center; }
-  .performer.lead { border:2px solid var(--pink); padding:calc(2mm - 1px); }
-  .role { font-family:Anton,Impact,sans-serif; text-transform:uppercase; font-size:11pt; font-weight:400; }
-  .amp { font-size:8pt; }
-  .wedge { display:inline-block; background:var(--ink); color:var(--paper); padding:.5mm 2mm; font-size:6.5pt; text-transform:uppercase; letter-spacing:.06em; margin-top:1.5mm; }
-  .audience { text-align:center; font-size:7pt; letter-spacing:.2em; text-transform:uppercase; padding-top:2.5mm; }
-  footer { position:absolute; bottom:0; left:0; right:0; background:var(--ink); color:var(--paper); padding:3mm 12mm; display:flex; justify-content:space-between; align-items:center; gap:5mm; font-size:8pt; line-height:1.5; }
-  footer .label { font-family:Anton,Impact,sans-serif; font-size:12pt; color:var(--ink); background:var(--pink); display:inline-block; padding:.2mm 1mm; margin-bottom:1mm; }
-  a { color:inherit; text-decoration:none; }
-  footer a { border-bottom:1px solid #777; }
-  .version { text-align:right; font-size:7pt; }
-  .page-stage .stage-section { margin-top:7mm; }
-  .page-stage .stage { padding:5mm; }
-  .page-stage .drums { padding:5mm; margin-bottom:6mm; }
-  .page-stage .performer { padding:5mm 2mm; }
-  .page-stage .performer.lead { padding:calc(5mm - 1px) calc(2mm - 1px); }
-  .page-stage .role { font-size:14pt; }
-  .page-stage .amp { font-size:9pt; }
-  .page-stage .wedge { margin-top:3mm; font-size:8pt; padding:1mm 3mm; }
-  .monitor-section { margin-top:7mm; }
-  .monitor-grid { display:grid; grid-template-columns:1fr 1fr; gap:4mm 6mm; }
-  .monitor-card { border-top:2px solid var(--ink); padding-top:3mm; }
-  .aux { display:inline-block; background:var(--pink); padding:.5mm 1mm; font-weight:700; font-size:8pt; margin-bottom:2mm; }
-  .monitor-card b { display:block; }
-  .monitor-card p { margin:1.5mm 0 0; font-size:9pt; }
-  .vocal-note { margin:5mm 0 0; font-size:9pt; }
+  :root {
+    --pink: #ff3d8b;
+    --paper: #f4f4f2;
+    --ink: #101010;
+  }
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    margin: 0;
+    background: #ccc;
+    color: var(--ink);
+    font: 8.5pt/1.35 'Courier Prime', Courier, monospace;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .sheet {
+    width: 210mm;
+    height: 297mm;
+    padding: 8mm 12mm 0;
+    background: var(--paper);
+    position: relative;
+    break-after: page;
+    overflow: hidden;
+  }
+  .sheet:last-child {
+    break-after: auto;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8mm;
+    padding-bottom: 2mm;
+    border-bottom: 3px solid var(--ink);
+  }
+  .logo {
+    width: 54mm;
+    height: auto;
+    display: block;
+    margin-left: -3mm;
+  }
+  .heading {
+    text-align: right;
+  }
+  h1, h2, h3 {
+    font-family: Anton, Impact, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-size: 23pt;
+    line-height: 1.05;
+    margin-bottom: 1.5mm;
+    letter-spacing: 0.02em;
+  }
+  .kicker {
+    font-size: 7.8pt;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .metrics {
+    display: flex;
+    justify-content: space-between;
+    gap: 4mm;
+    padding: 1.8mm 0;
+    font-size: 7.8pt;
+    border-bottom: 1px solid #b8b8b2;
+  }
+  .metrics b {
+    background: var(--pink);
+    padding: .2mm 1mm;
+    color: var(--ink);
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 6mm;
+    margin-top: 3.5mm;
+  }
+
+  h2 {
+    font-size: 15pt;
+    line-height: 1.1;
+    margin-bottom: 2mm;
+  }
+  h2 .n {
+    font: 700 7.5pt/1 'Courier Prime', monospace;
+    color: var(--paper);
+    background: var(--ink);
+    padding: .8mm 1.2mm;
+    vertical-align: .8mm;
+    margin-right: 1.5mm;
+  }
+
+  .lineup {
+    margin-bottom: 2.5mm;
+  }
+  .member {
+    padding: .7mm 0;
+    border-bottom: 1px solid #ccc;
+    font-size: 8pt;
+  }
+  .member:last-child {
+    border: 0;
+  }
+  .member b {
+    display: block;
+    font-size: 8.3pt;
+  }
+  .member span {
+    font-size: 7.8pt;
+    color: #333;
+  }
+
+  .backline-block {
+    margin-bottom: 2mm;
+  }
+  h3 {
+    display: inline-block;
+    font-size: 10.5pt;
+    line-height: 1.2;
+    padding: .5mm 1.5mm;
+    margin-bottom: 1.5mm;
+  }
+  .ours h3 {
+    background: var(--pink);
+  }
+  .theirs h3 {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  ul.gear {
+    list-style: none;
+  }
+  .gear li {
+    margin: 0 0 .6mm;
+    padding-left: 2.8mm;
+    position: relative;
+    font-size: 7.8pt;
+    line-height: 1.3;
+  }
+  .gear li::before {
+    content: '-';
+    position: absolute;
+    left: 0;
+  }
+  .gear li b {
+    font-weight: 700;
+  }
+
+  .note {
+    margin-top: 2.5mm;
+    font-size: 7.8pt;
+    line-height: 1.35;
+    background: #fff;
+    border: 1px solid var(--ink);
+    padding: 1.5mm 2mm;
+  }
+  .note strong {
+    background: var(--pink);
+    padding: 0 .6mm;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8pt;
+    line-height: 1.22;
+  }
+  th {
+    font-size: 6.6pt;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    text-align: left;
+    padding: 1.2mm 1mm;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  td {
+    padding: 1.2mm 1mm;
+    border-bottom: 1px solid #c6c6c0;
+    vertical-align: middle;
+  }
+  td:first-child {
+    width: 6.5mm;
+  }
+
+  .ch {
+    display: inline-block;
+    background: var(--pink);
+    padding: .2mm .6mm;
+    font-weight: 700;
+    font-size: 7.4pt;
+    line-height: 1;
+  }
+  .group td {
+    background: #e6e6e1;
+    font-size: 6.6pt;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    font-weight: 700;
+    padding: 1mm 1mm;
+  }
+
+  .src-title {
+    font-weight: 700;
+    display: block;
+    line-height: 1.15;
+  }
+  .src-sub {
+    font-size: 6.8pt;
+    color: #444;
+    display: block;
+  }
+
+  .mic-cell {
+    display: flex;
+    align-items: center;
+    gap: 1.2mm;
+    white-space: nowrap;
+  }
+  .mic-icon {
+    width: 3.4mm;
+    height: 3.4mm;
+    flex-shrink: 0;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2.6mm 12mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5mm;
+    font-size: 7.5pt;
+    line-height: 1.4;
+  }
+  footer .label {
+    font-family: Anton, Impact, sans-serif;
+    font-size: 10.5pt;
+    color: var(--ink);
+    background: var(--pink);
+    display: inline-block;
+    padding: .1mm .8mm;
+    margin-bottom: .6mm;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  footer a {
+    border-bottom: 1px solid #777;
+  }
+  .version {
+    text-align: right;
+    font-size: 6.8pt;
+    letter-spacing: 0.04em;
+  }
+
+  /* Pagina 2 - Stage Plot & Monitor */
+  .page-stage .stage-section {
+    margin-top: 4mm;
+  }
+  .page-stage .stage {
+    border: 2px solid var(--ink);
+    padding: 3mm;
+    background: #fff;
+  }
+  .page-stage .orientation {
+    display: flex;
+    justify-content: space-between;
+    font-size: 6.8pt;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: 2mm;
+    color: #555;
+    font-weight: 700;
+  }
+  .page-stage .drums {
+    width: 52%;
+    margin: 0 auto 3.5mm;
+    text-align: center;
+    background: var(--pink);
+    border: 1.5px solid var(--ink);
+    padding: 2.5mm 2mm;
+  }
+  .page-stage .performers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3mm;
+  }
+  .page-stage .performer {
+    border: 1.5px solid var(--ink);
+    padding: 2.5mm 1.5mm;
+    text-align: center;
+    background: var(--paper);
+  }
+  .page-stage .performer.lead {
+    border: 2px solid var(--pink);
+    background: #fff;
+  }
+  .page-stage .role {
+    font-family: Anton, Impact, sans-serif;
+    text-transform: uppercase;
+    font-size: 11.5pt;
+    font-weight: 400;
+    line-height: 1.1;
+  }
+  .page-stage .amp {
+    font-size: 7.5pt;
+    margin-top: 1mm;
+    color: #222;
+  }
+  .page-stage .wedge {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    padding: .4mm 1.8mm;
+    font-size: 6.4pt;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-top: 2mm;
+    font-weight: 700;
+  }
+  .page-stage .audience {
+    text-align: center;
+    font-size: 6.8pt;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    padding-top: 2.5mm;
+    border-top: 1px dashed #bbb;
+    margin-top: 3.5mm;
+    font-weight: 700;
+  }
+
+  .monitor-section {
+    margin-top: 4.5mm;
+  }
+  .monitor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm 5mm;
+  }
+  .monitor-card {
+    border-top: 2px solid var(--ink);
+    padding-top: 2mm;
+  }
+  .aux {
+    display: inline-block;
+    background: var(--pink);
+    padding: .3mm .8mm;
+    font-weight: 700;
+    font-size: 7.2pt;
+    margin-bottom: 1mm;
+    color: var(--ink);
+  }
+  .monitor-card b {
+    display: block;
+    font-size: 8.2pt;
+  }
+  .monitor-card p {
+    margin: 1mm 0 0;
+    font-size: 7.8pt;
+    line-height: 1.35;
+    color: #222;
+  }
+
+  .tech-notes {
+    margin-top: 3.5mm;
+    border: 1px solid var(--ink);
+    background: #fff;
+    padding: 2mm 3mm;
+    font-size: 7.6pt;
+    line-height: 1.35;
+  }
+  .tech-notes b {
+    background: var(--pink);
+    padding: 0 .6mm;
+  }
 </style>
 </head>
 <body>
+
+<!-- SVG Defs Symbols Sprite -->
+<svg style="display: none;" aria-hidden="true">
+  <!-- SM58 Vocal -->
+  <symbol id="icon-mic-vocal" viewBox="0 0 24 24">
+    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+    <line x1="12" y1="19" x2="12" y2="22"/>
+    <line x1="8" y1="22" x2="16" y2="22"/>
+  </symbol>
+
+  <!-- SM57 Instrument -->
+  <symbol id="icon-mic-inst" viewBox="0 0 24 24">
+    <rect x="9" y="2" width="6" height="4" rx="1"/>
+    <rect x="9.5" y="6" width="5" height="11"/>
+    <line x1="12" y1="17" x2="12" y2="22"/>
+    <line x1="8.5" y1="22" x2="15.5" y2="22"/>
+  </symbol>
+
+  <!-- Condenser Pencil / C414 -->
+  <symbol id="icon-mic-condenser" viewBox="0 0 24 24">
+    <rect x="10" y="2" width="4" height="15" rx="1"/>
+    <line x1="10" y1="6" x2="14" y2="6"/>
+    <line x1="12" y1="17" x2="12" y2="22"/>
+    <line x1="8" y1="22" x2="16" y2="22"/>
+  </symbol>
+
+  <!-- Kick Mic (Egg / D112) -->
+  <symbol id="icon-mic-kick" viewBox="0 0 24 24">
+    <ellipse cx="12" cy="11" rx="6" ry="7"/>
+    <line x1="6" y1="11" x2="18" y2="11"/>
+    <line x1="12" y1="18" x2="12" y2="22"/>
+    <line x1="8" y1="22" x2="16" y2="22"/>
+  </symbol>
+
+  <!-- Drum Clip Mic -->
+  <symbol id="icon-mic-clip" viewBox="0 0 24 24">
+    <rect x="11" y="4" width="4.5" height="8" rx="1.5" transform="rotate(25 13 8)"/>
+    <path d="M7 16c2-4 5-3 5-3"/>
+    <rect x="4" y="16" width="5" height="4" rx="1"/>
+  </symbol>
+
+  <!-- D.I. Box -->
+  <symbol id="icon-bass-di" viewBox="0 0 24 24">
+    <rect x="3" y="5" width="18" height="14" rx="2"/>
+    <circle cx="7" cy="12" r="2"/>
+    <circle cx="17" cy="12" r="1.5"/>
+    <line x1="12" y1="8" x2="12" y2="16"/>
+  </symbol>
+
+  <!-- Lucide Guitar / Bass -->
+  <symbol id="icon-guitar" viewBox="0 0 24 24">
+    <path d="m11.9 12.1 4.514-4.514"/>
+    <path d="M20.1 2.3a1 1 0 0 0-1.4 0l-1.114 1.114A2 2 0 0 0 17 4.828v1.344a2 2 0 0 1-.586 1.414A2 2 0 0 1 17.828 7h1.344a2 2 0 0 0 1.414-.586L21.7 5.3a1 1 0 0 0 0-1.4z"/>
+    <path d="m6 16 2 2"/>
+    <path d="M8.23 9.85A3 3 0 0 1 11 8a5 5 0 0 1 5 5 3 3 0 0 1-1.85 2.77l-.92.38A2 2 0 0 0 12 18a4 4 0 0 1-4 4 6 6 0 0 1-6-6 4 4 0 0 1 4-4 2 2 0 0 0 1.85-1.23z"/>
+  </symbol>
+</svg>
+
+<!-- PAGINA 1: SCHEDA TECNICA & INPUT LIST -->
 <main class="sheet">
   <header>
     <img class="logo" src="../assets/rude-logo-rosa.png" alt="RUDE">
-    <div class="heading"><h1>Scheda tecnica<br>&amp; input list</h1><div class="kicker">Garage / post-punk · Milano</div></div>
+    <div class="heading">
+      <h1>Scheda tecnica<br>&amp; input list</h1>
+      <div class="kicker">Garage / post-punk · Milano</div>
+    </div>
   </header>
-  <div class="metrics"><span><b>4 elementi</b> · 2 chitarre, basso, batteria</span><span><b>12 canali</b> · 3 voci</span><span><b>4 monitor</b> · uno per musicista</span></div>
+
+  <div class="metrics">
+    <span><b>4 elementi</b> · 2 chitarre, basso, batteria</span>
+    <span><b>12 canali</b> · 3 voci</span>
+    <span><b>4 monitor</b> · uno per musicista</span>
+  </div>
 
   <div class="columns">
     <div>
-      <section class="lineup"><h2><span class="n">01</span>Formazione</h2>
-        <div class="member"><b>Voce principale + chitarra 1</b><span>Fender Hot Rod Deluxe - microfonato</span></div>
-        <div class="member"><b>Chitarra 2 + cori</b><span>Vox AC30 - microfonato</span></div>
-        <div class="member"><b>Basso + seconda voce</b><span>Hartke HA3500 + Transporter - DI o mic</span></div>
-        <div class="member"><b>Batteria</b><span>Rullante, piatti e pedale propri</span></div>
+      <section class="lineup">
+        <h2><span class="n">01</span>Formazione</h2>
+        <div class="member">
+          <b>Voce principale + chitarra 1 (Lorenzo)</b>
+          <span>Fender Hot Rod Deluxe — microfonato</span>
+        </div>
+        <div class="member">
+          <b>Chitarra 2 + cori (Francesco C)</b>
+          <span>Vox AC30 — microfonato</span>
+        </div>
+        <div class="member">
+          <b>Basso + seconda voce (Francesco P)</b>
+          <span>Hartke HA3500 + Transporter — D.I. o mic</span>
+        </div>
+        <div class="member">
+          <b>Batteria (Adriano)</b>
+          <span>Rullante, piatti e pedale cassa propri</span>
+        </div>
       </section>
-      <section><h2><span class="n">02</span>Backline</h2>
-        <div class="backline-block ours"><h3>Portiamo noi</h3><ul class="gear">
-          <li><b>Chitarra 1:</b> Fender Hot Rod Deluxe.</li>
-          <li><b>Chitarra 2:</b> Vox AC30.</li>
-          <li><b>Basso:</b> Hartke HA3500 (350W @4Ω) + Transporter (300W, 4 coni).</li>
-          <li>Rullante, piatti e pedale cassa.</li>
-        </ul></div>
-        <div class="backline-block theirs"><h3>Serve dal locale</h3><ul class="gear">
-          <li><b>Batteria:</b> cassa, 1 tom e 1 timpano; senza rullante e piatti.</li>
-          <li><b>Aste piatti:</b> 2 crash, 1 ride, 1 hi-hat + asta rullante.</li>
-          <li><b>Aste microfono:</b> 3 a giraffa (voci) + 2 per gli ampli chitarra.</li>
-          <li><b>Microfoni:</b> 3 × SM58, 2 × SM57, kit batteria.</li>
-          <li><b>Monitor:</b> uno per musicista, batteria inclusa.</li>
-        </ul></div>
-        <p class="note"><strong>Ampli condivisibili.</strong> Portiamo i nostri o usiamo ampli simili del locale/altre band. Concordare in anticipo.</p>
+
+      <section>
+        <h2><span class="n">02</span>Backline</h2>
+        <div class="backline-block ours">
+          <h3>Portiamo noi</h3>
+          <ul class="gear">
+            <li><b>Chitarra 1:</b> Fender Hot Rod Deluxe (combo valvolare).</li>
+            <li><b>Chitarra 2:</b> Vox AC30 (combo valvolare).</li>
+            <li><b>Basso:</b> Hartke HA3500 (350W @4Ω) + Transporter (4×10").</li>
+            <li><b>Batteria:</b> rullante, piatti e pedale cassa.</li>
+          </ul>
+        </div>
+        <div class="backline-block theirs">
+          <h3>Serve dal locale</h3>
+          <ul class="gear">
+            <li><b>Batteria:</b> cassa, 1 tom, 1 timpano (fusti + pelli).</li>
+            <li><b>Aste piatti:</b> 2 crash, 1 ride, 1 hi-hat + asta rullante.</li>
+            <li><b>Aste microfono:</b> 3 a giraffa (voci) + 2 per gli ampli chitarra.</li>
+            <li><b>Microfoni:</b> 3 × SM58, 2 × SM57, kit microfoni batteria.</li>
+            <li><b>Monitoraggio:</b> 4 monitor indipendenti (batteria inclusa).</li>
+          </ul>
+        </div>
+        <p class="note">
+          <strong>Ampli condivisibili.</strong> Portiamo i nostri ampli o utilizziamo volentieri backline equivalente già presente sul palco per velocizzare il cambio palco. Concordare in anticipo.
+        </p>
       </section>
     </div>
-    <section><h2><span class="n">03</span>Input list</h2>
+
+    <section>
+      <h2><span class="n">03</span>Input list</h2>
       <table aria-label="Input list dodici canali">
-        <thead><tr><th>CH</th><th>Sorgente</th><th>Microfono</th></tr></thead>
+        <thead>
+          <tr>
+            <th>CH</th>
+            <th>Sorgente</th>
+            <th>Microfono / D.I.</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr class="group"><td colspan="3">Voci e chitarre</td></tr>
-          <tr><td><span class="ch">01</span></td><td>Voce principale<br><small>Centro · asta a giraffa</small></td><td>SM58</td></tr>
-          <tr><td><span class="ch">02</span></td><td>Chitarra 1<br><small>Hot Rod Deluxe · asta a giraffa</small></td><td>SM57</td></tr>
-          <tr><td><span class="ch">03</span></td><td>Chitarra 2<br><small>Vox AC30 · asta a giraffa</small></td><td>SM57</td></tr>
-          <tr><td><span class="ch">04</span></td><td>Voce seconda<br><small>Destra · asta a giraffa</small></td><td>SM58</td></tr>
-          <tr><td><span class="ch">05</span></td><td>Voce cori - Francesco C<br><small>Sinistra · chitarra 2 · asta a giraffa</small></td><td>SM58</td></tr>
-          <tr><td><span class="ch">06</span></td><td>Basso - Hartke<br><small>DI preferita</small></td><td>DI o<br>D112 / Beta 52</td></tr>
-          <tr class="group"><td colspan="3">Batteria</td></tr>
-          <tr><td><span class="ch">07</span></td><td>Cassa</td><td>D112 / Beta 52</td></tr>
-          <tr><td><span class="ch">08</span></td><td>Rullante<br><small>Nostro</small></td><td>SM57</td></tr>
-          <tr><td><span class="ch">09</span></td><td>Tom<br><small>Del locale</small></td><td>Clip</td></tr>
-          <tr><td><span class="ch">10</span></td><td>Timpano<br><small>Del locale</small></td><td>Clip</td></tr>
-          <tr><td><span class="ch">11</span></td><td>Overhead L</td><td>Condensatore</td></tr>
-          <tr><td><span class="ch">12</span></td><td>Overhead R</td><td>Condensatore</td></tr>
+          <tr class="group"><td colspan="3">Voci e chitarre frontali</td></tr>
+          <tr>
+            <td><span class="ch">01</span></td>
+            <td>
+              <span class="src-title">Voce principale (Lorenzo)</span>
+              <span class="src-sub">Centro · asta a giraffa</span>
+            </td>
+            <td>
+              <div class="mic-cell">
+                <svg class="mic-icon"><use href="#icon-mic-vocal"/></svg>
+                <span>SM58</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="ch">02</span></td>
+            <td>
+              <span class="src-title">Chitarra 1 (Lorenzo)</span>
+              <span class="src-sub">Fender Hot Rod Deluxe · asta giraffa</span>
+            </td>
+            <td>
+              <div class="mic-cell">
+                <svg class="mic-icon"><use href="#icon-mic-inst"/></svg>
+                <span>SM57</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="ch">03</span></td>
+            <td>
+              <span class="src-title">Chitarra 2 (Francesco C)</span>
+              <span class="src-sub">Vox AC30 · asta giraffa</span>
+            </td>
+            <td>
+              <div class="mic-cell">
+                <svg class="mic-icon"><use href="#icon-mic-inst"/></svg>
+                <span>SM57</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="ch">04</span></td>
+            <td>
+              <span class="src-title">Voce seconda (Francesco P)</span>
+              <span class="src-sub">Destra · asta a giraffa</span>
+            </td>
+            <td>
+              <div class="mic-cell">
+                <svg class="mic-icon"><use href="#icon-mic-vocal"/></svg>
+                <span>SM58</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="ch">05</span></td>
+            <td>
+              <span class="src-title">Voce cori (Francesco C)</span>
+              <span class="src-sub">Sinistra · asta a giraffa</span>
+            </td>
+            <td>
+              <div class="mic-cell">
+                <svg class="mic-icon"><use href="#icon-mic-vocal"/></svg>
+                <span>SM58</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="ch">06</span></td>
+            <td>
+              <span class="src-title">Basso (Francesco P)</span>
+              <span class="src-sub">Hartke HA3500 · D.I. preferita</span>
+            </td>
+            <td>
+              <div class="mic-cell">
+                <svg class="mic-icon"><use href="#icon-bass-di"/></svg>
+                <span>D.I. / Beta 52</span>
+              </div>
+            </td>
+          </tr>
+
+          <tr class="group"><td colspan="3">Batteria (Adriano)</td></tr>
+          <tr>
+            <td><span class="ch">07</span></td>
+            <td>
+              <span class="src-title">Cassa</span>
+              <span class="src-sub">Asta corta</span>
+            </td>
+            <td>
+              <div class="mic-cell">
+                <svg class="mic-icon"><use href="#icon-mic-kick"/></svg>
+                <span>D112 / Beta 52</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="ch">08</span></td>
+            <td>
+              <span class="src-title">Rullante</span>
+              <span class="src-sub">Top · nostro</span>
+            </td>
+            <td>
+              <div class="mic-cell">
+                <svg class="mic-icon"><use href="#icon-mic-inst"/></svg>
+                <span>SM57</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="ch">09</span></td>
+            <td>
+              <span class="src-title">Rack Tom</span>
+              <span class="src-sub">Fusto locale</span>
+            </td>
+            <td>
+              <div class="mic-cell">
+                <svg class="mic-icon"><use href="#icon-mic-clip"/></svg>
+                <span>Clip (e604)</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="ch">10</span></td>
+            <td>
+              <span class="src-title">Floor Tom</span>
+              <span class="src-sub">Fusto locale</span>
+            </td>
+            <td>
+              <div class="mic-cell">
+                <svg class="mic-icon"><use href="#icon-mic-clip"/></svg>
+                <span>Clip (e604)</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="ch">11</span></td>
+            <td>
+              <span class="src-title">Overhead L</span>
+              <span class="src-sub">Asta alta</span>
+            </td>
+            <td>
+              <div class="mic-cell">
+                <svg class="mic-icon"><use href="#icon-mic-condenser"/></svg>
+                <span>Cond. (+48V)</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="ch">12</span></td>
+            <td>
+              <span class="src-title">Overhead R</span>
+              <span class="src-sub">Asta alta</span>
+            </td>
+            <td>
+              <div class="mic-cell">
+                <svg class="mic-icon"><use href="#icon-mic-condenser"/></svg>
+                <span>Cond. (+48V)</span>
+              </div>
+            </td>
+          </tr>
         </tbody>
       </table>
     </section>
   </div>
+
   <footer>
-    <div><span class="label">Contatti live</span><br><a href="tel:+393497254732">Lorenzo · 349 725 4732</a></div>
-    <div><a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a><br><a href="https://www.instagram.com/about.rude/">Instagram @about.rude</a></div>
-    <div class="version">RUDE · Milano<br>Ottobre 2026 · 1 / 2</div>
+    <div>
+      <span class="label">Contatti live</span><br>
+      <a href="tel:+393497254732">Lorenzo · 349 725 4732</a>
+    </div>
+    <div>
+      <a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a><br>
+      <a href="https://www.instagram.com/about.rude/">Instagram @about.rude</a>
+    </div>
+    <div class="version">
+      RUDE · Milano<br>
+      Live 2026 · 1 / 2
+    </div>
   </footer>
 </main>
+
+<!-- PAGINA 2: STAGE PLOT & MONITORAGGIO -->
 <main class="sheet page-stage">
   <header>
     <img class="logo" src="../assets/rude-logo-rosa.png" alt="RUDE">
-    <div class="heading"><h1>Stage plot</h1><div class="kicker">4 elementi · 3 voci · 4 monitor</div></div>
+    <div class="heading">
+      <h1>Stage plot</h1>
+      <div class="kicker">4 elementi · 3 voci · 4 monitor</div>
+    </div>
   </header>
-  <section class="stage-section"><h2><span class="n">04</span>Disposizione palco</h2>
+
+  <section class="stage-section">
+    <h2><span class="n">04</span>Disposizione palco</h2>
     <div class="stage">
-      <div class="orientation"><span>Sinistra fonico</span><span>Retropalco</span><span>Destra fonico</span></div>
-      <div class="drums"><div class="role">Batteria</div><div class="amp">Cassa, tom, timpano del locale · rullante e piatti nostri</div><div class="wedge">Monitor</div></div>
-      <div class="performers">
-        <div class="performer"><div class="role">Chitarra 2 + cori</div><div class="amp">Vox AC30</div><div class="wedge">Monitor</div></div>
-        <div class="performer lead"><div class="role">Voce 1 + chitarra 1</div><div class="amp">Fender Hot Rod Deluxe</div><div class="wedge">Monitor</div></div>
-        <div class="performer"><div class="role">Basso + voce 2</div><div class="amp">Hartke HA3500</div><div class="wedge">Monitor</div></div>
+      <div class="orientation">
+        <span>Sinistra fonico (Stage Right)</span>
+        <span>Retropalco</span>
+        <span>Destra fonico (Stage Left)</span>
       </div>
-      <div class="audience">Pubblico</div>
+
+      <div class="drums">
+        <div class="role">Batteria (Adriano)</div>
+        <div class="amp">Cassa, tom, timpano del locale · rullante e piatti propri</div>
+        <div class="wedge">Monitor AUX 4</div>
+      </div>
+
+      <div class="performers">
+        <div class="performer">
+          <div class="role">Chitarra 2 + cori</div>
+          <div style="font-weight: 700; font-size: 7.8pt; margin-top: .5mm;">Francesco C</div>
+          <div class="amp">Ampli: Vox AC30</div>
+          <div class="wedge">Monitor AUX 2</div>
+        </div>
+
+        <div class="performer lead">
+          <div class="role" style="color: var(--pink);">Voce 1 + Chitarra 1</div>
+          <div style="font-weight: 700; font-size: 8.2pt; margin-top: .5mm;">Lorenzo (Lead)</div>
+          <div class="amp">Ampli: Fender Hot Rod Deluxe</div>
+          <div class="wedge" style="background: var(--pink); color: var(--ink);">Monitor AUX 1</div>
+        </div>
+
+        <div class="performer">
+          <div class="role">Basso + Voce 2</div>
+          <div style="font-weight: 700; font-size: 7.8pt; margin-top: .5mm;">Francesco P</div>
+          <div class="amp">Testata Hartke + Cassa 4×10"</div>
+          <div class="wedge">Monitor AUX 3</div>
+        </div>
+      </div>
+
+      <div class="audience">Front Stage // Pubblico</div>
     </div>
   </section>
+
+  <section class="monitor-section">
+    <h2><span class="n">05</span>Monitoraggio &amp; Mix Palco</h2>
+    <div class="monitor-grid">
+      <div class="monitor-card">
+        <span class="aux">AUX 1 — Centro (Lorenzo)</span>
+        <b>Voce principale + Chitarra 1</b>
+        <p>Priorità assoluta a Voce 1 (forte e chiara) e Chitarra 1. Livello moderato di Chitarra 2 e Voce 2 per intonazione. Nessuna batteria necessaria nel monitor.</p>
+      </div>
+
+      <div class="monitor-card">
+        <span class="aux">AUX 2 — Sinistra fonico (Francesco C)</span>
+        <b>Chitarra 2 + Cori</b>
+        <p>Propria chitarra (Vox AC30) ben presente, Voce principale (Lorenzo) come riferimento dinamico, propri cori (Voce 5) a volume medio.</p>
+      </div>
+
+      <div class="monitor-card">
+        <span class="aux">AUX 3 — Destra fonico (Francesco P)</span>
+        <b>Basso + Voce seconda</b>
+        <p>Basso chiaro e definito, propria voce (Voce 4), Voce principale di riferimento. Cassa leggera se il palco è dispersivo.</p>
+      </div>
+
+      <div class="monitor-card">
+        <span class="aux">AUX 4 — Batteria (Adriano)</span>
+        <b>Batteria (Ascolto generale)</b>
+        <p>Mix bilanciato con Voce 1 e Voce 2 ben definite come guida ritmica del brano, Chitarra 1 e Basso per il timing.</p>
+      </div>
+    </div>
+
+    <div class="tech-notes">
+      <b>Alimentazione elettrica:</b> Richieste 4 linee 220V standard (una per postazione musicista; ciabatte fornite dalla band).<br>
+      <b>Condivisione ampli:</b> Valutabile l'uso di backline condiviso previo accordo tecnico con il service / altre band della serata.
+    </div>
+  </section>
+
   <footer>
-    <div><span class="label">Contatti live</span><br><a href="tel:+393497254732">Lorenzo · 349 725 4732</a></div>
-    <div><a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a><br><a href="https://www.instagram.com/about.rude/">Instagram @about.rude</a></div>
-    <div class="version">RUDE · Milano<br>Ottobre 2026 · 2 / 2</div>
+    <div>
+      <span class="label">Contatti live</span><br>
+      <a href="tel:+393497254732">Lorenzo · 349 725 4732</a>
+    </div>
+    <div>
+      <a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a><br>
+      <a href="https://www.instagram.com/about.rude/">Instagram @about.rude</a>
+    </div>
+    <div class="version">
+      RUDE · Milano<br>
+      Live 2026 · 2 / 2
+    </div>
   </footer>
 </main>
+
 </body>
 </html>
