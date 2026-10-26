@@ -57,7 +57,7 @@ html.dark body::before { display: none; }
 .credits-text { opacity: .75; font-size: .75rem; margin-top: 1.5rem; }
 .split-action-row .btn-rude-black { background: transparent; color: inherit; border: 1px solid currentColor; font-weight: 600; font-size: .75rem; }
 .split-action-row .btn-rude-black:hover { background: #0a0a0b; color: #f4f4f0; transform: translateY(-2px); }
-.live-hero-overlay-title { font-size: clamp(2rem, 5vw, 4rem); text-shadow: 0 2px 18px #000; }
+.live-hero-overlay-title { font-size: clamp(2rem, 5vw, 4rem); text-shadow: none; }
 .venues-table td { border-bottom: 1px solid #d1d1ca; }
 .venues-table tr:last-child td { border: 0; }
 .strip-photo-item { border: 0; }

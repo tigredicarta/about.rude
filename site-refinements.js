@@ -50,4 +50,64 @@ if (riderTitle) {
   });
   document.querySelector('.rider-header-section .container').append(nav);
 }
+
+// Titoli in sequenza, come righe di una locandina che prendono posto.
+const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+if ('IntersectionObserver' in window) {
+  const titles = document.querySelectorAll('.bio-headline, .release-title-giant');
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add('is-in-view');
+      observer.unobserve(entry.target);
+    }
+  }, { threshold: 0.2 });
+  titles.forEach(title => {
+    const lines = title.innerHTML.split(/<br\s*\/?\s*>/i);
+    title.replaceChildren();
+    lines.forEach((line, index) => {
+      const outer = document.createElement('span');
+      const inner = document.createElement('span');
+      outer.className = 'title-line';
+      inner.className = 'title-line-inner';
+      inner.textContent = line.replace(/<[^>]*>/g, '').trim();
+      inner.style.setProperty('--line-delay', `${index * 90}ms`);
+      outer.append(inner);
+      title.append(outer);
+      if (index < lines.length - 1) title.append(document.createTextNode(' '));
+    });
+    title.classList.add('type-reveal');
+    observer.observe(title);
+  });
+}
+
+// Movimento fisico delle copertine, limitato al mouse e disattivato a richiesta.
+const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+const sleeves = document.querySelectorAll('.vinyl-sleeve-card');
+const resetSleeve = sleeve => {
+  sleeve.classList.remove('is-tilting');
+  sleeve.style.removeProperty('--tilt-x');
+  sleeve.style.removeProperty('--tilt-y');
+};
+sleeves.forEach(sleeve => {
+  let frame = 0;
+  sleeve.addEventListener('pointermove', event => {
+    if (motionPreference.matches || !finePointer.matches) return;
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => {
+      const box = sleeve.getBoundingClientRect();
+      const x = Math.max(-1, Math.min(1, ((event.clientX - box.left) / box.width - .5) * 2));
+      const y = Math.max(-1, Math.min(1, ((event.clientY - box.top) / box.height - .5) * 2));
+      sleeve.style.setProperty('--tilt-x', `${-y * 3}deg`);
+      sleeve.style.setProperty('--tilt-y', `${x * 3}deg`);
+      sleeve.classList.add('is-tilting');
+    });
+  });
+  sleeve.addEventListener('pointerleave', () => { cancelAnimationFrame(frame); resetSleeve(sleeve); });
+});
+motionPreference.addEventListener('change', () => {
+  sleeves.forEach(resetSleeve);
+  if (motionPreference.matches) document.querySelectorAll('.type-reveal').forEach(t => t.classList.add('is-in-view'));
+});
+
 })();
