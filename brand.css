@@ -180,3 +180,103 @@
 .cover-card-img {
   transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
+
+/* ==========================================================================
+   Calibrazione Tipografica & Leggibilità (Font Sizes Potenziati)
+   ========================================================================== */
+
+/* 1. Header & Navigazione */
+.hero-inline-link, .nav-link {
+  font-size: 0.95rem !important;
+}
+.btn-hero-epk-pill, .btn-epk-nav {
+  font-size: 0.88rem !important;
+  padding: 0.55rem 0.85rem !important;
+}
+
+/* 2. Bio & Manifesto */
+.bio-body-text p {
+  font-size: 1.12rem !important;
+  line-height: 1.75 !important;
+}
+.bio-lineup-row {
+  font-size: 0.95rem !important;
+}
+.bio-actions-row .btn-bio-primary {
+  font-size: 0.95rem !important;
+  padding: 0.75rem 1.25rem !important;
+}
+
+/* 3. Discografia & Tracklist */
+.split-meta-header .badge-dark-tag:first-child {
+  font-size: 0.82rem !important;
+  padding: 0.2rem 0.6rem !important;
+}
+.split-subtitle {
+  font-size: 1.05rem !important;
+}
+.track-column-title {
+  font-size: 0.88rem !important;
+}
+.track-list li {
+  font-size: 0.98rem !important;
+}
+.credits-text {
+  font-size: 0.88rem !important;
+  line-height: 1.6 !important;
+}
+.split-action-row .btn-rude-black {
+  font-size: 0.92rem !important;
+  padding: 0.7rem 1.15rem !important;
+}
+
+/* 4. Live & Locali */
+.venues-sidebar-title {
+  font-size: 0.95rem !important;
+}
+.venue-city-cell {
+  font-size: 0.95rem !important;
+}
+.venues-other-list {
+  font-size: 0.98rem !important;
+}
+
+/* 5. Footer & Contatti */
+.site-footer p {
+  font-size: 0.98rem !important;
+}
+.info-list-links li, .info-list-links a {
+  font-size: 1.02rem !important;
+}
+.footer-bottom-bar {
+  font-size: 0.88rem !important;
+}
+
+/* 6. Scheda Tecnica & Stage Plot Leggibilità */
+.input-list-table th, .input-list-table td {
+  font-size: 0.88rem !important;
+  padding: 0.65rem 0.75rem !important;
+}
+.stage-performer-amp {
+  font-size: 0.82rem !important;
+}
+.rider-section-nav a {
+  font-size: 0.88rem !important;
+}
+
+@media (max-width: 768px) {
+  .hero-inline-link, .nav-link {
+    font-size: 0.85rem !important;
+  }
+  .btn-hero-epk-pill {
+    font-size: 0.8rem !important;
+  }
+  .bio-body-text p {
+    font-size: 1.02rem !important;
+    line-height: 1.7 !important;
+  }
+  .stage-performer-amp {
+    font-size: 0.78rem !important;
+  }
+}
+
