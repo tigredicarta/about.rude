@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RUDE - Scheda tecnica 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --pink:#ff3d8b; --paper:#f4f4f2; --ink:#101010; }
+  @page { size:A4; margin:0; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#ddd; color:var(--ink); font:9.3pt/1.4 'Courier Prime',Courier,monospace; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .sheet { width:210mm; height:297mm; padding:8mm 12mm 0; background:var(--paper); position:relative; break-after:page; }
+  .sheet:last-child { break-after:auto; }
+  header { display:flex; justify-content:space-between; align-items:center; gap:8mm; padding-bottom:2mm; border-bottom:3px solid var(--ink); }
+  .logo { width:56mm; height:auto; display:block; margin-left:-3mm; }
+  .heading { text-align:right; }
+  h1,h2,h3 { font-family:Anton,Impact,sans-serif; font-weight:400; text-transform:uppercase; margin:0; }
+  h1 { font-size:25pt; line-height:1.05; margin-bottom:2mm; }
+  .kicker { font-size:8pt; letter-spacing:.1em; text-transform:uppercase; }
+  .metrics { display:flex; justify-content:space-between; gap:4mm; padding:2mm 0; font-size:8pt; border-bottom:1px solid #b8b8b2; }
+  .metrics b { background:var(--pink); padding:.3mm 1mm; }
+  .columns { display:grid; grid-template-columns:1fr 1.2fr; gap:7mm; margin-top:4mm; }
+  h2 { font-size:17pt; line-height:1.1; margin:0 0 2mm; }
+  h2 .n { font:700 8pt/1 'Courier Prime',monospace; color:var(--paper); background:var(--ink); padding:1mm 1.5mm; vertical-align:1mm; margin-right:2mm; }
+  .lineup { margin-bottom:3mm; }
+  .member { padding:.7mm 0; border-bottom:1px solid #ccc; }
+  .member:last-child { border:0; }
+  .member b { display:block; }
+  .member span { font-size:8.8pt; }
+  .backline-block { margin-bottom:2mm; }
+  h3 { display:inline-block; font-size:12pt; line-height:1.2; padding:.7mm 1.5mm; margin-bottom:2mm; }
+  .ours h3 { background:var(--pink); }
+  .theirs h3 { background:var(--ink); color:var(--paper); }
+  ul { padding:0; margin:0; list-style:none; }
+  .gear li { margin:0 0 .7mm; padding-left:3mm; position:relative; }
+  .gear li::before { content:'-'; position:absolute; left:0; }
+  .gear li b { font-weight:700; }
+  .note { margin-top:3mm; font-size:8.8pt; line-height:1.45; }
+  .note strong { background:var(--pink); padding:0 .6mm; }
+  table { width:100%; border-collapse:collapse; font-size:9pt; line-height:1.35; }
+  th { font-size:7pt; text-transform:uppercase; letter-spacing:.03em; text-align:left; padding:1.5mm 1mm; background:var(--ink); color:var(--paper); }
+  td { padding:1.8mm 1mm; border-bottom:1px solid #c6c6c0; vertical-align:top; }
+  td:first-child { width:7mm; }
+  .ch { display:inline-block; background:var(--pink); padding:.2mm .8mm; font-weight:700; }
+  .group td { background:#e6e6e1; font-size:7pt; text-transform:uppercase; letter-spacing:.07em; font-weight:700; padding:1.3mm 1mm; }
+  .table-note { font-size:8pt; margin:3mm 0 0; line-height:1.45; }
+  .stage-section { margin-top:3mm; }
+  .stage { border:2px solid var(--ink); padding:2mm; }
+  .orientation { display:flex; justify-content:space-between; font-size:7pt; text-transform:uppercase; letter-spacing:.04em; margin-bottom:2mm; }
+  .drums { width:54%; margin:0 auto 2mm; text-align:center; background:var(--pink); padding:1.5mm; }
+  .performers { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm; }
+  .performer { border:1px solid var(--ink); padding:2mm; text-align:center; }
+  .performer.lead { border:2px solid var(--pink); padding:calc(2mm - 1px); }
+  .role { font-family:Anton,Impact,sans-serif; text-transform:uppercase; font-size:11pt; font-weight:400; }
+  .amp { font-size:8pt; }
+  .wedge { display:inline-block; background:var(--ink); color:var(--paper); padding:.5mm 2mm; font-size:6.5pt; text-transform:uppercase; letter-spacing:.06em; margin-top:1.5mm; }
+  .audience { text-align:center; font-size:7pt; letter-spacing:.2em; text-transform:uppercase; padding-top:2.5mm; }
+  footer { position:absolute; bottom:0; left:0; right:0; background:var(--ink); color:var(--paper); padding:3mm 12mm; display:flex; justify-content:space-between; align-items:center; gap:5mm; font-size:8pt; line-height:1.5; }
+  footer .label { font-family:Anton,Impact,sans-serif; font-size:12pt; color:var(--ink); background:var(--pink); display:inline-block; padding:.2mm 1mm; margin-bottom:1mm; }
+  a { color:inherit; text-decoration:none; }
+  footer a { border-bottom:1px solid #777; }
+  .version { text-align:right; font-size:7pt; }
+  .page-stage .stage-section { margin-top:7mm; }
+  .page-stage .stage { padding:5mm; }
+  .page-stage .drums { padding:5mm; margin-bottom:6mm; }
+  .page-stage .performer { padding:5mm 2mm; }
+  .page-stage .performer.lead { padding:calc(5mm - 1px) calc(2mm - 1px); }
+  .page-stage .role { font-size:14pt; }
+  .page-stage .amp { font-size:9pt; }
+  .page-stage .wedge { margin-top:3mm; font-size:8pt; padding:1mm 3mm; }
+  .monitor-section { margin-top:7mm; }
+  .monitor-grid { display:grid; grid-template-columns:1fr 1fr; gap:4mm 6mm; }
+  .monitor-card { border-top:2px solid var(--ink); padding-top:3mm; }
+  .aux { display:inline-block; background:var(--pink); padding:.5mm 1mm; font-weight:700; font-size:8pt; margin-bottom:2mm; }
+  .monitor-card b { display:block; }
+  .monitor-card p { margin:1.5mm 0 0; font-size:9pt; }
+  .vocal-note { margin:5mm 0 0; font-size:9pt; }
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header>
+    <img class="logo" src="../assets/rude-logo-rosa.png" alt="RUDE">
+    <div class="heading"><h1>Scheda tecnica<br>&amp; input list</h1><div class="kicker">Garage / post-punk · Milano</div></div>
+  </header>
+  <div class="metrics"><span><b>4 elementi</b> · 2 chitarre, basso, batteria</span><span><b>12 canali</b> · 3 voci</span><span><b>4 monitor</b> · uno per musicista</span></div>
+
+  <div class="columns">
+    <div>
+      <section class="lineup"><h2><span class="n">01</span>Formazione</h2>
+        <div class="member"><b>Voce principale + chitarra 1</b><span>Fender Hot Rod Deluxe - microfonato</span></div>
+        <div class="member"><b>Chitarra 2 + cori</b><span>Vox AC30 - microfonato</span></div>
+        <div class="member"><b>Basso + seconda voce</b><span>Hartke HA3500 + Transporter - DI o mic</span></div>
+        <div class="member"><b>Batteria</b><span>Rullante, piatti e pedale propri</span></div>
+      </section>
+      <section><h2><span class="n">02</span>Backline</h2>
+        <div class="backline-block ours"><h3>Portiamo noi</h3><ul class="gear">
+          <li><b>Chitarra 1:</b> Fender Hot Rod Deluxe.</li>
+          <li><b>Chitarra 2:</b> Vox AC30.</li>
+          <li><b>Basso:</b> Hartke HA3500 (350W @4Ω) + Transporter (300W, 4 coni).</li>
+          <li>Rullante, piatti e pedale cassa.</li>
+        </ul></div>
+        <div class="backline-block theirs"><h3>Serve dal locale</h3><ul class="gear">
+          <li><b>Batteria:</b> cassa, 1 tom e 1 timpano; senza rullante e piatti.</li>
+          <li><b>Aste piatti:</b> 2 crash, 1 ride, 1 hi-hat + asta rullante.</li>
+          <li><b>Aste microfono:</b> 3 a giraffa (voci) + 2 per gli ampli chitarra.</li>
+          <li><b>Microfoni:</b> 3 × SM58, 2 × SM57, kit batteria.</li>
+          <li><b>Monitor:</b> uno per musicista, batteria inclusa.</li>
+        </ul></div>
+        <p class="note"><strong>Ampli condivisibili.</strong> Portiamo i nostri o usiamo ampli simili del locale/altre band. Concordare in anticipo.</p>
+      </section>
+    </div>
+    <section><h2><span class="n">03</span>Input list</h2>
+      <table aria-label="Input list dodici canali">
+        <thead><tr><th>CH</th><th>Sorgente</th><th>Microfono</th></tr></thead>
+        <tbody>
+          <tr class="group"><td colspan="3">Voci e chitarre</td></tr>
+          <tr><td><span class="ch">01</span></td><td>Voce principale<br><small>Centro · asta a giraffa</small></td><td>SM58</td></tr>
+          <tr><td><span class="ch">02</span></td><td>Chitarra 1<br><small>Hot Rod Deluxe · asta a giraffa</small></td><td>SM57</td></tr>
+          <tr><td><span class="ch">03</span></td><td>Chitarra 2<br><small>Vox AC30 · asta a giraffa</small></td><td>SM57</td></tr>
+          <tr><td><span class="ch">04</span></td><td>Voce seconda<br><small>Destra · asta a giraffa</small></td><td>SM58</td></tr>
+          <tr><td><span class="ch">05</span></td><td>Voce cori - Francesco C<br><small>Sinistra · chitarra 2 · asta a giraffa</small></td><td>SM58</td></tr>
+          <tr><td><span class="ch">06</span></td><td>Basso - Hartke<br><small>DI preferita</small></td><td>DI o<br>D112 / Beta 52</td></tr>
+          <tr class="group"><td colspan="3">Batteria</td></tr>
+          <tr><td><span class="ch">07</span></td><td>Cassa</td><td>D112 / Beta 52</td></tr>
+          <tr><td><span class="ch">08</span></td><td>Rullante<br><small>Nostro</small></td><td>SM57</td></tr>
+          <tr><td><span class="ch">09</span></td><td>Tom<br><small>Del locale</small></td><td>Clip</td></tr>
+          <tr><td><span class="ch">10</span></td><td>Timpano<br><small>Del locale</small></td><td>Clip</td></tr>
+          <tr><td><span class="ch">11</span></td><td>Overhead L</td><td>Condensatore</td></tr>
+          <tr><td><span class="ch">12</span></td><td>Overhead R</td><td>Condensatore</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <footer>
+    <div><span class="label">Contatti live</span><br><a href="tel:+393497254732">Lorenzo · 349 725 4732</a></div>
+    <div><a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a><br><a href="https://www.instagram.com/about.rude/">Instagram @about.rude</a></div>
+    <div class="version">RUDE · Milano<br>Ottobre 2026 · 1 / 2</div>
+  </footer>
+</main>
+<main class="sheet page-stage">
+  <header>
+    <img class="logo" src="../assets/rude-logo-rosa.png" alt="RUDE">
+    <div class="heading"><h1>Stage plot</h1><div class="kicker">4 elementi · 3 voci · 4 monitor</div></div>
+  </header>
+  <section class="stage-section"><h2><span class="n">04</span>Disposizione palco</h2>
+    <div class="stage">
+      <div class="orientation"><span>Sinistra fonico</span><span>Retropalco</span><span>Destra fonico</span></div>
+      <div class="drums"><div class="role">Batteria</div><div class="amp">Cassa, tom, timpano del locale · rullante e piatti nostri</div><div class="wedge">Monitor</div></div>
+      <div class="performers">
+        <div class="performer"><div class="role">Chitarra 2 + cori</div><div class="amp">Vox AC30</div><div class="wedge">Monitor</div></div>
+        <div class="performer lead"><div class="role">Voce 1 + chitarra 1</div><div class="amp">Fender Hot Rod Deluxe</div><div class="wedge">Monitor</div></div>
+        <div class="performer"><div class="role">Basso + voce 2</div><div class="amp">Hartke HA3500</div><div class="wedge">Monitor</div></div>
+      </div>
+      <div class="audience">Pubblico</div>
+    </div>
+  </section>
+  <footer>
+    <div><span class="label">Contatti live</span><br><a href="tel:+393497254732">Lorenzo · 349 725 4732</a></div>
+    <div><a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a><br><a href="https://www.instagram.com/about.rude/">Instagram @about.rude</a></div>
+    <div class="version">RUDE · Milano<br>Ottobre 2026 · 2 / 2</div>
+  </footer>
+</main>
+</body>
+</html>

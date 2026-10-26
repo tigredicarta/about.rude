@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0A0A0B" />
+  <title>RUDE — Scheda Tecnica &amp; Technical Rider (12 Canali · 4 Elementi)</title>
+  <meta name="description" content="Scheda tecnica ufficiale e technical rider della band RUDE (Garage Punk / Post-Punk da Milano). Line-up, flessibilità ampli, input list 12 canali e stage plot per fonici." />
+
+  <!-- Fonts: Anton, JetBrains Mono, Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. DESIGN TOKENS & DUAL THEME (LIGHT PAPER / DARK FOH CONSOLE)
+       ========================================================================== */
+    :root {
+      --pink-rude: #FF2D78;
+      --pink-rude-light: #FF5A96;
+      --pink-glow: rgba(255, 45, 120, 0.35);
+      --green-beast: #00A859;
+      --amber-warn: #FFB800;
+
+      --ink-black: #0A0A0B;
+      --chalk-white: #F4F4F0;
+      --pure-white: #FFFFFF;
+
+      /* Variabili Light Mode (Default Carta Fanzine) */
+      --bg-page: #F4F4F0;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #EAEAE4;
+      --bg-callout: #FFF0F5;
+      --text-main: #0A0A0B;
+      --text-muted: #55555E;
+      --border-color: #0A0A0B;
+      --shadow-solid: 6px 6px 0px #0A0A0B;
+      --shadow-pink: 6px 6px 0px var(--pink-rude);
+      --sticky-col-bg: #FFFFFF;
+      --table-hover: rgba(255, 45, 120, 0.08);
+
+      --font-headline: 'Anton', Impact, 'Arial Black', sans-serif;
+      --font-mono: 'Space Mono', 'JetBrains Mono', Courier, monospace;
+      --font-tech: 'JetBrains Mono', monospace;
+
+      --container-max: 1140px;
+      --border-thick: 3px solid var(--border-color);
+      --border-medium: 2px solid var(--border-color);
+      --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Modalità Fonico / Palco (Dark Mode ad Alto Contrasto) */
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      transition: background-color 200ms ease, color 200ms ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--pink-rude);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin-inline: auto;
+      padding-inline: clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    /* ==========================================================================
+       2. STICKY TOP BAR CON SWITCHER TEMA E LINK TORNA AL SITO
+       ========================================================================== */
+    .rider-nav-bar {
+      background: var(--ink-black);
+      color: var(--chalk-white);
+      border-bottom: 3px solid var(--pink-rude);
+      padding-block: 0.75rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .rider-nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--font-tech);
+      font-weight: 800;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      min-height: 42px;
+      transition: color var(--transition-fast);
+    }
+    .brand-back-link:hover {
+      color: var(--pink-rude);
+    }
+    .nav-logo-img {
+      height: 32px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-actions-cluster {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+
+    .btn-nav-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-tech);
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.45rem 0.85rem;
+      background: var(--chalk-white);
+      color: var(--ink-black);
+      border: 1.5px solid var(--pure-white);
+      min-height: 38px;
+      transition: all var(--transition-fast);
+    }
+    .btn-nav-print:hover {
+      background: var(--pink-rude);
+      color: var(--pure-white);
+      border-color: var(--pink-rude);
+    }
+
+    /* ==========================================================================
+       3. HERO HEADER & DOWNLOADS
+       ========================================================================== */
+    .rider-header-section {
+      padding-top: clamp(2rem, 5vw, 3.5rem);
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .doc-badge {
+      display: inline-block;
+      font-family: var(--font-tech);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--pink-rude);
+      color: var(--pure-white);
+      padding: 0.3rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .rider-title-giant {
+      font-family: var(--font-headline);
+      font-size: clamp(3rem, 7.5vw, 5.8rem);
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .rider-title-giant span {
+      color: var(--pink-rude);
+    }
+
+    .rider-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .rider-sub-text {
+      font-size: 0.98rem;
+      max-width: 620px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+    .rider-sub-text strong {
+      color: var(--text-main);
+    }
+
+    .rider-download-group {
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-pdf-box {
+      font-family: var(--font-tech);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.25rem;
+      min-height: 46px;
+      border: 2px solid var(--border-color);
+      box-shadow: 4px 4px 0px var(--border-color);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all var(--transition-fast);
+      background: var(--bg-card);
+      color: var(--text-main);
+    }
+    .btn-pdf-box:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--pink-rude);
+      border-color: var(--pink-rude);
+    }
+    .btn-pdf-box--pink {
+      background: var(--pink-rude);
+      color: var(--pure-white);
+      border-color: var(--pink-rude);
+      box-shadow: 4px 4px 0px var(--border-color);
+    }
+    .btn-pdf-box--pink:hover {
+      box-shadow: 6px 6px 0px var(--text-main);
+    }
+
+    /* ==========================================================================
+       4. AT-A-GLANCE METRICS STRIP (4 METRICHE RAPIDE PER IL FONICO)
+       ========================================================================== */
+    .metric-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+      margin-top: 2rem;
+    }
+    @media (min-width: 820px) {
+      .metric-strip-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: var(--border-medium);
+      box-shadow: var(--shadow-solid);
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 110px;
+    }
+    .metric-card.highlight {
+      border-color: var(--pink-rude);
+      box-shadow: var(--shadow-pink);
+    }
+    .metric-tag {
+      font-family: var(--font-tech);
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+    .metric-value {
+      font-family: var(--font-headline);
+      font-size: 1.85rem;
+      line-height: 1;
+      text-transform: uppercase;
+      margin-block: 0.35rem;
+      color: var(--text-main);
+    }
+    .metric-desc {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* ==========================================================================
+       5. CONTENT SECTIONS
+       ========================================================================== */
+    .rider-body-content {
+      padding-block: 2.5rem 4rem;
+    }
+
+    .tech-card-block {
+      background: var(--bg-card);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-solid);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .tech-card-header {
+      background: var(--ink-black);
+      color: var(--chalk-white);
+      padding: 1rem 1.5rem;
+      border-bottom: 3px solid var(--pink-rude);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .tech-card-title {
+      font-family: var(--font-headline);
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .step-pill {
+      background: var(--pink-rude);
+      color: var(--pure-white);
+      font-family: var(--font-tech);
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+    }
+
+    /* Formazione Grid */
+    .lineup-grid-4 {
+      display: grid;
+      grid-template-columns: 1fr;
+      divide-y: 1px solid var(--border-color);
+    }
+    @media (min-width: 768px) {
+      .lineup-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .lineup-member-box {
+      padding: 1.35rem 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    @media (min-width: 768px) {
+      .lineup-member-box:nth-child(odd) {
+        border-right: 1px solid var(--border-color);
+      }
+    }
+    .member-role-title {
+      font-family: var(--font-headline);
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+      color: var(--text-main);
+    }
+    .member-gear-desc {
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+    .member-gear-desc strong {
+      color: var(--pink-rude);
+    }
+
+    /* ==========================================================================
+       6. CALLOUT FLESSIBILITÀ AMPLI & BACKLINE
+       ========================================================================== */
+    .amp-flexibility-banner {
+      background: var(--bg-callout);
+      border: 3px solid var(--pink-rude);
+      box-shadow: 6px 6px 0px var(--pink-rude);
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 2rem;
+    }
+    .amp-banner-title {
+      font-family: var(--font-headline);
+      font-size: 1.45rem;
+      text-transform: uppercase;
+      color: var(--pink-rude);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .amp-banner-text {
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: var(--text-main);
+    }
+    .amp-banner-text strong {
+      text-decoration: underline;
+    }
+
+    /* Backline 2 Colonne */
+    .backline-split-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 820px) {
+      .backline-split-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .backline-col-left {
+      padding: 1.5rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+    @media (min-width: 820px) {
+      .backline-col-left {
+        border-right: 2px solid var(--border-color);
+        border-bottom: none;
+      }
+    }
+    .backline-col-right {
+      padding: 1.5rem;
+    }
+
+    .col-header-banner {
+      font-family: var(--font-headline);
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.55rem 0.9rem;
+      margin-bottom: 1.25rem;
+      display: inline-block;
+    }
+    .col-header-banner--pink {
+      background: var(--pink-rude);
+      color: var(--pure-white);
+    }
+    .col-header-banner--dark {
+      background: var(--ink-black);
+      color: var(--chalk-white);
+    }
+
+    .gear-item-row {
+      margin-bottom: 1.15rem;
+    }
+    .gear-item-title {
+      font-family: var(--font-tech);
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .gear-item-sub {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* ==========================================================================
+       7. INPUT LIST 12 CANALI (STICKY COLUMN + RESPONSIVE)
+       ========================================================================== */
+    .table-actions-bar {
+      padding: 1rem 1.5rem;
+      background: var(--bg-subtle);
+      border-bottom: 2px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .scroll-hint-mobile {
+      font-family: var(--font-tech);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .btn-copy-rider-action {
+      background: var(--ink-black);
+      color: var(--pure-white);
+      font-family: var(--font-tech);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.65rem 1.25rem;
+      border: 2px solid var(--border-color);
+      box-shadow: 4px 4px 0px var(--pink-rude);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: 44px;
+      transition: all var(--transition-fast);
+    }
+    .btn-copy-rider-action:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--pink-rude);
+    }
+
+    .table-responsive-box {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .input-list-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      min-width: 680px;
+    }
+
+    .input-list-table th {
+      background: var(--ink-black);
+      color: var(--chalk-white);
+      font-family: var(--font-tech);
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 2px solid var(--pink-rude);
+    }
+
+    .input-list-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+
+    .input-list-table tr:hover {
+      background: var(--table-hover);
+    }
+
+    /* Colonna CH bloccata su scroll orizzontale mobile */
+    .col-ch-sticky {
+      position: sticky;
+      left: 0;
+      background: var(--sticky-col-bg) !important;
+      z-index: 2;
+      width: 65px;
+      text-align: center !important;
+      border-right: 2px solid var(--border-color) !important;
+    }
+    th.col-ch-sticky {
+      background: var(--ink-black) !important;
+      z-index: 3;
+    }
+
+    .ch-badge-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--ink-black);
+      color: var(--chalk-white);
+      font-family: var(--font-tech);
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+
+    .cat-divider-row td {
+      background: var(--bg-subtle) !important;
+      font-family: var(--font-tech);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.74rem;
+      padding-block: 0.5rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       8. MONITOR MIXES REFERENCE
+       ========================================================================== */
+    .monitor-grid-4 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--bg-subtle);
+      border-top: 2px solid var(--border-color);
+    }
+    @media (min-width: 768px) {
+      .monitor-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .monitor-grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .monitor-box-card {
+      background: var(--bg-card);
+      border: var(--border-medium);
+      padding: 1rem;
+      box-shadow: 3px 3px 0px var(--border-color);
+    }
+    .monitor-aux-id {
+      font-family: var(--font-tech);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--pink-rude);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .monitor-box-name {
+      font-family: var(--font-headline);
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+      color: var(--text-main);
+    }
+    .monitor-box-notes {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* ==========================================================================
+       9. STAGE PLOT TECNICO
+       ========================================================================== */
+    .stage-plot-container {
+      padding: 2rem 1.5rem;
+      background: var(--bg-subtle);
+    }
+
+    .stage-board {
+      border: 3px dashed var(--border-color);
+      background: var(--bg-card);
+      padding: 2.5rem 1.5rem 2rem;
+      position: relative;
+    }
+
+    .stage-orientation-header {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-tech);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .stage-drums-center-box {
+      max-width: 460px;
+      margin-inline: auto;
+      background: var(--bg-callout);
+      border: 2px solid var(--pink-rude);
+      box-shadow: 4px 4px 0px var(--pink-rude);
+      padding: 1.25rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .drums-title {
+      font-family: var(--font-headline);
+      font-size: 1.5rem;
+      color: var(--pink-rude);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .drums-info {
+      font-size: 0.8rem;
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .stage-frontline-3col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media (min-width: 768px) {
+      .stage-frontline-3col {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .stage-front-performer {
+      border: var(--border-medium);
+      padding: 1.25rem;
+      background: var(--bg-card);
+      box-shadow: 4px 4px 0px var(--border-color);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 160px;
+    }
+    .stage-performer-title {
+      font-family: var(--font-headline);
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+      color: var(--text-main);
+    }
+    .stage-performer-amp {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+    .stage-wedge-pill {
+      display: inline-block;
+      background: var(--ink-black);
+      color: var(--pure-white);
+      font-family: var(--font-tech);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.25rem 0.6rem;
+      text-transform: uppercase;
+    }
+
+    .stage-audience-edge {
+      text-align: center;
+      margin-top: 2rem;
+      font-family: var(--font-tech);
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       10. CONTACTS & FOOTER
+       ========================================================================== */
+    .rider-footer {
+      background: var(--ink-black);
+      color: var(--chalk-white);
+      padding-block: 3.5rem;
+      border-top: 4px solid var(--pink-rude);
+    }
+
+    .rider-footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    @media (min-width: 768px) {
+      .rider-footer-grid {
+        grid-template-columns: 1.4fr 1fr;
+      }
+    }
+
+    .footer-heading {
+      font-family: var(--font-headline);
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.03em;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.94rem;
+    }
+    .footer-contact-item strong {
+      color: var(--pink-rude);
+    }
+
+    /* Toast Notification */
+    .toast-rider {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--green-beast);
+      color: #FFFFFF;
+      font-family: var(--font-tech);
+      font-weight: 800;
+      font-size: 0.84rem;
+      letter-spacing: 0.05em;
+      padding: 0.85rem 1.35rem;
+      border: 2px solid var(--ink-black);
+      box-shadow: 4px 4px 0px var(--ink-black);
+      z-index: 9999;
+      transform: translateY(140%);
+      opacity: 0;
+      transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .toast-rider.is-active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       11. PRINT STYLESHEET (@media print)
+       ========================================================================== */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        font-size: 11pt;
+      }
+      .rider-nav-bar,
+      .rider-download-group,
+      .table-actions-bar,
+      .toast-rider,
+      .theme-toggle-btn,
+      .btn-nav-print {
+        display: none !important;
+      }
+      .tech-card-block {
+        box-shadow: none !important;
+        border: 1px solid #000000 !important;
+        margin-bottom: 1.5rem !important;
+        page-break-inside: avoid;
+      }
+      .tech-card-header {
+        background: #EEE !important;
+        color: #000 !important;
+        border-bottom: 2px solid #000 !important;
+      }
+      .input-list-table th {
+        background: #DDD !important;
+        color: #000 !important;
+        border-bottom: 1px solid #000 !important;
+      }
+      .col-ch-sticky {
+        position: static !important;
+        background: transparent !important;
+      }
+      .stage-board {
+        border: 1px solid #000 !important;
+        page-break-inside: avoid;
+      }
+      .amp-flexibility-banner {
+        box-shadow: none !important;
+        border: 2px solid #000 !important;
+        background: #FAFAFA !important;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="site-refinements.css">
+  <link rel="stylesheet" href="brand.css">
+  <script src="site-refinements.js" defer></script>
+</head>
+<body>
+  <a href="#rider-main" class="skip-link">Vai alla scheda tecnica</a>
+
+  <!-- ==========================================================================
+       TOP BAR FISSA CON SWITCHER TEMA FONICO & LINK SITO
+       ========================================================================== -->
+  <header class="rider-nav-bar">
+    <div class="container rider-nav-inner">
+      <a href="index.html" class="brand-back-link" title="Torna alla homepage RUDE">
+        <img src="assets/rude-logo-rosa.png" alt="RUDE Logo" class="nav-logo-img" />
+        <span>← Torna al sito RUDE</span>
+      </a>
+
+      <div class="nav-actions-cluster">
+        <button type="button" class="btn-nav-print" onclick="window.print()" title="Stampa o salva in PDF da browser">
+          🖨 Stampa A4
+        </button>
+        <a href="RUDE-scheda-tecnica.pdf" download="RUDE-scheda-tecnica.pdf" class="btn-pdf-box btn-pdf-box--pink" style="padding: 0.45rem 0.85rem; min-height: 38px; font-size: 0.76rem;">
+          📄 Scarica PDF
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="rider-main" tabindex="-1">
+    <!-- ==========================================================================
+         TESTATA RIDER & AT-A-GLANCE METRICS
+         ========================================================================== -->
+    <section class="rider-header-section">
+      <div class="container">
+        <span class="doc-badge">Milano, Italia · agg. ottobre 2026</span>
+        <h1 class="rider-title-giant">
+          SCHEDA TECNICA<br><span>&amp; INPUT LIST</span>
+        </h1>
+
+        <div class="rider-meta-row">
+          <p class="rider-sub-text">
+            Scheda tecnica e rider live dei <strong>RUDE</strong> (Garage Punk / Post-Punk da Milano). 4 elementi, 12 canali, zero sbattimenti sul palco.
+          </p>
+
+          <div class="rider-download-group">
+            <a href="RUDE-scheda-tecnica.pdf" download="RUDE-scheda-tecnica.pdf" class="btn-pdf-box btn-pdf-box--pink">
+              📄 SCARICA PDF RIDER
+            </a>
+            <a href="RUDE_PressKit_2026.pdf" download="RUDE_PressKit_2026.pdf" class="btn-pdf-box">
+              📰 PRESS KIT (PDF)
+            </a>
+          </div>
+        </div>
+
+        <!-- 4 Metric Cards ad Occhio Rapido per il Fonico -->
+        <div class="metric-strip-grid" aria-label="Riepilogo rapido">
+          <div class="metric-card">
+            <span class="metric-tag">Formazione</span>
+            <div class="metric-value">4 Elementi</div>
+            <div class="metric-desc">2 Chitarre · Basso · Batteria · 3 Voci</div>
+          </div>
+          <div class="metric-card">
+            <span class="metric-tag">Mixer FOH</span>
+            <div class="metric-value">12 Canali</div>
+            <div class="metric-desc">Patch standard 3 Voci · 2 Gtr · Basso · 6 Drum</div>
+          </div>
+          <div class="metric-card">
+            <span class="metric-tag">Ascolti Palco</span>
+            <div class="metric-value">4 Monitor</div>
+            <div class="metric-desc">4 mandate Aux indipendenti (3 Front + 1 Batteria)</div>
+          </div>
+          <div class="metric-card highlight">
+            <span class="metric-tag" style="color: var(--pink-rude);">Flessibilità Ampli</span>
+            <div class="metric-value" style="color: var(--pink-rude);">Adattabili</div>
+            <div class="metric-desc">Portiamo i nostri o usiamo quelli del locale/altre band</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CORPO CENTRALE TECNICO
+         ========================================================================== -->
+    <div class="rider-body-content">
+      <div class="container">
+
+        <!-- 01 LINE-UP & FORMAZIONE -->
+        <section class="tech-card-block" aria-labelledby="sec-lineup">
+          <div class="tech-card-header">
+            <div class="tech-card-title" id="sec-lineup">
+              <span class="step-pill">01</span>
+              <span>FORMAZIONE</span>
+            </div>
+            <span style="font-family: var(--font-tech); font-size: 0.75rem; color: #BBB;">4 ELEMENTI</span>
+          </div>
+
+          <div class="lineup-grid-4">
+            <div class="lineup-member-box">
+              <div class="member-role-title">Lorenzo</div>
+              <div class="member-gear-desc">
+                <strong>Voce principale + Chitarra 1</strong><br>
+                Fender Hot Rod Deluxe — microfonato
+              </div>
+            </div>
+
+            <div class="lineup-member-box">
+              <div class="member-role-title">Francesco C</div>
+              <div class="member-gear-desc">
+                <strong>Chitarra 2 + cori</strong><br>
+                Vox AC30 — microfonato
+              </div>
+            </div>
+
+            <div class="lineup-member-box">
+              <div class="member-role-title">Francesco P</div>
+              <div class="member-gear-desc">
+                <strong>Basso + Seconda voce</strong><br>
+                Hartke HA3500 + Transporter — D.I. o mic
+              </div>
+            </div>
+
+            <div class="lineup-member-box">
+              <div class="member-role-title">Adriano</div>
+              <div class="member-gear-desc">
+                <strong>Batteria</strong><br>
+                Rullante, piatti e pedale propri
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- 02 BACKLINE SPLIT -->
+        <section class="tech-card-block" aria-labelledby="sec-backline">
+          <div class="tech-card-header">
+            <div class="tech-card-title" id="sec-backline">
+              <span class="step-pill">02</span>
+              <span>BACKLINE</span>
+            </div>
+            <span style="font-family: var(--font-tech); font-size: 0.75rem; color: #BBB;">COSA PORTIAMO / COSA SERVE</span>
+          </div>
+
+          <div class="backline-split-grid">
+            <!-- Cosa portiamo noi -->
+            <div class="backline-col-left">
+              <div class="col-header-banner col-header-banner--pink">PORTIAMO NOI</div>
+
+              <div class="gear-item-row">
+                <span class="gear-item-title">Ampli chitarra 1</span>
+                <span class="gear-item-sub">Fender Hot Rod Deluxe</span>
+              </div>
+              <div class="gear-item-row">
+                <span class="gear-item-title">Ampli chitarra 2</span>
+                <span class="gear-item-sub">Vox AC30</span>
+              </div>
+              <div class="gear-item-row">
+                <span class="gear-item-title">Ampli basso</span>
+                <span class="gear-item-sub">Hartke HA3500 (350W @4Ω) + Hartke Transporter (300W, 4 coni)</span>
+              </div>
+              <div class="gear-item-row">
+                <span class="gear-item-title">Batteria</span>
+                <span class="gear-item-sub">Rullante, piatti e pedale cassa propri</span>
+              </div>
+              <div style="margin-top: 1.25rem; padding: 0.85rem; background: var(--bg-subtle); border-left: 4px solid var(--pink-rude); font-size: 0.82rem; line-height: 1.5;">
+                ⚡ <em>Possiamo condividere i nostri ampli con le altre band della serata. Fatecelo sapere in anticipo. Possiamo anche adattarci con gli ampli del locale o di altre band (roba simile).</em>
+              </div>
+            </div>
+
+            <!-- Cosa serve dal locale -->
+            <div class="backline-col-right">
+              <div class="col-header-banner col-header-banner--dark">SERVE DAL LOCALE</div>
+
+              <div class="gear-item-row">
+                <span class="gear-item-title">Batteria</span>
+                <span class="gear-item-sub">Cassa, 1 tom, 1 timpano (senza rullante e senza piatti)</span>
+              </div>
+              <div class="gear-item-row">
+                <span class="gear-item-title">Aste piatti</span>
+                <span class="gear-item-sub">2 crash, 1 ride, 1 hi-hat + asta rullante</span>
+              </div>
+              <div class="gear-item-row">
+                <span class="gear-item-title">Aste microfono</span>
+                <span class="gear-item-sub">3 a giraffa per le voci + 2 per microfonare gli ampli chitarra</span>
+              </div>
+              <div class="gear-item-row">
+                <span class="gear-item-title">Microfoni</span>
+                <span class="gear-item-sub">3 × SM58, 2 × SM57, kit batteria</span>
+              </div>
+              <div class="gear-item-row">
+                <span class="gear-item-title">Monitor</span>
+                <span class="gear-item-sub">Uno per ogni musicista, batteria inclusa (4 monitor)</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 03 INPUT LIST 12 CANALI -->
+        <section class="tech-card-block" aria-labelledby="sec-inputlist">
+          <div class="tech-card-header">
+            <div class="tech-card-title" id="sec-inputlist">
+              <span class="step-pill">03</span>
+              <span>INPUT LIST (12 CANALI MIXER)</span>
+            </div>
+            <span style="font-family: var(--font-tech); font-size: 0.75rem; color: #BBB;">PATCH UFFICIALE FOH</span>
+          </div>
+
+          <div class="table-actions-bar">
+            <span class="scroll-hint-mobile">⇄ Scorri la tabella (Colonna CH fissa)</span>
+            <button type="button" id="btnCopyRider" class="btn-copy-rider-action">
+              📋 Copia Input List per WhatsApp / Mail
+            </button>
+          </div>
+
+          <div class="table-responsive-box" tabindex="0" role="region" aria-label="Input list: scorri orizzontalmente per leggere tutti gli dodici canali">
+            <table class="input-list-table">
+              <thead>
+                <tr>
+                  <th class="col-ch-sticky">CH</th>
+                  <th>SORGENTE</th>
+                  <th>MICROFONO</th>
+                  <th>NOTE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="cat-divider-row"><td colspan="4">VOCI E CHITARRE</td></tr>
+                <tr>
+                  <td class="col-ch-sticky"><span class="ch-badge-box">01</span></td>
+                  <td><strong>Voce principale</strong></td>
+                  <td>SM58</td>
+                  <td>Centro · asta a giraffa</td>
+                </tr>
+                <tr>
+                  <td class="col-ch-sticky"><span class="ch-badge-box">02</span></td>
+                  <td><strong>Chitarra 1 — Hot Rod Deluxe</strong></td>
+                  <td>SM57</td>
+                  <td>Asta a giraffa</td>
+                </tr>
+                <tr>
+                  <td class="col-ch-sticky"><span class="ch-badge-box">03</span></td>
+                  <td><strong>Chitarra 2 — Vox AC30</strong></td>
+                  <td>SM57</td>
+                  <td>Asta a giraffa</td>
+                </tr>
+                <tr>
+                  <td class="col-ch-sticky"><span class="ch-badge-box">04</span></td>
+                  <td><strong>Voce seconda</strong></td>
+                  <td>SM58</td>
+                  <td>Destra · asta a giraffa</td>
+                </tr>
+                <tr>
+                  <td class="col-ch-sticky"><span class="ch-badge-box">05</span></td>
+                  <td><strong>Voce cori - Francesco C</strong></td>
+                  <td>SM58</td>
+                  <td>Sinistra · chitarra 2 · asta a giraffa</td>
+                </tr>
+                <tr>
+                  <td class="col-ch-sticky"><span class="ch-badge-box">06</span></td>
+                  <td><strong>Basso — Hartke</strong></td>
+                  <td>D.I. o D112 / Beta 52</td>
+                  <td>D.I. preferita</td>
+                </tr>
+
+                <tr class="cat-divider-row"><td colspan="4">BATTERIA</td></tr>
+                <tr>
+                  <td class="col-ch-sticky"><span class="ch-badge-box">07</span></td>
+                  <td><strong>Cassa</strong></td>
+                  <td>D112 / Beta 52</td>
+                  <td>Del locale</td>
+                </tr>
+                <tr>
+                  <td class="col-ch-sticky"><span class="ch-badge-box">08</span></td>
+                  <td><strong>Rullante</strong></td>
+                  <td>SM57</td>
+                  <td>Nostro</td>
+                </tr>
+                <tr>
+                  <td class="col-ch-sticky"><span class="ch-badge-box">09</span></td>
+                  <td><strong>Tom</strong></td>
+                  <td>Clip</td>
+                  <td>Del locale</td>
+                </tr>
+                <tr>
+                  <td class="col-ch-sticky"><span class="ch-badge-box">10</span></td>
+                  <td><strong>Timpano</strong></td>
+                  <td>Clip</td>
+                  <td>Del locale</td>
+                </tr>
+                <tr>
+                  <td class="col-ch-sticky"><span class="ch-badge-box">11</span></td>
+                  <td><strong>Overhead L</strong></td>
+                  <td>Condensatore</td>
+                  <td>Del locale</td>
+                </tr>
+                <tr>
+                  <td class="col-ch-sticky"><span class="ch-badge-box">12</span></td>
+                  <td><strong>Overhead R</strong></td>
+                  <td>Condensatore</td>
+                  <td>Del locale</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </section>
+
+        <!-- 04 STAGE PLOT -->
+        <section class="tech-card-block" aria-labelledby="sec-stageplot">
+          <div class="tech-card-header">
+            <div class="tech-card-title" id="sec-stageplot">
+              <span class="step-pill">04</span>
+              <span>STAGE PLOT</span>
+            </div>
+            <span style="font-family: var(--font-tech); font-size: 0.75rem; color: #BBB;">DISPOSIZIONE PALCO</span>
+          </div>
+
+          <div class="stage-plot-container">
+            <div class="stage-board">
+              <div class="stage-orientation-header">
+                <span>← SX FONICO</span>
+                <span>RETROPALCO</span>
+                <span>DX FONICO →</span>
+              </div>
+
+              <!-- Retro: Batteria & Ampli -->
+              <div class="stage-drums-center-box">
+                <span class="drums-title">BATTERIA</span>
+                <span class="drums-info">Cassa, tom, timpano del locale · rullante e piatti nostri</span>
+                <span class="stage-wedge-pill">MONITOR</span>
+              </div>
+
+              <!-- Frontline: 3 Musicisti -->
+              <div class="stage-frontline-3col">
+                <!-- Chitarra 2 (Francesco C) -->
+                <div class="stage-front-performer">
+                  <div>
+                    <div class="stage-performer-title">Chitarra 2 + cori</div>
+                    <div class="stage-performer-amp">Vox AC30</div>
+                  </div>
+                  <div>
+                    <span class="stage-wedge-pill">MONITOR</span>
+                  </div>
+                </div>
+
+                <!-- Voce 1 + Chitarra 1 (Lorenzo) -->
+                <div class="stage-front-performer" style="border-color: var(--pink-rude); box-shadow: 4px 4px 0px var(--pink-rude);">
+                  <div>
+                    <div class="stage-performer-title" style="color: var(--pink-rude);">Voce 1 + Chitarra 1</div>
+                    <div class="stage-performer-amp">Fender Hot Rod Deluxe</div>
+                  </div>
+                  <div>
+                    <span class="stage-wedge-pill" style="background: var(--pink-rude);">MONITOR</span>
+                  </div>
+                </div>
+
+                <!-- Basso + Voce 2 (Francesco P) -->
+                <div class="stage-front-performer">
+                  <div>
+                    <div class="stage-performer-title">Basso + Voce 2</div>
+                    <div class="stage-performer-amp">Hartke HA3500</div>
+                  </div>
+                  <div>
+                    <span class="stage-wedge-pill">MONITOR</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="stage-audience-edge">
+                ▼ PUBBLICO ▼
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       CONTATTI DIRETTI & FOOTER
+       ========================================================================== -->
+  <footer class="rider-footer">
+    <div class="container">
+      <div class="rider-footer-grid">
+        <div>
+          <h2 class="footer-heading">RUDE — CONTATTI &amp; INFO LIVE</h2>
+          <p style="font-size: 0.9rem; line-height: 1.6; max-width: 50ch; margin-bottom: 1.25rem;">
+            Per orari, soundcheck, backline o qualsiasi info al volo, chiamateci o scriveteci su WhatsApp.
+          </p>
+          <div class="footer-contact-item">
+            <span>Referente Tecnico / Booking:</span>
+            <strong><a href="tel:+393497254732">Lorenzo · +39 349 725 4732</a></strong>
+          </div>
+          <div class="footer-contact-item">
+            <span>Email Band:</span>
+            <strong><a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a></strong>
+          </div>
+          <div class="footer-contact-item">
+            <span>Instagram:</span>
+            <strong><a href="https://instagram.com/about.rude" target="_blank" rel="noopener">@about.rude ↗</a></strong>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="footer-heading">DOCUMENTAZIONE &amp; DOWNLOAD</h2>
+          <ul style="list-style: none; font-size: 0.88rem; line-height: 2;">
+            <li>📄 <a href="RUDE-scheda-tecnica.pdf" download="RUDE-scheda-tecnica.pdf" style="text-decoration: underline;">Scarica Scheda Tecnica (PDF) ↗</a></li>
+            <li>📰 <a href="RUDE_PressKit_2026.pdf" download="RUDE_PressKit_2026.pdf" style="text-decoration: underline;">Scarica Press Kit Ufficiale (PDF) ↗</a></li>
+            <li>📷 <a href="https://drive.google.com/drive/folders/1zqtWuZhpxeb7gdpfX2_qQgWxhYfGLNE7" target="_blank" rel="noopener" style="text-decoration: underline;">Cartella Foto HD per Stampa (Drive) ↗</a></li>
+            <li>💿 <a href="https://rude-theband.bandcamp.com" target="_blank" rel="noopener" style="text-decoration: underline;">Bandcamp Ufficiale ↗</a></li>
+            <li>🏠 <a href="index.html" style="text-decoration: underline; font-weight: 700; color: var(--pink-rude);">Torna alla Landing Page RUDE ↗</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #2B2B33; font-size: 0.78rem; color: #888; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+        <div>© 2026 RUDE · Garage Punk / Post-Punk da Milano. Documento aggiornato per stagione 2026.</div>
+        <div><a href="#" style="text-decoration: underline;">Torna in Cima ↑</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notifica Copia -->
+  <div id="riderToast" class="toast-rider" role="status" aria-live="polite"></div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT: TEMA FONICO & COPIA INPUT LIST RAPIDA
+       ========================================================================== -->
+  <script>
+
+    // 2. Toast Helper
+    const toastEl = document.getElementById('riderToast');
+    let toastTimer = null;
+    function showToast(msg) {
+      if (!toastEl) return;
+      toastEl.textContent = msg;
+      toastEl.classList.add('is-active');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toastEl.classList.remove('is-active');
+      }, 3200);
+    }
+
+    // 3. Testo Completo Scheda Tecnica per Fonico / WhatsApp
+    const RIDER_FULL_TEXT = `=== RUDE — SCHEDA TECNICA & INPUT LIST (12 CANALI) ===
+Band: RUDE (Garage Punk / Post-Punk da Milano — 4 elementi)
+Contatto: Lorenzo 349 725 4732 · theband.rude@gmail.com
+
+FORMAZIONE:
+- Lorenzo: Voce principale + Chitarra 1 (Fender Hot Rod Deluxe)
+- Francesco C: Chitarra 2 + voce cori (Vox AC30)
+- Francesco P: Basso + Seconda voce (Hartke HA3500 + Transporter 4x10)
+- Adriano: Batteria (porta rullante, piatti e pedale cassa propri)
+
+FLESSIBILITÀ AMPLI:
+Noi abbiamo i nostri ampli completi (Hot Rod Deluxe, Vox AC30, Hartke HA3500 + 4x10).
+Tuttavia possiamo adattarci senza problemi con gli ampli del locale o condivisi con altre band (roba simile per chitarra/basso).
+Possiamo portare i nostri (e condividerli con piacere) oppure usare quelli già presenti sul palco.
+
+COSA SERVE DAL LOCALE:
+- Fusti batteria: Cassa, 1 tom, 1 timpano + 4 aste piatti + reggirullante + asta Hi-Hat
+- 4 monitor indipendenti (mandate Aux separate: Chitarra 2 + cori SX, Voce Lead Centro, Basso DX, Batteria)
+- Microfoni: 3x SM58 (aste giraffa), 2x SM57 (aste nane), kit mic batteria (cassa, rullante, tom, timpano, 2x OH +48V)
+- Prese 220V per le 3 pedaliere sul fronte palco
+
+INPUT LIST (12 CANALI):
+CH 1: Voce principale (Lorenzo) | Shure SM58 (Centro, asta giraffa)
+CH 2: Chitarra 1 (Lorenzo) | Shure SM57 (Hot Rod Deluxe)
+CH 3: Chitarra 2 (Francesco C) | Shure SM57 (Vox AC30)
+CH 4: Voce seconda (Francesco P) | Shure SM58 (Lato Basso, asta giraffa)
+CH 5: Voce cori (Francesco C, Chitarra 2) | Shure SM58 (Sinistra, asta a giraffa)
+CH 6: Basso (Francesco P) | D.I. Box integrata XLR (Hartke HA3500)
+CH 7: Cassa (Kick) | D112 / Beta 52
+CH 8: Rullante (Snare) | Shure SM57 (nostro)
+CH 9: Rack Tom (1x) | Clip dinamico (del service)
+CH 10: Floor Tom (Timpano) | Clip dinamico (del service)
+CH 11: Overhead Left | Condensatore (+48V)
+CH 12: Overhead Right | Condensatore (+48V)`;
+
+    const btnCopyRider = document.getElementById('btnCopyRider');
+    if (btnCopyRider) {
+      btnCopyRider.addEventListener('click', () => {
+        window.rudeCopyText(RIDER_FULL_TEXT).then(() => {
+          const original = btnCopyRider.textContent;
+          btnCopyRider.textContent = '✓ INPUT LIST COPIATA!';
+          btnCopyRider.style.background = '#00A859';
+          btnCopyRider.style.borderColor = '#00A859';
+          showToast('✓ SCHEDA TECNICA COPIATA PER WHATSAPP / FONICO!');
+          setTimeout(() => {
+            btnCopyRider.textContent = original;
+            btnCopyRider.style.background = '';
+            btnCopyRider.style.borderColor = '';
+          }, 3000);
+        }).catch(() => {
+          showToast('Copia non riuscita. Scarica il PDF.');
+        });
+      });
+    }
+  </script>
+</body>
+</html>

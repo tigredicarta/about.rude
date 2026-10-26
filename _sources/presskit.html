@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>RUDE — Press kit 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{ --paper:#F4F4F2; --ink:#101010; --riso:#FF3D8B;
+         --body:10.5pt; --small:9.3pt; --label:8.5pt; }
+  @page{ size:A4; margin:0; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{ font-family:'Courier Prime',ui-monospace,monospace; font-weight:400; color:var(--ink); background:#ccc;
+        -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  a{ color:inherit; text-decoration:none; }
+  b{ font-weight:400; }
+  p, .cred, .dp, .gigs i, .also{ text-wrap:pretty; }
+  .page{ width:210mm; height:297mm; background:var(--paper); position:relative; overflow:hidden;
+         margin:0 auto; page-break-after:always; break-after:page; }
+  .page:last-child{ page-break-after:auto; break-after:auto; }
+  .pad{ padding:0 12mm; }
+  .rule{ height:3px; background:var(--ink); }
+
+  /* ── ruoli tipografici ── */
+  .display{ font-family:'Anton',sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:.01em; }
+  .tag, .kick, .vt, .links a, .foot .lb{
+    font-size:var(--label); font-weight:700; text-transform:uppercase; letter-spacing:.12em; line-height:1.6; }
+  .mute{ opacity:.75; }
+
+  /* ── page 1 ── */
+  .head{ display:flex; align-items:flex-end; justify-content:space-between; gap:8mm; padding-top:9mm; }
+  .head img{ width:92mm; display:block; margin-left:-3mm; margin-bottom:-2mm; }
+  .tag{ text-align:right; padding-bottom:2mm; }
+  .head + .rule{ margin-top:5mm; }
+  .photo{ height:102mm; border-bottom:3px solid var(--ink); background:url(../FOTO/RUDE_WC.jpg) center 22% / cover no-repeat; }
+
+  .bio{ padding-top:13mm; display:grid; grid-template-columns:52mm 1fr; gap:7mm; }
+  .bio h1{ font-family:'Anton',sans-serif; font-weight:400; font-size:30pt; line-height:1.02; margin:0;
+           text-transform:uppercase; letter-spacing:.01em; }
+  .bio p{ margin:0 0 3.6mm; font-size:var(--body); line-height:1.65; }
+  .bio p:last-child{ margin-bottom:0; }
+  .bio .k{ background:var(--riso); padding:0 3px; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
+
+  .band{ position:absolute; left:0; right:0; bottom:0; background:var(--ink); color:var(--paper);
+         display:grid; grid-template-columns:1.05fr .9fr 1.2fr; }
+  .band.b2{ grid-template-columns:1fr 1fr; }
+  .band > div{ padding:7mm 7mm 8mm; font-size:var(--small); line-height:1.85; }
+  .band > div:first-child{ padding-left:12mm; }
+  .band > div + div{ border-left:1px solid rgba(244,244,242,.3); }
+  .band .cap{ font-family:'Anton',sans-serif; font-size:15pt; line-height:1; text-transform:uppercase;
+              letter-spacing:.03em; margin-bottom:3.4mm; }
+  .band .cap span{ background:var(--riso); color:var(--ink); padding:1px 5px 0; }
+  .band a{ border-bottom:1px solid rgba(244,244,242,.45); }
+
+  /* ── page 2 ── */
+  .top2{ padding-top:9mm; padding-bottom:4mm; }
+  .top2 img{ width:42mm; display:block; margin-left:-1.2mm; margin-bottom:-1mm; }
+
+  .hero{ background:var(--riso); border-top:3px solid var(--ink); border-bottom:3px solid var(--ink); padding:9mm 0 0; }
+  .heroin{ display:grid; grid-template-columns:86mm 1fr; gap:9mm; align-items:end; }
+  .hero .cover{ width:86mm; height:86mm; object-fit:cover; display:block; border:3px solid var(--ink);
+                box-shadow:3mm 3mm 0 var(--ink); }
+  .kick{ margin-bottom:3mm; }
+  .kick span{ background:var(--ink); color:var(--riso); padding:1px 6px; }
+  .hero .title{ font-family:'Anton',sans-serif; font-size:60pt; line-height:.86; text-transform:uppercase;
+                letter-spacing:.005em; margin-bottom:4mm; }
+  .hero .sub{ font-size:var(--body); line-height:1.65; margin-bottom:3mm; }
+  .hero .sub a{ border-bottom:1px solid var(--ink); }
+  .tracks{ font-size:var(--body); line-height:1.8; border-top:2px solid var(--ink); border-bottom:0;
+           padding:1.6mm 0; margin-bottom:3.4mm; }
+  .tracks{ display:grid; grid-template-columns:1fr 1fr; gap:4mm; }
+  .tracks .side{ font-size:var(--label); font-weight:700; text-transform:uppercase; letter-spacing:.12em; line-height:1.6; margin-bottom:.6mm; }
+  .tracks .theirs{ opacity:.75; }
+  .tracks span{ display:inline-block; min-width:8mm; opacity:.62; }
+  .links a{ display:inline-block; background:var(--ink); color:var(--paper); padding:.6mm 2.6mm .4mm; margin-right:2mm; }
+  .cred, .dp{ font-size:var(--small); line-height:1.75; }
+  .hero .cred{ padding-top:6mm; padding-bottom:4.5mm; }
+
+  .p2{ display:flex; flex-direction:column; }
+  .discwrap{ flex:1; display:flex; align-items:center; padding-bottom:20mm; }
+  .disc{ display:grid; grid-template-columns:84mm 1fr; gap:9mm; align-items:center; width:100%; }
+  .disc img{ width:84mm; height:84mm; display:block; border:3px solid var(--ink); box-shadow:2mm 2mm 0 var(--riso); }
+  .disc .t{ font-family:'Anton',sans-serif; font-size:30pt; text-transform:uppercase; letter-spacing:.01em;
+            line-height:.95; margin:1mm 0 1.6mm; }
+  .disc .m{ font-size:var(--body); line-height:1.6; }
+  .dp{ margin:3.4mm 0 4.4mm; }
+
+  /* ── page 3 ── */
+  .livehero{ height:75mm; position:relative; border-bottom:3px solid var(--ink);
+             background:linear-gradient(to top, rgba(10,10,10,.8) 0%, rgba(10,10,10,.3) 18%, rgba(10,10,10,0) 32%),
+                        url(../FOTO/live-palco-rosso.jpg) center 40% / cover no-repeat; }
+  .h3t{ position:absolute; left:0; bottom:0; font-family:'Anton',sans-serif; font-size:36pt; line-height:1;
+        text-transform:uppercase; letter-spacing:.01em; color:var(--paper); padding-bottom:5mm; }
+  .livepair{ display:grid; grid-template-columns:1.2fr 1fr 1fr; height:37mm; border-bottom:3px solid var(--ink); }
+  .livepair div{ background:center 35% / cover no-repeat; }
+  .livepair div + div{ border-left:3px solid var(--ink); }
+  .venues{ display:grid; grid-template-columns:40mm 1fr; gap:7mm; padding-top:8mm; }
+  .vt{ padding-top:1.4mm; }
+  .gigs{ list-style:none; margin:0; padding:0; border-top:3px solid var(--ink); }
+  .gigs li{ display:flex; align-items:baseline; justify-content:space-between; gap:4mm; padding:2mm 0 1.7mm;
+            border-bottom:1px solid rgba(16,16,16,.22); }
+  .gigs b{ font-family:'Anton',sans-serif; font-size:18pt; line-height:1; text-transform:uppercase; white-space:nowrap; letter-spacing:.02em; }
+  .gigs i{ font-style:normal; font-size:var(--small); line-height:1.3; text-align:right; }
+  .also{ grid-column:2; font-size:var(--small); line-height:1.6; padding-top:3mm; margin-top:-5mm; }
+
+  .foot{ position:absolute; left:12mm; right:12mm; bottom:8mm; display:flex; justify-content:space-between; align-items:baseline;
+         gap:5mm; font-size:var(--small); line-height:1.5; padding-top:3mm; border-top:3px solid var(--ink); }
+  .links a { padding:1mm 3mm; }
+  .bio h1, .hero .title, .disc .t { letter-spacing:.01em; }
+  a:focus-visible { outline:2px solid var(--riso); outline-offset:3px; }
+</style>
+</head>
+<body>
+
+<!-- ═════════════ PAGINA 1 ═════════════ -->
+<section class="page">
+  <div class="head pad">
+    <img src="../assets/rude-logo-rosa.png" alt="RUDE">
+    <div class="tag">Garage / Post-punk<br>Milano</div>
+  </div>
+  <div class="rule"></div>
+
+  <div class="photo">
+  </div>
+
+  <div class="bio pad">
+    <h1>Garage/<br>post punk<br>da Milano.</h1>
+    <div>
+      <p>Suoni che nascono dall’eco del punk e del post-hardcore di fine anni ’80, ma prendono una forma personale, ruvida e viscerale: chitarre affilate, ritmi sincopati, linee vocali feroci e malinconiche.</p>
+      <p>Dentro ci stanno rabbia e melodia, disillusione e resistenza; <span class="k">Fugazi e The Libertines, Paolo Sollier e Kae Tempest.</span></p>
+      <p>Nel 2025 esce l’album d’esordio, <i>About Youth</i>; nel 2026 lo split 12″ con i Polpo Kid, <i>Bestie Flambé</i>, il primo cantato in italiano.</p>
+    </div>
+  </div>
+
+  <div class="band">
+    <div>
+      <div class="cap"><span>Ascolta</span></div>
+      <a href="https://open.spotify.com/artist/3KdGtn4bo1ippG8VvX0AIx">Spotify — RUDE</a><br>
+      <a href="https://rude-theband.bandcamp.com">Bandcamp — rude-theband</a><br>
+      <a href="https://www.instagram.com/reel/DWQ9wWHjMBm/">Instagram — clip live</a><br>
+      <a href="https://linktr.ee/rudeband">linktr.ee/rudeband</a>
+    </div>
+    <div>
+      <div class="cap">Booking</div>
+      349 725 4732<br>
+      <a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a><br>
+      <a href="https://www.instagram.com/about.rude/">Instagram @about.rude</a><br>
+      <a href="https://drive.google.com/drive/folders/1zqtWuZhpxeb7gdpfX2_qQgWxhYfGLNE7">Foto HD — Drive</a>
+    </div>
+    <div>
+      <div class="cap">Formazione</div>
+      Lorenzo <span class="mute">voce, chitarra</span><br>
+      Francesco P <span class="mute">voce, basso</span><br>
+      Francesco C <span class="mute">chitarra</span><br>
+      Adriano <span class="mute">batteria</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ PAGINA 2 ═════════════ -->
+<section class="page p2">
+  <div class="top2 pad">
+    <img src="../assets/rude-logo-rosa.png" alt="RUDE">
+  </div>
+
+  <div class="hero">
+    <div class="pad heroin">
+      <img class="cover" src="../assets/cover_bestie_flambe.png" alt="Bestie Flambé — copertina">
+      <div class="htxt">
+        <div class="kick"><span>Il nuovo disco</span></div>
+        <div class="title">Bestie<br>Flambé</div>
+        <div class="sub">Split 12″ RUDE / <a href="https://polpokid.bandcamp.com">Polpo Kid</a><br>settembre 2026</div>
+        <div class="tracks">
+          <div><div class="side">RUDE</div><span>01</span>Veg Burger<br><span>02</span>Bestie Forever</div>
+          <div class="theirs"><div class="side">Polpo Kid</div><span>03</span>Soffritto<br><span>04</span>Love Shines</div>
+        </div>
+        <div class="links">
+          <a href="https://open.spotify.com/playlist/1zTvjSZeXcg4DSBGwBEvwx">Spotify ↗</a>
+          <a href="https://rude-theband.bandcamp.com/album/bestie-flamb">Bandcamp ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="pad cred">
+      <span class="mute">Rec e mix:</span> <b>Alberto Casagrande</b> (Famaghost, Milano)<br><span class="mute">Master:</span> <b>Filippo Passamonti</b> (VDSS Studio)
+    </div>
+  </div>
+
+  <div class="pad discwrap">
+    <div class="disc">
+      <img src="../assets/cover_about_youth.png" alt="About Youth — copertina">
+      <div>
+        <div class="kick"><span>L’esordio</span></div>
+        <div class="t">About Youth</div>
+        <div class="m">Album d’esordio · 2025</div>
+        <p class="dp"><span class="mute">Rec e mix:</span> <b>Andrea Maglia</b> (Bleach Studio)<br><span class="mute">Master:</span> <b>Matt Bordin</b> (Outside Inside Studio)</p>
+        <div class="links">
+          <a href="https://open.spotify.com/album/7BxeUfYIVpw3poPJLHJJJp">Spotify ↗</a>
+          <a href="https://rude-theband.bandcamp.com/album/about-youth">Bandcamp ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="lb">Booking</div>
+    <div style="text-align:right">349 725 4732 · <a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a> · <a href="https://www.instagram.com/about.rude/">@about.rude</a></div>
+  </div>
+</section>
+
+<!-- ═════════════ PAGINA 3 ═════════════ -->
+<section class="page">
+  <div class="top2 pad">
+    <img src="../assets/rude-logo-rosa.png" alt="RUDE">
+  </div>
+  <div class="rule"></div>
+
+  <div class="livehero"><div class="h3t pad">Dove abbiamo suonato</div></div>
+  <div class="livepair">
+    <div style="background-image:url(../FOTO/Rude_Live1.jpg); background-position:62% 40%"></div>
+    <div style="background-image:url(../FOTO/live-palco-blu.jpg); background-position:50% 45%"></div>
+    <div style="background-image:url(../FOTO/live-batteria.jpg); background-position:100% 22%"></div>
+  </div>
+
+  <div class="pad venues">
+    <div class="vhead">
+      <div class="vt">Una selezione<br>dei locali.</div>
+    </div>
+    <ul class="gigs">
+      <li><b>Magazzino sul Po</b><i>Torino · per Polvere Magazine</i></li>
+      <li><b>Arci Gagarin</b><i>Busto Arsizio (VA)</i></li>
+      <li><b>Detune</b><i>Milano</i></li>
+      <li><b>Cinemino Noise</b><i>Milano</i></li>
+      <li><b>Labrutepoque</b><i>Milano</i></li>
+      <li><b>Gallery16</b><i>Bologna · per Brandelli</i></li>
+      <li><b>Ri-Circolo</b><i>Morbegno (SO) · per Teddy Beer + Perestrojka</i></li>
+    </ul>
+    <div class="also">Anche: <b>Barrio’s</b>, <b>C.I.Q.</b>, <b>Bachelite</b> (Milano), <b>Il Cantiere 40/3</b> (Arese)</div>
+  </div>
+
+  <div class="band b2">
+    <div>
+      <div class="cap"><span>Booking</span></div>
+      349 725 4732<br>
+      <a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a><br>
+      <a href="https://www.instagram.com/about.rude/">Instagram @about.rude</a><br>
+      <a href="https://drive.google.com/drive/folders/1zqtWuZhpxeb7gdpfX2_qQgWxhYfGLNE7">Foto HD — Drive</a>
+    </div>
+    <div>
+      <div class="cap">Ascolta</div>
+      <a href="https://open.spotify.com/artist/3KdGtn4bo1ippG8VvX0AIx">Spotify — RUDE</a><br>
+      <a href="https://rude-theband.bandcamp.com">Bandcamp — rude-theband</a><br>
+      <a href="https://www.instagram.com/reel/DWQ9wWHjMBm/">Instagram — clip live</a><br>
+      <a href="https://linktr.ee/rudeband">linktr.ee/rudeband</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
