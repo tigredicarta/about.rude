@@ -155,27 +155,7 @@
     }
 
 
-    .btn-nav-print {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: var(--font-tech);
-      font-size: 0.76rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.45rem 0.85rem;
-      background: var(--chalk-white);
-      color: var(--ink-black);
-      border: 1.5px solid var(--pure-white);
-      min-height: 38px;
-      transition: all var(--transition-fast);
-    }
-    .btn-nav-print:hover {
-      background: var(--pink-rude);
-      color: var(--pure-white);
-      border-color: var(--pink-rude);
-    }
+
 
     /* ==========================================================================
        3. HERO HEADER & DOWNLOADS
@@ -850,8 +830,7 @@
       .rider-download-group,
       .table-actions-bar,
       .toast-rider,
-      .theme-toggle-btn,
-      .btn-nav-print {
+      .theme-toggle-btn {
         display: none !important;
       }
       .tech-card-block {
@@ -993,14 +972,8 @@
         <span aria-hidden="true">←</span>
         <img src="assets/rude-logo-rosa.png" alt="RUDE" class="nav-logo-img" />
       </a>
-      <div class="nav-actions-cluster">
-        <span class="rider-nav-context">Scheda tecnica</span>
-        <button type="button" class="btn-nav-print" onclick="window.print()">
-          <svg class="svg-icon" aria-hidden="true"><use href="#icon-xlr"></use></svg>
-          STAMPA / PDF
-        </button>
-        <a href="RUDE-scheda-tecnica.pdf" download="RUDE-scheda-tecnica.pdf" class="rider-pdf-link">Scarica PDF ↓</a>
-      </div>
+      <span class="rider-nav-context">Scheda tecnica</span>
+      <a href="RUDE-scheda-tecnica.pdf" download="RUDE-scheda-tecnica.pdf" class="rider-pdf-link">Scarica PDF ↓</a>
     </div>
   </header>
   <div class="riso-halftone-strip" aria-hidden="true"></div>
