@@ -1,103 +1,158 @@
 ---
 name: ask-argon
 description: >-
-  Consult, prompt, and collaborate with Argon (Gemini 4 Argon), the expert Art Director,
-  Visual Designer, and Technical Copywriter. Use this skill when the user asks to
-  "fallo fare ad argon", "chiedi ad argon", "gira la home ad argon", or wants high-level
-  visual reviews, design systems, HTML/CSS templates, and GitHub documentation.
+  Consult, prompt, and collaborate with Argon (Gemini Argon), Principal Systems Architect,
+  Lead UX/UI Designer, Art Director, and Technical Copywriter. Trigger this skill whenever
+  Lorenzo asks to "fallo fare ad argon", "chiedi ad argon", "gira la home ad argon", or
+  whenever a task requires high-level visual direction, UX/UI architecture, drop-in HTML/CSS
+  templates, design systems, academic instructional design, or GitHub documentation.
 ---
 
-# Argon Integration Skill (Gemini 4 Argon Bridge)
+# Argon Integration Skill (Flash <-> Argon Bridge Protocol)
 
-This skill defines the operational protocols, invocation patterns, and design principles for collaborating with **Argon** via the CLI bridge `/Users/lorenzo/.gemini/antigravity/bin/ask-argon`.
+This skill defines the operational architecture, prompt contracts, invocation patterns, and design governance for collaborating with **Argon** via the CLI bridge `/Users/lorenzo/.gemini/antigravity/bin/ask-argon`.
 
-Argon acts as an **Art Director, Lead UX/UI Architect, and Technical Copywriter**, providing design governance, aesthetic reviews, production-ready frontend templates, and documentation.
+In the Antigravity ecosystem, **Flash** acts as the local Lead Engineer & Execution Agent (filesystem, AST, build pipelines, Playwright QA, Git), while **Argon** acts as the **Principal Systems Architect, Art Director, Lead UX/UI Designer, and Technical Copywriter**.
 
 ---
 
 ## 1. Operating Modes
 
-The bridge supports two execution modes. Choose the mode according to the deliverable:
+Select the execution mode strictly according to the expected deliverable:
 
-### A. Design & Template Mode (`--mode design` / `--mode ux` / `--design`)
+### A. Design & UI Architecture Mode (`--mode design`)
 Use for:
-- UX audits and architectural visual reviews of websites or apps.
-- Design systems, design tokens (semantic color palettes, typographic scales, spatial grids, shadows/elevations).
-- Complete, drop-in HTML5/CSS3 templates and interactive UI components.
+- Full UX/UI audits, heuristic evaluations, and visual hierarchy reviews.
+- Design systems and token architecture (semantic color systems, fluid typography, spatial grids, elevation/lighting, motion curves).
+- Production-ready, drop-in HTML5/CSS3/JS templates, interactive UI components, and print/PDF stylesheet layouts (e.g., press kits, tech riders, slide decks).
 
-**Standard 4-Step Output Structure:**
-1. UX Analysis & Information Architecture (cognitive load reduction, hierarchy, WCAG contrast verification).
-2. Design Tokens & Visual Specifications (color tokens with hex/hsl and contrast rationale, font pairings, 4/8pt spacing grid).
-3. Drop-in Production Code (semantic HTML5, modern CSS Grid/Flexbox, CSS custom properties `:root`, responsive mobile-first).
-4. Component States & Micro-interactions (`:hover`, `:focus-visible`, `:active`, disabled, loading/skeleton, empty state).
+**Contractual 4-Block Output Structure:**
+1. **UX & Architectural Diagnosis**: Information hierarchy, cognitive load reduction, viewport budget, and WCAG 2.1 AA/AAA contrast audit.
+2. **Design Tokens & Visual Spec**: Complete `:root` custom properties (HEX/HSL, contrast ratios, font stacks, `clamp()` scales, 4/8pt spatial tokens, easing curves).
+3. **Drop-in Production Code**: Complete, self-contained semantic HTML5 and modern CSS (Grid, Flexbox, `:has()`, container queries where applicable) with zero placeholders or `TODO` comments.
+4. **Interaction States & Edge Cases**: Explicit definitions for `:hover`, `:focus-visible`, `:active`, `:disabled`, loading/skeleton states, empty states, overflow fallbacks, and `@media (prefers-reduced-motion: reduce)`.
 
-### B. Documentation & Copywriting Mode (`--mode doc` / `--mode readme`)
+### B. Documentation & GFM Copywriting Mode (`--mode doc`)
 Use for:
-- GitHub `README.md` and repository landing pages.
-- Technical documentation, architecture guides, release manifests, and product copy.
+- GitHub `README.md`, repository landing pages, and visual release notes.
+- Architecture Decision Records (ADRs), `HANDOFF.md` specifications, and bilingual technical/band copywriting (IT/EN).
 
-In this mode, UI template injection is bypassed, allowing Argon to output clean, highly-structured Markdown optimized for GitHub Flavored Markdown (GFM).
+In `--mode doc`, UI code boilerplate is bypassed in favor of clean, high-impact **GitHub Flavored Markdown (GFM)** using native HTML table layouts and typographic badges.
+
+### C. Structured / Academic Master Content Mode (`--mode lesson` / `--mode raw`)
+Use for:
+- Structured multi-part deliverables such as **NABA UX/UI Lesson Master Content** (`naba-uxui-lesson-designer`), JSON/Python data payloads, or architectural specifications where exact parsing delimiters are required without extra wrapper templates.
 
 ---
 
-## 2. Command Reference
+## 2. Flash -> Argon Prompt Contract (Input Envelope)
 
-### Standard Invocation with Prompt File (Recommended)
-```bash
-/Users/lorenzo/.gemini/antigravity/bin/ask-argon \
-  --prompt-file prompt.txt \
-  --mode doc \
-  --output response.md
+To achieve zero-iteration drop-in code, Flash **must never** send vague prompts or raw multi-file dumps. Every `prompt.txt` generated by Flash must follow this **4-Block Input Envelope** (strictly `< 12 KB`):
+
+```markdown
+# 1. PROJECT & ENVIRONMENT CONTEXT
+- Project Name & Domain: [e.g., RUDE KIT / NABA UX-UI L04]
+- Target Viewport / Medium: [e.g., Responsive Web + A4 Print PDF / Fixed 1280x720 Slide Canvas]
+- Existing Design Tokens (:root):
+  [Paste exact CSS variables, font-family names, and breakpoints currently in the codebase]
+- Surrounding DOM / Component Signature:
+  [Paste concise HTML structure or class names Argon must hook into]
+
+# 2. STRICT CONSTRAINTS (NEGATIVE & POSITIVE)
+- Language & Tone: [e.g., Direct Italian, zero promotional fluff, zero emojis]
+- Technical Guardrails: [e.g., Single canonical stylesheet, do not touch shared deck.css, GFM-safe HTML only]
+- Accessibility: [WCAG AA 4.5:1 body, 3:1 large text, explicit focus-visible]
+
+# 3. TASK & SOURCE MATERIAL
+[Detailed problem statement, user request, or filtered source text/slides to process]
+
+# 4. EXPECTED DELIVERABLE & PARSING MARKERS
+[Specify exact file blocks or sections Argon must output using ARGON_BLOCK markers]
 ```
 
-### UX / Design Review Invocation
+### Deterministic Output Markers (Argon -> Flash)
+
+When Flash needs to extract code or data programmatically from `response.md`, instruct Argon to wrap each deliverable artifact in explicit HTML comment fences:
+
+```markdown
+<!-- ARGON_BLOCK:START id="styles" target="assets/custom.css" -->
+/* Complete production CSS here */
+<!-- ARGON_BLOCK:END id="styles" -->
+```
+
+---
+
+## 3. Command Reference
+
+### Standard File-Based Invocation (Recommended for all complex tasks)
 ```bash
 /Users/lorenzo/.gemini/antigravity/bin/ask-argon \
-  --prompt-file prompt.txt \
+  --prompt-file _qa/argon_prompt.txt \
   --mode design \
-  --output response.md
+  --output _qa/argon_response.md
 ```
 
-### Direct Inline Prompt
+### Documentation / README Invocation
 ```bash
 /Users/lorenzo/.gemini/antigravity/bin/ask-argon \
-  --prompt "Analizza la palette e proponi la gerarchia tipografica per questo componente" \
+  --prompt-file _qa/argon_doc_prompt.txt \
+  --mode doc \
+  --output _qa/argon_doc_response.md
+```
+
+### Structured / Lesson Master Content Invocation
+```bash
+/Users/lorenzo/.gemini/antigravity/bin/ask-argon \
+  --prompt-file _qa/lNN_prompt.txt \
+  --mode lesson \
+  --output naba-uxui-lNN/_qa/lNN_master_content.md
+```
+
+### Direct Inline Prompt (Quick Design Queries Only)
+```bash
+/Users/lorenzo/.gemini/antigravity/bin/ask-argon \
+  --prompt "Verify WCAG contrast and propose hover/focus-visible states for .btn-rider" \
   --mode design
 ```
 
 ---
 
-## 3. Universal Best Practices & Lessons Learned
+## 4. Engineering & Design Governance (Best Practices)
 
-### A. Bridge Stability & Web Session Management
-1. **Thread Isolation**: The bridge automatically starts a clean conversation ("Nuova chat") to prevent output contamination from previous runs.
-2. **No Binary Uploads via CLI (`--media`)**: Do not upload binary files (`.png`, `.jpg`, `.pdf`) directly through the browser automation bridge, as web UI safety classifiers can trigger generic refusals on raw binaries. Always describe media assets, dimensions, and visual roles textually in the prompt.
-3. **Prompt Size Discipline**: Keep prompt files concise and self-contained (<10 KB). Avoid passing large multi-file bundles (>50 KB) through browser contenteditable fields, which can cause DOM truncation or fail to trigger editor input events.
+### A. Bridge Stability & Session Hygiene
+1. **Thread Isolation**: Each `ask-argon` invocation initializes a clean chat session ("Nuova chat") to guarantee zero context bleed across tasks.
+2. **Headless Execution by Default**: The CLI runs silently in the background with automatic Chrome singleton lock cleanup. Use `--headed` or `--gui` only for visual debugging.
+3. **Zero Binary Uploads (`--media` Ban)**: Never pass `.png`, `.jpg`, `.webp`, or `.pdf` binaries through the browser automation bridge; web UI classifiers frequently reject raw automated uploads. Instead, Flash must inspect assets locally (resolution, aspect ratio, dominant palette, subject framing) and provide a precise Visual Asset Manifest in text inside Block 1 of the prompt.
+4. **Payload Size & Encoding Discipline**: Keep prompt files under 12 KB (max 25 KB for full academic lesson transcripts). Strip base64 strings, minified bundles, and lockfiles before building the prompt to avoid contenteditable truncation in Chrome.
 
-### B. CSS & Frontend Architecture
-1. **Single Canonical Stylesheet**: Avoid multi-layer CSS conflicts (e.g., inline styles fighting external overrides and resets). All global tokens, resets, layouts, and components should be unified in a single, well-structured stylesheet.
-2. **WCAG Contrast Ratios**:
-   - Body text: minimum 4.5:1 (WCAG AA) or 7:1 (WCAG AAA).
-   - Large headings: minimum 3:1 (WCAG AA).
-   - Accents / Highlights: Always verify that text placed over high-chroma or accent backgrounds maintains certified contrast (never assume white text works on bright colors).
-3. **Responsive Media Strategy**:
-   - Desktop viewports: full-bleed or immersive hero containers (`100vh` / `100svh`, `object-fit: cover`).
-   - Mobile viewports: adapt container heights (`height: auto`, `object-fit: contain`) when media content contains critical details across its entire aspect ratio to prevent destructive edge cropping.
-4. **Typographic Rhythm & Orphans**: In fluid responsive layouts, bind critical compound names, brand titles, and units with non-breaking spaces (`&nbsp;`) to avoid single-word orphans on line wraps.
+### B. CSS, Visual Hierarchy & Motion Architecture
+1. **Single Canonical Stylesheet**: Avoid specificity wars (`!important` chains or inline styles fighting external stylesheets). Consolidate tokens, resets, layout grids, and component rules into the designated target stylesheet.
+2. **Certified WCAG Contrast**:
+   - Body copy: `>= 4.5:1` (AA) or `>= 7.0:1` (AAA).
+   - Large display headings (`>= 24px` or `>= 18.66px bold`): `>= 3.0:1`.
+   - High-chroma accents (e.g., acid yellow, signal red, electric blue): Always pair bright accent fills with high-contrast dark ink (`#0A0A0A` / `#111111`), never default to white text without mathematical luminance verification.
+3. **Responsive & Print Media Strategy**:
+   - Desktop: Use deliberate spatial tension, asymmetric grids, or full-bleed hero viewports (`100svh`, `object-fit: cover`).
+   - Mobile: Prevent destructive cropping on critical diagrams, stage plots, or photography by switching to `height: auto` and `object-fit: contain` where edge details carry information.
+   - Print / PDF (`@media print`): Enforce explicit page breaks (`break-inside: avoid`), strip decorative sticky navbars, and lock background colors with `-webkit-print-color-adjust: exact; print-color-adjust: exact;`.
+4. **Micro-Interactions & Motion Polish**:
+   - Use physical, non-linear easing curves (e.g., `cubic-bezier(0.22, 1, 0.36, 1)` for entrances, 150ms–220ms for interactive state transitions).
+   - Always include a `@media (prefers-reduced-motion: reduce)` block that disables transforms/parallax while preserving opacity crossfades.
+5. **Typographic Micro-Hygiene**:
+   - Bind compound brand names, numbers + units (`150&nbsp;min`, `1280&times;720`), and short Italian prepositions/conjunctions at line ends with `&nbsp;` where orphan control is critical.
+   - Apply `text-wrap: balance` on headings and `text-wrap: pretty` on body paragraphs.
 
-### C. GitHub Flavored Markdown (GFM) Standards
-1. **No Inline CSS**: GitHub's `html-pipeline` sanitizes and strips all `style="..."` attributes. Control grid layouts and image sizing exclusively with native HTML attributes (`align="center"`, `width="240"`, `valign="top"`, `width="50%"`).
-2. **Badge & Stamp Elements (`<kbd>` and `<samp>`)**: Never use triple backticks (```` ``` ````) for short tags, pills, or single-line labels. Triple backticks generate wide, full-width gray blocks with automatic copy buttons that disrupt layout flow. Use:
-   - `<kbd> TEXT </kbd>` for bordered badge/stamp effects.
-   - `<samp> TEXT </samp>` for monospace inline tags.
-3. **No Nested Markdown inside Block HTML**: CommonMark does not reliably parse Markdown syntax inside block-level HTML tags (`<table>`, `<div>`). Use standard HTML tags (`<b>`, `<em>`, `<sub>`, `<ul>`, `<ol>`) within table cells.
-4. **Filesystem Case-Sensitivity**: GitHub hosts documentation on Linux filesystems. Always ensure file paths match the exact case of the repository on disk.
+### C. GitHub Flavored Markdown (GFM) Strict Rules
+1. **Sanitizer Awareness**: GitHub's `html-pipeline` strips all `style="..."`, `<style>`, and `<script>` tags. Control alignment and sizing exclusively via legacy HTML attributes (`align="center"`, `valign="top"`, `width="50%"`, `width="1200"`).
+2. **Inline Badges (`<kbd>` & `<samp>`)**: Never use fenced code blocks (```` ``` ````) for short pills, version tags, or metadata stamps—they render as full-width scrollable boxes with copy buttons. Use `<kbd>TAG</kbd>` for bordered keycaps/badges and `<samp>TEXT</samp>` for inline technical labels.
+3. **Pure HTML Inside Block Tags**: CommonMark fails to parse Markdown syntax (`**bold**`, `[link](url)`) inside multiline `<table>` or `<details>` blocks if blank lines are missing. Inside HTML tables, write 100% pure HTML (`<b>`, `<em>`, `<sub>`, `<a href="...">`, `<br>`).
+4. **Case-Sensitive Asset Paths**: Always verify exact filename casing on disk before committing links or `<img>` sources destined for GitHub (Linux filesystem).
 
 ---
 
-## 4. Execution Workflow
+## 5. Standard Execution Workflow for Flash
 
-1. **Formulate the Prompt**: Define the project identity, target audience, aesthetic tone, and strict negative constraints (e.g., zero emojis, no promotional buzzwords).
-2. **Select the Mode**: Use `--mode design` for UI code and audits; use `--mode doc` for documentation and Markdown.
-3. **Execute and Monitor**: Run `ask-argon` as a background task with appropriate wait time.
-4. **Review & Integrate**: Apply the generated solution, verify the output in the target environment (browser, GitHub preview), and clean up temporary prompt/response files before committing.
+1. **Inspect & Extract Context**: Read the local target files, extract existing CSS custom properties, DOM structure, image dimensions, and constraints.
+2. **Assemble `_qa/argon_prompt.txt`**: Populate the 4-Block Input Envelope with explicit negative constraints and `ARGON_BLOCK` output markers.
+3. **Invoke `ask-argon`**: Run the CLI with the appropriate `--mode` flag (`--mode design`, `--mode doc`, or `--mode lesson`) and verify that the output file is non-empty and complete.
+4. **Integrate & Verify**: Apply the code/content, run local verification (Playwright visual/overflow checks or HTTP preview), and clean up temporary prompt files before committing.
