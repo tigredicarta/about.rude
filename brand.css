@@ -248,6 +248,18 @@
 .info-list-links li, .info-list-links a {
   font-size: 1.02rem !important;
 }
+.site-footer .info-list-links a {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  text-wrap: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+@media (min-width: 780px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr 1.25fr !important;
+  }
+}
 .footer-bottom-bar {
   font-size: 0.88rem !important;
 }
