@@ -9,34 +9,34 @@ description: >-
 
 # Argon Integration Skill (Gemini 4 Argon Bridge)
 
-This skill documents how to invoke, instruct, and collaborate with **Argon** via the dedicated CLI bridge `/Users/lorenzo/.gemini/antigravity/bin/ask-argon`.
+This skill defines the operational protocols, invocation patterns, and design principles for collaborating with **Argon** via the CLI bridge `/Users/lorenzo/.gemini/antigravity/bin/ask-argon`.
 
-Argon operates as the project's **Art Director, Lead UX/UI Architect, and Technical Copywriter**.
+Argon acts as an **Art Director, Lead UX/UI Architect, and Technical Copywriter**, providing design governance, aesthetic reviews, production-ready frontend templates, and documentation.
 
 ---
 
 ## 1. Operating Modes
 
-The bridge script supports two distinct modes that determine what Argon generates:
+The bridge supports two execution modes. Choose the mode according to the deliverable:
 
 ### A. Design & Template Mode (`--mode design` / `--mode ux` / `--design`)
-Use when requesting:
-- Architectural visual reviews of web pages (CSS, HTML, layouts).
-- Design system tokens (palette, typography scale, borders, elevations).
-- Production-ready HTML5/CSS3 templates and interactive components.
+Use for:
+- UX audits and architectural visual reviews of websites or apps.
+- Design systems, design tokens (semantic color palettes, typographic scales, spatial grids, shadows/elevations).
+- Complete, drop-in HTML5/CSS3 templates and interactive UI components.
 
-In this mode, Argon provides a 4-step structured delivery:
-1. UX Analysis & Information Architecture (WCAG AA/AAA contrasts, hierarchy).
-2. Design Tokens & Visual Specifications.
-3. Complete drop-in HTML/CSS code.
-4. Component states (:hover, :focus-visible, :active, empty state).
+**Standard 4-Step Output Structure:**
+1. UX Analysis & Information Architecture (cognitive load reduction, hierarchy, WCAG contrast verification).
+2. Design Tokens & Visual Specifications (color tokens with hex/hsl and contrast rationale, font pairings, 4/8pt spacing grid).
+3. Drop-in Production Code (semantic HTML5, modern CSS Grid/Flexbox, CSS custom properties `:root`, responsive mobile-first).
+4. Component States & Micro-interactions (`:hover`, `:focus-visible`, `:active`, disabled, loading/skeleton, empty state).
 
 ### B. Documentation & Copywriting Mode (`--mode doc` / `--mode readme`)
-Use when requesting:
-- GitHub `README.md` and repository presentations.
-- Technical documentation, press releases, riders, manifests.
+Use for:
+- GitHub `README.md` and repository landing pages.
+- Technical documentation, architecture guides, release manifests, and product copy.
 
-In this mode, template injection is disabled, allowing Argon to produce pure, highly-structured Markdown tailored for GitHub Flavored Markdown (GFM).
+In this mode, UI template injection is bypassed, allowing Argon to output clean, highly-structured Markdown optimized for GitHub Flavored Markdown (GFM).
 
 ---
 
@@ -58,48 +58,46 @@ In this mode, template injection is disabled, allowing Argon to produce pure, hi
   --output response.md
 ```
 
-### Fast Text Prompt
+### Direct Inline Prompt
 ```bash
 /Users/lorenzo/.gemini/antigravity/bin/ask-argon \
-  --prompt "Analizza la palette e proponi la gerarchia tipografica per il footer" \
-  --mode doc
+  --prompt "Analizza la palette e proponi la gerarchia tipografica per questo componente" \
+  --mode design
 ```
 
 ---
 
-## 3. Critical Rules & Learned Best Practices
+## 3. Universal Best Practices & Lessons Learned
 
-### A. Bridge Stability & Browser Context
-- **Fresh Chat Session**: The bridge script automatically opens a "Nuova chat" on Gemini to ensure clean context and avoid re-reading stale conversation outputs.
-- **No Binary Media Uploads (`--media`)**: Do NOT pass binary images (`.png`, `.jpg`, `.pdf`) directly via `--media` to Gemini web UI, as Google's safety classifiers trigger generic refusals on raw binaries. Instead, reference image dimensions, paths, and visual roles textually in the prompt.
-- **Prompt Size Discipline**: Keep prompt files concise (<10KB). Avoid piping 50KB+ files into the editor; modern browser contenteditable fields can truncate or fail to trigger Quill's input event.
+### A. Bridge Stability & Web Session Management
+1. **Thread Isolation**: The bridge automatically starts a clean conversation ("Nuova chat") to prevent output contamination from previous runs.
+2. **No Binary Uploads via CLI (`--media`)**: Do not upload binary files (`.png`, `.jpg`, `.pdf`) directly through the browser automation bridge, as web UI safety classifiers can trigger generic refusals on raw binaries. Always describe media assets, dimensions, and visual roles textually in the prompt.
+3. **Prompt Size Discipline**: Keep prompt files concise and self-contained (<10 KB). Avoid passing large multi-file bundles (>50 KB) through browser contenteditable fields, which can cause DOM truncation or fail to trigger editor input events.
 
-### B. GitHub Flavored Markdown (GFM) Styling Rules
-Learned from Argon's GitHub layout architecture:
-1. **No Inline CSS**: GitHub's `html-pipeline` sanitizes and strips all `style="..."` attributes. Control layout solely via native HTML attributes (`align="center"`, `width="240"`, `valign="top"`, `width="50%"`).
-2. **Badge & Stamp Typography (`<kbd>` and `<samp>`)**: Never use triple backticks (```` ``` ````) for short titles, subheads, or badges in GitHub READMEs. Triple backticks create full-width gray boxes with intrusive copy buttons. Instead, use:
-   - `<kbd> TESTO BADGE </kbd>` for bordered fanzine stamp effect.
-   - `<samp> TESTO LOCANDINA </samp>` for monospace pills.
-3. **No Nested Markdown in HTML**: CommonMark does not process Markdown nested inside block-level HTML tags (`<table>`, `<div>`). Use raw HTML tags inside table cells (`<b>`, `<em>`, `<sub>`, `<pre>`).
-4. **Linux Case-Sensitivity**: GitHub runs on Linux. Paths must match disk casing strictly (e.g. `FOTO/RUDE_WC.jpg` vs `assets/rude-logo-rosa.png`).
+### B. CSS & Frontend Architecture
+1. **Single Canonical Stylesheet**: Avoid multi-layer CSS conflicts (e.g., inline styles fighting external overrides and resets). All global tokens, resets, layouts, and components should be unified in a single, well-structured stylesheet.
+2. **WCAG Contrast Ratios**:
+   - Body text: minimum 4.5:1 (WCAG AA) or 7:1 (WCAG AAA).
+   - Large headings: minimum 3:1 (WCAG AA).
+   - Accents / Highlights: Always verify that text placed over high-chroma or accent backgrounds maintains certified contrast (never assume white text works on bright colors).
+3. **Responsive Media Strategy**:
+   - Desktop viewports: full-bleed or immersive hero containers (`100vh` / `100svh`, `object-fit: cover`).
+   - Mobile viewports: adapt container heights (`height: auto`, `object-fit: contain`) when media content contains critical details across its entire aspect ratio to prevent destructive edge cropping.
+4. **Typographic Rhythm & Orphans**: In fluid responsive layouts, bind critical compound names, brand titles, and units with non-breaking spaces (`&nbsp;`) to avoid single-word orphans on line wraps.
 
-### C. Fanzine / Risograph CSS System Rules
-Learned from Argon's deep architectural critique:
-1. **Single Canonical Sheet (`brand.css`)**: Prevent "3-layer CSS wars" (inline styles vs overrides vs resets). Consolidate all tokens, resets, layouts, and component rules into one canonical file.
-2. **Risograph Contrast Law**: On Risograph pink (`#FF3D8B`), text must **always** be pure ink black (`#101010`), NEVER white. White on pink yields a 2.98:1 ratio (fails WCAG AA). Ink black on pink yields 6.8:1 (passes AA/AAA).
-3. **Physical Shadows**: Use hard, zero-blur offsets (`6px 6px 0px var(--ink-black)`), true to risograph screen printing.
-4. **Typographic Rhythm & Orphans**: In fluid responsive layouts, bind critical artist names and phrases with non-breaking spaces (`&nbsp;`) to avoid single-word orphans on new lines.
-5. **Responsive Hero Framing**:
-   - Desktop (>= 769px): Immersive full-screen poster (`100vh`/`100svh`, `object-fit: cover`).
-   - Mobile (<= 768px): Full uncropped photo (`width: 100%`, `height: auto`, `object-fit: contain`, 3:2 aspect ratio) so that all band members are 100% visible from edge to edge.
+### C. GitHub Flavored Markdown (GFM) Standards
+1. **No Inline CSS**: GitHub's `html-pipeline` sanitizes and strips all `style="..."` attributes. Control grid layouts and image sizing exclusively with native HTML attributes (`align="center"`, `width="240"`, `valign="top"`, `width="50%"`).
+2. **Badge & Stamp Elements (`<kbd>` and `<samp>`)**: Never use triple backticks (```` ``` ````) for short tags, pills, or single-line labels. Triple backticks generate wide, full-width gray blocks with automatic copy buttons that disrupt layout flow. Use:
+   - `<kbd> TEXT </kbd>` for bordered badge/stamp effects.
+   - `<samp> TEXT </samp>` for monospace inline tags.
+3. **No Nested Markdown inside Block HTML**: CommonMark does not reliably parse Markdown syntax inside block-level HTML tags (`<table>`, `<div>`). Use standard HTML tags (`<b>`, `<em>`, `<sub>`, `<ul>`, `<ol>`) within table cells.
+4. **Filesystem Case-Sensitivity**: GitHub hosts documentation on Linux filesystems. Always ensure file paths match the exact case of the repository on disk.
 
 ---
 
-## 4. Workflow Checklist
+## 4. Execution Workflow
 
-When collaborating with Argon on a task:
-1. Prepare a clear, concise prompt file describing the band/project identity, goals, and strict negative constraints (e.g., zero emojis, zero corporate jargon).
-2. Choose the appropriate `--mode` (`design` for UI/CSS, `doc` for Markdown/copy).
-3. Launch `ask-argon` via background task with adequate timeout (`WaitMsBeforeAsync: 10000`).
-4. Inspect the generated response, review Argon's diagnosis, and apply the drop-in code.
-5. Clean up temporary prompt/response files before committing.
+1. **Formulate the Prompt**: Define the project identity, target audience, aesthetic tone, and strict negative constraints (e.g., zero emojis, no promotional buzzwords).
+2. **Select the Mode**: Use `--mode design` for UI code and audits; use `--mode doc` for documentation and Markdown.
+3. **Execute and Monitor**: Run `ask-argon` as a background task with appropriate wait time.
+4. **Review & Integrate**: Apply the generated solution, verify the output in the target environment (browser, GitHub preview), and clean up temporary prompt/response files before committing.
