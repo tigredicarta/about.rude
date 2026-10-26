@@ -31,12 +31,12 @@
   --drum-layer-2: var(--ink-yellow);
   --drum-accent: var(--ink-teal);
 
-  /* Vettori di Fuori Registro (Misregistration) */
-  --riso-offset-x: 4px;
-  --riso-offset-y: 3px;
-  --riso-offset-neg-x: -4px;
-  --riso-offset-neg-y: -3px;
-  --paper-grain-opacity: 0.38;
+  /* Vettori di Fuori Registro Calibrati (3.5px / 2.5px per massima nitidezza e impatto Riso) */
+  --riso-offset-x: 3.5px;
+  --riso-offset-y: 2.5px;
+  --riso-offset-neg-x: -3.5px;
+  --riso-offset-neg-y: -2.5px;
+  --paper-grain-opacity: 0.32;
 
   /* Timing Meccanico Riso */
   --ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
@@ -177,6 +177,21 @@
 .riso-type--duo::before {
   color: var(--ink-pink);
   transform: translate3d(var(--riso-offset-x), var(--riso-offset-y), 0);
+}
+
+/* Ottimizzazione Alto Contrasto su fondo Rosa (es. Sezione Bestie Flambé) */
+.bestie-flambe-block .riso-type {
+  color: var(--ink-black) !important;
+}
+.bestie-flambe-block .riso-type::before {
+  color: var(--ink-yellow) !important;
+  transform: translate3d(var(--riso-offset-neg-x), var(--riso-offset-neg-y), 0);
+  opacity: 0.95;
+}
+.bestie-flambe-block .riso-type::after {
+  color: var(--ink-teal) !important;
+  transform: translate3d(var(--riso-offset-x), var(--riso-offset-y), 0);
+  opacity: 0.85;
 }
 
 /* ==========================================================================
