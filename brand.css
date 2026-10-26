@@ -44,6 +44,8 @@
 .site-footer .footer-section-label span { background: var(--pink-rude); color: var(--ink-black); padding: .05rem .3rem; }
 .presskit-download { display: inline-flex; align-items: center; min-height: 44px; margin-top: 1rem; padding: .6rem .9rem; background: var(--pink-rude); color: var(--ink-black); font-weight: 700; }
 .presskit-download:hover { background: var(--chalk-white); }
+.bio-actions-row .presskit-download--bio { margin-top: 0; padding: .75rem 1.1rem; border: 1px solid var(--pink-rude); font-size: .95rem; }
+.bio-actions-row .presskit-download--bio:hover { background: var(--ink-black); border-color: var(--ink-black); color: var(--chalk-white); }
 .rude-toast:empty { display: none; }
 
 /* Protezione download copertine */
