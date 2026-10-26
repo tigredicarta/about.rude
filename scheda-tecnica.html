@@ -899,7 +899,7 @@
 
       <div class="nav-actions-cluster">
         <a href="RUDE-scheda-tecnica.pdf" download="RUDE-scheda-tecnica.pdf" class="btn-pdf-box btn-pdf-box--pink" style="padding: 0.45rem 0.85rem; min-height: 38px; font-size: 0.76rem;">
-          📄 Scarica PDF
+          Scarica PDF
         </a>
       </div>
     </div>
@@ -923,10 +923,10 @@
 
           <div class="rider-download-group">
             <a href="RUDE-scheda-tecnica.pdf" download="RUDE-scheda-tecnica.pdf" class="btn-pdf-box btn-pdf-box--pink">
-              📄 SCARICA PDF RIDER
+              SCARICA PDF RIDER
             </a>
             <a href="RUDE_PressKit_2026.pdf" download="RUDE_PressKit_2026.pdf" class="btn-pdf-box">
-              📰 PRESS KIT (PDF)
+              PRESS KIT (PDF)
             </a>
           </div>
         </div>
@@ -1041,7 +1041,7 @@
                 <span class="gear-item-sub">Rullante, piatti e pedale cassa propri</span>
               </div>
               <div style="margin-top: 1.25rem; padding: 0.85rem; background: var(--bg-subtle); border-left: 4px solid var(--pink-rude); font-size: 0.82rem; line-height: 1.5;">
-                ⚡ <em>Possiamo condividere i nostri ampli con le altre band della serata. Fatecelo sapere in anticipo. Possiamo anche adattarci con gli ampli del locale o di altre band (roba simile).</em>
+                <em>Possiamo condividere i nostri ampli con le altre band della serata. Fatecelo sapere in anticipo. Possiamo anche adattarci con gli ampli del locale o di altre band (roba simile).</em>
               </div>
             </div>
 
@@ -1086,7 +1086,7 @@
           <div class="table-actions-bar">
             <span class="scroll-hint-mobile">⇄ Scorri la tabella (Colonna CH fissa)</span>
             <button type="button" id="btnCopyRider" class="btn-copy-rider-action">
-              📋 Copia Input List per WhatsApp / Mail
+              Copia Input List per WhatsApp / Mail
             </button>
           </div>
 
@@ -1282,11 +1282,11 @@
         <div>
           <h2 class="footer-heading">DOCUMENTAZIONE &amp; DOWNLOAD</h2>
           <ul style="list-style: none; font-size: 0.88rem; line-height: 2;">
-            <li>📄 <a href="RUDE-scheda-tecnica.pdf" download="RUDE-scheda-tecnica.pdf" style="text-decoration: underline;">Scarica Scheda Tecnica (PDF) ↗</a></li>
-            <li>📰 <a href="RUDE_PressKit_2026.pdf" download="RUDE_PressKit_2026.pdf" style="text-decoration: underline;">Scarica Press Kit Ufficiale (PDF) ↗</a></li>
-            <li>📷 <a href="https://drive.google.com/drive/folders/1zqtWuZhpxeb7gdpfX2_qQgWxhYfGLNE7" target="_blank" rel="noopener" style="text-decoration: underline;">Cartella Foto HD per Stampa (Drive) ↗</a></li>
-            <li>💿 <a href="https://rude-theband.bandcamp.com" target="_blank" rel="noopener" style="text-decoration: underline;">Bandcamp Ufficiale ↗</a></li>
-            <li>🏠 <a href="index.html" style="text-decoration: underline; font-weight: 700; color: var(--pink-rude);">Torna alla Landing Page RUDE ↗</a></li>
+            <li><a href="RUDE-scheda-tecnica.pdf" download="RUDE-scheda-tecnica.pdf" style="text-decoration: underline;">Scarica Scheda Tecnica (PDF) ↗</a></li>
+            <li><a href="RUDE_PressKit_2026.pdf" download="RUDE_PressKit_2026.pdf" style="text-decoration: underline;">Scarica Press Kit Ufficiale (PDF) ↗</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1zqtWuZhpxeb7gdpfX2_qQgWxhYfGLNE7" target="_blank" rel="noopener" style="text-decoration: underline;">Cartella Foto HD per Stampa (Drive) ↗</a></li>
+            <li><a href="https://rude-theband.bandcamp.com" target="_blank" rel="noopener" style="text-decoration: underline;">Bandcamp Ufficiale ↗</a></li>
+            <li><a href="index.html" style="text-decoration: underline; font-weight: 700; color: var(--pink-rude);">Torna alla Landing Page RUDE ↗</a></li>
           </ul>
         </div>
       </div>
@@ -1360,10 +1360,10 @@ CH 12: Overhead Right | Condensatore (+48V)`;
       btnCopyRider.addEventListener('click', () => {
         window.rudeCopyText(RIDER_FULL_TEXT).then(() => {
           const original = btnCopyRider.textContent;
-          btnCopyRider.textContent = '✓ INPUT LIST COPIATA!';
+          btnCopyRider.textContent = 'INPUT LIST COPIATA';
           btnCopyRider.style.background = '#00A859';
           btnCopyRider.style.borderColor = '#00A859';
-          showToast('✓ SCHEDA TECNICA COPIATA PER WHATSAPP / FONICO!');
+          showToast('Scheda tecnica copiata per WhatsApp / fonico');
           setTimeout(() => {
             btnCopyRider.textContent = original;
             btnCopyRider.style.background = '';
