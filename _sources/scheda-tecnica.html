@@ -1,832 +1,137 @@
 <!doctype html>
-<html lang="it">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RUDE - Scheda tecnica &amp; Stage Plot 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RUDE - Scheda tecnica e stage plot 2026</title>
 <style>
-  :root {
-    --pink: #ff3d8b;
-    --paper: #f4f4f2;
-    --ink: #101010;
-  }
-  @page {
-    size: A4 portrait;
-    margin: 0;
-  }
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    margin: 0;
-    background: #ccc;
-    color: var(--ink);
-    font: 8.5pt/1.35 'Courier Prime', Courier, monospace;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-  .sheet {
-    width: 210mm;
-    height: 297mm;
-    padding: 8mm 12mm 0;
-    background: var(--paper);
-    position: relative;
-    break-after: page;
-    overflow: hidden;
-  }
-  .sheet:last-child {
-    break-after: auto;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8mm;
-    padding-bottom: 2mm;
-    border-bottom: 3px solid var(--ink);
-  }
-  .logo {
-    width: 54mm;
-    height: auto;
-    display: block;
-    margin-left: -3mm;
-  }
-  .heading {
-    text-align: right;
-  }
-  h1, h2, h3 {
-    font-family: Anton, Impact, sans-serif;
-    font-weight: 400;
-    text-transform: uppercase;
-  }
-  h1 {
-    font-size: 23pt;
-    line-height: 1.05;
-    margin-bottom: 1.5mm;
-    letter-spacing: 0.02em;
-  }
-  .kicker {
-    font-size: 7.8pt;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-  }
-
-  .metrics {
-    display: flex;
-    justify-content: space-between;
-    gap: 4mm;
-    padding: 1.8mm 0;
-    font-size: 7.8pt;
-    border-bottom: 1px solid #b8b8b2;
-  }
-  .metrics b {
-    background: var(--pink);
-    padding: .2mm 1mm;
-    color: var(--ink);
-  }
-
-  .columns {
-    display: grid;
-    grid-template-columns: 1fr 1.25fr;
-    gap: 6mm;
-    margin-top: 3.5mm;
-  }
-
-  h2 {
-    font-size: 15pt;
-    line-height: 1.1;
-    margin-bottom: 2mm;
-  }
-  h2 .n {
-    font: 700 7.5pt/1 'Courier Prime', monospace;
-    color: var(--paper);
-    background: var(--ink);
-    padding: .8mm 1.2mm;
-    vertical-align: .8mm;
-    margin-right: 1.5mm;
-  }
-
-  .lineup {
-    margin-bottom: 2.5mm;
-  }
-  .member {
-    padding: .7mm 0;
-    border-bottom: 1px solid #ccc;
-    font-size: 8pt;
-  }
-  .member:last-child {
-    border: 0;
-  }
-  .member b {
-    display: block;
-    font-size: 8.3pt;
-  }
-  .member span {
-    font-size: 7.8pt;
-    color: #333;
-  }
-
-  .backline-block {
-    margin-bottom: 2mm;
-  }
-  h3 {
-    display: inline-block;
-    font-size: 10.5pt;
-    line-height: 1.2;
-    padding: .5mm 1.5mm;
-    margin-bottom: 1.5mm;
-  }
-  .ours h3 {
-    background: var(--pink);
-  }
-  .theirs h3 {
-    background: var(--ink);
-    color: var(--paper);
-  }
-
-  ul.gear {
-    list-style: none;
-  }
-  .gear li {
-    margin: 0 0 .6mm;
-    padding-left: 2.8mm;
-    position: relative;
-    font-size: 7.8pt;
-    line-height: 1.3;
-  }
-  .gear li::before {
-    content: '-';
-    position: absolute;
-    left: 0;
-  }
-  .gear li b {
-    font-weight: 700;
-  }
-
-  .note {
-    margin-top: 2.5mm;
-    font-size: 7.8pt;
-    line-height: 1.35;
-    background: #fff;
-    border: 1px solid var(--ink);
-    padding: 1.5mm 2mm;
-  }
-  .note strong {
-    background: var(--pink);
-    padding: 0 .6mm;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 8pt;
-    line-height: 1.22;
-  }
-  th {
-    font-size: 6.6pt;
-    text-transform: uppercase;
-    letter-spacing: .03em;
-    text-align: left;
-    padding: 1.2mm 1mm;
-    background: var(--ink);
-    color: var(--paper);
-  }
-  td {
-    padding: 1.2mm 1mm;
-    border-bottom: 1px solid #c6c6c0;
-    vertical-align: middle;
-  }
-  td:first-child {
-    width: 6.5mm;
-  }
-
-  .ch {
-    display: inline-block;
-    background: var(--pink);
-    padding: .2mm .6mm;
-    font-weight: 700;
-    font-size: 7.4pt;
-    line-height: 1;
-  }
-  .group td {
-    background: #e6e6e1;
-    font-size: 6.6pt;
-    text-transform: uppercase;
-    letter-spacing: .07em;
-    font-weight: 700;
-    padding: 1mm 1mm;
-  }
-
-  .src-title {
-    font-weight: 700;
-    display: block;
-    line-height: 1.15;
-  }
-  .src-sub {
-    font-size: 6.8pt;
-    color: #444;
-    display: block;
-  }
-
-  .mic-cell {
-    display: flex;
-    align-items: center;
-    gap: 1.2mm;
-    white-space: nowrap;
-  }
-  .mic-icon {
-    width: 3.4mm;
-    height: 3.4mm;
-    flex-shrink: 0;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: var(--ink);
-    color: var(--paper);
-    padding: 2.6mm 12mm;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5mm;
-    font-size: 7.5pt;
-    line-height: 1.4;
-  }
-  footer .label {
-    font-family: Anton, Impact, sans-serif;
-    font-size: 10.5pt;
-    color: var(--ink);
-    background: var(--pink);
-    display: inline-block;
-    padding: .1mm .8mm;
-    margin-bottom: .6mm;
-  }
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  footer a {
-    border-bottom: 1px solid #777;
-  }
-  .version {
-    text-align: right;
-    font-size: 6.8pt;
-    letter-spacing: 0.04em;
-  }
-
-  /* Pagina 2 - Stage Plot & Monitor */
-  .page-stage .stage-section {
-    margin-top: 4mm;
-  }
-  .page-stage .stage {
-    border: 2px solid var(--ink);
-    padding: 3mm;
-    background: #fff;
-  }
-  .page-stage .orientation {
-    display: flex;
-    justify-content: space-between;
-    font-size: 6.8pt;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-    margin-bottom: 2mm;
-    color: #555;
-    font-weight: 700;
-  }
-  .page-stage .drums {
-    width: 52%;
-    margin: 0 auto 3.5mm;
-    text-align: center;
-    background: var(--pink);
-    border: 1.5px solid var(--ink);
-    padding: 2.5mm 2mm;
-  }
-  .page-stage .performers {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 3mm;
-  }
-  .page-stage .performer {
-    border: 1.5px solid var(--ink);
-    padding: 2.5mm 1.5mm;
-    text-align: center;
-    background: var(--paper);
-  }
-  .page-stage .performer.lead {
-    border: 2px solid var(--pink);
-    background: #fff;
-  }
-  .page-stage .role {
-    font-family: Anton, Impact, sans-serif;
-    text-transform: uppercase;
-    font-size: 11.5pt;
-    font-weight: 400;
-    line-height: 1.1;
-  }
-  .page-stage .amp {
-    font-size: 7.5pt;
-    margin-top: 1mm;
-    color: #222;
-  }
-  .page-stage .wedge {
-    display: inline-block;
-    background: var(--ink);
-    color: var(--paper);
-    padding: .4mm 1.8mm;
-    font-size: 6.4pt;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    margin-top: 2mm;
-    font-weight: 700;
-  }
-  .page-stage .audience {
-    text-align: center;
-    font-size: 6.8pt;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    padding-top: 2.5mm;
-    border-top: 1px dashed #bbb;
-    margin-top: 3.5mm;
-    font-weight: 700;
-  }
-
-  .monitor-section {
-    margin-top: 4.5mm;
-  }
-  .monitor-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3mm 5mm;
-  }
-  .monitor-card {
-    border-top: 2px solid var(--ink);
-    padding-top: 2mm;
-  }
-  .aux {
-    display: inline-block;
-    background: var(--pink);
-    padding: .3mm .8mm;
-    font-weight: 700;
-    font-size: 7.2pt;
-    margin-bottom: 1mm;
-    color: var(--ink);
-  }
-  .monitor-card b {
-    display: block;
-    font-size: 8.2pt;
-  }
-  .monitor-card p {
-    margin: 1mm 0 0;
-    font-size: 7.8pt;
-    line-height: 1.35;
-    color: #222;
-  }
-
-  .tech-notes {
-    margin-top: 3.5mm;
-    border: 1px solid var(--ink);
-    background: #fff;
-    padding: 2mm 3mm;
-    font-size: 7.6pt;
-    line-height: 1.35;
-  }
-  .tech-notes b {
-    background: var(--pink);
-    padding: 0 .6mm;
-  }
-</style>
-</head>
-<body>
-
-<!-- SVG Defs Symbols Sprite -->
-<svg style="display: none;" aria-hidden="true">
-  <!-- SM58 Vocal -->
-  <symbol id="icon-mic-vocal" viewBox="0 0 24 24">
-    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
-    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-    <line x1="12" y1="19" x2="12" y2="22"/>
-    <line x1="8" y1="22" x2="16" y2="22"/>
-  </symbol>
-
-  <!-- SM57 Instrument -->
-  <symbol id="icon-mic-inst" viewBox="0 0 24 24">
-    <rect x="9" y="2" width="6" height="4" rx="1"/>
-    <rect x="9.5" y="6" width="5" height="11"/>
-    <line x1="12" y1="17" x2="12" y2="22"/>
-    <line x1="8.5" y1="22" x2="15.5" y2="22"/>
-  </symbol>
-
-  <!-- Condenser Pencil / C414 -->
-  <symbol id="icon-mic-condenser" viewBox="0 0 24 24">
-    <rect x="10" y="2" width="4" height="15" rx="1"/>
-    <line x1="10" y1="6" x2="14" y2="6"/>
-    <line x1="12" y1="17" x2="12" y2="22"/>
-    <line x1="8" y1="22" x2="16" y2="22"/>
-  </symbol>
-
-  <!-- Kick Mic (Egg / D112) -->
-  <symbol id="icon-mic-kick" viewBox="0 0 24 24">
-    <ellipse cx="12" cy="11" rx="6" ry="7"/>
-    <line x1="6" y1="11" x2="18" y2="11"/>
-    <line x1="12" y1="18" x2="12" y2="22"/>
-    <line x1="8" y1="22" x2="16" y2="22"/>
-  </symbol>
-
-  <!-- Drum Clip Mic -->
-  <symbol id="icon-mic-clip" viewBox="0 0 24 24">
-    <rect x="11" y="4" width="4.5" height="8" rx="1.5" transform="rotate(25 13 8)"/>
-    <path d="M7 16c2-4 5-3 5-3"/>
-    <rect x="4" y="16" width="5" height="4" rx="1"/>
-  </symbol>
-
-  <!-- D.I. Box -->
-  <symbol id="icon-bass-di" viewBox="0 0 24 24">
-    <rect x="3" y="5" width="18" height="14" rx="2"/>
-    <circle cx="7" cy="12" r="2"/>
-    <circle cx="17" cy="12" r="1.5"/>
-    <line x1="12" y1="8" x2="12" y2="16"/>
-  </symbol>
-
-  <!-- Lucide Guitar / Bass -->
-  <symbol id="icon-guitar" viewBox="0 0 24 24">
-    <path d="m11.9 12.1 4.514-4.514"/>
-    <path d="M20.1 2.3a1 1 0 0 0-1.4 0l-1.114 1.114A2 2 0 0 0 17 4.828v1.344a2 2 0 0 1-.586 1.414A2 2 0 0 1 17.828 7h1.344a2 2 0 0 0 1.414-.586L21.7 5.3a1 1 0 0 0 0-1.4z"/>
-    <path d="m6 16 2 2"/>
-    <path d="M8.23 9.85A3 3 0 0 1 11 8a5 5 0 0 1 5 5 3 3 0 0 1-1.85 2.77l-.92.38A2 2 0 0 0 12 18a4 4 0 0 1-4 4 6 6 0 0 1-6-6 4 4 0 0 1 4-4 2 2 0 0 0 1.85-1.23z"/>
-  </symbol>
+:root { --pink:#ff3d8b; --paper:#f4f4f2; --ink:#101010; }
+@page { size:A4 portrait; margin:0; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { color:var(--ink); background:#ccc; font:9.5pt/1.4 'Courier Prime',Courier,monospace; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.sheet { width:210mm; height:297mm; padding:10mm 12mm 22mm; background:var(--paper); position:relative; break-after:page; overflow:hidden; }
+.sheet:last-child { break-after:auto; }
+header { display:flex; align-items:center; justify-content:space-between; gap:8mm; padding-bottom:4mm; border-bottom:1px solid var(--ink); }
+.logo { display:block; width:42mm; height:auto; margin-left:-2mm; }
+.heading { text-align:right; }
+h1,h2,h3,.role,.footer-label { font-family:Anton,Impact,sans-serif; font-weight:400; text-transform:uppercase; }
+h1 { font-size:30pt; line-height:1.04; letter-spacing:.01em; }
+.kicker { margin-top:2mm; font-size:7.6pt; letter-spacing:.06em; text-transform:uppercase; }
+.metrics { display:flex; justify-content:space-between; gap:4mm; padding:3mm 0; border-bottom:1px solid #c6c6be; font-size:8.5pt; }
+.metrics b { background:var(--pink); padding:.3mm 1mm; }
+h2 { font-size:18pt; line-height:1.15; margin-bottom:3mm; display:flex; align-items:center; gap:2mm; }
+.n { display:inline-block; font:700 8pt/1 'Courier Prime',monospace; background:var(--ink); color:var(--paper); padding:1.2mm 1.4mm; }
+.lineup-section { margin-top:5mm; }
+.lineup-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:4mm; }
+.member { padding-bottom:3mm; border-bottom:1px solid #c6c6be; }
+.member b { display:block; font-size:9pt; margin-bottom:1mm; }
+.member span { display:block; font-size:8pt; line-height:1.35; }
+.input-section { margin-top:5mm; }
+table { width:100%; border-collapse:collapse; font-size:9pt; line-height:1.25; }
+th { padding:2.3mm 1.7mm; text-align:left; text-transform:uppercase; font-size:7.5pt; background:var(--ink); color:var(--paper); }
+td { padding:2.6mm 1.7mm; vertical-align:middle; border-bottom:1px solid #c6c6be; }
+td:first-child { width:9mm; }
+th:nth-child(2) { width:67mm; }
+th:nth-child(3) { width:50mm; }
+.notes { font-size:8.5pt; color:#454540; }
+.ch { background:var(--pink); font-weight:700; padding:.3mm .7mm; font-size:8pt; }
+.group td { background:#e7e7e1; text-transform:uppercase; font-size:7.5pt; font-weight:700; letter-spacing:.06em; padding:1.7mm; }
+.source-label { display:flex; align-items:center; gap:1.7mm; }
+.source-icon { width:4.5mm; height:4.5mm; flex-shrink:0; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; fill:none; }
+.icon-credit { color:#5a5a55; font-size:6.5pt; margin-top:3mm; }
+.icon-credit a { color:inherit; text-decoration:none; }
+.backline-section { margin-top:5mm; }
+.backline-grid { display:grid; grid-template-columns:1fr 1fr; gap:7mm; }
+h3 { font-size:13pt; line-height:1.2; display:inline-block; padding:.8mm 1.5mm; margin-bottom:2.5mm; }
+.ours h3 { background:var(--pink); }
+.theirs h3 { background:var(--ink); color:var(--paper); }
+.gear { list-style:none; }
+.gear li { margin-bottom:1.5mm; font-size:9pt; line-height:1.35; }
+.note { margin-top:2mm; padding-top:2mm; border-top:1px solid #c6c6be; font-size:8.5pt; line-height:1.4; }
+.stage-section { margin-top:5mm; }
+.stage { border:1.5px solid var(--ink); background:#fff; padding:4mm; }
+.orientation { display:flex; justify-content:space-between; gap:3mm; font-size:7pt; text-transform:uppercase; color:#555; }
+.drums { width:56%; text-align:center; background:var(--pink); padding:4mm; margin:6mm auto 12mm; border:1px solid var(--ink); }
+.role { font-size:13.5pt; line-height:1.15; }
+.amp { font-size:8pt; margin-top:1.5mm; }
+.performers { display:grid; grid-template-columns:repeat(3,1fr); gap:3mm; }
+.performer { text-align:center; border:1px solid var(--ink); padding:4mm 2mm; background:var(--paper); }
+.performer.lead { border:1.5px solid var(--pink); background:#fff; }
+.performer.lead .role { color:var(--pink); }
+.performer b { display:block; font-size:8.5pt; margin-top:1.5mm; }
+.wedge { display:inline-flex; align-items:center; justify-content:center; gap:1mm; background:var(--ink); color:var(--paper); padding:1mm 1.5mm; font-size:7pt; font-weight:700; margin-top:3mm; }
+.wedge .source-icon { width:3.8mm; height:3.8mm; }
+.lead .wedge { background:var(--pink); color:var(--ink); }
+.audience { text-align:center; font-size:7.5pt; text-transform:uppercase; letter-spacing:.2em; margin-top:4mm; padding-top:3mm; border-top:1px dashed #bdbdb5; }
+.monitor-section { margin-top:3mm; font-size:8.5pt; }
+footer { position:absolute; bottom:0; left:0; right:0; display:flex; align-items:center; justify-content:space-between; gap:5mm; padding:3mm 12mm; background:var(--ink); color:var(--paper); font-size:7.5pt; line-height:1.5; }
+footer a { color:inherit; text-decoration:none; }
+.footer-label { color:var(--ink); background:var(--pink); padding:.2mm 1mm; font-size:12pt; }
+.version { text-align:right; font-size:7pt; }
+</style><link rel="stylesheet" href="../typography.css?v=20261027-1">
+</head><body>
+<!-- Shared sprite: assets/rider-icons.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:none">
+  <symbol id="icon-mic" viewBox="0 0 24 24"><path d="m11 7.601-5.994 8.19a1 1 0 0 0 .1 1.298l.817.818a1 1 0 0 0 1.314.087L15.09 12"/><circle cx="16" cy="7" r="5"/></symbol>
+  <symbol id="icon-amp-gtr" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M9 5V3h6v2M3 10h18M7 7.5h.01M11 7.5h.01M15 7.5h.01"/><circle cx="12" cy="15.5" r="3.5"/></symbol>
+  <symbol id="icon-amp-bass" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 8h16M8 5.5h.01M12 5.5h4"/><circle cx="9" cy="12" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="9" cy="17" r="2"/><circle cx="15" cy="17" r="2"/></symbol>
+  <symbol id="icon-bass-di" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="1"/><circle cx="8" cy="12" r="2"/><path d="M15 10h3M15 14h3M6 6V4M18 18v2"/></symbol>
+  <symbol id="icon-drums" viewBox="0 0 24 24"><circle cx="12" cy="16" r="5"/><path d="m8 20-2 2m10-2 2 2M3 6h6M6 4v7m9-5h6m-3-2v7"/><rect x="5" y="9" width="6" height="4" rx="1"/><rect x="13" y="9" width="6" height="4" rx="1"/></symbol>
+  <symbol id="icon-wedge" viewBox="0 0 24 24"><path d="M3 19h18l-4-13H9zM9 6l4 13M13 11l4-1M14 14l4-1"/></symbol>
+  <symbol id="icon-xlr" viewBox="0 0 24 24"><circle cx="12" cy="10" r="7"/><path d="M9 17v4h6v-4M9 8h.01M15 8h.01M12 12h.01"/></symbol>
+  <symbol id="icon-kick" viewBox="0 0 24 24"><circle cx="12" cy="11" r="8"/><circle cx="15" cy="13" r="2"/><path d="m6 17-3 4m15-4 3 4M10 21h4"/></symbol>
+  <symbol id="icon-snare" viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="9" ry="3"/><path d="M3 7v7c0 4 18 4 18 0V7M7 10v6m5-6v7m5-7v6M12 17v4m-4 0h8"/></symbol>
+  <symbol id="icon-tom" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v10c0 4 16 4 16 0V6M8 9v9m8-9v9"/></symbol>
+  <symbol id="icon-floor-tom" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v11c0 4 16 4 16 0V5M8 8v10m8-10v10M5 17l-2 5m16-5 2 5m-9-4v4"/></symbol>
+  <symbol id="icon-cymbal" viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="9" ry="2"/><path d="M12 3v15m0 0-6 4m6-4 6 4"/></symbol>
+  <symbol id="icon-mic-condenser" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="14" rx="1"/><path d="M9 6h6M12 16v5m-4 0h8"/></symbol>
+  <symbol id="icon-guitar" viewBox="0 0 24 24"><path d="M14.448,1.250L15.008,1.250L15.008,1.297L15.614,1.343L15.614,1.390L15.894,1.437L15.894,1.483L16.361,1.670L16.501,1.856L16.594,1.856L16.827,2.089L16.827,2.183L17.060,2.416L17.060,2.509L17.107,2.509L17.107,2.602L17.247,2.789L17.247,2.929L17.340,3.022L17.387,3.349L17.433,3.349L17.433,3.582L17.480,3.582L17.527,4.655L17.480,4.655L17.480,4.934L17.433,4.934L17.433,5.074L17.387,5.074L17.387,5.214L17.340,5.214L17.340,5.354L17.293,5.354L17.247,5.541L17.014,5.774L17.014,5.867L16.874,6.007L16.780,6.007L16.687,6.147L16.594,6.147L16.547,6.240L16.361,6.287L16.314,6.380L16.221,6.380L16.034,6.520L15.894,6.520L15.848,6.613L15.754,6.613L15.754,6.660L15.568,6.707L15.521,6.800L15.428,6.800L15.381,6.893L15.288,6.893L15.148,7.033L15.148,7.126L15.055,7.173L15.008,7.406L14.961,7.406L14.961,7.966L15.008,7.966L15.055,8.292L15.148,8.386L15.288,8.899L15.428,9.085L15.428,9.225L15.568,9.412L15.568,9.552L15.708,9.738L15.708,9.878L15.848,10.065L15.848,10.204L15.988,10.391L15.988,10.531L16.081,10.624L16.081,10.764L16.127,10.764L16.174,10.997L16.267,11.091L16.267,11.230L16.361,11.324L16.407,11.604L16.501,11.697L16.501,11.837L16.547,11.837L16.547,11.977L16.594,11.977L16.594,12.117L16.640,12.117L16.640,12.257L16.687,12.257L16.687,12.396L16.734,12.396L16.734,12.536L16.780,12.536L16.920,13.283L16.967,13.283L16.967,13.516L17.014,13.516L17.014,13.749L17.060,13.749L17.060,14.075L17.107,14.075L17.107,14.682L17.153,14.682L17.107,15.335L17.060,15.335L17.014,15.661L16.734,16.034L16.454,16.081L16.454,16.127L16.221,16.127L16.221,16.174L15.894,16.221L15.894,16.267L15.754,16.267L15.661,16.361L15.521,16.361L15.521,16.407L15.148,16.547L14.961,16.734L14.868,16.734L14.728,16.920L14.635,16.920L14.309,17.247L14.309,17.340L14.122,17.480L13.982,17.806L13.889,17.853L13.889,17.946L13.749,18.133L13.749,18.273L13.656,18.366L13.656,18.506L13.609,18.506L13.609,18.646L13.562,18.646L13.562,18.786L13.516,18.786L13.469,19.252L13.422,19.252L13.376,19.998L8.899,19.998L8.805,19.159L8.759,19.159L8.759,19.019L8.712,19.019L8.619,18.739L8.386,18.506L8.386,18.413L7.826,17.946L7.826,17.853L7.686,17.760L7.686,17.666L7.593,17.573L7.593,17.387L7.546,17.387L7.593,16.547L7.639,16.547L7.639,16.407L7.686,16.407L7.686,16.267L7.733,16.267L7.733,16.127L7.779,16.127L7.779,15.941L7.826,15.941L7.826,15.801L7.873,15.801L7.873,15.614L7.733,15.568L7.779,15.335L7.686,15.335L7.686,15.428L7.639,15.428L7.546,15.708L7.453,15.754L7.406,15.941L7.313,15.988L7.313,16.081L6.613,15.894L6.473,15.708L6.473,14.868L6.520,14.868L6.520,14.728L6.613,14.682L6.660,14.495L6.847,14.355L6.847,14.262L7.080,14.075L7.220,14.075L7.220,14.122L7.360,14.122L7.360,14.169L7.873,14.309L7.826,14.961L7.779,14.961L7.826,15.195L7.873,15.195L7.919,14.961L7.966,15.008L8.152,14.961L8.152,14.775L8.199,14.775L8.199,14.635L8.246,14.635L8.246,14.495L8.292,14.495L8.292,14.355L8.339,14.355L8.339,14.215L8.386,14.215L8.386,14.075L8.432,14.075L8.432,13.935L8.479,13.935L8.479,13.796L8.525,13.796L8.525,13.656L8.572,13.656L8.572,13.516L8.619,13.516L8.619,13.329L8.479,13.283L8.525,13.143L8.525,13.049L8.432,13.049L8.339,13.329L8.246,13.376L8.152,13.656L8.012,13.796L7.826,13.749L7.826,13.702L7.686,13.702L7.686,13.656L7.546,13.656L7.546,13.609L7.406,13.609L7.220,13.422L7.220,12.583L7.266,12.583L7.266,12.443L7.406,12.303L7.406,12.210L7.546,12.117L7.546,12.023L7.779,11.790L8.059,11.790L8.059,11.837L8.572,11.977L8.619,12.023L8.619,12.303L8.572,12.303L8.525,12.863L8.619,12.863L8.665,12.676L8.852,12.723L8.852,12.630L8.899,12.630L8.992,12.163L9.039,12.163L9.039,12.023L9.085,12.023L9.085,11.883L9.132,11.883L9.132,11.743L9.178,11.743L9.178,11.604L9.225,11.604L9.225,11.464L9.272,11.464L9.272,11.324L9.318,11.324L9.318,11.184L9.365,11.184L9.365,10.997L9.225,10.997L9.272,10.764L9.178,10.764L9.132,10.951L9.039,10.997L9.039,11.091L8.992,11.091L8.992,11.184L8.945,11.184L8.945,11.277L8.805,11.464L8.106,11.277L7.966,11.091L7.966,10.298L8.012,10.298L8.012,10.158L8.152,10.018L8.152,9.925L8.246,9.878L8.246,9.785L8.525,9.505L8.619,9.505L8.619,9.458L8.852,9.505L8.852,9.552L9.365,9.691L9.318,10.391L9.272,10.391L9.272,10.578L9.365,10.578L9.412,10.391L9.598,10.391L9.598,10.298L9.645,10.298L9.645,10.158L9.691,10.158L9.691,10.018L9.738,10.018L9.738,9.878L9.785,9.878L9.785,9.691L9.831,9.691L9.831,9.552L9.878,9.552L9.878,9.412L9.925,9.412L9.925,9.272L9.971,9.272L9.971,9.132L10.018,9.132L10.018,8.992L10.065,8.992L10.065,8.852L10.111,8.852L10.111,8.712L10.018,8.712L10.018,8.432L9.971,8.432L9.552,9.178L8.852,8.992L8.759,8.899L8.759,8.759L8.712,8.759L8.712,8.012L8.759,8.012L8.759,7.873L8.805,7.873L8.852,7.686L8.945,7.639L8.945,7.546L9.132,7.406L9.132,7.313L9.225,7.313L9.318,7.173L9.505,7.173L9.505,7.220L9.645,7.220L9.645,7.266L9.785,7.266L9.785,7.313L9.925,7.313L9.925,7.360L10.111,7.406L10.065,8.106L10.018,8.106L10.018,8.246L10.111,8.292L10.158,8.106L10.344,8.106L10.344,7.966L10.391,7.966L10.391,7.826L10.438,7.826L10.438,7.686L10.484,7.686L10.484,7.546L10.531,7.546L10.531,7.406L10.578,7.406L10.578,7.220L10.624,7.220L10.624,7.080L10.671,7.080L10.671,6.940L10.717,6.940L10.717,6.800L10.764,6.800L10.764,6.660L10.811,6.660L10.811,6.520L10.857,6.520L10.857,6.427L10.717,6.380L10.764,6.334L10.764,6.147L10.717,6.147L10.671,6.287L10.578,6.334L10.484,6.613L10.391,6.660L10.344,6.847L10.065,6.847L10.065,6.800L9.552,6.660L9.505,6.427L9.458,6.427L9.458,5.727L9.505,5.727L9.505,5.587L9.552,5.587L9.598,5.401L9.691,5.354L9.691,5.261L9.831,5.168L9.831,5.074L9.971,4.934L10.298,4.888L10.298,4.934L10.438,4.934L10.438,4.981L10.578,4.981L10.578,5.028L10.717,5.028L10.717,5.074L10.857,5.121L10.857,5.494L10.811,5.494L10.811,5.867L10.764,5.867L10.764,5.960L10.857,5.960L10.904,5.774L10.997,5.774L10.997,5.820L11.091,5.774L11.091,5.634L11.137,5.634L11.137,5.494L11.184,5.494L11.184,5.354L11.230,5.354L11.230,5.214L11.277,5.214L11.277,5.074L11.324,5.074L11.324,4.934L11.370,4.934L11.370,4.794L11.417,4.794L11.417,4.608L11.464,4.608L11.464,4.468L11.510,4.468L11.510,4.328L11.557,4.328L11.557,4.188L11.604,4.188L11.604,4.095L11.510,4.095L11.557,3.862L11.464,3.862L11.370,3.955L11.277,4.235L11.184,4.281L11.091,4.561L10.857,4.561L10.857,4.515L10.344,4.375L10.251,4.281L10.251,4.142L10.204,4.142L10.204,3.442L10.251,3.442L10.251,3.302L10.298,3.302L10.391,3.022L10.531,2.929L10.531,2.836L10.764,2.602L10.857,2.602L10.857,2.556L11.091,2.602L11.091,2.649L11.604,2.789L11.604,3.209L11.557,3.209L11.557,3.582L11.510,3.582L11.510,3.675L11.604,3.675L11.650,3.489L11.883,3.442L11.883,3.302L11.930,3.302L12.070,2.929L12.163,2.882L12.210,2.696L12.396,2.509L12.396,2.416L13.049,1.763L13.236,1.716L13.283,1.623L13.376,1.623L13.376,1.576L13.469,1.576L13.656,1.437L14.122,1.343L14.122,1.297L14.448,1.297Z M12.676,3.675L12.350,3.815L12.350,3.908L12.210,4.048L12.210,4.375L12.257,4.375L12.257,4.515L12.443,4.701L12.676,4.748L12.676,4.794L12.863,4.794L12.863,4.748L13.003,4.748L13.049,4.655L13.143,4.655L13.236,4.561L13.283,4.328L13.329,4.328L13.329,4.142L13.283,4.142L13.236,3.908L13.096,3.768L13.003,3.768L12.909,3.675Z M11.977,5.960L11.697,6.054L11.557,6.194L11.557,6.287L11.464,6.380L11.464,6.660L11.510,6.660L11.510,6.800L11.743,7.033L12.070,7.080L12.210,7.080L12.350,6.940L12.443,6.940L12.443,6.847L12.536,6.800L12.536,6.660L12.583,6.660L12.583,6.380L12.536,6.380L12.490,6.194L12.350,6.054Z M11.091,8.292L10.951,8.339L10.764,8.525L10.671,8.899L10.717,8.899L10.717,9.085L10.857,9.272L10.951,9.272L10.997,9.365L11.137,9.365L11.137,9.412L11.324,9.412L11.324,9.365L11.557,9.318L11.743,9.132L11.790,8.665L11.743,8.665L11.743,8.572L11.604,8.386L11.510,8.386L11.417,8.292Z M10.438,10.578L10.158,10.671L10.065,10.764L10.065,10.857L9.971,10.904L9.971,11.370L10.158,11.604L10.251,11.604L10.344,11.697L10.578,11.697L10.764,11.650L10.811,11.557L10.951,11.510L10.951,11.417L11.044,11.324L11.044,10.951L10.764,10.624Z M9.691,12.863L9.505,12.909L9.458,13.003L9.318,13.049L9.318,13.143L9.225,13.236L9.225,13.656L9.412,13.889L9.505,13.889L9.598,13.982L9.831,13.982L10.111,13.889L10.251,13.749L10.251,13.656L10.298,13.656L10.298,13.236L10.251,13.236L10.204,13.049L10.065,13.003L10.018,12.909Z M8.899,15.195L8.572,15.381L8.572,15.475L8.479,15.568L8.479,15.894L8.525,15.894L8.525,16.034L8.712,16.221L9.178,16.267L9.318,16.221L9.505,16.034L9.552,15.754L9.598,15.754L9.552,15.521L9.318,15.241Z M8.899,20.605L13.422,20.605L13.422,22.750L8.899,22.750Z" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-bass" viewBox="0 0 24 24"><path d="M14.239,1.250L14.752,1.250L14.752,1.297L15.265,1.343L15.265,1.390L15.684,1.483L15.778,1.576L15.918,1.576L15.918,1.623L16.104,1.670L16.151,1.763L16.337,1.810L16.897,2.323L16.897,2.416L16.990,2.463L16.990,2.556L17.084,2.602L17.084,2.696L17.177,2.789L17.177,2.929L17.223,2.929L17.270,3.209L17.317,3.209L17.410,4.002L17.363,4.002L17.363,4.515L17.317,4.515L17.317,4.748L17.270,4.748L17.223,5.074L17.177,5.074L17.084,5.354L16.990,5.401L16.990,5.494L16.524,5.960L16.431,5.960L16.104,6.287L16.011,6.287L15.964,6.427L15.824,6.520L15.778,6.753L15.731,6.753L15.731,7.453L15.778,7.453L15.778,7.873L15.824,7.873L15.871,8.339L15.918,8.339L16.011,8.899L16.057,8.899L16.057,9.039L16.104,9.039L16.104,9.225L16.151,9.225L16.337,9.925L16.431,10.018L16.570,10.578L16.664,10.671L16.664,10.811L16.710,10.811L16.897,11.510L16.990,11.604L17.084,12.070L17.130,12.070L17.130,12.210L17.177,12.210L17.177,12.396L17.223,12.396L17.223,12.536L17.270,12.536L17.317,12.909L17.363,12.909L17.363,13.143L17.410,13.143L17.410,13.376L17.457,13.376L17.457,13.609L17.503,13.609L17.503,13.982L17.550,13.982L17.550,14.495L17.597,14.495L17.550,15.241L17.363,15.475L16.990,15.614L16.944,15.708L16.850,15.708L16.804,15.801L16.710,15.801L16.524,15.988L16.431,15.988L15.731,16.687L15.731,16.780L15.591,16.874L15.544,17.060L15.451,17.107L15.451,17.200L15.405,17.200L15.405,17.293L15.358,17.293L15.358,17.387L15.311,17.387L15.311,17.480L15.171,17.666L15.078,18.133L15.031,18.133L15.031,18.366L14.985,18.366L14.985,19.952L11.860,19.952L11.860,19.532L11.813,19.532L11.767,19.206L11.720,19.206L11.674,19.019L11.254,18.599L11.161,18.599L10.974,18.459L10.694,18.413L10.694,18.366L10.368,18.319L10.368,18.273L9.901,18.086L9.482,17.666L9.435,17.433L9.388,17.433L9.388,16.734L9.435,16.734L9.435,16.501L9.482,16.501L9.482,16.267L9.528,16.267L9.575,15.941L9.202,15.941L9.202,15.988L8.875,16.034L8.735,16.174L8.642,16.174L8.316,16.547L8.222,16.547L8.129,16.640L7.476,16.687L7.476,16.640L7.243,16.594L7.196,16.501L7.103,16.501L6.963,16.361L6.963,16.267L6.870,16.221L6.823,15.988L6.777,15.988L6.777,15.568L6.683,15.568L6.543,15.428L6.543,15.335L6.450,15.288L6.403,14.775L6.450,14.775L6.497,14.542L6.730,14.309L7.103,14.215L7.103,14.075L7.150,14.075L7.196,13.889L7.430,13.656L7.523,13.656L7.616,13.562L7.756,13.562L7.756,13.516L8.222,13.516L8.222,13.562L8.409,13.562L8.549,13.702L8.642,13.702L8.782,13.842L8.782,13.935L8.875,13.982L8.969,14.355L9.108,14.495L9.108,14.588L9.295,14.775L9.388,14.775L9.482,14.915L9.761,15.008L9.855,14.588L9.948,13.982L9.995,13.982L9.995,13.749L10.041,13.749L10.041,13.516L10.088,13.516L10.088,13.283L10.134,13.283L10.134,13.049L10.181,13.049L10.368,12.117L9.715,12.163L9.575,12.303L9.482,12.303L9.155,12.676L9.062,12.676L9.015,12.770L8.735,12.816L8.735,12.863L8.456,12.863L8.456,12.816L8.082,12.770L7.709,12.443L7.709,12.350L7.616,12.257L7.569,11.743L7.243,11.417L7.196,10.951L7.243,10.951L7.243,10.811L7.290,10.811L7.336,10.624L7.430,10.531L7.523,10.531L7.569,10.438L7.663,10.438L7.663,10.391L7.849,10.391L7.989,10.065L8.269,9.785L8.362,9.785L8.456,9.691L8.642,9.691L8.642,9.645L8.969,9.645L8.969,9.691L9.342,9.785L9.668,10.111L9.761,10.484L9.901,10.624L9.901,10.717L10.181,10.997L10.274,10.997L10.321,11.091L10.554,11.137L10.601,10.811L10.648,10.811L10.648,10.578L10.694,10.578L10.694,10.344L10.741,10.344L10.741,10.111L10.787,10.111L10.787,9.878L10.834,9.878L10.834,9.645L10.881,9.645L10.881,9.412L10.927,9.412L10.974,8.992L11.021,8.992L11.021,8.759L11.067,8.759L11.067,8.525L11.114,8.525L11.114,8.292L10.508,8.339L10.508,8.386L10.228,8.479L10.181,8.572L10.088,8.572L9.948,8.805L9.855,8.805L9.808,8.899L9.715,8.899L9.621,8.992L9.435,8.992L9.435,9.039L8.922,8.992L8.922,8.945L8.735,8.899L8.409,8.572L8.362,8.339L8.316,8.339L8.316,7.919L8.036,7.686L8.036,7.593L7.943,7.499L7.943,7.033L8.222,6.660L8.642,6.520L8.642,6.380L8.689,6.380L8.735,6.194L8.922,6.007L9.015,6.007L9.202,5.867L9.668,5.820L9.668,5.867L9.855,5.867L9.855,5.914L9.995,5.914L10.041,6.007L10.134,6.007L10.368,6.240L10.368,6.334L10.461,6.427L10.461,6.567L10.508,6.567L10.601,6.847L10.694,6.893L10.694,6.986L10.834,7.126L10.927,7.126L10.974,7.220L11.347,7.360L11.487,6.473L11.534,6.473L11.534,6.240L11.580,6.240L11.720,5.354L11.767,5.354L11.767,5.121L11.813,5.121L11.860,4.701L11.907,4.701L11.907,4.468L11.347,4.515L11.347,4.561L10.974,4.701L10.601,5.121L10.368,5.168L10.368,5.214L9.855,5.214L9.855,5.168L9.575,5.121L9.248,4.794L9.248,4.701L9.155,4.608L9.155,4.468L9.108,4.468L9.108,4.095L8.782,3.768L8.782,3.582L8.735,3.582L8.782,3.162L9.062,2.836L9.155,2.836L9.248,2.742L9.435,2.742L9.435,2.602L9.575,2.463L9.575,2.369L9.715,2.229L9.808,2.229L9.855,2.136L10.088,2.089L10.088,2.043L10.601,2.043L10.601,2.089L10.741,2.089L10.741,2.136L10.927,2.183L11.161,2.416L11.394,3.022L11.534,3.116L11.534,3.209L11.627,3.302L11.720,3.302L11.767,3.395L12.140,3.535L12.140,3.349L12.187,3.349L12.187,3.162L12.233,3.162L12.233,3.022L12.326,2.929L12.326,2.789L12.373,2.789L12.560,2.323L12.653,2.276L12.653,2.183L12.839,2.043L12.839,1.950L13.026,1.763L13.119,1.763L13.213,1.623L13.306,1.623L13.352,1.530L13.586,1.483L13.586,1.437L13.819,1.390L13.819,1.343L14.239,1.297Z M13.866,4.748L13.726,4.794L13.539,5.028L13.539,5.214L13.492,5.214L13.539,5.494L13.772,5.727L14.192,5.774L14.192,5.727L14.285,5.727L14.472,5.587L14.518,5.354L14.565,5.354L14.565,5.121L14.518,5.121L14.472,4.934L14.332,4.794Z M13.119,8.525L12.886,8.619L12.839,8.759L12.746,8.805L12.746,9.272L12.979,9.505L13.399,9.552L13.399,9.505L13.492,9.505L13.679,9.365L13.679,9.272L13.772,9.178L13.772,8.899L13.726,8.899L13.679,8.712L13.539,8.572Z M12.326,12.350L12.187,12.396L12.000,12.583L11.953,13.003L12.000,13.003L12.000,13.143L12.140,13.283L12.233,13.283L12.326,13.376L12.606,13.376L12.606,13.329L12.746,13.329L12.933,13.143L12.979,12.676L12.746,12.396Z M11.580,16.174L11.394,16.221L11.347,16.314L11.207,16.361L11.207,16.454L11.114,16.547L11.114,16.827L11.161,16.827L11.161,16.967L11.347,17.153L11.674,17.200L11.860,17.200L12.093,17.014L12.093,16.920L12.140,16.920L12.140,16.501L11.907,16.221Z M11.860,20.605L14.985,20.605L14.985,22.750L11.860,22.750Z" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-mic-stand" viewBox="0 0 24 24"><path d="M12 10v8m-8-5L18 5m-6 13-6 4m6-4 6 4m-6-4v4m4-17 4-2 1 2-4 2"/></symbol>
+  <symbol id="icon-band" viewBox="0 0 24 24"><circle cx="12" cy="6" r="3"/><path d="M6 21v-3a6 6 0 0 1 12 0v3M4 5a3 3 0 0 0 0 6m16-6a3 3 0 0 1 0 6M2 20v-2a5 5 0 0 1 3-4m17 6v-2a5 5 0 0 0-3-4"/></symbol>
+  <symbol id="icon-mixer" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M7 6v4m0 4v4m5-12v8m0 4h.01M17 6v2m0 4v6M5 11h4m1 4h4m1-6h4"/></symbol>
 </svg>
-
-<!-- PAGINA 1: SCHEDA TECNICA & INPUT LIST -->
 <main class="sheet">
-  <header>
-    <img class="logo" src="../assets/rude-logo-rosa.png" alt="RUDE">
-    <div class="heading">
-      <h1>Scheda tecnica<br>&amp; input list</h1>
-      <div class="kicker">Garage / post-punk · Milano</div>
-    </div>
-  </header>
-
-  <div class="metrics">
-    <span><b>4 elementi</b> · 2 chitarre, basso, batteria</span>
-    <span><b>12 canali</b> · 3 voci</span>
-    <span><b>4 monitor</b> · uno per musicista</span>
-  </div>
-
-  <div class="columns">
-    <div>
-      <section class="lineup">
-        <h2><span class="n">01</span>Formazione</h2>
-        <div class="member">
-          <b>Voce principale + chitarra 1 (Lorenzo)</b>
-          <span>Fender Hot Rod Deluxe — microfonato</span>
-        </div>
-        <div class="member">
-          <b>Chitarra 2 + cori (Francesco C)</b>
-          <span>Vox AC30 — microfonato</span>
-        </div>
-        <div class="member">
-          <b>Basso + seconda voce (Francesco P)</b>
-          <span>Hartke HA3500 + Transporter — D.I. o mic</span>
-        </div>
-        <div class="member">
-          <b>Batteria (Adriano)</b>
-          <span>Rullante, piatti e pedale cassa propri</span>
-        </div>
-      </section>
-
-      <section>
-        <h2><span class="n">02</span>Backline</h2>
-        <div class="backline-block ours">
-          <h3>Portiamo noi</h3>
-          <ul class="gear">
-            <li><b>Chitarra 1:</b> Fender Hot Rod Deluxe (combo valvolare).</li>
-            <li><b>Chitarra 2:</b> Vox AC30 (combo valvolare).</li>
-            <li><b>Basso:</b> Hartke HA3500 (350W @4Ω) + Transporter (4×10").</li>
-            <li><b>Batteria:</b> rullante, piatti e pedale cassa.</li>
-          </ul>
-        </div>
-        <div class="backline-block theirs">
-          <h3>Serve dal locale</h3>
-          <ul class="gear">
-            <li><b>Batteria:</b> cassa, 1 tom, 1 timpano (fusti + pelli).</li>
-            <li><b>Aste piatti:</b> 2 crash, 1 ride, 1 hi-hat + asta rullante.</li>
-            <li><b>Aste microfono:</b> 3 a giraffa (voci) + 2 per gli ampli chitarra.</li>
-            <li><b>Microfoni:</b> 3 × SM58, 2 × SM57, kit microfoni batteria.</li>
-            <li><b>Monitoraggio:</b> 4 monitor indipendenti (batteria inclusa).</li>
-          </ul>
-        </div>
-        <p class="note">
-          <strong>Ampli condivisibili.</strong> Portiamo i nostri ampli o utilizziamo volentieri backline equivalente già presente sul palco per velocizzare il cambio palco. Concordare in anticipo.
-        </p>
-      </section>
-    </div>
-
-    <section>
-      <h2><span class="n">03</span>Input list</h2>
-      <table aria-label="Input list dodici canali">
-        <thead>
-          <tr>
-            <th>CH</th>
-            <th>Sorgente</th>
-            <th>Microfono / D.I.</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="group"><td colspan="3">Voci e chitarre frontali</td></tr>
-          <tr>
-            <td><span class="ch">01</span></td>
-            <td>
-              <span class="src-title">Voce principale (Lorenzo)</span>
-              <span class="src-sub">Centro · asta a giraffa</span>
-            </td>
-            <td>
-              <div class="mic-cell">
-                <svg class="mic-icon"><use href="#icon-mic-vocal"/></svg>
-                <span>SM58</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="ch">02</span></td>
-            <td>
-              <span class="src-title">Chitarra 1 (Lorenzo)</span>
-              <span class="src-sub">Fender Hot Rod Deluxe · asta giraffa</span>
-            </td>
-            <td>
-              <div class="mic-cell">
-                <svg class="mic-icon"><use href="#icon-mic-inst"/></svg>
-                <span>SM57</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="ch">03</span></td>
-            <td>
-              <span class="src-title">Chitarra 2 (Francesco C)</span>
-              <span class="src-sub">Vox AC30 · asta giraffa</span>
-            </td>
-            <td>
-              <div class="mic-cell">
-                <svg class="mic-icon"><use href="#icon-mic-inst"/></svg>
-                <span>SM57</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="ch">04</span></td>
-            <td>
-              <span class="src-title">Voce seconda (Francesco P)</span>
-              <span class="src-sub">Destra · asta a giraffa</span>
-            </td>
-            <td>
-              <div class="mic-cell">
-                <svg class="mic-icon"><use href="#icon-mic-vocal"/></svg>
-                <span>SM58</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="ch">05</span></td>
-            <td>
-              <span class="src-title">Voce cori (Francesco C)</span>
-              <span class="src-sub">Sinistra · asta a giraffa</span>
-            </td>
-            <td>
-              <div class="mic-cell">
-                <svg class="mic-icon"><use href="#icon-mic-vocal"/></svg>
-                <span>SM58</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="ch">06</span></td>
-            <td>
-              <span class="src-title">Basso (Francesco P)</span>
-              <span class="src-sub">Hartke HA3500 · D.I. preferita</span>
-            </td>
-            <td>
-              <div class="mic-cell">
-                <svg class="mic-icon"><use href="#icon-bass-di"/></svg>
-                <span>D.I. / Beta 52</span>
-              </div>
-            </td>
-          </tr>
-
-          <tr class="group"><td colspan="3">Batteria (Adriano)</td></tr>
-          <tr>
-            <td><span class="ch">07</span></td>
-            <td>
-              <span class="src-title">Cassa</span>
-              <span class="src-sub">Asta corta</span>
-            </td>
-            <td>
-              <div class="mic-cell">
-                <svg class="mic-icon"><use href="#icon-mic-kick"/></svg>
-                <span>D112 / Beta 52</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="ch">08</span></td>
-            <td>
-              <span class="src-title">Rullante</span>
-              <span class="src-sub">Top · nostro</span>
-            </td>
-            <td>
-              <div class="mic-cell">
-                <svg class="mic-icon"><use href="#icon-mic-inst"/></svg>
-                <span>SM57</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="ch">09</span></td>
-            <td>
-              <span class="src-title">Rack Tom</span>
-              <span class="src-sub">Fusto locale</span>
-            </td>
-            <td>
-              <div class="mic-cell">
-                <svg class="mic-icon"><use href="#icon-mic-clip"/></svg>
-                <span>Clip (e604)</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="ch">10</span></td>
-            <td>
-              <span class="src-title">Floor Tom</span>
-              <span class="src-sub">Fusto locale</span>
-            </td>
-            <td>
-              <div class="mic-cell">
-                <svg class="mic-icon"><use href="#icon-mic-clip"/></svg>
-                <span>Clip (e604)</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="ch">11</span></td>
-            <td>
-              <span class="src-title">Overhead L</span>
-              <span class="src-sub">Asta alta</span>
-            </td>
-            <td>
-              <div class="mic-cell">
-                <svg class="mic-icon"><use href="#icon-mic-condenser"/></svg>
-                <span>Cond. (+48V)</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="ch">12</span></td>
-            <td>
-              <span class="src-title">Overhead R</span>
-              <span class="src-sub">Asta alta</span>
-            </td>
-            <td>
-              <div class="mic-cell">
-                <svg class="mic-icon"><use href="#icon-mic-condenser"/></svg>
-                <span>Cond. (+48V)</span>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  </div>
-
-  <footer>
-    <div>
-      <span class="label">Contatti live</span><br>
-      <a href="tel:+393497254732">Lorenzo · 349 725 4732</a>
-    </div>
-    <div>
-      <a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a><br>
-      <a href="https://www.instagram.com/about.rude/">Instagram @about.rude</a>
-    </div>
-    <div class="version">
-      RUDE · Milano<br>
-      Live 2026 · 1 / 2
-    </div>
-  </footer>
-</main>
-
-<!-- PAGINA 2: STAGE PLOT & MONITORAGGIO -->
+<header><img class="logo" src="../assets/rude-logo-rosa.png" alt="RUDE"><div class="heading"><h1>Scheda tecnica</h1><p class="kicker">Garage / post-punk · Milano · Live 2026</p></div></header>
+<div class="metrics"><span><b>4 elementi</b></span><span><b>12 canali</b></span><span><b>3 voci</b></span><span><b>4 monitor</b></span></div>
+<section class="lineup-section"><h2><span class="n">01</span>Formazione</h2><div class="lineup-grid">
+<div class="member"><b>Lorenzo</b><span>Voce principale<br>Chitarra 1</span></div>
+<div class="member"><b>Francesco C</b><span>Chitarra 2<br>Cori</span></div>
+<div class="member"><b>Francesco P</b><span>Basso<br>Seconda voce</span></div>
+<div class="member"><b>Adriano</b><span>Batteria</span></div></div></section>
+<section class="input-section"><h2><span class="n">02</span>Input list</h2>
+<table aria-label="Input list dodici canali"><thead><tr><th>CH</th><th>Sorgente</th><th>Microfono / D.I.</th><th>Note</th></tr></thead><tbody><tr class="group"><td colspan="4">Voci e strumenti</td></tr><tr><td><span class="ch">01</span></td><td><span class="source-label"><svg class="source-icon" aria-hidden="true"><use href="#icon-mic"/></svg><b>Voce principale · Lorenzo</b></span></td><td>SM58</td><td class="notes">Centro · asta a giraffa</td></tr>
+<tr><td><span class="ch">02</span></td><td><span class="source-label"><svg class="source-icon" aria-hidden="true"><use href="#icon-guitar"/></svg><b>Chitarra 1 · Lorenzo</b></span></td><td>SM57</td><td class="notes">Fender Hot Rod Deluxe</td></tr>
+<tr><td><span class="ch">03</span></td><td><span class="source-label"><svg class="source-icon" aria-hidden="true"><use href="#icon-guitar"/></svg><b>Chitarra 2 · Francesco C</b></span></td><td>SM57</td><td class="notes">Vox AC30</td></tr>
+<tr><td><span class="ch">04</span></td><td><span class="source-label"><svg class="source-icon" aria-hidden="true"><use href="#icon-mic"/></svg><b>Voce seconda · Francesco P</b></span></td><td>SM58</td><td class="notes">Destra · asta a giraffa</td></tr>
+<tr><td><span class="ch">05</span></td><td><span class="source-label"><svg class="source-icon" aria-hidden="true"><use href="#icon-mic"/></svg><b>Cori · Francesco C</b></span></td><td>SM58</td><td class="notes">Sinistra · asta a giraffa</td></tr>
+<tr><td><span class="ch">06</span></td><td><span class="source-label"><svg class="source-icon" aria-hidden="true"><use href="#icon-bass"/></svg><b>Basso · Francesco P</b></span></td><td>D.I. / D112 / Beta 52</td><td class="notes">Hartke HA3500 · D.I. preferita</td></tr>
+<tr class="group"><td colspan="4">Batteria · Adriano</td></tr><tr><td><span class="ch">07</span></td><td><span class="source-label"><svg class="source-icon" aria-hidden="true"><use href="#icon-kick"/></svg><b>Cassa</b></span></td><td>D112 / Beta 52</td><td class="notes">Asta corta</td></tr>
+<tr><td><span class="ch">08</span></td><td><span class="source-label"><svg class="source-icon" aria-hidden="true"><use href="#icon-snare"/></svg><b>Rullante</b></span></td><td>SM57</td><td class="notes">Top · nostro</td></tr>
+<tr><td><span class="ch">09</span></td><td><span class="source-label"><svg class="source-icon" aria-hidden="true"><use href="#icon-tom"/></svg><b>Rack tom</b></span></td><td>Clip (e604)</td><td class="notes">Fusto del locale</td></tr>
+<tr><td><span class="ch">10</span></td><td><span class="source-label"><svg class="source-icon" aria-hidden="true"><use href="#icon-floor-tom"/></svg><b>Floor tom</b></span></td><td>Clip (e604)</td><td class="notes">Fusto del locale</td></tr>
+<tr><td><span class="ch">11</span></td><td><span class="source-label"><svg class="source-icon" aria-hidden="true"><use href="#icon-mic-condenser"/></svg><b>Overhead L</b></span></td><td>Condensatore · +48V</td><td class="notes">Asta alta</td></tr>
+<tr><td><span class="ch">12</span></td><td><span class="source-label"><svg class="source-icon" aria-hidden="true"><use href="#icon-mic-condenser"/></svg><b>Overhead R</b></span></td><td>Condensatore · +48V</td><td class="notes">Asta alta</td></tr></tbody></table>
+<p class="icon-credit">Icone chitarra e basso: <a href="https://thenounproject.com/icon/fender-bass-headstock-154940/">Studio TROISQUATRE / Noun Project</a> · adattamento outline · <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></p></section>
+<footer><div><span class="footer-label">Contatti live</span><br><a href="tel:+393497254732">Lorenzo · 349 725 4732</a></div><div><a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a><br><a href="https://www.instagram.com/about.rude/">Instagram @about.rude</a></div><div class="version">RUDE · Milano<br>Live 2026 · 1 / 2</div></footer></main>
 <main class="sheet page-stage">
-  <header>
-    <img class="logo" src="../assets/rude-logo-rosa.png" alt="RUDE">
-    <div class="heading">
-      <h1>Stage plot</h1>
-      <div class="kicker">4 elementi · 3 voci · 4 monitor</div>
-    </div>
-  </header>
-
-  <section class="stage-section">
-    <h2><span class="n">04</span>Disposizione palco</h2>
-    <div class="stage">
-      <div class="orientation">
-        <span>Sinistra fonico (Stage Right)</span>
-        <span>Retropalco</span>
-        <span>Destra fonico (Stage Left)</span>
-      </div>
-
-      <div class="drums">
-        <div class="role">Batteria (Adriano)</div>
-        <div class="amp">Cassa, tom, timpano del locale · rullante e piatti propri</div>
-        <div class="wedge">Monitor AUX 4</div>
-      </div>
-
-      <div class="performers">
-        <div class="performer">
-          <div class="role">Chitarra 2 + cori</div>
-          <div style="font-weight: 700; font-size: 7.8pt; margin-top: .5mm;">Francesco C</div>
-          <div class="amp">Ampli: Vox AC30</div>
-          <div class="wedge">Monitor AUX 2</div>
-        </div>
-
-        <div class="performer lead">
-          <div class="role" style="color: var(--pink);">Voce 1 + Chitarra 1</div>
-          <div style="font-weight: 700; font-size: 8.2pt; margin-top: .5mm;">Lorenzo (Lead)</div>
-          <div class="amp">Ampli: Fender Hot Rod Deluxe</div>
-          <div class="wedge" style="background: var(--pink); color: var(--ink);">Monitor AUX 1</div>
-        </div>
-
-        <div class="performer">
-          <div class="role">Basso + Voce 2</div>
-          <div style="font-weight: 700; font-size: 7.8pt; margin-top: .5mm;">Francesco P</div>
-          <div class="amp">Testata Hartke + Cassa 4×10"</div>
-          <div class="wedge">Monitor AUX 3</div>
-        </div>
-      </div>
-
-      <div class="audience">Front Stage // Pubblico</div>
-    </div>
-  </section>
-
-  <section class="monitor-section">
-    <h2><span class="n">05</span>Monitoraggio &amp; Mix Palco</h2>
-    <div class="monitor-grid">
-      <div class="monitor-card">
-        <span class="aux">AUX 1 — Centro (Lorenzo)</span>
-        <b>Voce principale + Chitarra 1</b>
-        <p>Priorità assoluta a Voce 1 (forte e chiara) e Chitarra 1. Livello moderato di Chitarra 2 e Voce 2 per intonazione. Nessuna batteria necessaria nel monitor.</p>
-      </div>
-
-      <div class="monitor-card">
-        <span class="aux">AUX 2 — Sinistra fonico (Francesco C)</span>
-        <b>Chitarra 2 + Cori</b>
-        <p>Propria chitarra (Vox AC30) ben presente, Voce principale (Lorenzo) come riferimento dinamico, propri cori (Voce 5) a volume medio.</p>
-      </div>
-
-      <div class="monitor-card">
-        <span class="aux">AUX 3 — Destra fonico (Francesco P)</span>
-        <b>Basso + Voce seconda</b>
-        <p>Basso chiaro e definito, propria voce (Voce 4), Voce principale di riferimento. Cassa leggera se il palco è dispersivo.</p>
-      </div>
-
-      <div class="monitor-card">
-        <span class="aux">AUX 4 — Batteria (Adriano)</span>
-        <b>Batteria (Ascolto generale)</b>
-        <p>Mix bilanciato con Voce 1 e Voce 2 ben definite come guida ritmica del brano, Chitarra 1 e Basso per il timing.</p>
-      </div>
-    </div>
-
-    <div class="tech-notes">
-      <b>Alimentazione elettrica:</b> Richieste 4 linee 220V standard (una per postazione musicista; ciabatte fornite dalla band).<br>
-      <b>Condivisione ampli:</b> Valutabile l'uso di backline condiviso previo accordo tecnico con il service / altre band della serata.
-    </div>
-  </section>
-
-  <footer>
-    <div>
-      <span class="label">Contatti live</span><br>
-      <a href="tel:+393497254732">Lorenzo · 349 725 4732</a>
-    </div>
-    <div>
-      <a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a><br>
-      <a href="https://www.instagram.com/about.rude/">Instagram @about.rude</a>
-    </div>
-    <div class="version">
-      RUDE · Milano<br>
-      Live 2026 · 2 / 2
-    </div>
-  </footer>
-</main>
-
-</body>
-</html>
+<header><img class="logo" src="../assets/rude-logo-rosa.png" alt="RUDE"><div class="heading"><h1>Backline &amp; stage plot</h1><p class="kicker">4 elementi · 3 voci · 4 monitor</p></div></header>
+<section class="backline-section"><h2><span class="n">03</span>Backline</h2><div class="backline-grid">
+<div class="ours"><h3>Portiamo noi</h3><ul class="gear">
+<li><b>Chitarra 1:</b> Fender Hot Rod Deluxe.</li><li><b>Chitarra 2:</b> Vox AC30.</li>
+<li><b>Basso:</b> Hartke HA3500 (350W @4Ω) + Hartke Transporter (300W, 4×10").</li>
+<li><b>Batteria:</b> rullante, piatti e pedale cassa.</li></ul></div>
+<div class="theirs"><h3>Serve dal locale</h3><ul class="gear">
+<li><b>Batteria:</b> cassa, 1 tom e 1 timpano.</li>
+<li><b>Aste:</b> 2 crash, 1 ride, 1 hi-hat e rullante; 3 a giraffa per le voci, 2 per gli ampli chitarra.</li>
+<li><b>Microfoni:</b> 3 × SM58, 2 × SM57, kit batteria.</li>
+<li><b>Monitor:</b> 4, con mandate indipendenti.</li></ul></div></div>
+<p class="note"><b>Ampli condivisibili.</b> Possiamo portare i nostri o usare un backline equivalente del locale o di altre band. Da concordare in anticipo.</p></section>
+<section class="stage-section"><h2><span class="n">04</span>Stage plot</h2><div class="stage">
+<div class="orientation"><span>Sinistra fonico</span><span>Retropalco</span><span>Destra fonico</span></div>
+<div class="drums"><div class="role">Batteria · Adriano</div><p class="amp">Cassa, tom e timpano del locale<br>Rullante e piatti propri</p><div class="wedge"><svg class="source-icon" aria-hidden="true"><use href="#icon-wedge"/></svg>Monitor AUX 4</div></div>
+<div class="performers">
+<div class="performer"><div class="role">Chitarra 2 + cori</div><b>Francesco C</b><p class="amp">Vox AC30</p><div class="wedge"><svg class="source-icon" aria-hidden="true"><use href="#icon-wedge"/></svg>Monitor AUX 2</div></div>
+<div class="performer lead"><div class="role">Voce 1 + chitarra 1</div><b>Lorenzo</b><p class="amp">Fender Hot Rod Deluxe</p><div class="wedge"><svg class="source-icon" aria-hidden="true"><use href="#icon-wedge"/></svg>Monitor AUX 1</div></div>
+<div class="performer"><div class="role">Basso + voce 2</div><b>Francesco P</b><p class="amp">Hartke HA3500</p><div class="wedge"><svg class="source-icon" aria-hidden="true"><use href="#icon-wedge"/></svg>Monitor AUX 3</div></div></div>
+<div class="audience">Pubblico</div></div></section>
+<section class="monitor-section"><p>Un monitor per musicista, batteria inclusa. Mix da concordare al soundcheck.</p></section>
+<footer><div><span class="footer-label">Contatti live</span><br><a href="tel:+393497254732">Lorenzo · 349 725 4732</a></div><div><a href="mailto:theband.rude@gmail.com">theband.rude@gmail.com</a><br><a href="https://www.instagram.com/about.rude/">Instagram @about.rude</a></div><div class="version">RUDE · Milano<br>Live 2026 · 2 / 2</div></footer></main>
+</body></html>

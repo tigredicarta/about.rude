@@ -1,23 +1,18 @@
-/* ==========================================================================
-   RUDE // RISOGRAPH SYSTEM v2.0 (ZINE / DISCHORD EDITION)
-   Direzione Artistica: Argon (Gemini Argon Bridge)
-   Dominanza Nero Soia (85%) + Fuori-Registro Meccanico Rosa Riso (15%)
-   Nessuna saturazione candy/pop a 3 colori.
-   ========================================================================== */
+/* RUDE — carta, inchiostro e segni condivisi con homepage e rider. */
 
 :root {
   /* Supporti Cartacei Riso */
-  --ink-black: #141413;
+  --ink-black: #101010;
   --ink-graphite: #4A4946;
-  --paper-raw: #F2EFE9;
-  --paper-card: #FAF8F5;
+  --paper-raw: #f4f4f2;
+  --paper-card: #ffffff;
   --paper-muted: #E5E0D8;
-  --paper-bg: #F2EFE9;
-  --paper-surface: #FAF8F5;
-  --paper-elevated: #FAF8F5;
+  --paper-bg: #f4f4f2;
+  --paper-surface: #ffffff;
+  --paper-elevated: #ffffff;
 
   /* Inchiostri Spot Riso */
-  --riso-pink: #E01A4F;
+  --riso-pink: #ff3d8b;
   --riso-pink-tint: #FCE8EE;
   --signal-amber: #D95D14;
   --signal-amber-tint: #FDF0E6;
@@ -25,7 +20,8 @@
   /* Font Families di supporto */
   --font-display: 'Anton', 'Archivo Black', Impact, sans-serif;
   --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Space Mono', monospace;
+  --font-mono: 'Courier Prime', Courier, monospace;
+  --font-tech: var(--font-mono);
 
   /* Bordi e Ombre Serigrafiche */
   --border-heavy: 2px solid var(--ink-black);
@@ -57,18 +53,16 @@
 .release-title-giant span,
 .release-title-giant .title-line-inner {
   font-family: var(--font-display, 'Anton', sans-serif);
-  font-weight: 900;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
-  line-height: 0.94;
+  letter-spacing: .01em;
+  line-height: 1.02;
   color: var(--ink-black) !important;
   position: relative;
   z-index: 2;
   margin: 0;
   /* Taglio netto fuori registro a 2 tamburi: 1.5px stacco carta + 3px lastra rosa */
-  text-shadow: 
-    1.5px 1px 0px var(--paper-raw, #F2EFE9),
-    3px 2px 0px var(--riso-pink, #E01A4F) !important;
+  text-shadow: none !important;
 }
 
 /* Variante su sfondo scuro / theme dark */
@@ -78,9 +72,7 @@
 .theme-dark .bio-headline span,
 .theme-dark .bio-headline .title-line-inner {
   color: var(--paper-raw) !important;
-  text-shadow: 
-    -1.5px -1px 0px var(--ink-black),
-    2.5px 2px 0px var(--riso-pink) !important;
+  text-shadow: none !important;
 }
 
 /* Variante per sezione Bestie Flambé (su fondo Rosa Shocking) */
@@ -89,9 +81,7 @@
 .bestie-flambe-block .release-title-giant span,
 .bestie-flambe-block .release-title-giant .title-line-inner {
   color: var(--ink-black) !important;
-  text-shadow: 
-    1.5px 1px 0px #FFFFFF,
-    3.5px 2.5px 0px var(--ink-black) !important;
+  text-shadow: none !important;
 }
 
 /* Disattivazione pseudo-elementi duplicati per evitare overlap con titoli spezzati */
@@ -138,17 +128,7 @@
 }
 
 /* Micro-grana carta opzionale */
-.paper-grain-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9990;
-  opacity: 0.18;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
+.paper-grain-overlay, body::before { display: none; }
 
 /* ==========================================================================
    ICONE TECNICHE VETTORIALI & BADGE PER SCHEDA TECNICA
@@ -159,9 +139,9 @@
   width: 18px;
   height: 18px;
   stroke: currentColor;
-  stroke-width: 1.85;
-  stroke-linecap: square;
-  stroke-linejoin: miter;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   fill: none;
   flex-shrink: 0;
   vertical-align: middle;
@@ -224,8 +204,8 @@
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 800;
-  color: #FFFFFF;
-  background-color: var(--signal-amber);
+  color: var(--ink-black);
+  background-color: var(--riso-pink-tint);
   padding: 1px 5px;
   margin-left: 6px;
   border: 1px solid var(--ink-black);
@@ -320,10 +300,100 @@
 @media (prefers-reduced-motion: reduce) {
   .riso-title,
   .riso-type {
-    text-shadow: 2px 2px 0px var(--riso-pink);
+    text-shadow: none !important;
   }
   *, *::before, *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
 }
+
+/* La grana resta sui campi di carta e sui titoli grandi. */
+:root {
+  --riso-paper-texture: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22192%22%20height%3D%22192%22%3E%3Cfilter%20id%3D%22paper%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.78%22%20numOctaves%3D%223%22%20seed%3D%2217%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22192%22%20height%3D%22192%22%20filter%3D%22url(%23paper)%22%20opacity%3D%22.045%22%2F%3E%3C%2Fsvg%3E");
+  --riso-ink-texture: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22144%22%20height%3D%22144%22%3E%3Cfilter%20id%3D%22ink%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%221.35%22%20numOctaves%3D%222%22%20seed%3D%2231%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%201%20%200%200%200%200%201%20%200%200%200%200%201%20%201%200%200%200%200%22%2F%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type%3D%22table%22%20tableValues%3D%22.55%20.68%20.8%20.91%20.97%201%201%201%201%22%2F%3E%3C%2FfeComponentTransfer%3E%3C%2Ffilter%3E%3Crect%20width%3D%22144%22%20height%3D%22144%22%20filter%3D%22url(%23ink)%22%2F%3E%3C%2Fsvg%3E");
+}
+.bio-section, .about-youth-block, .bestie-flambe-block, .site-footer,
+[data-page="rider"] .rider-header-section {
+  background-image: var(--riso-paper-texture);
+  background-repeat: repeat;
+  background-size: 192px;
+  background-blend-mode: multiply;
+}
+.title-line-inner {
+  -webkit-mask-image: var(--riso-ink-texture);
+  mask-image: var(--riso-ink-texture);
+  -webkit-mask-size: 144px;
+  mask-size: 144px;
+}
+.bestie-flambe-block { background-color: var(--pink-rude); }
+.bio-body-text, .bio-headline .title-line-inner { color: var(--ink-black); }
+
+/* Il rider usa la stessa carta, gli stessi caratteri e lo stesso rosa del sito. */
+[data-page="rider"] {
+  --bg-page: var(--paper-raw);
+  --bg-card: var(--paper-raw);
+  --bg-subtle: #eaeae5;
+  --bg-callout: var(--riso-pink-tint);
+  --text-main: var(--ink-black);
+  --text-muted: #50504c;
+  --border-color: var(--ink-black);
+  --sticky-col-bg: var(--paper-raw);
+  --shadow-solid: none;
+  --shadow-pink: none;
+}
+[data-page="rider"] .riso-halftone-strip { display: none; }
+[data-page="rider"] .riso-stamp {
+  background: transparent; border: 0; box-shadow: none;
+  color: var(--text-muted); transform: none; padding: 0;
+  font-size: .75rem; letter-spacing: .08em; font-weight: 400;
+}
+[data-page="rider"] .rider-title-giant { line-height: 1.02 !important; }
+[data-page="rider"] .rider-title-giant span { color: var(--pink-rude); }
+[data-page="rider"] .metric-strip-grid { gap: 1.5rem; }
+[data-page="rider"] .metric-card {
+  background: transparent; border: 0; border-top: 1px solid #bdbdb5;
+  box-shadow: none; padding: 1rem 0; min-height: 0;
+}
+[data-page="rider"] .metric-icon-box {
+  width: 26px; height: 26px; border: 0; background: transparent; box-shadow: none;
+}
+[data-page="rider"] .tech-card-block {
+  background: transparent; border: 0; box-shadow: none; margin-bottom: 3rem;
+}
+[data-page="rider"] .tech-card-header {
+  background: transparent; color: var(--ink-black); border-bottom: 1px solid var(--ink-black);
+  padding: 0 0 .85rem;
+}
+[data-page="rider"] .tech-card-title { font-size: 1.7rem; letter-spacing: .01em; }
+[data-page="rider"] .tech-card-header > span { color: var(--text-muted) !important; }
+[data-page="rider"] .step-pill { background: var(--ink-black); color: var(--paper-raw); font-weight: 700; }
+[data-page="rider"] .lineup-member-box { border-color: #d4d4cc; }
+[data-page="rider"] .member-gear-desc strong { color: var(--ink-black); }
+[data-page="rider"] .member-role-title .ch-icon-badge {
+  width: 26px !important; height: 26px !important;
+  background: transparent !important; color: var(--ink-black) !important; border: 0;
+}
+[data-page="rider"] .member-role-title .svg-icon { width: 20px !important; height: 20px !important; }
+[data-page="rider"] .ch-icon-badge {
+  border: 0; background: transparent; color: var(--ink-black); width: 24px; height: 24px;
+}
+[data-page="rider"] .mic-badge { border: 0; padding: 0; background: transparent; font-size: .85rem; font-weight: 400; }
+[data-page="rider"] .phantom-tag { border: 0; font-weight: 700; }
+[data-page="rider"] .btn-pdf-box { box-shadow: none; border-width: 1px; }
+[data-page="rider"] .btn-pdf-box--pink { color: var(--ink-black); }
+[data-page="rider"] .btn-pdf-box:hover { transform: translateY(-2px); box-shadow: none; }
+[data-page="rider"] .stage-board, [data-page="rider"] .stage-front-performer { box-shadow: none !important; }
+[data-page="rider"] .stage-performer-title { font-weight: 400; }
+[data-page="rider"] .rider-section-nav { display: flex; flex-wrap: wrap; gap: .65rem 1.5rem; margin-top: 1.5rem; font-size: .85rem; }
+@media (max-width: 480px) {
+  [data-page="rider"] .rider-title-giant { font-size: clamp(2.8rem, 12vw, 3.6rem); }
+  [data-page="rider"] .metric-value { font-size: 1.6rem; }
+  [data-page="rider"] .metric-strip-grid { gap: .5rem 1rem; }
+}
+@media print {
+  .title-line-inner { mask-image: none; -webkit-mask-image: none; }
+}
+
+.icon-credit { font: 400 .7rem/1.5 var(--font-mono); color: var(--text-muted); margin-block: 1rem; }
+.icon-credit a { text-decoration: underline; text-underline-offset: 2px; }

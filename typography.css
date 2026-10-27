@@ -1,0 +1,23 @@
+/* Caratteri condivisi da homepage, rider e sorgenti PDF. */
+@font-face { font-family:'Anton'; src:url('assets/fonts/Anton-Regular.ttf') format('truetype'); font-style:normal; font-weight:400; font-display:swap; }
+@font-face { font-family:'Courier Prime'; src:url('assets/fonts/CourierPrime-Regular.ttf') format('truetype'); font-style:normal; font-weight:400; font-display:swap; }
+@font-face { font-family:'Courier Prime'; src:url('assets/fonts/CourierPrime-Bold.ttf') format('truetype'); font-style:normal; font-weight:700; font-display:swap; }
+@font-face { font-family:'Courier Prime'; src:url('assets/fonts/CourierPrime-Italic.ttf') format('truetype'); font-style:italic; font-weight:400; font-display:swap; }
+@font-face { font-family:'Courier Prime'; src:url('assets/fonts/CourierPrime-BoldItalic.ttf') format('truetype'); font-style:italic; font-weight:700; font-display:swap; }
+:root {
+ --font-display:'Anton',Impact,sans-serif;
+ --font-headline:var(--font-display);
+ --font-mono:'Courier Prime',Courier,monospace;
+ --font-tech:var(--font-mono);
+ --font-sans:var(--font-mono);
+}
+html, body { font-family:var(--font-mono); font-synthesis:none; }
+h1,h2,h3,.display,.riso-title,.riso-type,
+.bio-headline,.release-title-giant,.title-line-inner,.venue-name-cell,
+.live-hero-overlay-title,.bio-lineup-title,.rider-title-giant,
+.tech-card-title,.metric-value,.member-role-title,.drums-title,
+.stage-performer-title,.footer-heading,.footer-section-label,
+.hero .title,.disc .t,.gigs b,.band .cap,.role,.footer-label,.h3t {
+ font-family:var(--font-display);
+ font-weight:400 !important;
+}

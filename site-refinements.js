@@ -41,7 +41,7 @@ if (modal) {
 }
 
 const riderTitle = document.querySelector('.rider-title-giant');
-if (riderTitle) {
+if (riderTitle && !document.querySelector('.rider-section-nav')) {
   const nav = document.createElement('nav');
   nav.className = 'rider-section-nav';
   nav.setAttribute('aria-label', 'Sezioni scheda tecnica');
