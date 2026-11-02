@@ -103,14 +103,15 @@
   <samp>Magazzino sul Po</samp> &nbsp;·&nbsp;
   <samp>ARCI Gagarin</samp> &nbsp;·&nbsp;
   <samp>ARCI Area</samp> &nbsp;·&nbsp;
-  <samp>Detune</samp> &nbsp;·&nbsp;
-  <samp>Cinemino Noise</samp><br>
-  <samp>Labrutepoque</samp> &nbsp;·&nbsp;
+  <samp>Detune</samp><br>
   <samp>Gallery16</samp> &nbsp;·&nbsp;
-  <samp>Ri-Circolo</samp> &nbsp;·&nbsp;
+  <samp>Cinemino Noise</samp> &nbsp;·&nbsp;
+  <samp>Labrutepoque</samp> &nbsp;·&nbsp;
+  <samp>Ri-Circolo</samp><br>
   <samp>Barrio's</samp> &nbsp;·&nbsp;
   <samp>C.I.Q.</samp> &nbsp;·&nbsp;
-  <samp>Bachelite Clab</samp>
+  <samp>Bachelite Clab</samp> &nbsp;·&nbsp;
+  <samp>Il Cantiere 40/3</samp>
 </p>
 
 ---
