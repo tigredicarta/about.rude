@@ -102,9 +102,10 @@
   <sub><b>PALCHI E LOCALI CALPESTATI</b></sub><br>
   <samp>Magazzino sul Po</samp> &nbsp;·&nbsp;
   <samp>ARCI Gagarin</samp> &nbsp;·&nbsp;
+  <samp>ARCI Area</samp> &nbsp;·&nbsp;
   <samp>Detune</samp> &nbsp;·&nbsp;
-  <samp>Cinemino Noise</samp> &nbsp;·&nbsp;
-  <samp>Labrutepoque</samp><br>
+  <samp>Cinemino Noise</samp><br>
+  <samp>Labrutepoque</samp> &nbsp;·&nbsp;
   <samp>Gallery16</samp> &nbsp;·&nbsp;
   <samp>Ri-Circolo</samp> &nbsp;·&nbsp;
   <samp>Barrio's</samp> &nbsp;·&nbsp;
