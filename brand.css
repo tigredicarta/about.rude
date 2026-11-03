@@ -303,7 +303,6 @@
 .btn-bio-primary:hover, .presskit-download:hover { transform: translateY(-2px); }
 .bio-body-text p { max-width: 62ch; }
 .bio-lineup-row { column-gap: 1rem; }
-.release-title-giant { letter-spacing: -.01em; }
 .title-line { display: block; overflow: clip; padding-block: .035em; margin-block: -.035em; color: inherit; }
 .title-line-inner { display: inline-block; color: inherit; }
 .motion-ready .type-reveal:not(.is-in-view) .title-line-inner { opacity: 0; transform: translateY(104%); }
