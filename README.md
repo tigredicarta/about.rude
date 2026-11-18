@@ -101,6 +101,7 @@
 <p align="center">
   <sub><b>PALCHI E LOCALI CALPESTATI</b></sub><br>
   <samp>Magazzino sul Po</samp> &nbsp;·&nbsp;
+  <samp>Mare Culturale Urbano (Milano · per Germogli)</samp> &nbsp;·&nbsp;
   <samp>ARCI Gagarin</samp> &nbsp;·&nbsp;
   <samp>ARCI Area</samp> &nbsp;·&nbsp;
   <samp>Detune</samp><br>
@@ -111,7 +112,8 @@
   <samp>Barrio's</samp> &nbsp;·&nbsp;
   <samp>C.I.Q.</samp> &nbsp;·&nbsp;
   <samp>Bachelite Clab</samp> &nbsp;·&nbsp;
-  <samp>Il Cantiere 40/3</samp>
+  <samp>Il Cantiere 40/3</samp><br>
+  <sub>Anche suonato a: Rock’n’Roll (Milano)</sub>
 </p>
 
 ---
