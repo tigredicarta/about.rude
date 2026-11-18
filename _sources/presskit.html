@@ -85,14 +85,11 @@
   .dp{ margin:3.4mm 0 4.4mm; }
 
   /* ── page 3 ── */
-  .livehero{ height:48mm; position:relative; border-bottom:3px solid var(--ink);
-             background:linear-gradient(to top, rgba(10,10,10,.8) 0%, rgba(10,10,10,.3) 18%, rgba(10,10,10,0) 32%),
-                        url(../FOTO/live-palco-rosso.jpg) center 40% / cover no-repeat; }
-  .h3t{ position:absolute; left:0; bottom:0; font-family:'Anton',sans-serif; font-size:36pt; line-height:1;
-        text-transform:uppercase; letter-spacing:.01em; color:var(--paper); padding-bottom:5mm; }
-  .livepair{ display:grid; grid-template-columns:1.2fr 1fr 1fr; height:27mm; border-bottom:3px solid var(--ink); }
+  .livehero{ padding:5mm 12mm; }
+  .h3t{ font-family:'Anton',sans-serif; font-size:30pt; line-height:1.1; text-transform:uppercase; letter-spacing:.01em; color:var(--ink); padding:0; }
+  .livepair{ display:grid; grid-template-columns:3fr 2fr; gap:2mm; height:66mm; margin:0 12mm; }
   .livepair div{ background:center 35% / cover no-repeat; }
-  .livepair div + div{ border-left:3px solid var(--ink); }
+  .livepair div + div{ border-left:0; }
   .venues{ display:grid; grid-template-columns:40mm 1fr; gap:5mm 7mm; padding-top:6mm; }
   .vt{ padding-top:1.4mm; }
   .gigs{ list-style:none; margin:0; padding:0; border-top:3px solid var(--ink); }
@@ -216,9 +213,8 @@
 
   <div class="livehero"><div class="h3t pad">Dove abbiamo suonato</div></div>
   <div class="livepair">
-    <div style="background-image:url(../FOTO/Rude_Live1.jpg); background-position:62% 40%"></div>
-    <div style="background-image:url(../FOTO/live-palco-blu.jpg); background-position:50% 45%"></div>
-    <div style="background-image:url(../FOTO/live-batteria.jpg); background-position:100% 22%"></div>
+    <div style="background-image:url(../FOTO/Rude_Live1.jpg); background-position:center"></div>
+    <div style="background-image:url(../FOTO/live-batterista-2026.png); background-position:50% 30%"></div>
   </div>
 
   <div class="pad venues">
